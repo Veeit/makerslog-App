@@ -8,103 +8,64 @@
 
 import SwiftUI
 import Foundation
-/*
- {
-   "count": 0,
-   "next": "http://example.com",
-   "previous": "http://example.com",
-   "results": [
-     {
-       "id": 0,
-       "event": "slack",
-       "done": true,
-       "in_progress": true,
-       "content": "string",
-       "created_at": "2020-01-20T12:51:46Z",
-       "updated_at": "2020-01-20T12:51:46Z",
-       "due_at": "2020-01-20T12:51:46Z",
-       "done_at": "2020-01-20T12:51:46Z",
-       "user": {
-         "id": 0,
-         "username": "string",
-         "first_name": "string",
-         "last_name": "string",
-         "status": "string",
-         "description": "string",
-         "verified": true,
-         "private": true,
-         "avatar": "http://example.com",
-         "streak": "string",
-         "timezone": "string",
-         "week_tda": "string",
-         "twitter_handle": "string",
-         "instagram_handle": "string",
-         "product_hunt_handle": "string",
-         "github_handle": "string",
-         "telegram_handle": "string",
-         "bmc_handle": "string",
-         "header": "http://example.com",
-         "is_staff": true,
-         "donor": true,
-         "shipstreams_handle": "string",
-         "website": "http://example.com",
-         "tester": true,
-         "is_live": true,
-         "digest": true,
-         "gold": true,
-         "accent": "string",
-         "maker_score": "string",
-         "dark_mode": true,
-         "weekends_off": true,
-         "hardcore_mode": true
-       },
-       "project_set": [
-         {
-           "id": 0,
-           "name": "string",
-           "private": true,
-           "user": 0
-         }
-       ],
-       "praise": "string",
-       "attachment": "http://example.com",
-       "comment_count": "string"
-     }
-   ]
- }
- */
-//struct log {
-//    let count: Int
-//    let next: String
-//    let previous: String
-//
-//    let results
-//    "results": [
-//}
+import URLImage
+import SwiftUIPullToRefresh
 
-class makerlogAPI {
-    func getData() -> String {
-        let url = URL(string: "https://api.getmakerlog.com/tasks/")!
+class makerlogAPI: ObservableObject {
+    @Published var logs = [Result]()
+    
+    func getResult() {
+        print("start")
+        let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-           do {
+            do {
                // data we are getting from network request
                let decoder = JSONDecoder()
                let response = try decoder.decode(Logs.self, from: data!)
-               print(response.results[0].content) //Output - EMT
-            } catch { print(error) }
+                
+                DispatchQueue.main.async {
+                    self.logs = response.results
+                }
+            } catch {
+                print(error)
+            }
         }
         task.resume()
-        
-        return "www"
+    }
+    
+    init() {
+        getResult()
     }
 }
 
 struct ContentView: View {
-    let data = makerlogAPI().getData()
+    @ObservedObject var data = makerlogAPI()
     
     var body: some View {
-        List() {
-            Text("ww")
+        
+        RefreshableNavigationView(title: "Logs", action:{
+            self.data.getResult()
+        }){
+            ForEach(self.data.logs){ log in
+                VStack(alignment: .leading) {
+                    HStack() {
+                        URLImage(URL(string: log.user.avatar)!,
+                                 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
+                                 content: {
+                            $0.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipped()
+                            .cornerRadius(20)
+                        })
+                            .frame(width: 40, height: 40)
+                        Text(log.user.username).font(.subheadline).bold()
+                        Spacer()
+                        Text("\(log.user.makerScore) 🏆")
+                    }
+                    Text(log.content)
+                }
+            }
         }
     }
 }

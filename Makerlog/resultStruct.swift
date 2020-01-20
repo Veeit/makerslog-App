@@ -6,54 +6,55 @@
 import Foundation
 
 struct Logs : Codable {
-     struct Result: Codable {
-         let id: Int
-         let event: String?
-         let done, inProgress: Bool
-         let content, createdAt, updatedAt: String
-         let dueAt, doneAt: String?
-         let user: User
-         let projectSet: [ProjectSet]
-         let praise: Int
-         let attachment: String?
-         let commentCount: Int
-
-         enum CodingKeys: String, CodingKey {
-             case id, event, done
-             case inProgress = "in_progress"
-             case content
-             case createdAt = "created_at"
-             case updatedAt = "updated_at"
-             case dueAt = "due_at"
-             case doneAt = "done_at"
-             case user
-             case projectSet = "project_set"
-             case praise, attachment
-             case commentCount = "comment_count"
-         }
-     }
-    
    let count: Int
-   let next: String
+   let next: String?
    let previous: String?
    let results: [Result]
 }
+
+struct Result: Codable, Identifiable {
+    let id: Int
+    let event: String?
+    let done, inProgress: Bool
+    let content, createdAt, updatedAt: String
+    let dueAt, doneAt: String?
+    let user: User
+    let projectSet: [ProjectSet]
+    let praise: Int
+    let attachment: String?
+    let commentCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id, event, done
+        case inProgress = "in_progress"
+        case content
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case dueAt = "due_at"
+        case doneAt = "done_at"
+        case user
+        case projectSet = "project_set"
+        case praise, attachment
+        case commentCount = "comment_count"
+    }
+}
+
 
 struct User: Codable {
     let id: Int
     let username, firstName, lastName: String
     let status: String?
-    let userDescription: String
+    let userDescription: String?
     let verified, userPrivate: Bool
     let avatar: String
     let streak: Int
     let timezone: String
     let weekTda: Int
-    let twitterHandle, instagramHandle, productHuntHandle, githubHandle: String
-    let telegramHandle, bmcHandle: String
+    let twitterHandle, instagramHandle, productHuntHandle, githubHandle: String?
+    let telegramHandle, bmcHandle: String?
     let header: String?
     let isStaff, donor: Bool
-    let shipstreamsHandle, website: String
+    let shipstreamsHandle, website: String?
     let tester, isLive, digest, gold: Bool
     let accent: String
     let makerScore: Int

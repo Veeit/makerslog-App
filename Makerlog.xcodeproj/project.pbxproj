@@ -18,6 +18,8 @@
 		560E9FC623D5DB5600A12CF5 /* MakerlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */; };
 		560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* resultStruct.swift */; };
 		560E9FD723D5FEAB00A12CF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 560E9FD623D5FEAB00A12CF5 /* Alamofire */; };
+		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
+		56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3893223D6550C00480134 /* SwiftUIPullToRefresh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56D3893023D652CA00480134 /* URLImage in Frameworks */,
 				560E9FD723D5FEAB00A12CF5 /* Alamofire in Frameworks */,
+				56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +166,8 @@
 			name = Makerlog;
 			packageProductDependencies = (
 				560E9FD623D5FEAB00A12CF5 /* Alamofire */,
+				56D3892F23D652CA00480134 /* URLImage */,
+				56D3893223D6550C00480134 /* SwiftUIPullToRefresh */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
@@ -237,6 +243,8 @@
 			mainGroup = 560E9F9423D5DB5100A12CF5;
 			packageReferences = (
 				560E9FD523D5FEAB00A12CF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */,
+				56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -616,6 +624,22 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
+		56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/SwiftUI-PullToRefresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -623,6 +647,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 560E9FD523D5FEAB00A12CF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		56D3892F23D652CA00480134 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		56D3893223D6550C00480134 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */;
+			productName = SwiftUIPullToRefresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 
