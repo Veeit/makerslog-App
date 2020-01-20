@@ -84,19 +84,12 @@ import Foundation
 
 class makerlogAPI {
     func getData() -> String {
-//        var json: NSDictionary
-//        var str: String = ""  {
-//            didSet {
-//                json = try JSONSerialization.jsonObject(with: str) as? NSDictionary
-//            }
-//        }
-        
         let url = URL(string: "https://api.getmakerlog.com/tasks/")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
            do {
                // data we are getting from network request
                let decoder = JSONDecoder()
-               let response = try decoder.decode(Students.self, from: data!)
+               let response = try decoder.decode(Logs.self, from: data!)
                print(response.results[0].content) //Output - EMT
             } catch { print(error) }
         }
