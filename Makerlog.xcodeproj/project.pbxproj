@@ -22,6 +22,7 @@
 		566F1C6823D7511700518FFF /* prductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6723D7511700518FFF /* prductView.swift */; };
 		566F1C6A23D7513800518FFF /* productViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6923D7513800518FFF /* productViewData.swift */; };
 		566F1C6C23D7516100518FFF /* logViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6B23D7516100518FFF /* logViewData.swift */; };
+		566F1C7123D7633400518FFF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 566F1C7023D7633400518FFF /* OAuthSwift */; };
 		56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* makerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566F1C7123D7633400518FFF /* OAuthSwift in Frameworks */,
 				56D3893023D652CA00480134 /* URLImage in Frameworks */,
 				560E9FD723D5FEAB00A12CF5 /* Alamofire in Frameworks */,
 				56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */,
@@ -210,6 +212,7 @@
 				560E9FD623D5FEAB00A12CF5 /* Alamofire */,
 				56D3892F23D652CA00480134 /* URLImage */,
 				56D3893223D6550C00480134 /* SwiftUIPullToRefresh */,
+				566F1C7023D7633400518FFF /* OAuthSwift */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
@@ -287,6 +290,7 @@
 				560E9FD523D5FEAB00A12CF5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */,
 				56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
+				566F1C6F23D7633400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -672,6 +676,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		566F1C6F23D7633400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -695,6 +707,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 560E9FD523D5FEAB00A12CF5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		566F1C7023D7633400518FFF /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 566F1C6F23D7633400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
 		};
 		56D3892F23D652CA00480134 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;

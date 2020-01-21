@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        RefreshableNavigationView(title: "Logs", action:{
+        RefreshableNavigationView(title: "Makerlog", action:{
             self.data.getResult()
         }){
             ForEach(self.data.logs){ log in
@@ -46,7 +46,7 @@ struct ContentView: View {
                                      content: {
                                 $0.image
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
+                                .aspectRatio(contentMode: .fit)
                                 .clipped()
                                 .cornerRadius(15)
                             })

@@ -68,7 +68,7 @@ struct LogView: View {
                         ForEach(self.log.data.projectSet) { project in
                             VStack(alignment: .leading) {
                                 productView(data: productViewData(id: String(project.id)))
-                            }
+                            }.padding([.bottom], 10)
                         }
                     }.padding([.top], 10)
                 }
