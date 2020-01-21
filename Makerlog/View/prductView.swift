@@ -22,7 +22,7 @@ struct productView: View {
                                  content: {
                             $0.image
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .clipped()
                             .cornerRadius(20)
                         })
