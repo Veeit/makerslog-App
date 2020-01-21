@@ -10,96 +10,77 @@ import Foundation
 import SwiftUI
 import URLImage
 
-class logViewData: ObservableObject {
-    @Published var data: Result
-    @Published var logs = [Result]()
-    
-    func getResult() {
-        print("start")
-        let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            do {
-               // data we are getting from network request
-               let decoder = JSONDecoder()
-               let response = try decoder.decode(Logs.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.logs = response.results
-                }
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-    
-    init(data: Result) {
-        self.data = data
-    }
-}
-
 struct LogView: View {
     @ObservedObject var log: logViewData
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack(alignment: .center) {
-                URLImage(URL(string: self.log.data.user.avatar)!,
-                         processors: [ Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale) ],
+        ScrollView() {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .center) {
+                    URLImage(URL(string: self.log.data.user.avatar)!,
+                             processors: [ Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale) ],
+                             content: {
+                        $0.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
+                        .cornerRadius(20)
+                    })
+                        .frame(width: 70, height: 70)
+                    VStack(alignment: .leading) {
+                        Text(self.log.data.user.username)
+                            .font(.headline).bold()
+                        
+                        HStack(spacing: 10) {
+                            Text("\(self.log.data.user.makerScore) 🏆")
+                            Text("\(self.log.data.user.streak) 🔥")
+                            Text("\(self.log.data.user.weekTda) 🏁")
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(10)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .background(Color.primary.opacity(0.1))
+                .cornerRadius(10)
+                
+                Text(self.log.data.content)
+                    .padding(10)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(Color.primary.opacity(0.1))
+                    .cornerRadius(10)
+                    .lineLimit(200)
+                
+                if self.log.data.attachment != nil {
+                    URLImage(URL(string: self.log.data.attachment!)!,
                          content: {
                     $0.image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
-                    .cornerRadius(20)
-                })
-                    .frame(width: 70, height: 70)
-                VStack(alignment: .leading) {
-                    Text(self.log.data.user.username)
-                        .font(.headline).bold()
-                    
-                    HStack(spacing: 10) {
-                        Text("\(self.log.data.user.makerScore) 🏆")
-                        Text("\(self.log.data.user.streak) 🔥")
-                        Text("\(self.log.data.user.weekTda) 🏁")
-                    }
+                    .cornerRadius(15)
+                    })
                 }
-                Spacer()
-            }
-            .padding(10)
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .background(Color.primary.opacity(0.1))
-            .cornerRadius(10)
-            
-            Text(self.log.data.content)
-                .padding(10)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .background(Color.primary.opacity(0.1))
-                .cornerRadius(10)
-                .padding([.bottom], 15)
+                
+                if self.log.data.projectSet.first?.id != nil {
+                    VStack(alignment: .leading) {
+                        Text("Products: ").bold()
+                        ForEach(self.log.data.projectSet) { project in
+                            VStack(alignment: .leading) {
+                                productView(data: productViewData(id: String(project.id)))
+                            }
+                        }
+                    }.padding([.top], 10)
+                }
+                
+                
 
-            ForEach(self.log.data.projectSet) { project in
-                HStack() {
-                    Text("\(project.name)")
-                }
-                    .padding(10)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.primary.opacity(0.1))
-                    .cornerRadius(10)
-                    .padding([.bottom], 15)
-            }
-//            if self.log.data.attachment != nil {
-//                URLImage(URL(string: self.log.data.attachment!)!,
-//                         content: {
-//                    $0.image
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .clipped()
-//                    .cornerRadius(15)
-//                })
-//            }
-            Spacer()
-        }.padding()
+                Spacer()
+            }.padding()
+            .padding([.top], 50)
+
+        } .edgesIgnoringSafeArea(.top)
+        
     }
 }
 

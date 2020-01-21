@@ -11,7 +11,7 @@ import Combine
 
 class makerlogAPI: ObservableObject {
     @Published var logs = [Result]()
-    
+
     func getResult() {
         print("start")
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
