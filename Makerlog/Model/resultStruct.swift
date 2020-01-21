@@ -90,7 +90,7 @@ struct User: Codable {
     }
 }
 
-struct ProjectSet: Codable {
+struct ProjectSet: Codable, Identifiable {
     let id: Int
     let name: String
     let projectSetPrivate: Bool

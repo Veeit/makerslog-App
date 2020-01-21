@@ -18,6 +18,9 @@
 		560E9FC623D5DB5600A12CF5 /* MakerlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */; };
 		560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* resultStruct.swift */; };
 		560E9FD723D5FEAB00A12CF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 560E9FD623D5FEAB00A12CF5 /* Alamofire */; };
+		566F1C6423D7069800518FFF /* project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6323D7069800518FFF /* project.swift */; };
+		56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* makerlogAPI.swift */; };
+		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
 		56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3893223D6550C00480134 /* SwiftUIPullToRefresh */; };
 /* End PBXBuildFile section */
@@ -56,6 +59,9 @@
 		560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogUITests.swift; sourceTree = "<group>"; };
 		560E9FC723D5DB5600A12CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E9FD323D5F23500A12CF5 /* resultStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultStruct.swift; sourceTree = "<group>"; };
+		566F1C6323D7069800518FFF /* project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = project.swift; sourceTree = "<group>"; };
+		56C94A8723D6F9A9007840DB /* makerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlogAPI.swift; sourceTree = "<group>"; };
+		56C94A8B23D6FBF5007840DB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +115,11 @@
 		560E9F9F23D5DB5100A12CF5 /* Makerlog */ = {
 			isa = PBXGroup;
 			children = (
+				56C94A8A23D6FBC4007840DB /* Model */,
+				56C94A8623D6F992007840DB /* View Model */,
+				56C94A8923D6FBAA007840DB /* View */,
 				560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */,
 				560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */,
-				560E9FA723D5DB5100A12CF5 /* ContentView.swift */,
-				560E9FD323D5F23500A12CF5 /* resultStruct.swift */,
 				560E9FA923D5DB5500A12CF5 /* Assets.xcassets */,
 				560E9FAE23D5DB5600A12CF5 /* LaunchScreen.storyboard */,
 				560E9FB123D5DB5600A12CF5 /* Info.plist */,
@@ -146,6 +153,32 @@
 				560E9FC723D5DB5600A12CF5 /* Info.plist */,
 			);
 			path = MakerlogUITests;
+			sourceTree = "<group>";
+		};
+		56C94A8623D6F992007840DB /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				56C94A8723D6F9A9007840DB /* makerlogAPI.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		56C94A8923D6FBAA007840DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				560E9FA723D5DB5100A12CF5 /* ContentView.swift */,
+				56C94A8B23D6FBF5007840DB /* LogView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56C94A8A23D6FBC4007840DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				560E9FD323D5F23500A12CF5 /* resultStruct.swift */,
+				566F1C6323D7069800518FFF /* project.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,11 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */,
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */,
 				560E9FA823D5DB5100A12CF5 /* ContentView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
+				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
+				566F1C6423D7069800518FFF /* project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
