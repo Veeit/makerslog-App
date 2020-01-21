@@ -19,8 +19,13 @@ struct ContentView: View {
         RefreshableNavigationView(title: "Makerlog", action:{
             self.data.getResult()
         }){
+            Button(action: {
+                self.data.login()
+            }) {
+                Text("login").foregroundColor(Color.blue)
+            }
             ForEach(self.data.logs){ log in
-                NavigationLink(destination: LogView(log: logViewData(data: log))) {
+                NavigationLink(destination: LogView(log: logViewData(data: log), comments: commentViewData(logID: String(log.id)))) {
                     VStack(alignment: .leading) {
                         HStack() {
                             URLImage(URL(string: log.user.avatar)!,
@@ -35,11 +40,20 @@ struct ContentView: View {
                                 .frame(width: 40, height: 40)
                             Text(log.user.username).font(.subheadline).bold()
                             Spacer()
+                            
                             Text("\(log.user.makerScore) 🏆")
                         }
                         
-                        Text(log.content)
-                            .padding([.bottom], 15)
+                        HStack() {
+                            Text(log.content)
+                                .padding([.bottom], 15)
+                            
+                            if log.praise > 0 {
+                                Spacer()
+                                Text("\(log.praise) 👏")
+                            }
+                        }
+                        
                         
                         if log.attachment != nil {
                             URLImage(URL(string: log.attachment!)!,
