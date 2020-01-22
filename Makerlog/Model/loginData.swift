@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 import CoreData
+import OAuthSwift
 
 class loginData: ObservableObject {
     let generator = UINotificationFeedbackGenerator()
@@ -70,6 +71,27 @@ class loginData: ObservableObject {
         }
     }
     
+    
+    func saveLogin() {
+        // create an instance and retain it
+        let oauthswift = OAuth2Swift(
+            consumerKey:    "",
+            consumerSecret: "",
+            authorizeUrl:   "https://api.getmakerlog.com/oauth/authorize/?client_id=UQ11ii4wKHaDU8WtI4zzZEVUM9BhGY3yYaBUacMp",
+            responseType:   "token"
+        )
+        let handle = oauthswift.authorize(
+            withCallbackURL: URL(string: "makerlog.ios://oauth-callback/makerlog")!,
+            scope: "", state:"") { result in
+            switch result {
+            case .success(let (credential, response, parameters)):
+              print(credential.oauthToken)
+              // Do your request
+            case .failure(let error):
+              print(error.localizedDescription)
+            }
+        }
+    }
     
     func login() {
         let semaphore = DispatchSemaphore (value: 0)

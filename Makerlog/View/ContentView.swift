@@ -22,6 +22,11 @@ struct ContentView: View {
                 self.data.getResult()
             }){
                 Button(action: {
+                    self.login.saveLogin()
+                }) {
+                    Text("save login").foregroundColor(Color.blue)
+                }
+                Button(action: {
                     self.login.isOpen = true
                 }) {
                     Text("login").foregroundColor(Color.blue)

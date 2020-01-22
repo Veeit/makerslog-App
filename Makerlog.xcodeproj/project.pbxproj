@@ -31,6 +31,7 @@
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
 		566F1C8823D8D80900518FFF /* Navigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8723D8D80900518FFF /* Navigationbar.swift */; };
+		566F1C8B23D8DC4400518FFF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 566F1C8A23D8DC4400518FFF /* OAuthSwift */; };
 		56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* makerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
@@ -93,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566F1C8B23D8DC4400518FFF /* OAuthSwift in Frameworks */,
 				56D3893023D652CA00480134 /* URLImage in Frameworks */,
 				56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */,
 				566F1C7A23D8989F00518FFF /* KeyboardObserving in Frameworks */,
@@ -237,6 +239,7 @@
 				56D3892F23D652CA00480134 /* URLImage */,
 				56D3893223D6550C00480134 /* SwiftUIPullToRefresh */,
 				566F1C7923D8989F00518FFF /* KeyboardObserving */,
+				566F1C8A23D8DC4400518FFF /* OAuthSwift */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
@@ -314,6 +317,7 @@
 				56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */,
 				56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
 				566F1C7823D8989F00518FFF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				566F1C8923D8DC4400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -708,6 +712,14 @@
 				minimumVersion = 0.2.1;
 			};
 		};
+		566F1C8923D8DC4400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -731,6 +743,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 566F1C7823D8989F00518FFF /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
 			productName = KeyboardObserving;
+		};
+		566F1C8A23D8DC4400518FFF /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 566F1C8923D8DC4400518FFF /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
 		};
 		56D3892F23D652CA00480134 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
