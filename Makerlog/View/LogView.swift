@@ -70,7 +70,7 @@ struct LogView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
-                    .cornerRadius(15)
+                    .cornerRadius(7)
                     })
                 }
                 

@@ -32,28 +32,6 @@ class makerlogAPI: ObservableObject {
         task.resume()
     }
     
-    func login() {
-        // create an instance and retain it
-        let oauthswift = OAuth2Swift(
-            consumerKey:    "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
-            consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
-            authorizeUrl:   "https://api.getmakerlog.com/oauth/authorize/",
-            responseType:   "token"
-        )
-        
-        let handle = oauthswift.authorize(
-            withCallbackURL: URL(string: "makerlog-ios://oauth-callback/makerlog")!,
-            scope: "tasks", state: "makerlog") { result in
-            switch result {
-            case .success(let (credential, response, parameters)):
-              print(credential.oauthToken)
-              // Do your request
-            case .failure(let error):
-              print(error.localizedDescription)
-            }
-        }
-    }
-    
     init() {
         getResult()
     }

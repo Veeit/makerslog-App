@@ -13,6 +13,7 @@ import SwiftUIPullToRefresh
 
 struct ContentView: View {
     @ObservedObject var data = makerlogAPI()
+    @ObservedObject var login = loginData()
     
     var body: some View {
         
@@ -21,7 +22,7 @@ struct ContentView: View {
                 self.data.getResult()
             }){
                 Button(action: {
-                    self.data.login()
+                    self.login.isOpen = true
                 }) {
                     Text("login").foregroundColor(Color.blue)
                 }
@@ -63,7 +64,7 @@ struct ContentView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .clipped()
-                                    .cornerRadius(15)
+                                    .cornerRadius(7)
                                 })
                             }
                         }
@@ -71,6 +72,16 @@ struct ContentView: View {
                 }
             }.edgesIgnoringSafeArea([.bottom])
              .padding([.top], 1)
+            .addBoard(Board: {
+                loginView(data: self.login)
+            }, isShowing: self.$login.isOpen)
+            .onAppear(perform: {
+                let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+                print(urls[urls.count-1] as URL)
+            })
+                .addNavigationBar(Board: {
+                    Text("w")
+                })
             
         }
     }

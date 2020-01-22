@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>makerlog-ios</string>
+				<string>makerlog.ios</string>
 			</array>
 		</dict>
 	</array>
