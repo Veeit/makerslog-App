@@ -10,7 +10,35 @@ import SwiftUI
 
 struct NavigationbarView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack() {
+            Spacer()
+            HStack(spacing: 15) {
+                Image(systemName: "arrow.left")
+                    .resizable()
+                    .clipped()
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .padding(7)
+                    .background(Color("lightBackground"))
+                    .cornerRadius(5)
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .clipped()
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .padding(7)
+                    .background(Color("lightBackground"))
+                    .cornerRadius(5)
+                Image(systemName: "tag.fill")
+                    .resizable()
+                    .clipped()
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .padding(7)
+                    .background(Color("lightBackground"))
+                    .cornerRadius(5)
+            }.frame(minWidth: 0, maxWidth: .infinity)
+            .padding(9)
+            .background(Color("background"))
+            .cornerRadius(7)
+        }.padding()
     }
 }
 

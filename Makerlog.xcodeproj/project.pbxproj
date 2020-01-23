@@ -30,7 +30,7 @@
 		566F1C8223D8B99500518FFF /* loginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* loginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
-		566F1C8823D8D80900518FFF /* Navigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8723D8D80900518FFF /* Navigationbar.swift */; };
+		56B5C9DC23D8F0C00031B2E4 /* NavigationbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */; };
 		56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* makerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
@@ -83,7 +83,7 @@
 		566F1C8123D8B99500518FFF /* loginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
-		566F1C8723D8D80900518FFF /* Navigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationbar.swift; sourceTree = "<group>"; };
+		56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationbarView.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* makerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlogAPI.swift; sourceTree = "<group>"; };
 		56C94A8B23D6FBF5007840DB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,7 +199,7 @@
 				566F1C7B23D89D9700518FFF /* loginView.swift */,
 				566F1C7623D8975400518FFF /* BulletinBoard.swift */,
 				566F1C7D23D89EEE00518FFF /* addBorder.swift */,
-				566F1C8723D8D80900518FFF /* Navigationbar.swift */,
+				56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,12 +360,12 @@
 			files = (
 				566F1C8223D8B99500518FFF /* loginData.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
+				56B5C9DC23D8F0C00031B2E4 /* NavigationbarView.swift in Sources */,
 				566F1C7523D7977700518FFF /* commentViewData.swift in Sources */,
 				566F1C7E23D89EEE00518FFF /* addBorder.swift in Sources */,
 				56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */,
 				566F1C8023D8A59B00518FFF /* logViewData.swift in Sources */,
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
-				566F1C8823D8D80900518FFF /* Navigationbar.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
 				566F1C6623D73C9A00518FFF /* projectStruct.swift in Sources */,

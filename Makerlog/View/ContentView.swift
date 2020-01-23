@@ -70,7 +70,8 @@ struct ContentView: View {
                         }
                     }
                 }
-            }.edgesIgnoringSafeArea([.bottom])
+            }
+            .edgesIgnoringSafeArea([.bottom])
              .padding([.top], 1)
             .addBoard(Board: {
                 loginView(data: self.login)
@@ -79,10 +80,11 @@ struct ContentView: View {
                 let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
                 print(urls[urls.count-1] as URL)
             })
-                .addNavigationBar(Board: {
-                    Text("w")
-                })
-            
+            .overlay(
+                VStack() {
+                    NavigationbarView()
+                }
+            )
         }
     }
 }
