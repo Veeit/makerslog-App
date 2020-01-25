@@ -71,6 +71,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .edgesIgnoringSafeArea([.bottom])
              .padding([.top], 1)
             .addBoard(Board: {
@@ -80,11 +81,6 @@ struct ContentView: View {
                 let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
                 print(urls[urls.count-1] as URL)
             })
-            .overlay(
-                VStack() {
-                    NavigationbarView()
-                }
-            )
         }
     }
 }
