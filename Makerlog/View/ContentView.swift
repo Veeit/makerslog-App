@@ -26,11 +26,7 @@ struct ContentView: View {
                 }) {
                     Text("save login").foregroundColor(Color.blue)
                 }
-                Button(action: {
-                    self.login.isOpen = true
-                }) {
-                    Text("login").foregroundColor(Color.blue)
-                }
+
                 ForEach(self.data.logs){ log in
                     NavigationLink(destination: LogView(log: logViewData(data: log), comments: commentViewData(logID: String(log.id)))) {
                         VStack(alignment: .leading) {

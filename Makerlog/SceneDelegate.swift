@@ -42,7 +42,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             if (url.host == "oauth-callback") {
                 OAuthSwift.handle(url: url)
-            }
+            } else {
+                print(url)
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

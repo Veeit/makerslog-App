@@ -13,6 +13,14 @@ import CoreData
 import OAuthSwift
 
 class loginData: ObservableObject {
+    let oauthswift = OAuth2Swift(
+        consumerKey:    "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
+        consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
+        authorizeUrl:   "https://api.getmakerlog.com/oauth/authorize/",
+        accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
+        responseType:   "code"
+    )
+    
     let generator = UINotificationFeedbackGenerator()
 
     @Published var isSaved = false {
@@ -74,12 +82,8 @@ class loginData: ObservableObject {
     
     func saveLogin() {
         // create an instance and retain it
-        let oauthswift = OAuth2Swift(
-            consumerKey:    "",
-            consumerSecret: "",
-            authorizeUrl:   "https://api.getmakerlog.com/oauth/authorize/?client_id=UQ11ii4wKHaDU8WtI4zzZEVUM9BhGY3yYaBUacMp",
-            responseType:   "token"
-        )
+
+        oauthswift.allowMissingStateCheck = true
         let handle = oauthswift.authorize(
             withCallbackURL: URL(string: "makerlog.ios://oauth-callback/makerlog")!,
             scope: "", state:"") { result in
@@ -87,8 +91,10 @@ class loginData: ObservableObject {
             case .success(let (credential, response, parameters)):
               print(credential.oauthToken)
               // Do your request
+                print(result)
             case .failure(let error):
               print(error.localizedDescription)
+                 print(result)
             }
         }
     }

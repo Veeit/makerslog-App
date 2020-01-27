@@ -184,6 +184,7 @@
 		56C94A8623D6F992007840DB /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				566F1C8123D8B99500518FFF /* loginData.swift */,
 				566F1C7F23D8A59B00518FFF /* logViewData.swift */,
 				566F1C6923D7513800518FFF /* productViewData.swift */,
 				56C94A8723D6F9A9007840DB /* makerlogAPI.swift */,
@@ -211,9 +212,8 @@
 			children = (
 				560E9FD323D5F23500A12CF5 /* resultStruct.swift */,
 				566F1C6523D73C9A00518FFF /* projectStruct.swift */,
-				566F1C7223D7970300518FFF /* commentStruct.swift */,
-				566F1C8123D8B99500518FFF /* loginData.swift */,
 				566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */,
+				566F1C7223D7970300518FFF /* commentStruct.swift */,
 				566F1C8523D8BBC800518FFF /* loginModel.swift */,
 			);
 			path = Model;
