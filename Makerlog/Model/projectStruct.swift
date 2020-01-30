@@ -25,7 +25,7 @@ struct Product: Codable, Identifiable {
     let website: String?
     let projects: [ProjectElement]
     let launched: Bool
-    let icon: String
+    let icon: String?
     let productDescription, createdAt, launchedAt: String?
 
     enum CodingKeys: String, CodingKey {

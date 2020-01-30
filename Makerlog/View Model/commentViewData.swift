@@ -17,8 +17,8 @@ class commentViewData: ObservableObject {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                // data we are getting from network request
-               let decoder = JSONDecoder()
-               let response = try decoder.decode(Comment.self, from: data!)
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Comment.self, from: data!)
                 
                 DispatchQueue.main.async {
                     self.comments = response

@@ -11,6 +11,8 @@ import Combine
 import SwiftUI
 import CoreData
 import OAuthSwift
+import KeychainSwift
+
 
 class loginData: ObservableObject {
     let oauthswift = OAuth2Swift(
@@ -36,62 +38,44 @@ class loginData: ObservableObject {
         }
     }
     @Published var isOpen = false
-    @Published var userName = ""
-    @Published var password = ""
     @Published var userToken = ""
-    @Published var hasError = false {
-        didSet {
-            if self.hasError {
-                let seconds = 2.0
-                self.generator.notificationOccurred(.success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                    self.hasError = false
-                }
-            }
-        }
-    }
+    @Published var userSecret = ""
+    @Published var meData = [Me]()
     
+    init() {
+        self.getMe()
+    }
+        
     let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let keychain = KeychainSwift()
     private var responseData = [Login]()
     
     func checkLogin() {
-        let response = FetchedObjectsViewModel(fetchedResultsController: NSFetchedResultsController(fetchRequest: Login.getAllItems(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil))
-        self.responseData = response.fetchedObjects
-        self.login()
-        print(response.fetchedObjects)
-    }
-    
-    func saveToken() {
-        if responseData.count > 0 {
-            self.responseData.first?.token = userToken
-        } else {
-            let newLogin = Login(context: self.managedObjectContext)
-            newLogin.id = UUID().uuidString
-            newLogin.token = userToken
-        }
+        self.userToken = keychain.get("userToken") ?? ""
+        self.userSecret = keychain.get("userSecret") ?? ""
         
-        do {
-            try self.managedObjectContext.save()
-            isSaved = true
-            UIApplication.shared.windows.first?.endEditing(true)
-        } catch {
-            print(error)
-        }
+        oauthswift.client.credential.oauthToken = self.userToken
+        oauthswift.client.credential.oauthTokenSecret = self.userSecret
+        print("user Token: \(self.userToken)")
     }
     
     
-    func saveLogin() {
-        // create an instance and retain it
-
+    func login() {
         oauthswift.allowMissingStateCheck = true
-        let handle = oauthswift.authorize(
+        oauthswift.authorize(
             withCallbackURL: URL(string: "makerlog.ios://oauth-callback/makerlog")!,
             scope: "", state:"") { result in
             switch result {
             case .success(let (credential, response, parameters)):
               print(credential.oauthToken)
               // Do your request
-                print(result)
+                print(response ?? "w")
+                print(parameters)
+                print(credential)
+                self.userToken = credential.oauthToken
+                self.userSecret = credential.consumerSecret
+                self.keychain.set(self.userToken, forKey: "userToken")
+                self.keychain.set(self.userSecret, forKey: "userSecret")
             case .failure(let error):
               print(error.localizedDescription)
                  print(result)
@@ -99,83 +83,30 @@ class loginData: ObservableObject {
         }
     }
     
-    func login() {
-        let semaphore = DispatchSemaphore (value: 0)
+    func getMe() {
+        self.checkLogin()
 
-        let parameters = [
-          [
-            "key": "username",
-            "value": self.userName,
-            "type": "text"
-          ],
-          [
-            "key": "password",
-            "value": self.password,
-            "type": "text"
-          ]] as [[String : Any]]
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
 
-        let boundary = "Boundary-\(UUID().uuidString)"
-        var body = ""
-
-        for param in parameters {
-          if param["disabled"] == nil {
-            let paramName = param["key"]!
-            body += "--\(boundary)\r\n"
-            body += "Content-Disposition:form-data; name=\"\(paramName)\""
-            let paramType = param["type"] as! String
-            if paramType == "text" {
-              let paramValue = param["value"] as! String
-              body += "\r\n\r\n\(paramValue)\r\n"
-            } else {
+        oauthswift.startAuthorizedRequest("https://api.getmakerlog.com/me/", method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
                 do {
-                    let paramSrc = param["src"] as! String
-                    let fileData = try NSData(contentsOfFile:paramSrc, options:[]) as Data
-                    let fileContent = String(data: fileData, encoding: .utf8)!
-                    body += "; filename=\"\(paramSrc)\"\r\n"
-                      + "Content-Type: \"content-type header\"\r\n\r\n\(fileContent)\r\n"
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(Me.self, from: response.data)
+
+                    self.meData.append(data)
+                    print(self.meData.first?.avatar ?? "no avatar")
                 } catch {
                     print(error)
                 }
-              
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
             }
-          }
         }
-        body += "--\(boundary)--\r\n";
-        let postData = body.data(using: .utf8)
-
-        var request = URLRequest(url: URL(string: "https://api.getmakerlog.com/api-token-auth/")!,timeoutInterval: Double.infinity)
-        request.addValue("Basic dmVpdHBybzpOZTEzbGxpZQ==", forHTTPHeaderField: "Authorization")
-        request.addValue("multipart/form-data; boundary=--------------------------827106960304310950985789", forHTTPHeaderField: "Content-Type")
-        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
-        request.httpMethod = "POST"
-        request.httpBody = postData
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data else {
-            print(String(describing: error))
-            return
-          }
-
-            DispatchQueue.main.async {
-                let returnData = String(data: data, encoding: .utf8)!.split(separator: ":")
-               // handel token
-               print(returnData)
-                
-                if returnData.first == "{\"token\"" {
-                    self.userToken = returnData[1].trimmingCharacters(in: CharacterSet(charactersIn: "}")).trimmingCharacters(in: CharacterSet(charactersIn: "\"")).trimmingCharacters(in: CharacterSet(charactersIn: " ")).trimmingCharacters(in: CharacterSet(charactersIn: "{"))
-                    self.saveToken()
-                } else {
-                    self.hasError = true
-                }
-                
-            }
-            
-            semaphore.signal()
-        }
-
-        task.resume()
-        semaphore.wait()
     }
-    
 }

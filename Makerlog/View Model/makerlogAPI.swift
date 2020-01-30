@@ -12,7 +12,16 @@ import OAuthSwift
 
 class makerlogAPI: ObservableObject {
     @Published var logs = [Result]()
-
+    @Published var isDone = false {
+        didSet {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                if self.isDone {
+                    self.isDone = false
+                }
+            }
+        }
+    }
+    
     func getResult() {
         print("start")
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
@@ -24,6 +33,7 @@ class makerlogAPI: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self.logs = response.results
+                    self.isDone = true
                 }
             } catch {
                 print(error)

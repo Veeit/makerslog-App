@@ -17,7 +17,7 @@ struct productView: View {
             if self.data.products.count > 0 {
                 ForEach(self.data.products) { product in
                     HStack() {
-                        URLImage(URL(string: product.icon)!,
+                        URLImage(URL(string: product.icon ?? "https://via.placeholder.com/500?text=No+icon")!,
                                  processors: [ Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale) ],
                                  content: {
                             $0.image

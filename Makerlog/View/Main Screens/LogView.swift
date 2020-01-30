@@ -15,7 +15,7 @@ struct LogView: View {
     @ObservedObject var comments: commentViewData
     
     var body: some View {
-        ScrollView() {
+        GeometryReader() { geometry in
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .center) {
                     URLImage(URL(string: self.log.data.user.avatar)!,
@@ -68,10 +68,12 @@ struct LogView: View {
                          content: {
                     $0.image
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
                     .clipped()
                     .cornerRadius(7)
+                    .frame( maxWidth: geometry.size.width - 20)
                     })
+                    .frame( maxWidth: geometry.size.width - 20)
                 }
                 
                 VStack(alignment: .leading) {
@@ -102,16 +104,12 @@ struct LogView: View {
                         .cornerRadius(10)
                     }
                 }
-                
-                
-                
-                
-
                 Spacer()
             }.padding()
             .padding([.top], 50)
-
-        } .edgesIgnoringSafeArea(.top)
+            
+        }
+        .edgesIgnoringSafeArea(.top)
         
     }
 }
