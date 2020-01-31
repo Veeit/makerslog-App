@@ -38,24 +38,6 @@
         }
       },
       {
-        "package": "KeyboardObserving",
-        "repositoryURL": "https://github.com/nickffox/KeyboardObserving.git",
-        "state": {
-          "branch": null,
-          "revision": "6d043ee2402ea4b827601f9b8edcc52a88aabff2",
-          "version": "0.2.1"
-        }
-      },
-      {
-        "package": "KeychainSwift",
-        "repositoryURL": "https://github.com/evgenyneu/keychain-swift",
-        "state": {
-          "branch": null,
-          "revision": "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
-          "version": "19.0.0"
-        }
-      },
-      {
         "package": "OAuthSwift",
         "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
         "state": {
