@@ -49,7 +49,8 @@ struct LogFeedView: View {
                    }
 
                 ForEach(self.data.logs){ log in
-                    logFeedItem(log: log)
+//                    logItem(data: logViewData(data: log))
+                    Text("ww")
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
