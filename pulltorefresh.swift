@@ -163,7 +163,7 @@ struct Spinner: View {
     @Binding var percentage: CGFloat
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ForEach(1...10, id: \.self) { identifier in
                 Rectangle()
                     .fill(Color.gray)

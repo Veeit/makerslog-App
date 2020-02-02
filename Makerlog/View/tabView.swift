@@ -8,7 +8,12 @@
 
 import SwiftUI
 
+class TabScreenData: ObservableObject {
+    @Published var userSheet = false
+}
+
 struct TabScreen: View {
+    @EnvironmentObject var data: TabScreenData
     var body: some View {
         TabView {
             VStack {
@@ -21,7 +26,9 @@ struct TabScreen: View {
             }
             .tabItem({ TabLabel(imageName: "magnifyingglass", label: "Search") })
 
-        }
+        }.sheet(isPresented: self.$data.userSheet, content: {
+            UserView()
+        })
     }
 
     struct TabLabel: View {

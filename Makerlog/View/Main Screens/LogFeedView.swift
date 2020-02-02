@@ -12,8 +12,11 @@ import URLImage
 //import SwiftUIPullToRefresh
 
 struct LogFeedView: View {
+    // swiftlint:disable all
+    @EnvironmentObject var tabScreenData: TabScreenData
     @ObservedObject var data = MakerlogAPI()
     @ObservedObject var login = LoginData()
+    let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
     var body: some View {
         GeometryReader() { geometry in
@@ -23,7 +26,7 @@ struct LogFeedView: View {
             }, isDone: self.$data.isDone, leadingItem: {
                 EmptyView()
             }, trailingItem: {
-                URLImage(URL(string: self.login.meData.first?.avatar ?? "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg")!,
+                URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
                          processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
                          content: {
                     $0.image
@@ -33,6 +36,9 @@ struct LogFeedView: View {
                     .cornerRadius(20)
                 })
                     .frame(width: 40, height: 40)
+                    .onTapGesture {
+                        self.tabScreenData.userSheet.toggle()
+                }
             }) {
                 Text(self.login.meData.first?.firstName ?? "ww")
 
@@ -48,7 +54,7 @@ struct LogFeedView: View {
                        Text("get me").foregroundColor(Color.blue)
                    }
 
-                ForEach(self.data.logs){ log in
+                ForEach(self.data.logs) { log in
                     LogFeedItem(log: log)
                 }
             }

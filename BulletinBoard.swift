@@ -9,9 +9,10 @@
 import SwiftUI
 import KeyboardObserving
 
+// swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
 class BulletinModel: ObservableObject {
     @Published var show: Bool
-    
+
     init(show: Bool) {
         self.show = show
     }
@@ -39,20 +40,18 @@ struct BulletinBoardExample: View {
 }
 
 struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: View {
-//struct BulletinBoard<Presenting>: View where Presenting: View {
     @Binding var isShowing: Bool
     let presenting: Presenting
     let boardItem: () -> Board
     @GestureState private var offset: CGSize = .zero
     @State private var text = ""
-    
+
     var body: some View {
         let drag = DragGesture()
-            .updating($offset) { value, state, transaction in
+            .updating($offset) { value, state, _ in
                 if value.translation.height >= -(UIScreen.main.bounds.height - 500) {
                     state = value.translation
                 }
-//                print("\(value.translation.height) : \(-(UIScreen.main.bounds.height - 500))")
             }
             .onEnded({ value in
                 print(value.translation.height)
@@ -69,9 +68,9 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
                         VStack() {
                             self.boardItem()
                                 .padding([.bottom], 35)
-                                .frame(minWidth: 0, maxWidth: 400, minHeight: 300,alignment: Alignment.bottom)
+                                .frame(minWidth: 0, maxWidth: 400, minHeight: 300, alignment: Alignment.bottom)
                         }
-                         .frame(minWidth: 0, maxWidth: 400, minHeight: 300,alignment: Alignment.center)
+                         .frame(minWidth: 0, maxWidth: 400, minHeight: 300, alignment: Alignment.center)
                          .background(Color("background"))
                          .cornerRadius(35)
                          .offset(y: self.offset.height)
@@ -85,7 +84,6 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
                 }.zIndex(2)
 
                 presenting
-//            .blur(radius: 10)
                     .overlay(
                     EmptyView()
                         .background(Color.black)
@@ -97,7 +95,6 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
     }
 
     func dismissKeyboard() {
-//        UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.windows.first?.endEditing(true)
     }
 
@@ -105,10 +102,7 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
 
 extension View {
     func addBoard<Board: View>(@ViewBuilder board: @escaping () -> Board, isShowing: Binding<Bool>) -> some View {
-//    func createView(isShowing: Binding<Bool>) -> some View {
-//        BulletinBoard(board: Board, presenting: self, isShowing: isShowing)
         BulletinBoard(isShowing: isShowing, presenting: self, boardItem: board)
-//        BulletinBoard(isShowing: isShowing, presenting: self)
     }
 }
 

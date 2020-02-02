@@ -28,13 +28,13 @@ struct LogFeedItem: View {
                         .cornerRadius(20)
                     })
                         .frame(width: 40, height: 40)
-                    
+
                     Text(log.user.username).font(.subheadline).bold()
                     Spacer()
 
                     Text("\(log.user.makerScore) 🏆")
                 }
-                
+
                 HStack(alignment: .top) {
                     if log.done {
                         Image(systemName: "checkmark.circle").padding([.top], 5)

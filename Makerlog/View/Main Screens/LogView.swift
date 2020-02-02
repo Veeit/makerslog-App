@@ -11,6 +11,7 @@ import SwiftUI
 import URLImage
 
 struct LogView: View {
+    // swiftlint:disable empty_parentheses_with_trailing_closure
     @ObservedObject var log: LogViewData
     @ObservedObject var comments: CommentViewData
 

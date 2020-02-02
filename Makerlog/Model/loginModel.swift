@@ -14,7 +14,7 @@ extension Login: Identifiable {}
 
 extension Login {
     static func getAllItems() -> NSFetchRequest<Login> {
-        let request:NSFetchRequest<Login> = Login.fetchRequest()
+        let request: NSFetchRequest<Login> = Login.fetchRequest()
 //        request.predicate = NSPredicate(format: "parent_project = nil")
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
 

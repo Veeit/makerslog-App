@@ -6,7 +6,7 @@
 import Foundation
 
 // swiftlint:disable  identifier_name
-struct Logs : Codable {
+struct Logs: Codable {
    let count: Int
    let next: String?
    let previous: String?

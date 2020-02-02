@@ -89,8 +89,9 @@ class LoginData: ObservableObject {
 
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
+        let requestURL = "https://api.getmakerlog.com/me/"
 
-        oauthswift.startAuthorizedRequest("https://api.getmakerlog.com/me/", method: .GET, parameters: parameters) { result in
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
             case .success(let response):
                 do {
