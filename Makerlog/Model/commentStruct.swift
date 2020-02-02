@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable  identifier_name
 // MARK: - CommentElement
 struct CommentElement: Codable, Identifiable {
     let id, objectID, contentType: Int

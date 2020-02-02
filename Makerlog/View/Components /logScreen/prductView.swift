@@ -10,15 +10,18 @@ import Foundation
 import SwiftUI
 import URLImage
 
-struct productView: View {
-    @ObservedObject var data: productViewData
+struct ProductView: View {
+    @ObservedObject var data: ProductViewData
+
     var body: some View {
         VStack() {
             if self.data.products.count > 0 {
                 ForEach(self.data.products) { product in
                     HStack() {
                         URLImage(URL(string: product.icon ?? "https://via.placeholder.com/500?text=No+icon")!,
-                                 processors: [ Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale) ],
+                                 processors: [ Resize(size: CGSize(width: 70, height: 70),
+                                                      scale: UIScreen.main.scale)
+                                             ],
                                  content: {
                             $0.image
                             .resizable()
@@ -27,7 +30,7 @@ struct productView: View {
                             .cornerRadius(20)
                         })
                             .frame(width: 70, height: 70)
-                        
+
                         VStack(alignment: .leading) {
                             Text(product.name)
                                 .bold()
@@ -47,7 +50,6 @@ struct productView: View {
                 .background(Color.primary.opacity(0.1))
                 .cornerRadius(10)
             }
-            
         }
     }
 }

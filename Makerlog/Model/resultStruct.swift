@@ -5,6 +5,7 @@
 
 import Foundation
 
+// swiftlint:disable  identifier_name
 struct Logs : Codable {
    let count: Int
    let next: String?
@@ -38,7 +39,6 @@ struct Result: Codable, Identifiable {
         case commentCount = "comment_count"
     }
 }
-
 
 struct User: Codable {
     let id: Int

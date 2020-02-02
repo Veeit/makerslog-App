@@ -10,9 +10,10 @@ import Foundation
 import CoreData
 import Combine
 
+// swiftlint:disable all
 public class FetchedObjectsViewModel<ResultType: NSFetchRequestResult>: NSObject, NSFetchedResultsControllerDelegate, ObservableObject {
     private let fetchedResultsController: NSFetchedResultsController<ResultType>
-    
+
     init(fetchedResultsController: NSFetchedResultsController<ResultType>) {
         self.fetchedResultsController = fetchedResultsController
         // Should be called from subclasses of NSObject.

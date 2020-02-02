@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class productViewData: ObservableObject {
+class ProductViewData: ObservableObject {
     @Published var products = [Product]()
 
     func getRelatedProject(projectID: String) {
@@ -20,7 +20,7 @@ class productViewData: ObservableObject {
                // data we are getting from network request
                let decoder = JSONDecoder()
                let response = try decoder.decode(Project.self, from: data!)
-                
+
                 DispatchQueue.main.async {
                     self.products = response.products
                     print(self.products)
@@ -33,7 +33,7 @@ class productViewData: ObservableObject {
         }
         task.resume()
     }
-    
+
     init(id: String) {
         self.getRelatedProject(projectID: id)
     }

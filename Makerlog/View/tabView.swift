@@ -1,5 +1,5 @@
 //
-//  tabView.swift
+//  TabScreen.swift
 //  Makerlog
 //
 //  Created by Veit Progl on 27.01.20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct tabView: View {
+struct TabScreen: View {
     var body: some View {
         TabView {
             VStack {
@@ -23,11 +23,11 @@ struct tabView: View {
 
         }
     }
-    
+
     struct TabLabel: View {
            let imageName: String
            let label: String
-           
+
            var body: some View {
                HStack {
                    Image(systemName: imageName)
@@ -37,8 +37,8 @@ struct tabView: View {
        }
 }
 
-struct tabView_Previews: PreviewProvider {
+struct TabScreen_Previews: PreviewProvider {
     static var previews: some View {
-        tabView()
+        TabScreen()
     }
 }

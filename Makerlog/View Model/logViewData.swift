@@ -9,9 +9,9 @@
 import Foundation
 import Combine
 
-class logViewData: ObservableObject {
+class LogViewData: ObservableObject {
     @Published var data: Result
-    
+
     init(data: Result) {
         self.data = data
     }

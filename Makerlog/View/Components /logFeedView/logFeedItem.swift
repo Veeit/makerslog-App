@@ -9,12 +9,13 @@
 import SwiftUI
 import URLImage
 
-struct logFeedItem: View {
+struct LogFeedItem: View {
     var log: Result
-    
+
     var body: some View {
-//        Text("Hello, World!")
-        NavigationLink(destination: LogView(log: logViewData(data: log), comments: commentViewData(logID: String(log.id)))) {
+        NavigationLink(destination: LogView(log: LogViewData(data: log),
+                       comments: CommentViewData(logID: String(log.id)))) {
+
             VStack(alignment: .leading) {
                 HStack() {
                     URLImage(URL(string: log.user.avatar)!,
@@ -30,7 +31,7 @@ struct logFeedItem: View {
                     
                     Text(log.user.username).font(.subheadline).bold()
                     Spacer()
-                    
+
                     Text("\(log.user.makerScore) 🏆")
                 }
                 
@@ -42,21 +43,17 @@ struct logFeedItem: View {
                         Image(systemName: "circle").padding([.top], 5)
                     }
                     Text(log.event ?? "")
-//                                if (String(log.event) == "github") {
-//                                    Text("wwr")
-//                                }
-                    
+
                     Text(log.content)
                         .padding([.bottom], 15)
                         .lineLimit(20)
-                    
+
                     if log.praise > 0 {
                         Spacer()
                         Text("\(log.praise) 👏")
                     }
                 }
-                
-                
+
                 if log.attachment != nil {
                     URLImage(URL(string: log.attachment!)!,
                              content: {

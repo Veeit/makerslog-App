@@ -21,6 +21,7 @@
 		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
+		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* tabView.swift */; };
 		566F1C6623D73C9A00518FFF /* projectStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6523D73C9A00518FFF /* projectStruct.swift */; };
 		566F1C6823D7511700518FFF /* prductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6723D7511700518FFF /* prductView.swift */; };
@@ -76,6 +77,7 @@
 		561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulltorefresh.swift; sourceTree = "<group>"; };
 		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
+		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		566DF0D323DF01E50085C318 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
 		566F1C6523D73C9A00518FFF /* projectStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStruct.swift; sourceTree = "<group>"; };
 		566F1C6723D7511700518FFF /* prductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prductView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
 				56C94A8B23D6FBF5007840DB /* LogView.swift */,
+				56682BD123E610D700EF2C5B /* UserView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 		561A48D623E317C20077A1D2 /* Components  */ = {
 			isa = PBXGroup;
 			children = (
+				56682BD023E610C100EF2C5B /* userView */,
 				56682BCD23E5C84C00EF2C5B /* logFeedView */,
 				561A48D723E317CD0077A1D2 /* logScreen */,
 			);
@@ -225,6 +229,13 @@
 				56682BCE23E5C88000EF2C5B /* logFeedItem.swift */,
 			);
 			path = logFeedView;
+			sourceTree = "<group>";
+		};
+		56682BD023E610C100EF2C5B /* userView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = userView;
 			sourceTree = "<group>";
 		};
 		56C94A8623D6F992007840DB /* View Model */ = {
@@ -272,6 +283,7 @@
 				560E9F9923D5DB5100A12CF5 /* Sources */,
 				560E9F9A23D5DB5100A12CF5 /* Frameworks */,
 				560E9F9B23D5DB5100A12CF5 /* Resources */,
+				56682BD323E613E600EF2C5B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -400,6 +412,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56682BD323E613E600EF2C5B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		560E9F9923D5DB5100A12CF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -418,6 +450,7 @@
 				561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */,
 				56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */,
 				560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */,
+				56682BD223E610D700EF2C5B /* UserView.swift in Sources */,
 				566DF0D423DF01E50085C318 /* tabView.swift in Sources */,
 				566F1C7323D7970300518FFF /* commentStruct.swift in Sources */,
 				56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */,
@@ -522,7 +555,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -576,7 +609,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

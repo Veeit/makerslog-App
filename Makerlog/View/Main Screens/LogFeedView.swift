@@ -9,18 +9,18 @@
 import SwiftUI
 import Foundation
 import URLImage
-import SwiftUIPullToRefresh
+//import SwiftUIPullToRefresh
 
 struct LogFeedView: View {
-    @ObservedObject var data = makerlogAPI()
-    @ObservedObject var login = loginData()
-    
+    @ObservedObject var data = MakerlogAPI()
+    @ObservedObject var login = LoginData()
+
     var body: some View {
         GeometryReader() { geometry in
 
             RefreshableNavigationViewWithItem(title: "Makerlog", action: {
                 self.data.getResult()
-            },isDone: self.$data.isDone, leadingItem: {
+            }, isDone: self.$data.isDone, leadingItem: {
                 EmptyView()
             }, trailingItem: {
                 URLImage(URL(string: self.login.meData.first?.avatar ?? "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg")!,
@@ -35,13 +35,13 @@ struct LogFeedView: View {
                     .frame(width: 40, height: 40)
             }) {
                 Text(self.login.meData.first?.firstName ?? "ww")
-                
+
                 Button(action: {
                     self.login.login()
                 }) {
                     Text("save login").foregroundColor(Color.blue)
                 }
-                
+
                 Button(action: {
                     self.login.getMe()
                    }) {
@@ -49,21 +49,20 @@ struct LogFeedView: View {
                    }
 
                 ForEach(self.data.logs){ log in
-                    logFeedItem(log: log)
+                    LogFeedItem(log: log)
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
             .onAppear(perform: {
                 let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
                 print(urls[urls.count-1] as URL)
-               
             })
         }
     }
-    
-    struct eventView: View {
+
+    struct EventView: View {
         @Binding var event: String
-        
+
         var body: some View {
             Text("ww")
         }

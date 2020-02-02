@@ -13,16 +13,18 @@ import CoreData
 import OAuthSwift
 import KeychainSwift
 
+class LoginData: ObservableObject {
+    // swiftlint:disable line_length
 
-class loginData: ObservableObject {
     let oauthswift = OAuth2Swift(
-        consumerKey:    "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
+        consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
         consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
-        authorizeUrl:   "https://api.getmakerlog.com/oauth/authorize/",
+        authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
         accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
-        responseType:   "code"
+        responseType: "code"
     )
-    
+    // swiftlint:enable line_length
+
     let generator = UINotificationFeedbackGenerator()
 
     @Published var isSaved = false {
@@ -41,30 +43,29 @@ class loginData: ObservableObject {
     @Published var userToken = ""
     @Published var userSecret = ""
     @Published var meData = [Me]()
-    
+
     init() {
         self.getMe()
     }
-        
-    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     let keychain = KeychainSwift()
     private var responseData = [Login]()
-    
+
     func checkLogin() {
         self.userToken = keychain.get("userToken") ?? ""
         self.userSecret = keychain.get("userSecret") ?? ""
-        
+
         oauthswift.client.credential.oauthToken = self.userToken
         oauthswift.client.credential.oauthTokenSecret = self.userSecret
         print("user Token: \(self.userToken)")
     }
-    
-    
+
     func login() {
         oauthswift.allowMissingStateCheck = true
         oauthswift.authorize(
             withCallbackURL: URL(string: "makerlog.ios://oauth-callback/makerlog")!,
-            scope: "", state:"") { result in
+            scope: "", state: "") { result in
             switch result {
             case .success(let (credential, response, parameters)):
               print(credential.oauthToken)
@@ -82,7 +83,7 @@ class loginData: ObservableObject {
             }
         }
     }
-    
+
     func getMe() {
         self.checkLogin()
 

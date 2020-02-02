@@ -32,7 +32,7 @@ struct BulletinBoardExample: View {
                     ForEach(0..<20) { _ in
                         Text("www")
                     }
-                }.addBoard(Board: {Text("eer")}, isShowing: self.$isShowingAlert)
+                }.addBoard(board: {Text("eer")}, isShowing: self.$isShowingAlert)
             }.navigationBarTitle("BulletinBoard")
         }
     }
@@ -83,7 +83,7 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
                     .keyboardObserving()
                     .animation(.spring())
                 }.zIndex(2)
-                
+
                 presenting
 //            .blur(radius: 10)
                     .overlay(
@@ -95,7 +95,7 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
                 )
         }.edgesIgnoringSafeArea(.bottom)
     }
-    
+
     func dismissKeyboard() {
 //        UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.windows.first?.endEditing(true)
@@ -104,10 +104,10 @@ struct BulletinBoard<Presenting, Board>: View where Presenting: View, Board: Vie
 }
 
 extension View {
-    func addBoard<board: View>(@ViewBuilder Board: @escaping () -> board, isShowing: Binding<Bool>) -> some View {
+    func addBoard<Board: View>(@ViewBuilder board: @escaping () -> Board, isShowing: Binding<Bool>) -> some View {
 //    func createView(isShowing: Binding<Bool>) -> some View {
 //        BulletinBoard(board: Board, presenting: self, isShowing: isShowing)
-        BulletinBoard(isShowing: isShowing, presenting: self, boardItem: Board)
+        BulletinBoard(isShowing: isShowing, presenting: self, boardItem: board)
 //        BulletinBoard(isShowing: isShowing, presenting: self)
     }
 }
