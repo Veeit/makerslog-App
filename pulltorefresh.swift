@@ -181,6 +181,7 @@ struct Spinner: View {
 struct RefreshView: View {
     @ObservedObject var data: RefreshData
 
+    // swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
         HStack() {
             VStack(alignment: .center) {
@@ -243,7 +244,6 @@ struct RefreshableKeyTypes {
             value.append(contentsOf: nextValue())
         }
 
-        typealias Value = [PrefData]
     }
 }
 

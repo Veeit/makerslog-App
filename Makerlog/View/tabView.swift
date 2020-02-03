@@ -14,6 +14,8 @@ class TabScreenData: ObservableObject {
 
 struct TabScreen: View {
     @EnvironmentObject var data: TabScreenData
+    @EnvironmentObject var login: LoginData
+    
     var body: some View {
         TabView {
             VStack {
@@ -27,7 +29,7 @@ struct TabScreen: View {
             .tabItem({ TabLabel(imageName: "magnifyingglass", label: "Search") })
 
         }.sheet(isPresented: self.$data.userSheet, content: {
-            UserView()
+            UserView(user: self.$login.meData)
         })
     }
 

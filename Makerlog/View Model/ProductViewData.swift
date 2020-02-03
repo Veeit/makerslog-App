@@ -1,5 +1,5 @@
 //
-//  productViewData.swift
+//  ProductViewData.swift
 //  Makerlog
 //
 //  Created by Veit Progl on 21.01.20.
@@ -34,7 +34,7 @@ class ProductViewData: ObservableObject {
         task.resume()
     }
 
-    init(id: String) {
-        self.getRelatedProject(projectID: id)
+    init(projectID: String) {
+        self.getRelatedProject(projectID: projectID)
     }
 }

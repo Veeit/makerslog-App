@@ -16,6 +16,7 @@ struct LogFeedItem: View {
         NavigationLink(destination: LogView(log: LogViewData(data: log),
                        comments: CommentViewData(logID: String(log.id)))) {
 
+            // swiftlint:disable empty_parentheses_with_trailing_closure
             VStack(alignment: .leading) {
                 HStack() {
                     URLImage(URL(string: log.user.avatar)!,

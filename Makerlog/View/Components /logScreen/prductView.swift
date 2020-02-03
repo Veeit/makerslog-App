@@ -14,6 +14,7 @@ struct ProductView: View {
     @ObservedObject var data: ProductViewData
 
     var body: some View {
+        // swiftlint:disable empty_parentheses_with_trailing_closure
         VStack() {
             if self.data.products.count > 0 {
                 ForEach(self.data.products) { product in

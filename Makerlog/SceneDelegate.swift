@@ -24,12 +24,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Envoierment Objects
         let tabScreenData = TabScreenData()
+        let makerlogApiData = MakerlogAPI()
+        let loginData = LoginData()
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = TabScreen()
                             .environment(\.managedObjectContext, context)
                             .environmentObject(tabScreenData)
+                            .environmentObject(makerlogApiData)
+                            .environmentObject(loginData)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

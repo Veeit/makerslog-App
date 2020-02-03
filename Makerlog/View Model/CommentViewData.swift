@@ -1,5 +1,5 @@
 //
-//  commentViewData.swift
+//  CommentViewData.swift
 //  Makerlog
 //
 //  Created by Veit Progl on 21.01.20.

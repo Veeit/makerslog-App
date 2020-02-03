@@ -13,7 +13,7 @@
 
 import Foundation
 
-// swiftlint:disable  identifier_name
+// swiftlint:disable  identifier_name type_name
 // MARK: - Me
 struct Me: Codable {
     let id: Int

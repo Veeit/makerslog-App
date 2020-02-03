@@ -1,5 +1,5 @@
 //
-//  loginData.swift
+//  LoginData.swift
 //  Makerlog
 //
 //  Created by Veit Progl on 22.01.20.

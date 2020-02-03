@@ -14,8 +14,8 @@ import URLImage
 struct LogFeedView: View {
     // swiftlint:disable all
     @EnvironmentObject var tabScreenData: TabScreenData
-    @ObservedObject var data = MakerlogAPI()
-    @ObservedObject var login = LoginData()
+    @EnvironmentObject var data: MakerlogAPI
+    @EnvironmentObject var login: LoginData
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
     var body: some View {
