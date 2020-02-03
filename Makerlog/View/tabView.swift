@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 class TabScreenData: ObservableObject {
     @Published var userSheet = false
@@ -15,7 +16,8 @@ class TabScreenData: ObservableObject {
 struct TabScreen: View {
     @EnvironmentObject var data: TabScreenData
     @EnvironmentObject var login: LoginData
-    
+    // swiftlint:disable empty_parentheses_with_trailing_closure
+
     var body: some View {
         TabView {
             VStack {
@@ -28,8 +30,12 @@ struct TabScreen: View {
             }
             .tabItem({ TabLabel(imageName: "magnifyingglass", label: "Search") })
 
-        }.sheet(isPresented: self.$data.userSheet, content: {
-            UserView(user: self.$login.meData)
+        }
+        .partialSheet(presented: self.$data.userSheet, view: {
+            VStack() {
+                UserView(user: self.$login.meData)
+                Spacer()
+            }
         })
     }
 

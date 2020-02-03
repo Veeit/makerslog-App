@@ -20,6 +20,7 @@
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
+		564E663323E855E00049662A /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 564E663223E855E00049662A /* PartialSheet */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* tabView.swift */; };
@@ -102,6 +103,7 @@
 				56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */,
 				561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */,
 				56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */,
+				564E663323E855E00049662A /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +297,7 @@
 				56AB2B8223E0959100B6B485 /* URLImage */,
 				56AB2B8523E095F600B6B485 /* OAuthSwift */,
 				561A48D123E1CADC0077A1D2 /* KeychainSwift */,
+				564E663223E855E00049662A /* PartialSheet */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
@@ -373,6 +376,7 @@
 				56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */,
 				56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -789,6 +793,14 @@
 				minimumVersion = 19.0.0;
 			};
 		};
+		564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nickffox/KeyboardObserving.git";
@@ -820,6 +832,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		564E663223E855E00049662A /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
 		};
 		56AB2B7F23E0953200B6B485 /* KeyboardObserving */ = {
 			isa = XCSwiftPackageProductDependency;

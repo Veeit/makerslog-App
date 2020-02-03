@@ -65,6 +65,15 @@
         }
       },
       {
+        "package": "PartialSheet",
+        "repositoryURL": "https://github.com/AndreaMiotto/PartialSheet",
+        "state": {
+          "branch": null,
+          "revision": "cda3be6f769ec89c48b17317a598ef186c95ca5c",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "Swifter",
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
