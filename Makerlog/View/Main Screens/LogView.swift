@@ -39,7 +39,7 @@ struct LogView: View {
                             HStack(spacing: 10) {
                                 Text("\(self.log.data.user.makerScore) 🏆")
                                 Text("\(self.log.data.user.streak) 🔥")
-                                Text("\(self.log.data.user.weekTda) 🏁")
+                                Text("\(Int(self.log.data.user.weekTda)) 🏁")
                             }
                         }
                         Spacer()

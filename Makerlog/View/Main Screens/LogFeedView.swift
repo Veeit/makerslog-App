@@ -53,11 +53,6 @@ struct LogFeedView: View {
                    }) {
                        Text("get me").foregroundColor(Color.blue)
                    }
-				Button(action: {
-					self.addData.createNewLog()
-				}) {
-					Text("add test").foregroundColor(Color.blue)
-				}
 
                 ForEach(self.data.logs) { log in
                     LogFeedItem(log: log)

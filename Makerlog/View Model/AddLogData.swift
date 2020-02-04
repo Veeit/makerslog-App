@@ -11,19 +11,17 @@ import Combine
 import OAuthSwift
 
 class AddLogData: ObservableObject {
-	@Published var text: String
-
-	init() {
-		self.text = ""
-	}
+	@Published var text = ""
+	@Published var isDone = false
+	@Published var isProgress = false
 
 	func createNewLog() {
 
         let token = oauthswift.client.credential.oauthToken
 		let parameters = ["token": token,
-						  "content": "first log from #makerios 🎉",
-						  "done": "true",
-						  "inProgress": "false",
+						  "content": text,
+						  "done": "\(isDone)",
+						  "inProgress": "\(isProgress)",
 						  "due_at": ""]
         let requestURL = "https://api.getmakerlog.com/tasks/"
 
@@ -34,6 +32,9 @@ class AddLogData: ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(AddLog.self, from: response.data)
 
+					self.isDone = false
+					self.isProgress = false
+					self.text = ""
 					print(data)
                 } catch {
 					print(error)

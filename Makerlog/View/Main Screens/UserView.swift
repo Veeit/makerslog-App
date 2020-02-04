@@ -30,9 +30,10 @@ struct UserView: View {
 							.font(.headline).bold()
 
 					HStack( spacing: 10) {
+
 						Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
 						Text("\(self.login.meData.first?.streak ?? 0) 🔥")
-						Text("\(self.login.meData.first?.weekTda ?? 0) 🏁")
+						Text("\(Int(self.login.meData.first?.weekTda ?? 0)) 🏁")
 					}
 				}
 			}

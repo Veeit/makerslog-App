@@ -44,6 +44,7 @@
 		56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45B23E9C9C500679DD4 /* AddLogView.swift */; };
 		56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45D23E9CCA900679DD4 /* AddLogData.swift */; };
 		56D4E46023E9CEB900679DD4 /* addLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45F23E9CEB900679DD4 /* addLog.swift */; };
+		56D4E46323EA072500679DD4 /* addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46223EA072500679DD4 /* addBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		56D4E45B23E9C9C500679DD4 /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
 		56D4E45D23E9CCA900679DD4 /* AddLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogData.swift; sourceTree = "<group>"; };
 		56D4E45F23E9CEB900679DD4 /* addLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLog.swift; sourceTree = "<group>"; };
+		56D4E46223EA072500679DD4 /* addBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addBorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		561A48D623E317C20077A1D2 /* Components  */ = {
 			isa = PBXGroup;
 			children = (
+				56D4E46123EA070500679DD4 /* helper */,
 				56682BD023E610C100EF2C5B /* userView */,
 				56682BCD23E5C84C00EF2C5B /* logFeedView */,
 				561A48D723E317CD0077A1D2 /* logScreen */,
@@ -287,6 +290,14 @@
 				56D4E45F23E9CEB900679DD4 /* addLog.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56D4E46123EA070500679DD4 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E46223EA072500679DD4 /* addBorder.swift */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +478,7 @@
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
 				56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */,
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
+				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
 				56D4E46023E9CEB900679DD4 /* addLog.swift in Sources */,

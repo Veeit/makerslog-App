@@ -27,7 +27,7 @@ struct TabScreen: View {
             VStack {
 				AddLogView()
 			}
-            .tabItem({ TabLabel(imageName: "magnifyingglass", label: "Search") })
+            .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
 
         }
         .partialSheet(presented: self.$data.userSheet, view: {
