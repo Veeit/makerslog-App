@@ -41,9 +41,26 @@ struct UserView: View {
 			.frame(minWidth: 0, maxWidth: .infinity)
 			.background(Color.primary.opacity(0.1))
 			.cornerRadius(10)
-			.padding(10)
 
-		}
+			Spacer()
+
+			HStack() {
+				Text("Login")
+					.font(Font.system(size: 18))
+					.bold()
+			}
+			.padding(4)
+			.padding([.leading, .trailing], 10)
+			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+			.addBorder(Color.blue, width: 2, cornerRadius: 13)
+			.foregroundColor(.blue)
+			.onTapGesture {
+				self.login.login()
+				self.login.getMe()
+			}
+
+			Spacer().frame(height: 150)
+		}.padding(10)
 	}
 }
 

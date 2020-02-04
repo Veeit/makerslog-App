@@ -42,18 +42,6 @@ struct LogFeedView: View {
                 }
             }) {
 
-                Button(action: {
-                    self.login.login()
-                }) {
-                    Text("save login").foregroundColor(Color.blue)
-                }
-
-                Button(action: {
-                    self.login.getMe()
-                   }) {
-                       Text("get me").foregroundColor(Color.blue)
-                   }
-
                 ForEach(self.data.logs) { log in
                     LogFeedItem(log: log)
                 }
