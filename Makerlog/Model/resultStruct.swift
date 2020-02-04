@@ -49,7 +49,7 @@ struct User: Codable {
     let avatar: String
     let streak: Int
     let timezone: String
-    let weekTda: Int
+    let weekTda: Float
     let twitterHandle, instagramHandle, productHuntHandle, githubHandle: String?
     let telegramHandle, bmcHandle: String?
     let header: String?

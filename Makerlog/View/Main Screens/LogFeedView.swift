@@ -16,6 +16,7 @@ struct LogFeedView: View {
     @EnvironmentObject var tabScreenData: TabScreenData
     @EnvironmentObject var data: MakerlogAPI
     @EnvironmentObject var login: LoginData
+	@ObservedObject var addData = AddLogData()
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
     var body: some View {
@@ -40,7 +41,6 @@ struct LogFeedView: View {
                         self.tabScreenData.userSheet.toggle()
                 }
             }) {
-                Text(self.login.meData.first?.firstName ?? "ww")
 
                 Button(action: {
                     self.login.login()
@@ -53,6 +53,11 @@ struct LogFeedView: View {
                    }) {
                        Text("get me").foregroundColor(Color.blue)
                    }
+				Button(action: {
+					self.addData.createNewLog()
+				}) {
+					Text("add test").foregroundColor(Color.blue)
+				}
 
                 ForEach(self.data.logs) { log in
                     LogFeedItem(log: log)

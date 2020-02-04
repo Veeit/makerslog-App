@@ -10,6 +10,17 @@ import UIKit
 import SwiftUI
 import OAuthSwift
 
+// swiftlint:disable line_length
+
+let oauthswift = OAuth2Swift(
+	consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
+	consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
+	authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
+	accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
+	responseType: "code"
+)
+// swiftlint:enable line_length
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
     var window: UIWindow?

@@ -7,20 +7,43 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct UserView: View {
-    @EnvironmentObject var login: LoginData
-    @Binding var user: [Me]
+	@EnvironmentObject var login: LoginData
+    let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
-    var body: some View {
-        // swiftlint:disable empty_parentheses_with_trailing_closure
-        VStack() {
-            Text("Hello, World!")
+	var body: some View {
+		// swiftlint:disable empty_parentheses_with_trailing_closure
+		VStack() {
 
-            Text(self.user.first?.firstName ?? "ww")
-        }
+			HStack(alignment: .center) {
+				WebImage(url: URL(string: self.login.meData.first?.avatar ?? defaultAvartar))
+					.resizable()
+					.scaledToFill()
+					.frame(width: 130, height: 130, alignment: .center)
+					.cornerRadius(100)
+				Spacer()
+				VStack() {
+					Text((self.login.meData.first?.firstName ?? "No") + " " +
+						 (self.login.meData.first?.lastName ?? "name"))
+							.font(.headline).bold()
 
-    }
+					HStack( spacing: 10) {
+						Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
+						Text("\(self.login.meData.first?.streak ?? 0) 🔥")
+						Text("\(self.login.meData.first?.weekTda ?? 0) 🏁")
+					}
+				}
+			}
+			.padding(20)
+			.frame(minWidth: 0, maxWidth: .infinity)
+			.background(Color.primary.opacity(0.1))
+			.cornerRadius(10)
+			.padding(10)
+
+		}
+	}
 }
 
 //struct UserView_Previews: PreviewProvider {
