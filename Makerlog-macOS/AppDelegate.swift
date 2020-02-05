@@ -11,7 +11,7 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+	// swiftlint:disable all
 	var window: NSWindow!
 
 

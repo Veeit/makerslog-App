@@ -6,6 +6,7 @@
 import Foundation
 
 // MARK: - AddLog
+// swiftlint:disable identifier_name
 struct AddLog: Codable {
     let id: Int
     let event: String?
@@ -32,4 +33,3 @@ struct AddLog: Codable {
         case commentCount = "comment_count"
     }
 }
-
