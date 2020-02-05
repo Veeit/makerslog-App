@@ -42,6 +42,10 @@ class MakerlogAPI: ObservableObject {
         task.resume()
     }
 
+	func getNotifications() {
+		
+	}
+	
     init() {
         getResult()
     }

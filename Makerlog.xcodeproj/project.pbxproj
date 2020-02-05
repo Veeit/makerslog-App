@@ -19,6 +19,8 @@
 		560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* resultStruct.swift */; };
 		560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */; };
 		560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9223EAF1F500E0B172 /* Notification.swift */; };
+		560EFC9523EB028300E0B172 /* userProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9423EB028300E0B172 /* userProducts.swift */; };
+		560EFC9823EB0DA600E0B172 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 560EFC9723EB0DA600E0B172 /* QGrid */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
@@ -112,6 +114,7 @@
 		560E9FD323D5F23500A12CF5 /* resultStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultStruct.swift; sourceTree = "<group>"; };
 		560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		560EFC9223EAF1F500E0B172 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		560EFC9423EB028300E0B172 /* userProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProducts.swift; sourceTree = "<group>"; };
 		561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulltorefresh.swift; sourceTree = "<group>"; };
 		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 				564E663623E9B85B0049662A /* SDWebImageSwiftUI in Frameworks */,
 				56AB2B8323E0959100B6B485 /* URLImage in Frameworks */,
 				56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */,
+				560EFC9823EB0DA600E0B172 /* QGrid in Frameworks */,
 				561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */,
 				56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */,
 				564E663323E855E00049662A /* PartialSheet in Frameworks */,
@@ -382,6 +386,7 @@
 				56D2C71423DF4BDB0017A7B4 /* meModel.swift */,
 				56D4E45F23E9CEB900679DD4 /* addLog.swift */,
 				560EFC9223EAF1F500E0B172 /* Notification.swift */,
+				560EFC9423EB028300E0B172 /* userProducts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				561A48D123E1CADC0077A1D2 /* KeychainSwift */,
 				564E663223E855E00049662A /* PartialSheet */,
 				564E663523E9B85B0049662A /* SDWebImageSwiftUI */,
+				560EFC9723EB0DA600E0B172 /* QGrid */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -620,6 +626,7 @@
 				561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -711,6 +718,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
@@ -1273,6 +1281,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 		561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1324,6 +1340,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		560EFC9723EB0DA600E0B172 /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
 		561A48D123E1CADC0077A1D2 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;

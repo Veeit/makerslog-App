@@ -35,6 +35,7 @@ class LoginData: ObservableObject {
     @Published var userSecret = ""
     @Published var meData = [Me]()
 	@Published var userName = "no user"
+	@Published var meProducts = UserProducts()
 
     init() {
         self.getMe()
@@ -103,6 +104,7 @@ class LoginData: ObservableObject {
 			self.meData = [Me]()
 			self.userToken = ""
 			self.userSecret = ""
+			self.userName = "no user"
 		}
 	}
 
@@ -123,6 +125,7 @@ class LoginData: ObservableObject {
                     self.meData.append(data)
 					self.isLoggedIn = true
 					self.getUserName()
+					self.getUserProducts()
                 } catch {
                     print(error)
 					self.isLoggedIn = false
@@ -135,4 +138,31 @@ class LoginData: ObservableObject {
             }
         }
     }
+	
+	func getUserProducts() {
+		self.checkLogin()
+
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/users/" + (self.meData.first?.username ?? "") + "/products/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(UserProducts.self, from: response.data)
+					
+					self.meProducts = data
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+            }
+        }
+	}
 }
