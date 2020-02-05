@@ -19,7 +19,7 @@ struct Me: Codable {
     let id: Int
     let username, firstName, lastName: String
     let status: String?
-    let meDescription: String
+    let meDescription: String?
     let verified, mePrivate: Bool
     let avatar: String?
     let streak: Int
@@ -30,7 +30,7 @@ struct Me: Codable {
     let telegramHandle, bmcHandle: String?
     let header: String?
     let isStaff, donor: Bool
-    let shipstreamsHandle: String
+    let shipstreamsHandle: String?
     let website: String?
     let tester, isLive, digest, gold: Bool
     let accent: String

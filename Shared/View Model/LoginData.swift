@@ -34,6 +34,7 @@ class LoginData: ObservableObject {
     @Published var userToken = ""
     @Published var userSecret = ""
     @Published var meData = [Me]()
+	@Published var userName = "no user"
 
     init() {
         self.getMe()
@@ -78,6 +79,15 @@ class LoginData: ObservableObject {
         }
     }
 
+	func getUserName() {
+		self.checkLogin()
+		if self.meData.first?.firstName != "" && self.meData.first?.lastName != "" {
+			self.userName = "\(self.meData.first?.firstName ?? "no") \(self.meData.first?.lastName ?? "name")"
+		} else {
+			self.userName = self.meData.first?.username ?? "no username"
+		}
+	}
+
 	func logOut() {
 		if isLoggedIn {
 			self.keychain.clear()
@@ -89,7 +99,7 @@ class LoginData: ObservableObject {
 				responseType: "code"
 			)
 			self.isLoggedIn = false
-			
+
 			self.meData = [Me]()
 			self.userToken = ""
 			self.userSecret = ""
@@ -112,6 +122,7 @@ class LoginData: ObservableObject {
 
                     self.meData.append(data)
 					self.isLoggedIn = true
+					self.getUserName()
                 } catch {
                     print(error)
 					self.isLoggedIn = false

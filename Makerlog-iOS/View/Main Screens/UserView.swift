@@ -17,6 +17,8 @@ struct UserView: View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
 		VStack() {
 
+//			Text(String("\(self.login.meData.first)"))
+
 			HStack(alignment: .center) {
 				WebImage(url: URL(string: self.login.meData.first?.avatar ?? defaultAvartar))
 					.resizable()
@@ -25,8 +27,7 @@ struct UserView: View {
 					.cornerRadius(100)
 				Spacer()
 				VStack() {
-					Text((self.login.meData.first?.firstName ?? "No") + " " +
-						 (self.login.meData.first?.lastName ?? "name"))
+					Text(self.login.userName)
 							.font(.headline).bold()
 
 					HStack( spacing: 10) {
