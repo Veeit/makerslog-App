@@ -1,14 +1,14 @@
 //
-//  MakerlogUITests.swift
-//  MakerlogUITests
+//  makerlog_macOSUITests.swift
+//  makerlog-macOSUITests
 //
-//  Created by Veit Progl on 20.01.20.
+//  Created by Veit Progl on 05.02.20.
 //  Copyright © 2020 Veit Progl. All rights reserved.
 //
 
 import XCTest
 
-class MakerlogUITests: XCTestCase {
+class MakerlogMUserViewMacOSacOSUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -17,7 +17,7 @@ class MakerlogUITests: XCTestCase {
         continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation -
-        // required for your tests before they run. The setUp method is a good place to do this.
+		// required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDown() {

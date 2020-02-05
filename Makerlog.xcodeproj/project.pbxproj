@@ -10,31 +10,54 @@
 		560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */; };
 		560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */; };
 		560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA423D5DB5100A12CF5 /* Makerlog.xcdatamodeld */; };
-		560E9FA823D5DB5100A12CF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA723D5DB5100A12CF5 /* ContentView.swift */; };
+		560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */; };
 		560E9FAA23D5DB5500A12CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560E9FA923D5DB5500A12CF5 /* Assets.xcassets */; };
 		560E9FAD23D5DB5500A12CF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560E9FAC23D5DB5500A12CF5 /* Preview Assets.xcassets */; };
 		560E9FB023D5DB5600A12CF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560E9FAE23D5DB5600A12CF5 /* LaunchScreen.storyboard */; };
 		560E9FBB23D5DB5600A12CF5 /* MakerlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FBA23D5DB5600A12CF5 /* MakerlogTests.swift */; };
 		560E9FC623D5DB5600A12CF5 /* MakerlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */; };
 		560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* resultStruct.swift */; };
+		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
+		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
+		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
+		564E663323E855E00049662A /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 564E663223E855E00049662A /* PartialSheet */; };
+		564E663623E9B85B0049662A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 564E663523E9B85B0049662A /* SDWebImageSwiftUI */; };
+		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
+		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
+		566DF0D423DF01E50085C318 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* tabView.swift */; };
 		566F1C6623D73C9A00518FFF /* projectStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6523D73C9A00518FFF /* projectStruct.swift */; };
 		566F1C6823D7511700518FFF /* prductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6723D7511700518FFF /* prductView.swift */; };
-		566F1C6A23D7513800518FFF /* productViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6923D7513800518FFF /* productViewData.swift */; };
+		566F1C6A23D7513800518FFF /* ProductViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C6923D7513800518FFF /* ProductViewData.swift */; };
 		566F1C7323D7970300518FFF /* commentStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7223D7970300518FFF /* commentStruct.swift */; };
-		566F1C7523D7977700518FFF /* commentViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7423D7977700518FFF /* commentViewData.swift */; };
-		566F1C7723D8975400518FFF /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7623D8975400518FFF /* BulletinBoard.swift */; };
-		566F1C7A23D8989F00518FFF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 566F1C7923D8989F00518FFF /* KeyboardObserving */; };
-		566F1C7C23D89D9800518FFF /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7B23D89D9700518FFF /* loginView.swift */; };
-		566F1C7E23D89EEE00518FFF /* addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7D23D89EEE00518FFF /* addBorder.swift */; };
-		566F1C8023D8A59B00518FFF /* logViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7F23D8A59B00518FFF /* logViewData.swift */; };
-		566F1C8223D8B99500518FFF /* loginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* loginData.swift */; };
+		566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7423D7977700518FFF /* CommentViewData.swift */; };
+		566F1C8023D8A59B00518FFF /* LogViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C7F23D8A59B00518FFF /* LogViewData.swift */; };
+		566F1C8223D8B99500518FFF /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* LoginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
-		56B5C9DC23D8F0C00031B2E4 /* NavigationbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */; };
-		56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* makerlogAPI.swift */; };
+		56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B7F23E0953200B6B485 /* KeyboardObserving */; };
+		56AB2B8323E0959100B6B485 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8223E0959100B6B485 /* URLImage */; };
+		56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8523E095F600B6B485 /* OAuthSwift */; };
+		56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28723EAE8DA00A70718 /* OAuthSwift */; };
+		56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28923EAE8F400A70718 /* KeychainSwift */; };
+		56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28D23EAE95A00A70718 /* URLImage */; };
+		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
+		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
+		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
-		56D3893023D652CA00480134 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3892F23D652CA00480134 /* URLImage */; };
-		56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 56D3893223D6550C00480134 /* SwiftUIPullToRefresh */; };
+		56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D2C71423DF4BDB0017A7B4 /* meModel.swift */; };
+		56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45923E9C26100679DD4 /* EventImg.swift */; };
+		56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45B23E9C9C500679DD4 /* AddLogView.swift */; };
+		56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45D23E9CCA900679DD4 /* AddLogData.swift */; };
+		56D4E46023E9CEB900679DD4 /* addLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45F23E9CEB900679DD4 /* addLog.swift */; };
+		56D4E46323EA072500679DD4 /* addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46223EA072500679DD4 /* addBorder.swift */; };
+		56D4E46B23EAB73600679DD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46A23EAB73600679DD4 /* AppDelegate.swift */; };
+		56D4E46D23EAB73600679DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46C23EAB73600679DD4 /* ContentView.swift */; };
+		56D4E47023EAB73600679DD4 /* makerlog_macOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */; };
+		56D4E47223EAB73900679DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47123EAB73900679DD4 /* Assets.xcassets */; };
+		56D4E47523EAB73900679DD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */; };
+		56D4E47823EAB73900679DD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47623EAB73900679DD4 /* Main.storyboard */; };
+		56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */; };
+		56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,14 +75,28 @@
 			remoteGlobalIDString = 560E9F9C23D5DB5100A12CF5;
 			remoteInfo = Makerlog;
 		};
+		56D4E48023EAB73900679DD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 560E9F9523D5DB5100A12CF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56D4E46723EAB73600679DD4;
+			remoteInfo = "makerlog-macOS";
+		};
+		56D4E48B23EAB73A00679DD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 560E9F9523D5DB5100A12CF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56D4E46723EAB73600679DD4;
+			remoteInfo = "makerlog-macOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		560E9F9D23D5DB5100A12CF5 /* Makerlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Makerlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		560E9F9D23D5DB5100A12CF5 /* makerlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = makerlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		560E9FA523D5DB5100A12CF5 /* Makerlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Makerlog.xcdatamodel; sourceTree = "<group>"; };
-		560E9FA723D5DB5100A12CF5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedView.swift; sourceTree = "<group>"; };
 		560E9FA923D5DB5500A12CF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560E9FAC23D5DB5500A12CF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		560E9FAF23D5DB5600A12CF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,22 +108,45 @@
 		560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogUITests.swift; sourceTree = "<group>"; };
 		560E9FC723D5DB5600A12CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E9FD323D5F23500A12CF5 /* resultStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultStruct.swift; sourceTree = "<group>"; };
+		561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulltorefresh.swift; sourceTree = "<group>"; };
+		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
+		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
+		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		566DF0D323DF01E50085C318 /* tabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabView.swift; sourceTree = "<group>"; };
 		566F1C6523D73C9A00518FFF /* projectStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = projectStruct.swift; sourceTree = "<group>"; };
 		566F1C6723D7511700518FFF /* prductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prductView.swift; sourceTree = "<group>"; };
-		566F1C6923D7513800518FFF /* productViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productViewData.swift; sourceTree = "<group>"; };
+		566F1C6923D7513800518FFF /* ProductViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewData.swift; sourceTree = "<group>"; };
 		566F1C7223D7970300518FFF /* commentStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentStruct.swift; sourceTree = "<group>"; };
-		566F1C7423D7977700518FFF /* commentViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentViewData.swift; sourceTree = "<group>"; };
-		566F1C7623D8975400518FFF /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
-		566F1C7B23D89D9700518FFF /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
-		566F1C7D23D89EEE00518FFF /* addBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addBorder.swift; sourceTree = "<group>"; };
-		566F1C7F23D8A59B00518FFF /* logViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewData.swift; sourceTree = "<group>"; };
-		566F1C8123D8B99500518FFF /* loginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginData.swift; sourceTree = "<group>"; };
+		566F1C7423D7977700518FFF /* CommentViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewData.swift; sourceTree = "<group>"; };
+		566F1C7F23D8A59B00518FFF /* LogViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewData.swift; sourceTree = "<group>"; };
+		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
-		56794EE923DCED870018DBCA /* Makerlog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Makerlog.entitlements; sourceTree = "<group>"; };
-		56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationbarView.swift; sourceTree = "<group>"; };
-		56C94A8723D6F9A9007840DB /* makerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlogAPI.swift; sourceTree = "<group>"; };
+		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
+		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
+		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
 		56C94A8B23D6FBF5007840DB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		56D2C71423DF4BDB0017A7B4 /* meModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meModel.swift; sourceTree = "<group>"; };
+		56D4E45923E9C26100679DD4 /* EventImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImg.swift; sourceTree = "<group>"; };
+		56D4E45B23E9C9C500679DD4 /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
+		56D4E45D23E9CCA900679DD4 /* AddLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogData.swift; sourceTree = "<group>"; };
+		56D4E45F23E9CEB900679DD4 /* addLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLog.swift; sourceTree = "<group>"; };
+		56D4E46223EA072500679DD4 /* addBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addBorder.swift; sourceTree = "<group>"; };
+		56D4E46823EAB73600679DD4 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E46A23EAB73600679DD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		56D4E46C23EAB73600679DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = makerlog_macOS.xcdatamodel; sourceTree = "<group>"; };
+		56D4E47123EAB73900679DD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		56D4E47723EAB73900679DD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56D4E47923EAB73900679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D4E47A23EAB73900679DD4 /* makerlog_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = makerlog_macOS.entitlements; sourceTree = "<group>"; };
+		56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSTests.swift; sourceTree = "<group>"; };
+		56D4E48523EAB73900679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSUITests.swift; sourceTree = "<group>"; };
+		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +154,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D3893023D652CA00480134 /* URLImage in Frameworks */,
-				56D3893323D6550C00480134 /* SwiftUIPullToRefresh in Frameworks */,
-				566F1C7A23D8989F00518FFF /* KeyboardObserving in Frameworks */,
+				564E663623E9B85B0049662A /* SDWebImageSwiftUI in Frameworks */,
+				56AB2B8323E0959100B6B485 /* URLImage in Frameworks */,
+				56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */,
+				561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */,
+				56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */,
+				564E663323E855E00049662A /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,35 +177,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56D4E46523EAB73600679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */,
+				56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */,
+				56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47C23EAB73900679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48723EAB73A00679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		560E9F9423D5DB5100A12CF5 = {
 			isa = PBXGroup;
 			children = (
-				560E9F9F23D5DB5100A12CF5 /* Makerlog */,
-				560E9FB923D5DB5600A12CF5 /* MakerlogTests */,
-				560E9FC423D5DB5600A12CF5 /* MakerlogUITests */,
+				56C1A28623EADB8400A70718 /* Shared */,
+				560E9F9F23D5DB5100A12CF5 /* Makerlog-iOS */,
+				56D4E46923EAB73600679DD4 /* Makerlog-macOS */,
+				56D4E4C123EAD95B00679DD4 /* Tests */,
 				560E9F9E23D5DB5100A12CF5 /* Products */,
+				5648852823E036A4001E6467 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		560E9F9E23D5DB5100A12CF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				560E9F9D23D5DB5100A12CF5 /* Makerlog.app */,
+				560E9F9D23D5DB5100A12CF5 /* makerlog.app */,
 				560E9FB623D5DB5600A12CF5 /* MakerlogTests.xctest */,
 				560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */,
+				56D4E46823EAB73600679DD4 /* macOS.app */,
+				56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */,
+				56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		560E9F9F23D5DB5100A12CF5 /* Makerlog */ = {
+		560E9F9F23D5DB5100A12CF5 /* Makerlog-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				56794EE923DCED870018DBCA /* Makerlog.entitlements */,
-				56C94A8A23D6FBC4007840DB /* Model */,
-				56C94A8623D6F992007840DB /* View Model */,
 				56C94A8923D6FBAA007840DB /* View */,
 				560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */,
 				560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */,
@@ -152,7 +241,7 @@
 				560E9FA423D5DB5100A12CF5 /* Makerlog.xcdatamodeld */,
 				560E9FAB23D5DB5500A12CF5 /* Preview Content */,
 			);
-			path = Makerlog;
+			path = "Makerlog-iOS";
 			sourceTree = "<group>";
 		};
 		560E9FAB23D5DB5500A12CF5 /* Preview Content */ = {
@@ -181,13 +270,88 @@
 			path = MakerlogUITests;
 			sourceTree = "<group>";
 		};
+		561A48D423E317A40077A1D2 /* Main Screens */ = {
+			isa = PBXGroup;
+			children = (
+				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
+				56C94A8B23D6FBF5007840DB /* LogView.swift */,
+				56682BD123E610D700EF2C5B /* UserView.swift */,
+				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
+			);
+			path = "Main Screens";
+			sourceTree = "<group>";
+		};
+		561A48D623E317C20077A1D2 /* Components  */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E46123EA070500679DD4 /* helper */,
+				56682BD023E610C100EF2C5B /* userView */,
+				56682BCD23E5C84C00EF2C5B /* logFeedView */,
+				561A48D723E317CD0077A1D2 /* logScreen */,
+			);
+			path = "Components ";
+			sourceTree = "<group>";
+		};
+		561A48D723E317CD0077A1D2 /* logScreen */ = {
+			isa = PBXGroup;
+			children = (
+				566F1C6723D7511700518FFF /* prductView.swift */,
+			);
+			path = logScreen;
+			sourceTree = "<group>";
+		};
+		5648852823E036A4001E6467 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
+				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56682BCD23E5C84C00EF2C5B /* logFeedView */ = {
+			isa = PBXGroup;
+			children = (
+				56682BCE23E5C88000EF2C5B /* logFeedItem.swift */,
+				56D4E45923E9C26100679DD4 /* EventImg.swift */,
+			);
+			path = logFeedView;
+			sourceTree = "<group>";
+		};
+		56682BD023E610C100EF2C5B /* userView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = userView;
+			sourceTree = "<group>";
+		};
+		56C1A28623EADB8400A70718 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				56C94A8A23D6FBC4007840DB /* Model */,
+				56C94A8623D6F992007840DB /* View Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		56C1A28F23EAE97700A70718 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */,
+				56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		56C94A8623D6F992007840DB /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				566F1C7F23D8A59B00518FFF /* logViewData.swift */,
-				566F1C6923D7513800518FFF /* productViewData.swift */,
-				56C94A8723D6F9A9007840DB /* makerlogAPI.swift */,
-				566F1C7423D7977700518FFF /* commentViewData.swift */,
+				566F1C8123D8B99500518FFF /* LoginData.swift */,
+				566F1C7F23D8A59B00518FFF /* LogViewData.swift */,
+				566F1C6923D7513800518FFF /* ProductViewData.swift */,
+				56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */,
+				566F1C7423D7977700518FFF /* CommentViewData.swift */,
+				56D4E45D23E9CCA900679DD4 /* AddLogData.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -195,13 +359,9 @@
 		56C94A8923D6FBAA007840DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				560E9FA723D5DB5100A12CF5 /* ContentView.swift */,
-				56C94A8B23D6FBF5007840DB /* LogView.swift */,
-				566F1C6723D7511700518FFF /* prductView.swift */,
-				566F1C7B23D89D9700518FFF /* loginView.swift */,
-				566F1C7623D8975400518FFF /* BulletinBoard.swift */,
-				566F1C7D23D89EEE00518FFF /* addBorder.swift */,
-				56B5C9DB23D8F0C00031B2E4 /* NavigationbarView.swift */,
+				561A48D623E317C20077A1D2 /* Components  */,
+				561A48D423E317A40077A1D2 /* Main Screens */,
+				566DF0D323DF01E50085C318 /* tabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,37 +371,103 @@
 			children = (
 				560E9FD323D5F23500A12CF5 /* resultStruct.swift */,
 				566F1C6523D73C9A00518FFF /* projectStruct.swift */,
-				566F1C7223D7970300518FFF /* commentStruct.swift */,
-				566F1C8123D8B99500518FFF /* loginData.swift */,
 				566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */,
+				566F1C7223D7970300518FFF /* commentStruct.swift */,
 				566F1C8523D8BBC800518FFF /* loginModel.swift */,
+				56D2C71423DF4BDB0017A7B4 /* meModel.swift */,
+				56D4E45F23E9CEB900679DD4 /* addLog.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56D4E46123EA070500679DD4 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E46223EA072500679DD4 /* addBorder.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		56D4E46923EAB73600679DD4 /* Makerlog-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				56C1A28F23EAE97700A70718 /* View */,
+				56D4E46A23EAB73600679DD4 /* AppDelegate.swift */,
+				56D4E46C23EAB73600679DD4 /* ContentView.swift */,
+				56D4E47123EAB73900679DD4 /* Assets.xcassets */,
+				56D4E47623EAB73900679DD4 /* Main.storyboard */,
+				56D4E47923EAB73900679DD4 /* Info.plist */,
+				56D4E47A23EAB73900679DD4 /* makerlog_macOS.entitlements */,
+				56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */,
+				56D4E47323EAB73900679DD4 /* Preview Content */,
+			);
+			path = "Makerlog-macOS";
+			sourceTree = "<group>";
+		};
+		56D4E47323EAB73900679DD4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		56D4E48223EAB73900679DD4 /* makerlog-macOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */,
+				56D4E48523EAB73900679DD4 /* Info.plist */,
+			);
+			path = "makerlog-macOSTests";
+			sourceTree = "<group>";
+		};
+		56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */,
+				56D4E49023EAB73A00679DD4 /* Info.plist */,
+			);
+			path = "makerlog-macOSUITests";
+			sourceTree = "<group>";
+		};
+		56D4E4C123EAD95B00679DD4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				560E9FB923D5DB5600A12CF5 /* MakerlogTests */,
+				560E9FC423D5DB5600A12CF5 /* MakerlogUITests */,
+				56D4E48223EAB73900679DD4 /* makerlog-macOSTests */,
+				56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		560E9F9C23D5DB5100A12CF5 /* Makerlog */ = {
+		560E9F9C23D5DB5100A12CF5 /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "Makerlog" */;
+			buildConfigurationList = 560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
 				560E9F9923D5DB5100A12CF5 /* Sources */,
 				560E9F9A23D5DB5100A12CF5 /* Frameworks */,
 				560E9F9B23D5DB5100A12CF5 /* Resources */,
+				56682BD323E613E600EF2C5B /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Makerlog;
+			name = iOS;
 			packageProductDependencies = (
-				56D3892F23D652CA00480134 /* URLImage */,
-				56D3893223D6550C00480134 /* SwiftUIPullToRefresh */,
-				566F1C7923D8989F00518FFF /* KeyboardObserving */,
+				56AB2B7F23E0953200B6B485 /* KeyboardObserving */,
+				56AB2B8223E0959100B6B485 /* URLImage */,
+				56AB2B8523E095F600B6B485 /* OAuthSwift */,
+				561A48D123E1CADC0077A1D2 /* KeychainSwift */,
+				564E663223E855E00049662A /* PartialSheet */,
+				564E663523E9B85B0049662A /* SDWebImageSwiftUI */,
 			);
 			productName = Makerlog;
-			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
+			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
 			productType = "com.apple.product-type.application";
 		};
 		560E9FB523D5DB5600A12CF5 /* MakerlogTests */ = {
@@ -280,6 +506,64 @@
 			productReference = 560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		56D4E46723EAB73600679DD4 /* macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "macOS" */;
+			buildPhases = (
+				56D4E46423EAB73600679DD4 /* Sources */,
+				56D4E46523EAB73600679DD4 /* Frameworks */,
+				56D4E46623EAB73600679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macOS;
+			packageProductDependencies = (
+				56C1A28723EAE8DA00A70718 /* OAuthSwift */,
+				56C1A28923EAE8F400A70718 /* KeychainSwift */,
+				56C1A28D23EAE95A00A70718 /* URLImage */,
+			);
+			productName = "makerlog-macOS";
+			productReference = 56D4E46823EAB73600679DD4 /* macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49423EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSTests" */;
+			buildPhases = (
+				56D4E47B23EAB73900679DD4 /* Sources */,
+				56D4E47C23EAB73900679DD4 /* Frameworks */,
+				56D4E47D23EAB73900679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56D4E48123EAB73900679DD4 /* PBXTargetDependency */,
+			);
+			name = "makerlog-macOSTests";
+			productName = "makerlog-macOSTests";
+			productReference = 56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		56D4E48923EAB73A00679DD4 /* makerlog-macOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49723EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSUITests" */;
+			buildPhases = (
+				56D4E48623EAB73A00679DD4 /* Sources */,
+				56D4E48723EAB73A00679DD4 /* Frameworks */,
+				56D4E48823EAB73A00679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56D4E48C23EAB73A00679DD4 /* PBXTargetDependency */,
+			);
+			name = "makerlog-macOSUITests";
+			productName = "makerlog-macOSUITests";
+			productReference = 56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -301,6 +585,17 @@
 						CreatedOnToolsVersion = 11.3;
 						TestTargetID = 560E9F9C23D5DB5100A12CF5;
 					};
+					56D4E46723EAB73600679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					56D4E47E23EAB73900679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 56D4E46723EAB73600679DD4;
+					};
+					56D4E48923EAB73A00679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 56D4E46723EAB73600679DD4;
+					};
 				};
 			};
 			buildConfigurationList = 560E9F9823D5DB5100A12CF5 /* Build configuration list for PBXProject "Makerlog" */;
@@ -313,17 +608,23 @@
 			);
 			mainGroup = 560E9F9423D5DB5100A12CF5;
 			packageReferences = (
-				56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */,
-				56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
-				566F1C7823D8989F00518FFF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */,
+				56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				560E9F9C23D5DB5100A12CF5 /* Makerlog */,
+				560E9F9C23D5DB5100A12CF5 /* iOS */,
 				560E9FB523D5DB5600A12CF5 /* MakerlogTests */,
 				560E9FC023D5DB5600A12CF5 /* MakerlogUITests */,
+				56D4E46723EAB73600679DD4 /* macOS */,
+				56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */,
+				56D4E48923EAB73A00679DD4 /* makerlog-macOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -353,31 +654,84 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56D4E46623EAB73600679DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E47823EAB73900679DD4 /* Main.storyboard in Resources */,
+				56D4E47523EAB73900679DD4 /* Preview Assets.xcassets in Resources */,
+				56D4E47223EAB73900679DD4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47D23EAB73900679DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48823EAB73A00679DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56682BD323E613E600EF2C5B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		560E9F9923D5DB5100A12CF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566F1C8223D8B99500518FFF /* loginData.swift in Sources */,
+				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
+				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
+				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
-				56B5C9DC23D8F0C00031B2E4 /* NavigationbarView.swift in Sources */,
-				566F1C7523D7977700518FFF /* commentViewData.swift in Sources */,
-				566F1C7E23D89EEE00518FFF /* addBorder.swift in Sources */,
-				56C94A8823D6F9AA007840DB /* makerlogAPI.swift in Sources */,
-				566F1C8023D8A59B00518FFF /* logViewData.swift in Sources */,
+				566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */,
+				56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */,
+				566F1C8023D8A59B00518FFF /* LogViewData.swift in Sources */,
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
+				56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */,
+				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
+				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
+				56D4E46023E9CEB900679DD4 /* addLog.swift in Sources */,
 				566F1C6623D73C9A00518FFF /* projectStruct.swift in Sources */,
+				561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */,
+				56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */,
 				560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */,
-				566F1C7C23D89D9800518FFF /* loginView.swift in Sources */,
-				566F1C7723D8975400518FFF /* BulletinBoard.swift in Sources */,
+				56682BD223E610D700EF2C5B /* UserView.swift in Sources */,
+				566DF0D423DF01E50085C318 /* tabView.swift in Sources */,
 				566F1C7323D7970300518FFF /* commentStruct.swift in Sources */,
-				560E9FA823D5DB5100A12CF5 /* ContentView.swift in Sources */,
+				56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */,
+				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
-				566F1C6A23D7513800518FFF /* productViewData.swift in Sources */,
+				566F1C6A23D7513800518FFF /* ProductViewData.swift in Sources */,
+				56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */,
+				56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */,
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
 				566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */,
 			);
@@ -399,18 +753,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56D4E46423EAB73600679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E46D23EAB73600679DD4 /* ContentView.swift in Sources */,
+				56D4E47023EAB73600679DD4 /* makerlog_macOS.xcdatamodeld in Sources */,
+				56D4E46B23EAB73600679DD4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47B23EAB73900679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48623EAB73A00679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		560E9FB823D5DB5600A12CF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 560E9F9C23D5DB5100A12CF5 /* Makerlog */;
+			target = 560E9F9C23D5DB5100A12CF5 /* iOS */;
 			targetProxy = 560E9FB723D5DB5600A12CF5 /* PBXContainerItemProxy */;
 		};
 		560E9FC323D5DB5600A12CF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 560E9F9C23D5DB5100A12CF5 /* Makerlog */;
+			target = 560E9F9C23D5DB5100A12CF5 /* iOS */;
 			targetProxy = 560E9FC223D5DB5600A12CF5 /* PBXContainerItemProxy */;
+		};
+		56D4E48123EAB73900679DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56D4E46723EAB73600679DD4 /* macOS */;
+			targetProxy = 56D4E48023EAB73900679DD4 /* PBXContainerItemProxy */;
+		};
+		56D4E48C23EAB73A00679DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56D4E46723EAB73600679DD4 /* macOS */;
+			targetProxy = 56D4E48B23EAB73A00679DD4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -421,6 +811,14 @@
 				560E9FAF23D5DB5600A12CF5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		56D4E47623EAB73900679DD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56D4E47723EAB73900679DD4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -476,7 +874,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -530,7 +928,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -544,20 +942,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Makerlog/Makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Makerlog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Makerlog/Info.plist;
+				INFOPLIST_FILE = "Makerlog-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -567,20 +962,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Makerlog/Makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Makerlog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Makerlog/Info.plist;
+				INFOPLIST_FILE = "Makerlog-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -666,6 +1058,144 @@
 			};
 			name = Release;
 		};
+		56D4E49223EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "makerlog-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		56D4E49323EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "makerlog-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		56D4E49523EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/makerlog-macOS.app/Contents/MacOS/makerlog-macOS";
+			};
+			name = Debug;
+		};
+		56D4E49623EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/makerlog-macOS.app/Contents/MacOS/makerlog-macOS";
+			};
+			name = Release;
+		};
+		56D4E49823EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "makerlog-macOS";
+			};
+			name = Debug;
+		};
+		56D4E49923EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "makerlog-macOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -678,7 +1208,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "Makerlog" */ = {
+		560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				560E9FCB23D5DB5600A12CF5 /* Debug */,
@@ -705,18 +1235,69 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49223EAB73A00679DD4 /* Debug */,
+				56D4E49323EAB73A00679DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D4E49423EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49523EAB73A00679DD4 /* Debug */,
+				56D4E49623EAB73A00679DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D4E49723EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49823EAB73A00679DD4 /* Debug */,
+				56D4E49923EAB73A00679DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		566F1C7823D8989F00518FFF /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+		561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
+		564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.3;
+			};
+		};
+		56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nickffox/KeyboardObserving.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.2.1;
 			};
 		};
-		56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */ = {
+		56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
 			requirement = {
@@ -724,31 +1305,61 @@
 				minimumVersion = 0.9.9;
 			};
 		};
-		56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */ = {
+		56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/SwiftUI-PullToRefresh";
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		566F1C7923D8989F00518FFF /* KeyboardObserving */ = {
+		561A48D123E1CADC0077A1D2 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 566F1C7823D8989F00518FFF /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
+			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		564E663223E855E00049662A /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+		564E663523E9B85B0049662A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		56AB2B7F23E0953200B6B485 /* KeyboardObserving */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
 			productName = KeyboardObserving;
 		};
-		56D3892F23D652CA00480134 /* URLImage */ = {
+		56AB2B8223E0959100B6B485 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 56D3892E23D652CA00480134 /* XCRemoteSwiftPackageReference "url-image" */;
+			package = 56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
-		56D3893223D6550C00480134 /* SwiftUIPullToRefresh */ = {
+		56AB2B8523E095F600B6B485 /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 56D3893123D6550C00480134 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */;
-			productName = SwiftUIPullToRefresh;
+			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+		56C1A28723EAE8DA00A70718 /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+		56C1A28923EAE8F400A70718 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		56C1A28D23EAE95A00A70718 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 
@@ -760,6 +1371,16 @@
 			);
 			currentVersion = 560E9FA523D5DB5100A12CF5 /* Makerlog.xcdatamodel */;
 			path = Makerlog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */,
+			);
+			currentVersion = 56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */;
+			path = makerlog_macOS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
