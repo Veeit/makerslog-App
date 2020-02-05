@@ -45,6 +45,14 @@
 		56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45D23E9CCA900679DD4 /* AddLogData.swift */; };
 		56D4E46023E9CEB900679DD4 /* addLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45F23E9CEB900679DD4 /* addLog.swift */; };
 		56D4E46323EA072500679DD4 /* addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46223EA072500679DD4 /* addBorder.swift */; };
+		56D4E46B23EAB73600679DD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46A23EAB73600679DD4 /* AppDelegate.swift */; };
+		56D4E46D23EAB73600679DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46C23EAB73600679DD4 /* ContentView.swift */; };
+		56D4E47023EAB73600679DD4 /* makerlog_macOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */; };
+		56D4E47223EAB73900679DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47123EAB73900679DD4 /* Assets.xcassets */; };
+		56D4E47523EAB73900679DD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */; };
+		56D4E47823EAB73900679DD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47623EAB73900679DD4 /* Main.storyboard */; };
+		56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */; };
+		56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +69,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 560E9F9C23D5DB5100A12CF5;
 			remoteInfo = Makerlog;
+		};
+		56D4E48023EAB73900679DD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 560E9F9523D5DB5100A12CF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56D4E46723EAB73600679DD4;
+			remoteInfo = "makerlog-macOS";
+		};
+		56D4E48B23EAB73A00679DD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 560E9F9523D5DB5100A12CF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56D4E46723EAB73600679DD4;
+			remoteInfo = "makerlog-macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -103,6 +125,21 @@
 		56D4E45D23E9CCA900679DD4 /* AddLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogData.swift; sourceTree = "<group>"; };
 		56D4E45F23E9CEB900679DD4 /* addLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLog.swift; sourceTree = "<group>"; };
 		56D4E46223EA072500679DD4 /* addBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addBorder.swift; sourceTree = "<group>"; };
+		56D4E46823EAB73600679DD4 /* makerlog-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "makerlog-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E46A23EAB73600679DD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		56D4E46C23EAB73600679DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = makerlog_macOS.xcdatamodel; sourceTree = "<group>"; };
+		56D4E47123EAB73900679DD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		56D4E47723EAB73900679DD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56D4E47923EAB73900679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D4E47A23EAB73900679DD4 /* makerlog_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = makerlog_macOS.entitlements; sourceTree = "<group>"; };
+		56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSTests.swift; sourceTree = "<group>"; };
+		56D4E48523EAB73900679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSUITests.swift; sourceTree = "<group>"; };
+		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +170,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56D4E46523EAB73600679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47C23EAB73900679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48723EAB73A00679DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -142,6 +200,9 @@
 				560E9F9F23D5DB5100A12CF5 /* Makerlog */,
 				560E9FB923D5DB5600A12CF5 /* MakerlogTests */,
 				560E9FC423D5DB5600A12CF5 /* MakerlogUITests */,
+				56D4E46923EAB73600679DD4 /* makerlog-macOS */,
+				56D4E48223EAB73900679DD4 /* makerlog-macOSTests */,
+				56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */,
 				560E9F9E23D5DB5100A12CF5 /* Products */,
 				5648852823E036A4001E6467 /* Frameworks */,
 			);
@@ -153,6 +214,9 @@
 				560E9F9D23D5DB5100A12CF5 /* Makerlog.app */,
 				560E9FB623D5DB5600A12CF5 /* MakerlogTests.xctest */,
 				560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */,
+				56D4E46823EAB73600679DD4 /* makerlog-macOS.app */,
+				56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */,
+				56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +364,47 @@
 			path = helper;
 			sourceTree = "<group>";
 		};
+		56D4E46923EAB73600679DD4 /* makerlog-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E46A23EAB73600679DD4 /* AppDelegate.swift */,
+				56D4E46C23EAB73600679DD4 /* ContentView.swift */,
+				56D4E47123EAB73900679DD4 /* Assets.xcassets */,
+				56D4E47623EAB73900679DD4 /* Main.storyboard */,
+				56D4E47923EAB73900679DD4 /* Info.plist */,
+				56D4E47A23EAB73900679DD4 /* makerlog_macOS.entitlements */,
+				56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */,
+				56D4E47323EAB73900679DD4 /* Preview Content */,
+			);
+			path = "makerlog-macOS";
+			sourceTree = "<group>";
+		};
+		56D4E47323EAB73900679DD4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E47423EAB73900679DD4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		56D4E48223EAB73900679DD4 /* makerlog-macOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */,
+				56D4E48523EAB73900679DD4 /* Info.plist */,
+			);
+			path = "makerlog-macOSTests";
+			sourceTree = "<group>";
+		};
+		56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */,
+				56D4E49023EAB73A00679DD4 /* Info.plist */,
+			);
+			path = "makerlog-macOSUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +470,59 @@
 			productReference = 560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		56D4E46723EAB73600679DD4 /* makerlog-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOS" */;
+			buildPhases = (
+				56D4E46423EAB73600679DD4 /* Sources */,
+				56D4E46523EAB73600679DD4 /* Frameworks */,
+				56D4E46623EAB73600679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "makerlog-macOS";
+			productName = "makerlog-macOS";
+			productReference = 56D4E46823EAB73600679DD4 /* makerlog-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49423EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSTests" */;
+			buildPhases = (
+				56D4E47B23EAB73900679DD4 /* Sources */,
+				56D4E47C23EAB73900679DD4 /* Frameworks */,
+				56D4E47D23EAB73900679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56D4E48123EAB73900679DD4 /* PBXTargetDependency */,
+			);
+			name = "makerlog-macOSTests";
+			productName = "makerlog-macOSTests";
+			productReference = 56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		56D4E48923EAB73A00679DD4 /* makerlog-macOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56D4E49723EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSUITests" */;
+			buildPhases = (
+				56D4E48623EAB73A00679DD4 /* Sources */,
+				56D4E48723EAB73A00679DD4 /* Frameworks */,
+				56D4E48823EAB73A00679DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56D4E48C23EAB73A00679DD4 /* PBXTargetDependency */,
+			);
+			name = "makerlog-macOSUITests";
+			productName = "makerlog-macOSUITests";
+			productReference = 56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -385,6 +543,17 @@
 					560E9FC023D5DB5600A12CF5 = {
 						CreatedOnToolsVersion = 11.3;
 						TestTargetID = 560E9F9C23D5DB5100A12CF5;
+					};
+					56D4E46723EAB73600679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					56D4E47E23EAB73900679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 56D4E46723EAB73600679DD4;
+					};
+					56D4E48923EAB73A00679DD4 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 56D4E46723EAB73600679DD4;
 					};
 				};
 			};
@@ -412,6 +581,9 @@
 				560E9F9C23D5DB5100A12CF5 /* Makerlog */,
 				560E9FB523D5DB5600A12CF5 /* MakerlogTests */,
 				560E9FC023D5DB5600A12CF5 /* MakerlogUITests */,
+				56D4E46723EAB73600679DD4 /* makerlog-macOS */,
+				56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */,
+				56D4E48923EAB73A00679DD4 /* makerlog-macOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -435,6 +607,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		560E9FBF23D5DB5600A12CF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E46623EAB73600679DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E47823EAB73900679DD4 /* Main.storyboard in Resources */,
+				56D4E47523EAB73900679DD4 /* Preview Assets.xcassets in Resources */,
+				56D4E47223EAB73900679DD4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47D23EAB73900679DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48823EAB73A00679DD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -514,6 +710,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56D4E46423EAB73600679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E46D23EAB73600679DD4 /* ContentView.swift in Sources */,
+				56D4E47023EAB73600679DD4 /* makerlog_macOS.xcdatamodeld in Sources */,
+				56D4E46B23EAB73600679DD4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E47B23EAB73900679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56D4E48623EAB73A00679DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -527,6 +749,16 @@
 			target = 560E9F9C23D5DB5100A12CF5 /* Makerlog */;
 			targetProxy = 560E9FC223D5DB5600A12CF5 /* PBXContainerItemProxy */;
 		};
+		56D4E48123EAB73900679DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56D4E46723EAB73600679DD4 /* makerlog-macOS */;
+			targetProxy = 56D4E48023EAB73900679DD4 /* PBXContainerItemProxy */;
+		};
+		56D4E48C23EAB73A00679DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56D4E46723EAB73600679DD4 /* makerlog-macOS */;
+			targetProxy = 56D4E48B23EAB73A00679DD4 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -536,6 +768,14 @@
 				560E9FAF23D5DB5600A12CF5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		56D4E47623EAB73900679DD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56D4E47723EAB73900679DD4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -775,6 +1015,144 @@
 			};
 			name = Release;
 		};
+		56D4E49223EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "makerlog-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		56D4E49323EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "makerlog-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		56D4E49523EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/makerlog-macOS.app/Contents/MacOS/makerlog-macOS";
+			};
+			name = Debug;
+		};
+		56D4E49623EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/makerlog-macOS.app/Contents/MacOS/makerlog-macOS";
+			};
+			name = Release;
+		};
+		56D4E49823EAB73A00679DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "makerlog-macOS";
+			};
+			name = Debug;
+		};
+		56D4E49923EAB73A00679DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7RPD69GC7T;
+				INFOPLIST_FILE = "makerlog-macOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "veit.dev.makerlog-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "makerlog-macOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -810,6 +1188,33 @@
 			buildConfigurations = (
 				560E9FD123D5DB5600A12CF5 /* Debug */,
 				560E9FD223D5DB5600A12CF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49223EAB73A00679DD4 /* Debug */,
+				56D4E49323EAB73A00679DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D4E49423EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49523EAB73A00679DD4 /* Debug */,
+				56D4E49623EAB73A00679DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56D4E49723EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56D4E49823EAB73A00679DD4 /* Debug */,
+				56D4E49923EAB73A00679DD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -908,6 +1313,16 @@
 			);
 			currentVersion = 560E9FA523D5DB5100A12CF5 /* Makerlog.xcdatamodel */;
 			path = Makerlog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */,
+			);
+			currentVersion = 56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */;
+			path = makerlog_macOS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
