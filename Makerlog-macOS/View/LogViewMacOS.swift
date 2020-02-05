@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct LogView: View {
+struct LogViewMacOS: View {
     var body: some View {
         Text("Hello, LogView!")
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
-struct LogView_Previews: PreviewProvider {
+struct LogViewMacOS_Previews: PreviewProvider {
     static var previews: some View {
-        LogView()
+        LogViewMacOS()
     }
 }

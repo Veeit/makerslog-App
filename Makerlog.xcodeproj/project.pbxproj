@@ -40,8 +40,8 @@
 		56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28723EAE8DA00A70718 /* OAuthSwift */; };
 		56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28923EAE8F400A70718 /* KeychainSwift */; };
 		56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28D23EAE95A00A70718 /* URLImage */; };
-		56C1A29123EAE99500A70718 /* LogFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedView.swift */; };
-		56C1A29323EAE9A500A70718 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogView.swift */; };
+		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
+		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D2C71423DF4BDB0017A7B4 /* meModel.swift */; };
@@ -122,8 +122,8 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
-		56C1A29023EAE99500A70718 /* LogFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedView.swift; sourceTree = "<group>"; };
-		56C1A29223EAE9A500A70718 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
+		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
 		56C94A8B23D6FBF5007840DB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		56D2C71423DF4BDB0017A7B4 /* meModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meModel.swift; sourceTree = "<group>"; };
@@ -337,8 +337,8 @@
 		56C1A28F23EAE97700A70718 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				56C1A29023EAE99500A70718 /* LogFeedView.swift */,
-				56C1A29223EAE9A500A70718 /* LogView.swift */,
+				56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */,
+				56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,8 +730,8 @@
 				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
 				566F1C6A23D7513800518FFF /* ProductViewData.swift in Sources */,
-				56C1A29323EAE9A500A70718 /* LogView.swift in Sources */,
-				56C1A29123EAE99500A70718 /* LogFeedView.swift in Sources */,
+				56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */,
+				56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */,
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
 				566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */,
 			);
