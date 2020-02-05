@@ -45,7 +45,7 @@ struct UserView: View {
 			Spacer()
 
 			HStack() {
-				Text("Login")
+				Text(self.login.isLoggedIn ? "Logout" : "Login")
 					.font(Font.system(size: 18))
 					.bold()
 			}
@@ -55,8 +55,12 @@ struct UserView: View {
 			.addBorder(Color.blue, width: 2, cornerRadius: 13)
 			.foregroundColor(.blue)
 			.onTapGesture {
-				self.login.login()
-				self.login.getMe()
+				if self.login.isLoggedIn {
+					self.login.logOut()
+				} else {
+					self.login.login()
+					self.login.getMe()
+				}
 			}
 
 			Spacer().frame(height: 150)

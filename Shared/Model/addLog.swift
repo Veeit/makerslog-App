@@ -19,17 +19,17 @@ struct AddLog: Codable {
     let attachment: String?
     let commentCount: Int
 
-    enum CodingKeys: String, CodingKey {
-        case id, event, done
-        case inProgress = "in_progress"
-        case content
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case dueAt = "due_at"
-        case doneAt = "done_at"
-        case user
-        case projectSet = "project_set"
-        case praise, attachment
-        case commentCount = "comment_count"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case id, event, done
+//        case inProgress = "in_progress"
+//        case content
+//        case createdAt = "created_at"
+//        case updatedAt = "updated_at"
+//        case dueAt = "due_at"
+//        case doneAt = "done_at"
+//        case user
+//        case projectSet = "project_set"
+//        case praise, attachment
+//        case commentCount = "comment_count"
+//    }
 }

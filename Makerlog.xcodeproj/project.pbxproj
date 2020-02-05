@@ -17,6 +17,8 @@
 		560E9FBB23D5DB5600A12CF5 /* MakerlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FBA23D5DB5600A12CF5 /* MakerlogTests.swift */; };
 		560E9FC623D5DB5600A12CF5 /* MakerlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */; };
 		560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* resultStruct.swift */; };
+		560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */; };
+		560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9223EAF1F500E0B172 /* Notification.swift */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
@@ -108,6 +110,8 @@
 		560E9FC523D5DB5600A12CF5 /* MakerlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogUITests.swift; sourceTree = "<group>"; };
 		560E9FC723D5DB5600A12CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		560E9FD323D5F23500A12CF5 /* resultStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultStruct.swift; sourceTree = "<group>"; };
+		560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		560EFC9223EAF1F500E0B172 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulltorefresh.swift; sourceTree = "<group>"; };
 		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				56C94A8B23D6FBF5007840DB /* LogView.swift */,
 				56682BD123E610D700EF2C5B /* UserView.swift */,
 				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
+				560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				566F1C8523D8BBC800518FFF /* loginModel.swift */,
 				56D2C71423DF4BDB0017A7B4 /* meModel.swift */,
 				56D4E45F23E9CEB900679DD4 /* addLog.swift */,
+				560EFC9223EAF1F500E0B172 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
 				56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */,
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
+				560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */,
 				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
@@ -733,6 +740,7 @@
 				56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */,
 				56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */,
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
+				560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */,
 				566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,6 +30,7 @@ class LoginData: ObservableObject {
         }
     }
     @Published var isOpen = false
+	@Published var isLoggedIn = false
     @Published var userToken = ""
     @Published var userSecret = ""
     @Published var meData = [Me]()
@@ -67,12 +68,33 @@ class LoginData: ObservableObject {
                 self.userSecret = credential.consumerSecret
                 self.keychain.set(self.userToken, forKey: "userToken")
                 self.keychain.set(self.userSecret, forKey: "userSecret")
+				self.isLoggedIn = true
+
+				self.getMe()
             case .failure(let error):
               print(error.localizedDescription)
                  print(result)
             }
         }
     }
+
+	func logOut() {
+		if isLoggedIn {
+			self.keychain.clear()
+			oauthswift = OAuth2Swift(
+				consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
+				consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
+				authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
+				accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
+				responseType: "code"
+			)
+			self.isLoggedIn = false
+			
+			self.meData = [Me]()
+			self.userToken = ""
+			self.userSecret = ""
+		}
+	}
 
     func getMe() {
         self.checkLogin()
@@ -89,9 +111,10 @@ class LoginData: ObservableObject {
                     let data = try decoder.decode(Me.self, from: response.data)
 
                     self.meData.append(data)
-                    print(self.meData.first?.avatar ?? "no avatar")
+					self.isLoggedIn = true
                 } catch {
                     print(error)
+					self.isLoggedIn = false
                 }
             case .failure(let error):
                 print(error)
