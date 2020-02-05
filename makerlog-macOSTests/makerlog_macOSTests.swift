@@ -9,7 +9,7 @@
 import XCTest
 @testable import makerlog_macOS
 
-class makerlog_macOSTests: XCTestCase {
+class MakerlogMacOSTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

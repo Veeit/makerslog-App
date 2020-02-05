@@ -10,10 +10,11 @@ import SwiftUI
 
 struct AddLogView: View {
 	@ObservedObject var data = AddLogData()
+	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
 			Spacer()
-			
+
 			TextField("Add new log", text: self.$data.text)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 			HStack(spacing: 5) {

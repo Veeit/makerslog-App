@@ -37,6 +37,11 @@
 		56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B7F23E0953200B6B485 /* KeyboardObserving */; };
 		56AB2B8323E0959100B6B485 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8223E0959100B6B485 /* URLImage */; };
 		56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8523E095F600B6B485 /* OAuthSwift */; };
+		56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28723EAE8DA00A70718 /* OAuthSwift */; };
+		56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28923EAE8F400A70718 /* KeychainSwift */; };
+		56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28D23EAE95A00A70718 /* URLImage */; };
+		56C1A29123EAE99500A70718 /* LogFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedView.swift */; };
+		56C1A29323EAE9A500A70718 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogView.swift */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogView.swift */; };
 		56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D2C71423DF4BDB0017A7B4 /* meModel.swift */; };
@@ -87,7 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		560E9F9D23D5DB5100A12CF5 /* Makerlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Makerlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		560E9F9D23D5DB5100A12CF5 /* makerlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = makerlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		560E9FA523D5DB5100A12CF5 /* Makerlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Makerlog.xcdatamodel; sourceTree = "<group>"; };
@@ -117,6 +122,8 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		56C1A29023EAE99500A70718 /* LogFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedView.swift; sourceTree = "<group>"; };
+		56C1A29223EAE9A500A70718 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
 		56C94A8B23D6FBF5007840DB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		56D2C71423DF4BDB0017A7B4 /* meModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meModel.swift; sourceTree = "<group>"; };
@@ -125,7 +132,7 @@
 		56D4E45D23E9CCA900679DD4 /* AddLogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogData.swift; sourceTree = "<group>"; };
 		56D4E45F23E9CEB900679DD4 /* addLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addLog.swift; sourceTree = "<group>"; };
 		56D4E46223EA072500679DD4 /* addBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addBorder.swift; sourceTree = "<group>"; };
-		56D4E46823EAB73600679DD4 /* makerlog-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "makerlog-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56D4E46823EAB73600679DD4 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D4E46A23EAB73600679DD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56D4E46C23EAB73600679DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		56D4E46F23EAB73600679DD4 /* makerlog_macOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = makerlog_macOS.xcdatamodel; sourceTree = "<group>"; };
@@ -174,6 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */,
+				56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */,
+				56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,12 +207,10 @@
 		560E9F9423D5DB5100A12CF5 = {
 			isa = PBXGroup;
 			children = (
-				560E9F9F23D5DB5100A12CF5 /* Makerlog */,
-				560E9FB923D5DB5600A12CF5 /* MakerlogTests */,
-				560E9FC423D5DB5600A12CF5 /* MakerlogUITests */,
-				56D4E46923EAB73600679DD4 /* makerlog-macOS */,
-				56D4E48223EAB73900679DD4 /* makerlog-macOSTests */,
-				56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */,
+				56C1A28623EADB8400A70718 /* Shared */,
+				560E9F9F23D5DB5100A12CF5 /* Makerlog-iOS */,
+				56D4E46923EAB73600679DD4 /* Makerlog-macOS */,
+				56D4E4C123EAD95B00679DD4 /* Tests */,
 				560E9F9E23D5DB5100A12CF5 /* Products */,
 				5648852823E036A4001E6467 /* Frameworks */,
 			);
@@ -211,21 +219,19 @@
 		560E9F9E23D5DB5100A12CF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				560E9F9D23D5DB5100A12CF5 /* Makerlog.app */,
+				560E9F9D23D5DB5100A12CF5 /* makerlog.app */,
 				560E9FB623D5DB5600A12CF5 /* MakerlogTests.xctest */,
 				560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */,
-				56D4E46823EAB73600679DD4 /* makerlog-macOS.app */,
+				56D4E46823EAB73600679DD4 /* macOS.app */,
 				56D4E47F23EAB73900679DD4 /* makerlog-macOSTests.xctest */,
 				56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		560E9F9F23D5DB5100A12CF5 /* Makerlog */ = {
+		560E9F9F23D5DB5100A12CF5 /* Makerlog-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				56C94A8A23D6FBC4007840DB /* Model */,
-				56C94A8623D6F992007840DB /* View Model */,
 				56C94A8923D6FBAA007840DB /* View */,
 				560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */,
 				560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */,
@@ -235,7 +241,7 @@
 				560E9FA423D5DB5100A12CF5 /* Makerlog.xcdatamodeld */,
 				560E9FAB23D5DB5500A12CF5 /* Preview Content */,
 			);
-			path = Makerlog;
+			path = "Makerlog-iOS";
 			sourceTree = "<group>";
 		};
 		560E9FAB23D5DB5500A12CF5 /* Preview Content */ = {
@@ -319,6 +325,24 @@
 			path = userView;
 			sourceTree = "<group>";
 		};
+		56C1A28623EADB8400A70718 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				56C94A8A23D6FBC4007840DB /* Model */,
+				56C94A8623D6F992007840DB /* View Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		56C1A28F23EAE97700A70718 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56C1A29023EAE99500A70718 /* LogFeedView.swift */,
+				56C1A29223EAE9A500A70718 /* LogView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		56C94A8623D6F992007840DB /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,9 +388,10 @@
 			path = helper;
 			sourceTree = "<group>";
 		};
-		56D4E46923EAB73600679DD4 /* makerlog-macOS */ = {
+		56D4E46923EAB73600679DD4 /* Makerlog-macOS */ = {
 			isa = PBXGroup;
 			children = (
+				56C1A28F23EAE97700A70718 /* View */,
 				56D4E46A23EAB73600679DD4 /* AppDelegate.swift */,
 				56D4E46C23EAB73600679DD4 /* ContentView.swift */,
 				56D4E47123EAB73900679DD4 /* Assets.xcassets */,
@@ -376,7 +401,7 @@
 				56D4E46E23EAB73600679DD4 /* makerlog_macOS.xcdatamodeld */,
 				56D4E47323EAB73900679DD4 /* Preview Content */,
 			);
-			path = "makerlog-macOS";
+			path = "Makerlog-macOS";
 			sourceTree = "<group>";
 		};
 		56D4E47323EAB73900679DD4 /* Preview Content */ = {
@@ -405,12 +430,23 @@
 			path = "makerlog-macOSUITests";
 			sourceTree = "<group>";
 		};
+		56D4E4C123EAD95B00679DD4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				560E9FB923D5DB5600A12CF5 /* MakerlogTests */,
+				560E9FC423D5DB5600A12CF5 /* MakerlogUITests */,
+				56D4E48223EAB73900679DD4 /* makerlog-macOSTests */,
+				56D4E48D23EAB73A00679DD4 /* makerlog-macOSUITests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		560E9F9C23D5DB5100A12CF5 /* Makerlog */ = {
+		560E9F9C23D5DB5100A12CF5 /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "Makerlog" */;
+			buildConfigurationList = 560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
 				560E9F9923D5DB5100A12CF5 /* Sources */,
 				560E9F9A23D5DB5100A12CF5 /* Frameworks */,
@@ -421,7 +457,7 @@
 			);
 			dependencies = (
 			);
-			name = Makerlog;
+			name = iOS;
 			packageProductDependencies = (
 				56AB2B7F23E0953200B6B485 /* KeyboardObserving */,
 				56AB2B8223E0959100B6B485 /* URLImage */,
@@ -431,7 +467,7 @@
 				564E663523E9B85B0049662A /* SDWebImageSwiftUI */,
 			);
 			productName = Makerlog;
-			productReference = 560E9F9D23D5DB5100A12CF5 /* Makerlog.app */;
+			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
 			productType = "com.apple.product-type.application";
 		};
 		560E9FB523D5DB5600A12CF5 /* MakerlogTests */ = {
@@ -470,9 +506,9 @@
 			productReference = 560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		56D4E46723EAB73600679DD4 /* makerlog-macOS */ = {
+		56D4E46723EAB73600679DD4 /* macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOS" */;
+			buildConfigurationList = 56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "macOS" */;
 			buildPhases = (
 				56D4E46423EAB73600679DD4 /* Sources */,
 				56D4E46523EAB73600679DD4 /* Frameworks */,
@@ -482,9 +518,14 @@
 			);
 			dependencies = (
 			);
-			name = "makerlog-macOS";
+			name = macOS;
+			packageProductDependencies = (
+				56C1A28723EAE8DA00A70718 /* OAuthSwift */,
+				56C1A28923EAE8F400A70718 /* KeychainSwift */,
+				56C1A28D23EAE95A00A70718 /* URLImage */,
+			);
 			productName = "makerlog-macOS";
-			productReference = 56D4E46823EAB73600679DD4 /* makerlog-macOS.app */;
+			productReference = 56D4E46823EAB73600679DD4 /* macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */ = {
@@ -578,10 +619,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				560E9F9C23D5DB5100A12CF5 /* Makerlog */,
+				560E9F9C23D5DB5100A12CF5 /* iOS */,
 				560E9FB523D5DB5600A12CF5 /* MakerlogTests */,
 				560E9FC023D5DB5600A12CF5 /* MakerlogUITests */,
-				56D4E46723EAB73600679DD4 /* makerlog-macOS */,
+				56D4E46723EAB73600679DD4 /* macOS */,
 				56D4E47E23EAB73900679DD4 /* makerlog-macOSTests */,
 				56D4E48923EAB73A00679DD4 /* makerlog-macOSUITests */,
 			);
@@ -689,6 +730,8 @@
 				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
 				566F1C6A23D7513800518FFF /* ProductViewData.swift in Sources */,
+				56C1A29323EAE9A500A70718 /* LogView.swift in Sources */,
+				56C1A29123EAE99500A70718 /* LogFeedView.swift in Sources */,
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
 				566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */,
 			);
@@ -741,22 +784,22 @@
 /* Begin PBXTargetDependency section */
 		560E9FB823D5DB5600A12CF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 560E9F9C23D5DB5100A12CF5 /* Makerlog */;
+			target = 560E9F9C23D5DB5100A12CF5 /* iOS */;
 			targetProxy = 560E9FB723D5DB5600A12CF5 /* PBXContainerItemProxy */;
 		};
 		560E9FC323D5DB5600A12CF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 560E9F9C23D5DB5100A12CF5 /* Makerlog */;
+			target = 560E9F9C23D5DB5100A12CF5 /* iOS */;
 			targetProxy = 560E9FC223D5DB5600A12CF5 /* PBXContainerItemProxy */;
 		};
 		56D4E48123EAB73900679DD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56D4E46723EAB73600679DD4 /* makerlog-macOS */;
+			target = 56D4E46723EAB73600679DD4 /* macOS */;
 			targetProxy = 56D4E48023EAB73900679DD4 /* PBXContainerItemProxy */;
 		};
 		56D4E48C23EAB73A00679DD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56D4E46723EAB73600679DD4 /* makerlog-macOS */;
+			target = 56D4E46723EAB73600679DD4 /* macOS */;
 			targetProxy = 56D4E48B23EAB73A00679DD4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -900,16 +943,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Makerlog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Makerlog/Info.plist;
+				INFOPLIST_FILE = "Makerlog-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -920,16 +963,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Makerlog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Makerlog/Info.plist;
+				INFOPLIST_FILE = "Makerlog-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1165,7 +1208,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "Makerlog" */ = {
+		560E9FCA23D5DB5600A12CF5 /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				560E9FCB23D5DB5600A12CF5 /* Debug */,
@@ -1192,7 +1235,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "makerlog-macOS" */ = {
+		56D4E49123EAB73A00679DD4 /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56D4E49223EAB73A00679DD4 /* Debug */,
@@ -1302,6 +1345,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
 			productName = OAuthSwift;
+		};
+		56C1A28723EAE8DA00A70718 /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+		56C1A28923EAE8F400A70718 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		56C1A28D23EAE95A00A70718 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

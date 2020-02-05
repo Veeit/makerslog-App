@@ -7,11 +7,18 @@
 //
 
 import SwiftUI
+import OAuthSwift
+import KeychainSwift
+import URLImage
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+		NavigationView() {
+			List() {
+				Text("ww")
+				Text("ww")
+			}.listStyle(SidebarListStyle())
+		}
     }
 }
 
