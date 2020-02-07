@@ -462,7 +462,7 @@
 				560E9F9923D5DB5100A12CF5 /* Sources */,
 				560E9F9A23D5DB5100A12CF5 /* Frameworks */,
 				560E9F9B23D5DB5100A12CF5 /* Resources */,
-				56682BD323E613E600EF2C5B /* ShellScript */,
+				56682BD323E613E600EF2C5B /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -694,7 +694,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		56682BD323E613E600EF2C5B /* ShellScript */ = {
+		56682BD323E613E600EF2C5B /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -703,6 +703,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -967,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
+				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
 				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -987,7 +988,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.Makerlog;
+				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
 				PRODUCT_NAME = makerlog;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
