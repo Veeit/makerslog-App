@@ -35,9 +35,9 @@
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
 		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
-		56BE7B3723EF4629006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3623EF4629006EE3AF /* OAuthSwift */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
+		56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B4123F07CE1006EE3AF /* OAuthSwift */; };
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
@@ -123,7 +123,6 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
-		56BE7B3523EF460D006EE3AF /* OAuthSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OAuthSwift; path = ../OAuthSwift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
 		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
@@ -156,9 +155,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
-				56BE7B3723EF4629006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,7 +300,6 @@
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56BE7B3523EF460D006EE3AF /* OAuthSwift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
 			);
@@ -461,9 +459,9 @@
 			name = iOS;
 			packageProductDependencies = (
 				56BE7B3323EF4297006EE3AF /* URLImage */,
-				56BE7B3623EF4629006EE3AF /* OAuthSwift */,
 				56BE7B3823EF462D006EE3AF /* KeychainSwift */,
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
+				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -607,6 +605,7 @@
 				56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
+				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -940,6 +939,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -960,6 +960,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -1288,6 +1289,14 @@
 				minimumVersion = 0.9.10;
 			};
 		};
+		56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1295,10 +1304,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
-		};
-		56BE7B3623EF4629006EE3AF /* OAuthSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = OAuthSwift;
 		};
 		56BE7B3823EF462D006EE3AF /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1309,6 +1314,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
 			productName = KeyboardObserving;
+		};
+		56BE7B4123F07CE1006EE3AF /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

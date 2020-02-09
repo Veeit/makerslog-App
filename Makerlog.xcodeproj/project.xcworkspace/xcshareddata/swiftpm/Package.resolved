@@ -56,6 +56,15 @@
         }
       },
       {
+        "package": "OAuthSwift",
+        "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
+        "state": {
+          "branch": null,
+          "revision": "2e75d626532c2c6373e603312c0f1207e7e778ea",
+          "version": "2.1.0"
+        }
+      },
+      {
         "package": "Swifter",
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
