@@ -6,6 +6,8 @@
 import Foundation
 
 // MARK: - UserProduct
+// swiftlint:disable all
+
 struct UserProduct: Codable, Identifiable {
     let id: Int
     let name, slug: String

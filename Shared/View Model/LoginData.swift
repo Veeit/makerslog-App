@@ -138,7 +138,7 @@ class LoginData: ObservableObject {
             }
         }
     }
-	
+
 	func getUserProducts() {
 		self.checkLogin()
 
@@ -152,7 +152,7 @@ class LoginData: ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserProducts.self, from: response.data)
-					
+
 					self.meProducts = data
                 } catch {
                     print(error)

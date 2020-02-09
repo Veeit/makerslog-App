@@ -44,6 +44,9 @@ struct AddLogView: View {
 			.foregroundColor(.blue)
 			.onTapGesture {
 				self.data.createNewLog()
+				self.data.text = ""
+				self.data.isDone = false
+				self.data.isProgress = false
 				UIApplication.shared.windows.first?.endEditing(true)
 			}
 		}.padding([.leading, .trailing], 20)

@@ -7,8 +7,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
-import QGrid
+import URLImage
 
 struct UserView: View {
 	@ObservedObject var login: LoginData
@@ -21,11 +20,17 @@ struct UserView: View {
 //			Text(String("\(self.login.meData.first)"))
 
 			HStack(alignment: .center) {
-				WebImage(url: URL(string: self.login.meData.first?.avatar ?? defaultAvartar))
-					.resizable()
-					.scaledToFill()
-					.frame(width: 130, height: 130, alignment: .center)
-					.cornerRadius(100)
+				URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
+						processors: [ Resize(size: CGSize(width: 130, height: 130), scale: UIScreen.main.scale) ],
+						content: {
+							$0.image
+								.resizable()
+								.scaledToFill()
+								.frame(width: 130, height: 130, alignment: .center)
+								.cornerRadius(100)
+						})
+						.frame(width: 130, height: 130, alignment: .center)
+
 				Spacer()
 				VStack() {
 					Text(self.login.userName)
@@ -49,17 +54,23 @@ struct UserView: View {
 			}
 
 			VStack(alignment: .leading) {
-				Text("Your Producs:").bold()
+				Text("your products:").bold()
 				ScrollView(.horizontal) {
 					HStack(spacing: 20) {
 						ForEach(self.login.meProducts) { product in
 							VStack() {
-								WebImage(url: URL(string: "\(product.icon)"))
-									.resizable()
-									.scaledToFill()
-									.frame(width: 60, height: 60, alignment: .center)
-									.cornerRadius(10)
+								URLImage(URL(string: "\(product.icon)")!,
+										processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],
+										content: {
+											$0.image
+												.resizable()
+												.scaledToFill()
+												.frame(width: 60, height: 60, alignment: .center)
+												.cornerRadius(10)
+										})
+										.frame(width: 60, height: 60, alignment: .center)
 								Text("\(product.name)")
+
 							}
 						}
 					}

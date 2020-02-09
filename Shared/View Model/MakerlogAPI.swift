@@ -21,6 +21,16 @@ class MakerlogAPI: ObservableObject {
             }
         }
     }
+	@Published var notification: Notification?
+	@Published var notificationisDone = false {
+		   didSet {
+			   DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+				   if self.notificationisDone {
+					   self.notificationisDone = false
+				   }
+			   }
+		   }
+	   }
 
     func getResult() {
         print("start")
@@ -43,10 +53,35 @@ class MakerlogAPI: ObservableObject {
     }
 
 	func getNotifications() {
-		
+		let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/notifications/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+			switch result {
+			case .success(let response):
+				do {
+					let decoder = JSONDecoder()
+					let data = try decoder.decode(Notification.self, from: response.data)
+
+					 DispatchQueue.main.async {
+						self.notification = data
+						print(self.notification!)
+						self.notificationisDone = true
+					 }
+				} catch {
+					print(error)
+				}
+			case .failure(let error):
+				print(error)
+				if case .tokenExpired = error {
+				  print("old token")
+			   }
+			}
+		}
 	}
-	
-    init() {
-        getResult()
-    }
+
+	init() {
+		getResult()
+	}
 }

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import PartialSheet
 
 class TabScreenData: ObservableObject {
     @Published var userSheet = false
@@ -29,6 +28,11 @@ struct TabScreen: View {
 				AddLogView()
 			}
             .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+
+			VStack {
+				NotificationsView()
+			}
+            .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
 
         }
 		.sheet(isPresented: self.$data.userSheet, content: {UserView(login: self.login)})

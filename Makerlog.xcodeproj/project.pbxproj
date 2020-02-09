@@ -20,12 +20,8 @@
 		560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */; };
 		560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9223EAF1F500E0B172 /* Notification.swift */; };
 		560EFC9523EB028300E0B172 /* userProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9423EB028300E0B172 /* userProducts.swift */; };
-		560EFC9823EB0DA600E0B172 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 560EFC9723EB0DA600E0B172 /* QGrid */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
-		561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 561A48D123E1CADC0077A1D2 /* KeychainSwift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
-		564E663323E855E00049662A /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 564E663223E855E00049662A /* PartialSheet */; };
-		564E663623E9B85B0049662A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 564E663523E9B85B0049662A /* SDWebImageSwiftUI */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* tabView.swift */; };
@@ -38,12 +34,10 @@
 		566F1C8223D8B99500518FFF /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* LoginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
-		56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B7F23E0953200B6B485 /* KeyboardObserving */; };
-		56AB2B8323E0959100B6B485 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8223E0959100B6B485 /* URLImage */; };
-		56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56AB2B8523E095F600B6B485 /* OAuthSwift */; };
-		56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28723EAE8DA00A70718 /* OAuthSwift */; };
-		56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28923EAE8F400A70718 /* KeychainSwift */; };
-		56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C1A28D23EAE95A00A70718 /* URLImage */; };
+		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
+		56BE7B3723EF4629006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3623EF4629006EE3AF /* OAuthSwift */; };
+		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
+		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
@@ -129,6 +123,7 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		56BE7B3523EF460D006EE3AF /* OAuthSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OAuthSwift; path = ../OAuthSwift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
 		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
@@ -161,13 +156,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				564E663623E9B85B0049662A /* SDWebImageSwiftUI in Frameworks */,
-				56AB2B8323E0959100B6B485 /* URLImage in Frameworks */,
-				56AB2B8023E0953200B6B485 /* KeyboardObserving in Frameworks */,
-				560EFC9823EB0DA600E0B172 /* QGrid in Frameworks */,
-				561A48D223E1CADC0077A1D2 /* KeychainSwift in Frameworks */,
-				56AB2B8623E095F600B6B485 /* OAuthSwift in Frameworks */,
-				564E663323E855E00049662A /* PartialSheet in Frameworks */,
+				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
+				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
+				56BE7B3723EF4629006EE3AF /* OAuthSwift in Frameworks */,
+				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,9 +181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56C1A28A23EAE8F400A70718 /* KeychainSwift in Frameworks */,
-				56C1A28E23EAE95A00A70718 /* URLImage in Frameworks */,
-				56C1A28823EAE8DA00A70718 /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +301,7 @@
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56BE7B3523EF460D006EE3AF /* OAuthSwift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
 			);
@@ -470,13 +460,10 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
-				56AB2B7F23E0953200B6B485 /* KeyboardObserving */,
-				56AB2B8223E0959100B6B485 /* URLImage */,
-				56AB2B8523E095F600B6B485 /* OAuthSwift */,
-				561A48D123E1CADC0077A1D2 /* KeychainSwift */,
-				564E663223E855E00049662A /* PartialSheet */,
-				564E663523E9B85B0049662A /* SDWebImageSwiftUI */,
-				560EFC9723EB0DA600E0B172 /* QGrid */,
+				56BE7B3323EF4297006EE3AF /* URLImage */,
+				56BE7B3623EF4629006EE3AF /* OAuthSwift */,
+				56BE7B3823EF462D006EE3AF /* KeychainSwift */,
+				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -532,9 +519,6 @@
 			);
 			name = macOS;
 			packageProductDependencies = (
-				56C1A28723EAE8DA00A70718 /* OAuthSwift */,
-				56C1A28923EAE8F400A70718 /* KeychainSwift */,
-				56C1A28D23EAE95A00A70718 /* URLImage */,
 			);
 			productName = "makerlog-macOS";
 			productReference = 56D4E46823EAB73600679DD4 /* macOS.app */;
@@ -583,7 +567,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Veit Progl";
 				TargetAttributes = {
 					560E9F9C23D5DB5100A12CF5 = {
@@ -620,13 +604,9 @@
 			);
 			mainGroup = 560E9F9423D5DB5100A12CF5;
 			packageReferences = (
-				56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
-				56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */,
-				56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
-				561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */,
-				564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */,
-				564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */,
+				56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1080,6 +1060,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
@@ -1104,6 +1085,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "makerlog-macOS/makerlog_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"makerlog-macOS/Preview Content\"";
@@ -1282,15 +1264,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Q-Mobile/QGrid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
 			requirement = {
@@ -1298,23 +1272,7 @@
 				minimumVersion = 19.0.0;
 			};
 		};
-		564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-		564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.10.3;
-			};
-		};
-		56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+		56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nickffox/KeyboardObserving.git";
 			requirement = {
@@ -1322,74 +1280,35 @@
 				minimumVersion = 0.2.1;
 			};
 		};
-		56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */ = {
+		56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.9;
-			};
-		};
-		56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				minimumVersion = 0.9.10;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		560EFC9723EB0DA600E0B172 /* QGrid */ = {
+		56BE7B3323EF4297006EE3AF /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 560EFC9623EB0DA600E0B172 /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
+			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
-		561A48D123E1CADC0077A1D2 /* KeychainSwift */ = {
+		56BE7B3623EF4629006EE3AF /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = OAuthSwift;
+		};
+		56BE7B3823EF462D006EE3AF /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
 		};
-		564E663223E855E00049662A /* PartialSheet */ = {
+		56BE7B3A23EF4631006EE3AF /* KeyboardObserving */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 564E663123E855E00049662A /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
-		};
-		564E663523E9B85B0049662A /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 564E663423E9B85B0049662A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
-		56AB2B7F23E0953200B6B485 /* KeyboardObserving */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56AB2B7E23E0953200B6B485 /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
+			package = 56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
 			productName = KeyboardObserving;
-		};
-		56AB2B8223E0959100B6B485 /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
-		};
-		56AB2B8523E095F600B6B485 /* OAuthSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
-			productName = OAuthSwift;
-		};
-		56C1A28723EAE8DA00A70718 /* OAuthSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56AB2B8423E095F600B6B485 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
-			productName = OAuthSwift;
-		};
-		56C1A28923EAE8F400A70718 /* KeychainSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 561A48D023E1CADC0077A1D2 /* XCRemoteSwiftPackageReference "keychain-swift" */;
-			productName = KeychainSwift;
-		};
-		56C1A28D23EAE95A00A70718 /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56AB2B8123E0959100B6B485 /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

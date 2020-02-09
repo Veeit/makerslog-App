@@ -12,6 +12,8 @@ import KeychainSwift
 import URLImage
 
 struct ContentView: View {
+	// swiftlint:disable empty_parentheses_with_trailing_closure
+
     var body: some View {
 		NavigationView() {
 			List() {
