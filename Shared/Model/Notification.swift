@@ -13,7 +13,7 @@ struct NotificationElement: Codable, Identifiable {
     let read: Bool
     let verb: String
     let recipient, actor: Actor
-    let target: Target
+    let target: Target?
     let broadcastLink: String?
     let created, targetType: String?
 

@@ -34,7 +34,9 @@ struct NotificationsView: View {
 						}).frame(width: 60, height: 60)
 						VStack(alignment: .leading) {
 							Text("\((notification.actor.username))").bold()
-							TargetView(target: notification.target)
+							if notification.target != nil {
+								TargetView(target: notification.target!)
+							}
 							Text("\((notification.verb))").font(.subheadline)
 						}
 					}
