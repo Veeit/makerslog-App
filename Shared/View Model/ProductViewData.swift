@@ -23,9 +23,6 @@ class ProductViewData: ObservableObject {
 
                 DispatchQueue.main.async {
                     self.products = response.products
-                    print(self.products)
-                    print("==")
-                    print(self.products.first?.name ?? "ww2")
                 }
             } catch {
                 print(error)

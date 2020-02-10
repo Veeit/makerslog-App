@@ -20,7 +20,7 @@ struct Product: Codable, Identifiable {
     let id: Int
     let name, slug: String
     let user: Int
-    let team: [String]?
+    let team: [Int]?
     let productHunt: String?
     let twitter: String?
     let website: String?

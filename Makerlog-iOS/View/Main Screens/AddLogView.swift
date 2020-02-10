@@ -10,18 +10,11 @@ import SwiftUI
 
 struct AddLogView: View {
 	@ObservedObject var data = AddLogData()
-	@State var isTesting = false
 
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
 			Spacer()
-			
-			Button(action: {
-				self.isTesting.toggle()
-			}) {
-				Text("ww")
-			}
 
 
 			TextField("Add new log", text: self.$data.text)
@@ -58,9 +51,6 @@ struct AddLogView: View {
 				self.data.isProgress = false
 				UIApplication.shared.windows.first?.endEditing(true)
 			}
-			.addBoard(board: {
-				Text("ww")
-			}, isShowing: self.$isTesting)
 		}.padding([.leading, .trailing], 20)
     }
 }
