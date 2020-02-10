@@ -10,6 +10,24 @@ import Foundation
 import Combine
 //import OAuthSwift
 
+public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
+    let dispatchTime = DispatchTime.now() + seconds
+    dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
+}
+
+public enum DispatchLevel {
+    case main, userInteractive, userInitiated, utility, background
+    var dispatchQueue: DispatchQueue {
+        switch self {
+        case .main:                 return DispatchQueue.main
+        case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
+        case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
+        case .utility:              return DispatchQueue.global(qos: .utility)
+        case .background:           return DispatchQueue.global(qos: .background)
+        }
+    }
+}
+
 class MakerlogAPI: ObservableObject {
     @Published var logs = [Result]()
     @Published var isDone = false {
@@ -36,6 +54,15 @@ class MakerlogAPI: ObservableObject {
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
+
+    private func startTimer() {
+		self.getResult()
+
+		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+			self.getResult()
+			print("run")
+		}
+    }
 
 	private var cancellable: AnyCancellable?
     func getResult() {
@@ -128,6 +155,6 @@ class MakerlogAPI: ObservableObject {
 	}
 
 	init() {
-		getResult()
+		startTimer()
 	}
 }
