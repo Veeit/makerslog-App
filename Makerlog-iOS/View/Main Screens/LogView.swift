@@ -13,7 +13,7 @@ import URLImage
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
 	var log: LogViewData
-    @State var comments = CommentViewData()
+	@EnvironmentObject var comments: CommentViewData
 
     var body: some View {
 		GeometryReader() { geometry in
@@ -110,7 +110,7 @@ struct LogView: View {
 							.background(Color.primary.opacity(0.1))
 							.cornerRadius(10)
 						}
-						AddComment()
+						AddComment(logID: self.log.data.id, comments: self.comments)
 
 					}
 					Spacer()
@@ -129,9 +129,16 @@ struct LogView: View {
 
 	struct AddComment: View {
 		@State var text: String = ""
+		var logID: Int
+		@ObservedObject var comments: CommentViewData
 		var body: some View {
-			VStack() {
+			HStack() {
 				TextField("Add a comment", text: $text)
+				Button(action: {
+					self.comments.addComment(logID: self.logID, content: self.text)
+				}) {
+					Text("Send")
+				}
 			}
 		}
 	}
