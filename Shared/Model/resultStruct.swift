@@ -13,15 +13,19 @@ struct Logs: Codable {
    let results: [Result]
 }
 
-struct Result: Codable, Identifiable {
-    let id: Int
+struct Result: Codable, Identifiable, Equatable {
+	static func == (lhs: Result, rhs: Result) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
+	var id: Int
     let event: String?
     let done, inProgress: Bool
     let content, createdAt, updatedAt: String
     let dueAt, doneAt: String?
     let user: User
     let projectSet: [ProjectSet]
-    let praise: Int
+	var praise: Int
     let attachment: String?
     let commentCount: Int
 

@@ -10,16 +10,27 @@ import SwiftUI
 import URLImage
 
 struct LogFeedItem: View {
-	var log: Result
+	@ObservedObject var log: LogFeedItemData
+	@State var showDetailView = false
+	@EnvironmentObject var tabScreenData: TabScreenData
+	@EnvironmentObject var makerlogAPI: MakerlogAPI
 
 	var body: some View {
-		NavigationLink(destination: LogView(log: LogViewData(data: log),
-					   comments: CommentViewData(logID: String(log.id)))) {
+		let cmenu = ContextMenu {
+			Button("Open") {  self.showDetailView.toggle() }
+			Button("👏 \(self.log.log.praise)") {
+				self.makerlogAPI.addPraise(log: self.log.log)
+			}
+		}
+
+		return NavigationLink(destination: LogView(log: LogViewData(data: log.log),
+												   comments: CommentViewData(logID: String(log.log.id))),
+							  isActive: self.$showDetailView) {
 
 			// swiftlint:disable empty_parentheses_with_trailing_closure
 			VStack(alignment: .leading) {
 				HStack() {
-					URLImage(URL(string: log.user.avatar)!,
+					URLImage(URL(string: log.log.user.avatar)!,
 							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
 							 content: {
 						$0.image
@@ -30,34 +41,34 @@ struct LogFeedItem: View {
 					})
 						.frame(width: 40, height: 40)
 
-					Text(log.user.username).font(.subheadline).bold()
+					Text(log.log.user.username).font(.subheadline).bold()
 					Spacer()
 
-					Text("\(log.user.makerScore) 🏆")
+					Text("\(log.log.user.makerScore) 🏆")
 				}
 
 				HStack(alignment: .top) {
-					if log.done {
+					if log.log.done {
 						Image(systemName: "checkmark.circle").padding([.top], 5)
 					}
-					if log.inProgress {
+					if log.log.inProgress {
 						Image(systemName: "circle").padding([.top], 5)
 					}
 //					Text(log.event ?? "")
-					EventImg(event: log.event ?? "")
+					EventImg(event: log.log.event ?? "")
 
-					Text(log.content)
+					Text(log.log.content)
 						.padding([.bottom], 15)
 						.lineLimit(20)
 
-					if log.praise > 0 {
+					if log.log.praise > 0 {
 						Spacer()
-						Text("\(log.praise) 👏")
+						Text("\(log.log.praise) 👏")
 					}
 				}
 
-				if log.attachment != nil {
-					URLImage(URL(string: log.attachment!)!,
+				if log.log.attachment != nil {
+					URLImage(URL(string: log.log.attachment!)!,
 							 content: {
 						$0.image
 						.resizable()
@@ -67,7 +78,10 @@ struct LogFeedItem: View {
 					})
 				}
 			}
+		}.onTapGesture {
+			self.showDetailView.toggle()
 		}
+		.contextMenu(cmenu)
 	}
 }
 

@@ -38,6 +38,8 @@
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
 		56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B4123F07CE1006EE3AF /* OAuthSwift */; };
+		56BE7B4423F0A685006EE3AF /* LogFeedItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */; };
+		56BE7B4623F0AA3B006EE3AF /* PraiseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */; };
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
@@ -123,6 +125,8 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedItemData.swift; sourceTree = "<group>"; };
+		56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseModel.swift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
 		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
@@ -349,6 +353,7 @@
 				56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */,
 				566F1C7423D7977700518FFF /* CommentViewData.swift */,
 				56D4E45D23E9CCA900679DD4 /* AddLogData.swift */,
+				56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				56D4E45F23E9CEB900679DD4 /* addLog.swift */,
 				560EFC9223EAF1F500E0B172 /* Notification.swift */,
 				560EFC9423EB028300E0B172 /* userProducts.swift */,
+				56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -700,6 +706,7 @@
 			files = (
 				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
+				56BE7B4423F0A685006EE3AF /* LogFeedItemData.swift in Sources */,
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
@@ -718,6 +725,7 @@
 				561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */,
 				56D2C71523DF4BDB0017A7B4 /* meModel.swift in Sources */,
 				560E9FD423D5F23500A12CF5 /* resultStruct.swift in Sources */,
+				56BE7B4623F0AA3B006EE3AF /* PraiseModel.swift in Sources */,
 				56682BD223E610D700EF2C5B /* UserView.swift in Sources */,
 				566DF0D423DF01E50085C318 /* tabView.swift in Sources */,
 				566F1C7323D7970300518FFF /* commentStruct.swift in Sources */,
