@@ -41,7 +41,8 @@ struct LogFeedItem: View {
 					})
 						.frame(width: 40, height: 40)
 
-					Text(log.log.user.username).font(.subheadline).bold()
+					Text(self.log.log.user.firstName != "" && self.log.log.user.lastName != "" ? "\(self.log.log.user.firstName ) \(self.log.log.user.lastName)" : self.log.log.user.username)
+						.font(.subheadline).bold()
 					Spacer()
 
 					Text("\(log.log.user.makerScore) 🏆")

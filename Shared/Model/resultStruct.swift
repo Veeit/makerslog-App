@@ -17,13 +17,13 @@ struct Result: Codable, Identifiable, Equatable {
 	static func == (lhs: Result, rhs: Result) -> Bool {
 		return lhs.id == rhs.id
 	}
-	
+
 	var id: Int
     let event: String?
     let done, inProgress: Bool
     let content, createdAt, updatedAt: String
     let dueAt, doneAt: String?
-    let user: User
+	var user: User
     let projectSet: [ProjectSet]
 	var praise: Int
     let attachment: String?
@@ -92,6 +92,14 @@ struct User: Codable {
         case weekendsOff = "weekends_off"
         case hardcoreMode = "hardcore_mode"
     }
+
+	mutating func getUserName() -> String {
+		if self.firstName != "" && self.lastName != "" {
+			return "\(self.firstName) \(self.lastName)"
+		} else {
+			return self.username
+		}
+	}
 }
 
 struct ProjectSet: Codable, Identifiable {

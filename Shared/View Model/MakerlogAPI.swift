@@ -16,7 +16,6 @@ class MakerlogAPI: ObservableObject {
         didSet {
 			if self.isDone {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-					self.cancellable?.cancel()
                     self.isDone = false
                 }
             }
@@ -39,7 +38,6 @@ class MakerlogAPI: ObservableObject {
 
     private func startTimer() {
 		self.getResult()
-
 		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
 			self.getResult()
 			print("run")
@@ -89,7 +87,6 @@ class MakerlogAPI: ObservableObject {
 
 					 DispatchQueue.main.async {
 						self.notification = data
-						print(self.notification!)
 						self.notificationisDone = true
 					 }
 				} catch {

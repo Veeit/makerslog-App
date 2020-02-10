@@ -99,7 +99,7 @@ struct Target: Codable {
     let content: String?
     let dueAt: String?
     let doneAt: String?
-    let user: Actor?
+    var user: Actor?
     let projectSet: [ProjectSet]?
     let praise: Int?
     let attachment: String?
