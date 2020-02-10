@@ -12,8 +12,8 @@ import URLImage
 
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
-    @ObservedObject var log: LogViewData
-    @ObservedObject var comments: CommentViewData
+	var log: LogViewData
+    @State var comments = CommentViewData()
 
     var body: some View {
         GeometryReader() { geometry in
@@ -110,6 +110,8 @@ struct LogView: View {
                             .background(Color.primary.opacity(0.1))
                             .cornerRadius(10)
                         }
+						AddComment()
+
                     }
                     Spacer()
                 }.padding()
@@ -120,6 +122,19 @@ struct LogView: View {
 
         }
         .edgesIgnoringSafeArea(.top)
-
+		.onAppear(perform: {
+			print(String(self.log.data.id))
+			self.comments.getComments(logID: String(self.log.data.id))
+			print(self.comments.comments)
+		})
     }
+
+	struct AddComment: View {
+		@State var text: String = ""
+		var body: some View {
+			VStack() {
+				TextField("Add a comment", text: $text)
+			}
+		}
+	}
 }

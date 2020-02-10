@@ -12,25 +12,34 @@ import Combine
 class CommentViewData: ObservableObject {
     @Published var comments = Comment()
 
+	enum HTTPError2: LocalizedError {
+		case statusCode
+	}
+
+	private var cancellable: AnyCancellable?
     func getComments(logID: String) {
         let url = URL(string: "https://api.getmakerlog.com/tasks/\(logID)/comments/")!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            do {
-               // data we are getting from network request
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(Comment.self, from: data!)
 
-                DispatchQueue.main.async {
-                    self.comments = response
-                }
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-
-    init(logID: String) {
-        getComments(logID: logID)
-    }
+		self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
+			.tryMap { output in
+				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+					throw HTTPError2.statusCode
+				}
+				return output.data
+			}
+			.decode(type: Comment.self, decoder: JSONDecoder())
+			.eraseToAnyPublisher()
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case .finished:
+					break
+				case .failure(let error):
+					fatalError(error.localizedDescription)
+				}
+			}, receiveValue: { response in
+				 DispatchQueue.main.async {
+					self.comments = response
+				}
+			})
+	}
 }

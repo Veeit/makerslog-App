@@ -23,8 +23,7 @@ struct LogFeedItem: View {
 			}
 		}
 
-		return NavigationLink(destination: LogView(log: LogViewData(data: log.log),
-												   comments: CommentViewData(logID: String(log.log.id))),
+		return NavigationLink(destination: LogView(log: LogViewData(data: log.log)),
 							  isActive: self.$showDetailView) {
 
 			// swiftlint:disable empty_parentheses_with_trailing_closure
