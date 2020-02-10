@@ -125,6 +125,9 @@ struct LogView: View {
 		.onAppear(perform: {
 			self.comments.getComments(logID: String(self.log.data.id))
 		})
+		.onDisappear(perform: {
+			self.comments.comments = Comment()
+		})
     }
 
 	struct AddComment: View {
@@ -136,6 +139,7 @@ struct LogView: View {
 				TextField("Add a comment", text: $text)
 				Button(action: {
 					self.comments.addComment(logID: self.logID, content: self.text)
+					self.text = ""
 				}) {
 					Text("Send")
 				}
