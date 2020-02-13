@@ -32,6 +32,8 @@ class MakerlogAPI: ObservableObject {
 		   }
 	   }
 
+	@Published var discussions: [ResultDiscussion]?
+
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
@@ -121,6 +123,33 @@ class MakerlogAPI: ObservableObject {
 							print(self.logs[index].praise)
 							self.getResult()
 						}
+					}
+				} catch {
+					print(error)
+				}
+			case .failure(let error):
+				print(error)
+				if case .tokenExpired = error {
+				  print("old token")
+			   }
+			}
+		}
+	}
+
+	func getDissucions() {
+		let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token, "limit": "50"]
+		let requestURL = "https://api.getmakerlog.com/discussions/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+			switch result {
+			case .success(let response):
+				do {
+					let decoder = JSONDecoder()
+					let data = try decoder.decode(Discussions.self, from: response.data)
+
+					DispatchQueue.main.async {
+						self.discussions = data.results
 					}
 				} catch {
 					print(error)

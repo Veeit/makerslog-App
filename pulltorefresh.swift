@@ -134,17 +134,19 @@ public struct RefreshableList<Content: View>: View {
 
     public var body: some View {
 
-        List {
-            Section(header: PullToRefreshView(data: self.data)) {
-             content()
-            }
-        }
-        .offset(y: -40)
-        .onPreferenceChange(RefreshableKeyTypes.PrefKey.self) { values in
-            guard let bounds = values.first?.bounds else { return }
-            self.data.pullStatus = CGFloat((bounds.origin.y - 106) / 80)
-            self.refresh(offset: bounds.origin.y)
-        }
+		GeometryReader() { geometry in
+			List {
+				Section(header: PullToRefreshView(data: self.data)) {
+					self.content()
+				}
+			}
+			.onPreferenceChange(RefreshableKeyTypes.PrefKey.self) { values in
+				guard let bounds = values.first?.bounds else { return }
+				self.data.pullStatus = CGFloat((bounds.origin.y - 106) / 80)
+				self.refresh(offset: bounds.origin.y)
+			}
+			.frame(height: geometry.size.height + 40)
+		}
     }
 
     func refresh(offset: CGFloat) {

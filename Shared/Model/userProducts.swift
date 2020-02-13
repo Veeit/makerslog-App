@@ -10,7 +10,7 @@ import Foundation
 
 struct UserProduct: Codable, Identifiable {
     let id: Int
-    let name, slug: String
+    let name, slug: String?
     let user: Int
     let team: [String]
     let productHunt: String?

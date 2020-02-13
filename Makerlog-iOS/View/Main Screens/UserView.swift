@@ -69,7 +69,7 @@ struct UserView: View {
 												.cornerRadius(10)
 										})
 										.frame(width: 60, height: 60, alignment: .center)
-								Text("\(product.name)")
+								Text("\(product.name ?? "no name set")")
 
 							}
 						}

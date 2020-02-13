@@ -115,19 +115,17 @@ struct LogView: View {
 					}
 					Spacer()
 				}.padding()
-				.padding([.top], 50)
-				.padding([.bottom], 150)
-
-			}
+			}.frame(height: geometry.size.height)
 
 		}
-		.edgesIgnoringSafeArea(.top)
+//		.edgesIgnoringSafeArea(.top)
 		.onAppear(perform: {
 			self.comments.getComments(logID: String(self.log.data.id))
 		})
 		.onDisappear(perform: {
 			self.comments.comments = Comment()
 		})
+			.navigationBarTitle("Detail Log", displayMode: .inline)
     }
 
 	struct AddComment: View {

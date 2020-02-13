@@ -26,6 +26,11 @@ struct TabScreen: View {
 			}
 			.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
 
+			VStack {
+				DiscussionsView()
+			}
+			.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
+
             VStack {
 				AddLogView()
 			}

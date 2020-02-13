@@ -45,7 +45,7 @@ struct LogFeedView: View {
 					LogFeedItem(log: LogFeedItemData(log: log))
 				}
 			}
-			.edgesIgnoringSafeArea(.bottom)
+//			.edgesIgnoringSafeArea(.bottom)
 			.onAppear(perform: {
 				let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 				print(urls[urls.count-1] as URL)
