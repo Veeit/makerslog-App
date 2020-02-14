@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import OAuthSwift
 
 class CommentViewData: ObservableObject {
     @Published var comments = Comment()
@@ -41,5 +42,31 @@ class CommentViewData: ObservableObject {
 					self.comments = response
 				}
 			})
+	}
+
+	func addComment(logID: Int, content: String) {
+
+		let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token, "content": content]
+		let requestURL = "https://api.getmakerlog.com/tasks/\(String(logID))/comments/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+			switch result {
+			case .success(let response):
+				do {
+					let decoder = JSONDecoder()
+					let data = try decoder.decode(CommentElement.self, from: response.data)
+
+					self.comments.append(data)
+				} catch {
+					print(error)
+				}
+			case .failure(let error):
+				print(error)
+				if case .tokenExpired = error {
+				  print("old token")
+			   }
+			}
+		}
 	}
 }

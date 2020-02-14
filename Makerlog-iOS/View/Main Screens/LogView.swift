@@ -9,11 +9,12 @@
 import Foundation
 import SwiftUI
 import URLImage
+import KeyboardObserving
 
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
 	var log: LogViewData
-    @State var comments = CommentViewData()
+	@EnvironmentObject var comments: CommentViewData
 
     var body: some View {
 		GeometryReader() { geometry in
@@ -110,29 +111,38 @@ struct LogView: View {
 							.background(Color.primary.opacity(0.1))
 							.cornerRadius(10)
 						}
-						AddComment()
+						AddComment(logID: self.log.data.id, comments: self.comments)
 
 					}
 					Spacer()
 				}.padding()
-				.padding([.top], 50)
-				.padding([.bottom], 150)
-
-			}
+			}.frame(height: geometry.size.height)
 
 		}
-		.edgesIgnoringSafeArea(.top)
+//		.edgesIgnoringSafeArea(.top)
 		.onAppear(perform: {
 			self.comments.getComments(logID: String(self.log.data.id))
 		})
+		.onDisappear(perform: {
+			self.comments.comments = Comment()
+		})
+			.navigationBarTitle("Detail Log", displayMode: .inline)
     }
 
 	struct AddComment: View {
 		@State var text: String = ""
+		var logID: Int
+		@ObservedObject var comments: CommentViewData
 		var body: some View {
-			VStack() {
+			HStack() {
 				TextField("Add a comment", text: $text)
-			}
+				Button(action: {
+					self.comments.addComment(logID: self.logID, content: self.text)
+					self.text = ""
+				}) {
+					Text("Send")
+				}
+			}.keyboardObserving()
 		}
 	}
 }

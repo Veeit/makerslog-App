@@ -34,6 +34,11 @@
 		566F1C8223D8B99500518FFF /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* LoginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
+		5670F30A23F5B4AB00B1D96E /* discussions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30923F5B4AB00B1D96E /* discussions.swift */; };
+		5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */; };
+		5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30D23F5E21700B1D96E /* discussionResponse.swift */; };
+		5670F31023F5E30500B1D96E /* DiscussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */; };
+		5670F31223F5E45300B1D96E /* DiscussionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */; };
 		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
@@ -125,6 +130,11 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		5670F30923F5B4AB00B1D96E /* discussions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discussions.swift; sourceTree = "<group>"; };
+		5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
+		5670F30D23F5E21700B1D96E /* discussionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discussionResponse.swift; sourceTree = "<group>"; };
+		5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionResponse.swift; sourceTree = "<group>"; };
+		5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsDetailView.swift; sourceTree = "<group>"; };
 		56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedItemData.swift; sourceTree = "<group>"; };
 		56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseModel.swift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
@@ -278,6 +288,8 @@
 				56682BD123E610D700EF2C5B /* UserView.swift */,
 				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
 				560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */,
+				5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */,
+				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -354,6 +366,7 @@
 				566F1C7423D7977700518FFF /* CommentViewData.swift */,
 				56D4E45D23E9CCA900679DD4 /* AddLogData.swift */,
 				56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */,
+				5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -381,6 +394,8 @@
 				560EFC9223EAF1F500E0B172 /* Notification.swift */,
 				560EFC9423EB028300E0B172 /* userProducts.swift */,
 				56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */,
+				5670F30923F5B4AB00B1D96E /* discussions.swift */,
+				5670F30D23F5E21700B1D96E /* discussionResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -704,6 +719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5670F30A23F5B4AB00B1D96E /* discussions.swift in Sources */,
 				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
 				56BE7B4423F0A685006EE3AF /* LogFeedItemData.swift in Sources */,
@@ -716,6 +732,7 @@
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
 				56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */,
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
+				5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */,
 				560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */,
 				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
@@ -729,6 +746,8 @@
 				56682BD223E610D700EF2C5B /* UserView.swift in Sources */,
 				566DF0D423DF01E50085C318 /* tabView.swift in Sources */,
 				566F1C7323D7970300518FFF /* commentStruct.swift in Sources */,
+				5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */,
+				5670F31023F5E30500B1D96E /* DiscussionResponse.swift in Sources */,
 				56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */,
 				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
@@ -738,6 +757,7 @@
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
 				560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */,
 				566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */,
+				5670F31223F5E45300B1D96E /* DiscussionsDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,7 +967,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -968,7 +988,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
