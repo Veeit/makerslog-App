@@ -8,6 +8,7 @@
 
 import SwiftUI
 import URLImage
+import KeyboardObserving
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
@@ -33,22 +34,46 @@ struct DiscussionsDetailView: View {
 						Text("\(self.data.discussion.title)")
 							.font(.title)
 							.bold()
-							.frame(minWidth: 0, maxWidth: .infinity)
+							.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
 							.lineLimit(20000)
+							.multilineTextAlignment(.leading)
 					}
 					Text("\(self.data.discussion.body)")
 						.lineLimit(20000)
-				}.padding([.bottom], 30)
+						.layoutPriority(2)
+						.padding([.bottom], 30)
+				}.layoutPriority(2)
 
 				if self.data.discussionResponse != nil {
 					ForEach(self.data.discussionResponse!) { response in
 						if response.parent_reply == nil {
 							ReplayView(response: response)
+							ForEach(self.data.getReplyReplys(reply: response)) { reply in
+								HStack() {
+									VStack(alignment: .leading) {
+										Text("\(reply.body)")
+										Text("@\(reply.owner.username)").bold()
+									}
+									if reply.praise > 0 {
+										Text("👏 \(reply.praise)")
+									}
+								}
+							}
 						}
 					}
 				} else {
 					Text("Loading ...!")
 				}
+
+				HStack() {
+					TextField("Add a comment", text: self.$data.reply)
+					Button(action: {
+						self.data.postReply()
+						self.data.reply = ""
+					}) {
+						Text("Send")
+					}
+				}.keyboardObserving()
 			}
 		}.onAppear(perform: {
 			self.data.getDissucionsReplies()
@@ -61,7 +86,7 @@ struct ReplayView: View {
 	var response: DiscussionResponseElement
 
 	var body: some View {
-		HStack() {
+		HStack(alignment: .top) {
 			URLImage(URL(string: response.owner.avatar)!,
 					 processors: [
 						Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
@@ -76,12 +101,11 @@ struct ReplayView: View {
 			}).frame(width: 60, height: 60)
 
 			VStack(alignment: .leading) {
-				Text("\(response.body)").lineLimit(2)
+				Text("\(response.body)").lineLimit(20000)
 
 				HStack() {
-					Text("@\(response.owner.username)")
+					Text("@\(response.owner.username)").bold()
 					Text("👏 \(response.praise)")
-						.lineLimit(20000)
 				}.padding([.top], 10)
 			}
 		}

@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import URLImage
+import KeyboardObserving
 
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
@@ -141,7 +142,7 @@ struct LogView: View {
 				}) {
 					Text("Send")
 				}
-			}
+			}.keyboardObserving()
 		}
 	}
 }

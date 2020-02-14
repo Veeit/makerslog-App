@@ -145,7 +145,7 @@ public struct RefreshableList<Content: View>: View {
 				self.data.pullStatus = CGFloat((bounds.origin.y - 106) / 80)
 				self.refresh(offset: bounds.origin.y)
 			}
-			.frame(height: geometry.size.height + 40)
+			.frame(height: geometry.size.height + 50)
 		}
     }
 
