@@ -11,11 +11,20 @@ import SwiftUI
 struct AddLogView: View {
 	@ObservedObject var data = AddLogData()
 
+    var sports = ["Soccer", "Rugby", "Cricket", "Tennis"]
+
+    @State private var selectedSport = 0
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
 			Spacer()
 
+			Picker(selection: $selectedSport, label: Text("Sport")) {
+				ForEach(0 ..< sports.count) {
+					Text(self.sports[$0]).tag($0)
+
+				}
+			}.pickerStyle(SegmentedPickerStyle())
 
 			TextField("Add new log", text: self.$data.text)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
