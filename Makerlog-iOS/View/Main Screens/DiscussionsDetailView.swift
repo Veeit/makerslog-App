@@ -54,9 +54,9 @@ struct DiscussionsDetailView: View {
 										Text("\(reply.body)")
 										Text("@\(reply.owner.username)").bold()
 									}
-									if reply.praise > 0 {
-										Text("👏 \(reply.praise)")
-									}
+//									if reply.praise > 0 {
+									Text(reply.praise > 0 ? "👏 \(reply.praise)" : "")
+//									}
 								}
 							}
 						}
