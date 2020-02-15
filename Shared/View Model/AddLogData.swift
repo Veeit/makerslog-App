@@ -49,6 +49,54 @@ class AddLogData: ObservableObject {
 	}
 }
 
+class UpdateLogData: ObservableObject {
+	@Published var text = ""
+	@Published var isDone = false
+	@Published var isProgress = false
+
+	@Published var log: Result
+	
+	init(log: Result) {
+		self.log = log
+		self.text = self.log.content
+		self.isDone = self.log.done
+		self.isProgress = self.log.inProgress
+	}
+	
+	func updateLog() {
+
+        let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token,
+						  "content": text,
+						  "done": "\(isDone)",
+						  "inProgress": "\(isProgress)",
+						  "due_at": ""]
+        let requestURL = "https://api.getmakerlog.com/tasks/239874/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .PATCH, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(AddLog.self, from: response.data)
+
+					self.isDone = false
+					self.isProgress = false
+					self.text = ""
+					print(data)
+                } catch {
+					print(error)
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+            }
+        }
+	}
+}
+
 class AddDiscussionData: AddLogData {
 	@Published var title = ""
 

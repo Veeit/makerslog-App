@@ -73,14 +73,17 @@ struct LogFeedItem: View {
 				}
 
 				if log.log.attachment != nil {
-					URLImage(URL(string: log.log.attachment!)!,
-							 content: {
-						$0.image
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.clipped()
-						.cornerRadius(7)
-					})
+					VStack(alignment: .center) {
+						URLImage(URL(string: log.log.attachment!)!,
+								 content: {
+							$0.image
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.clipped()
+							.cornerRadius(7)
+							.frame(maxHeight: 300)
+						}).frame(maxHeight: 300)
+					}.frame(minWidth: 0, maxWidth: .infinity)
 				}
 
 				HStack() {

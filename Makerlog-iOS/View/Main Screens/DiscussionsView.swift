@@ -13,6 +13,7 @@ struct DiscussionsView: View {
 	@EnvironmentObject var data: MakerlogAPI
 
     var body: some View {
+		//swiftlint:disable empty_parentheses_with_trailing_closure
 		NavigationView() {
 			List() {
 				if self.data.discussions != nil {
