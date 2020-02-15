@@ -62,7 +62,7 @@ struct DiscussionsDetailView: View {
 						}
 					}
 				} else {
-					Text("Loading ...!")
+					Text("loading ...!")
 				}
 
 				HStack() {

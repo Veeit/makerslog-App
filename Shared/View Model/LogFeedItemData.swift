@@ -11,7 +11,7 @@ import Combine
 
 class LogFeedItemData: ObservableObject {
 	@Published var log: Result
-	
+
 	init(log: Result) {
 		self.log = log
 	}

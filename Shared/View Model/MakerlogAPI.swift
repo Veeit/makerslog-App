@@ -11,6 +11,8 @@ import Combine
 //import OAuthSwift
 
 class MakerlogAPI: ObservableObject {
+	@Published var deleteItem = false
+
     @Published var logs = [Result]()
     @Published var isDone = false {
         didSet {
@@ -155,6 +157,28 @@ class MakerlogAPI: ObservableObject {
 					DispatchQueue.main.async {
 						self.discussions = data.results
 					}
+				} catch {
+					print(error)
+				}
+			case .failure(let error):
+				print(error)
+				if case .tokenExpired = error {
+				  print("old token")
+			   }
+			}
+		}
+	}
+	
+	func deleteLog(log: Result) {
+		let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters) { result in
+			switch result {
+			case .success(let response):
+				do {
+					self.getResult()
 				} catch {
 					print(error)
 				}

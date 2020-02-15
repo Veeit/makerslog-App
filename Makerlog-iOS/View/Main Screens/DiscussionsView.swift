@@ -45,7 +45,7 @@ struct DiscussionsView: View {
 						}
 					}
 				} else {
-					Text("loding ...")
+					Text("loading ...")
 				}
 
 			}.onAppear(perform: {
