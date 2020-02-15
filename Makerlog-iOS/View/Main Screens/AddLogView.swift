@@ -14,8 +14,6 @@ struct AddLogView: View {
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
-			Spacer()
-
 
 			TextField("Add new log", text: self.$data.text)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
@@ -51,7 +49,7 @@ struct AddLogView: View {
 				self.data.isProgress = false
 				UIApplication.shared.windows.first?.endEditing(true)
 			}
-		}.padding([.leading, .trailing], 20)
+		}.navigationBarTitle("Log your task")
     }
 }
 

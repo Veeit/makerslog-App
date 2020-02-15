@@ -65,7 +65,11 @@ class MakerlogAPI: ObservableObject {
 				case .finished:
 					break
 				case .failure(let error):
-					fatalError(error.localizedDescription)
+					if error.localizedDescription == "The request timed out." {
+						print("time out")
+					} else {
+						fatalError(error.localizedDescription)
+					}
 				}
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {

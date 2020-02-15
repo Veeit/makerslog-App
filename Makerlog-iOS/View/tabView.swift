@@ -32,7 +32,7 @@ struct TabScreen: View {
 			.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
 
             VStack {
-				AddLogView()
+				AddView()
 			}
             .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
 

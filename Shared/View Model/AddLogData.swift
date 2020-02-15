@@ -48,3 +48,53 @@ class AddLogData: ObservableObject {
         }
 	}
 }
+
+class AddDiscussionData: AddLogData {
+	@Published var title = ""
+
+	@Published var discussionType: DiscussionTypes = .text
+	enum DiscussionTypes {
+		case text
+		case question
+		case link
+	}
+
+	func createNewDiscussion() {
+		var typeParameter = ""
+		switch discussionType {
+		case .text:
+			typeParameter = "TEXT"
+		case .question:
+			typeParameter = "QUESTION"
+		case .link:
+			typeParameter = "LINK"
+		}
+
+		let token = oauthswift.client.credential.oauthToken
+		let parameters = ["token": token,
+						  "body": text,
+						  "type": typeParameter,
+						  "title": title]
+        let requestURL = "https://api.getmakerlog.com/discussions/"
+
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(AddLog.self, from: response.data)
+
+					self.text = ""
+					print(data)
+                } catch {
+					print(error)
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+            }
+        }
+	}
+}
