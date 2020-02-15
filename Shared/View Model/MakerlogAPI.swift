@@ -172,7 +172,7 @@ class MakerlogAPI: ObservableObject {
 			}
 		}
 	}
-	
+
 	func deleteLog(log: Result) {
 		let token = oauthswift.client.credential.oauthToken
 		let parameters = ["token": token]
