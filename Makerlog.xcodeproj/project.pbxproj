@@ -39,6 +39,9 @@
 		5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30D23F5E21700B1D96E /* discussionResponse.swift */; };
 		5670F31023F5E30500B1D96E /* DiscussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */; };
 		5670F31223F5E45300B1D96E /* DiscussionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */; };
+		567B8A8E23F7024600952D4C /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B8A8D23F7024600952D4C /* AddView.swift */; };
+		567B8A9123F815FF00952D4C /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 567B8A9023F815FF00952D4C /* SwiftUIX */; };
+		567B8A9323F81C9800952D4C /* TextView in Resources */ = {isa = PBXBuildFile; fileRef = 567B8A9223F81C9800952D4C /* TextView */; };
 		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
@@ -135,6 +138,8 @@
 		5670F30D23F5E21700B1D96E /* discussionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discussionResponse.swift; sourceTree = "<group>"; };
 		5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionResponse.swift; sourceTree = "<group>"; };
 		5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsDetailView.swift; sourceTree = "<group>"; };
+		567B8A8D23F7024600952D4C /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		567B8A9223F81C9800952D4C /* TextView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextView; sourceTree = "<group>"; };
 		56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedItemData.swift; sourceTree = "<group>"; };
 		56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseModel.swift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
+				567B8A9123F815FF00952D4C /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +296,7 @@
 				560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */,
 				5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */,
 				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
+				567B8A8D23F7024600952D4C /* AddView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				567B8A9223F81C9800952D4C /* TextView */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
 			);
@@ -483,6 +491,7 @@
 				56BE7B3823EF462D006EE3AF /* KeychainSwift */,
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
+				567B8A9023F815FF00952D4C /* SwiftUIX */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -627,6 +636,7 @@
 				56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -647,6 +657,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567B8A9323F81C9800952D4C /* TextView in Resources */,
 				560E9FB023D5DB5600A12CF5 /* LaunchScreen.storyboard in Resources */,
 				560E9FAD23D5DB5500A12CF5 /* Preview Assets.xcassets in Resources */,
 				560E9FAA23D5DB5500A12CF5 /* Assets.xcassets in Resources */,
@@ -731,6 +742,7 @@
 				566F1C8023D8A59B00518FFF /* LogViewData.swift in Sources */,
 				560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */,
 				56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */,
+				567B8A8E23F7024600952D4C /* AddView.swift in Sources */,
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
 				5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */,
 				560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */,
@@ -1293,6 +1305,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1328,6 +1348,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		567B8A9023F815FF00952D4C /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
 		56BE7B3323EF4297006EE3AF /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;
