@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 //import OAuthSwift
+import SwiftUI
 
 class MakerlogAPI: ObservableObject {
 	@Published var deleteItem = false
@@ -119,6 +120,9 @@ class MakerlogAPI: ObservableObject {
 			switch result {
 			case .success(let response):
 				do {
+					let generator = UINotificationFeedbackGenerator()
+					generator.notificationOccurred(.success)
+					
 					let decoder = JSONDecoder()
 					let data = try decoder.decode(Praise.self, from: response.data)
 
@@ -179,6 +183,8 @@ class MakerlogAPI: ObservableObject {
 			case .success(let response):
 				do {
 					self.getResult()
+					let generator = UINotificationFeedbackGenerator()
+					generator.notificationOccurred(.success)
 				} catch {
 					print(error)
 				}

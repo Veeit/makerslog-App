@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import OAuthSwift
+import SwiftUI
 
 class AddLogData: ObservableObject {
 	@Published var text = ""
@@ -36,6 +37,8 @@ class AddLogData: ObservableObject {
 					self.isProgress = false
 					self.text = ""
 					print(data)
+					let generator = UINotificationFeedbackGenerator()
+					generator.notificationOccurred(.success)
                 } catch {
 					print(error)
                 }
@@ -84,6 +87,8 @@ class UpdateLogData: ObservableObject {
 					self.isProgress = false
 					self.text = ""
 					print(data)
+					let generator = UINotificationFeedbackGenerator()
+					generator.notificationOccurred(.success)
                 } catch {
 					print(error)
                 }
@@ -134,6 +139,8 @@ class AddDiscussionData: AddLogData {
 
 					self.text = ""
 					print(data)
+					let generator = UINotificationFeedbackGenerator()
+					generator.notificationOccurred(.success)
                 } catch {
 					print(error)
                 }
