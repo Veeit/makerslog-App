@@ -183,8 +183,8 @@ class MakerlogAPI: ObservableObject {
 			case .success(let response):
 				do {
 					self.getResult()
-					let generator = UINotificationFeedbackGenerator()
-					generator.notificationOccurred(.success)
+//					let generator = UINotificationFeedbackGenerator()
+//					generator.notificationOccurred(.success)
 				} catch {
 					print(error)
 				}
