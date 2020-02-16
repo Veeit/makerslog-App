@@ -39,7 +39,6 @@ struct LogInteractive: View {
 					Text("Reply")
 						.onTapGesture {
 							self.showDetailView.toggle()
-							
 						}
 						.padding(4)
 						.cornerRadius(6)
