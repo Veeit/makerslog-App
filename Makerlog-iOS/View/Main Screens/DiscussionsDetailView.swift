@@ -15,65 +15,99 @@ struct DiscussionsDetailView: View {
 
     var body: some View {
 		VStack() {
-			List() {
-				VStack(alignment: .leading) {
-					HStack() {
-						URLImage(URL(string: self.data.discussion.owner.avatar)!,
-								 processors: [
-									Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
-							],
-								 content: {
-									$0.image
-										.resizable()
-										.aspectRatio(contentMode: .fit)
-										.clipped()
-										.cornerRadius(20)
-										.frame(width: 45, height: 45)
-						}).frame(width: 45, height: 45)
+			ZStack() {
+				List() {
+					VStack(alignment: .leading) {
+						HStack() {
+							URLImage(URL(string: self.data.discussion.owner.avatar)!,
+									 processors: [
+										Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
+								],
+									 content: {
+										$0.image
+											.resizable()
+											.aspectRatio(contentMode: .fit)
+											.clipped()
+											.cornerRadius(20)
+											.frame(width: 45, height: 45)
+							}).frame(width: 45, height: 45)
 
-						Text("\(self.data.discussion.title)")
-							.font(.title)
-							.bold()
-							.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+							Text("\(self.data.discussion.title)")
+								.font(.title)
+								.bold()
+								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+								.lineLimit(20000)
+								.multilineTextAlignment(.leading)
+						}
+						Text("\(self.data.discussion.body)")
 							.lineLimit(20000)
-							.multilineTextAlignment(.leading)
-					}
-					Text("\(self.data.discussion.body)")
-						.lineLimit(20000)
-						.layoutPriority(2)
-						.padding([.bottom], 30)
-				}.layoutPriority(2)
+							.layoutPriority(2)
+							.padding([.bottom], 30)
+					}.layoutPriority(2)
 
-				if self.data.discussionResponse != nil {
-					ForEach(self.data.discussionResponse!) { response in
-						if response.parent_reply == nil {
-							ReplayView(response: response)
-							ForEach(self.data.getReplyReplys(reply: response)) { reply in
-								HStack() {
+					if self.data.discussionResponse != nil {
+						ForEach(self.data.discussionResponse!) { response in
+							if response.parent_reply == nil {
+								VStack(alignment: .leading) {
+									ReplayView(response: response)
 									VStack(alignment: .leading) {
-										Text("\(reply.body)")
-										Text("@\(reply.owner.username)").bold()
+										ForEach(self.data.getReplyReplys(reply: response)) { reply in
+												HStack() {
+//													Disvider()
+													VStack() {
+//														Image(systemName: "arrow.uturn.left.circle")
+														URLImage(URL(string: "\(reply.owner.avatar)")!,
+																 processors: [
+																	Resize(size: CGSize(width: 30, height: 30), scale: UIScreen.main.scale)
+															],
+																 content: {
+																	$0.image
+																		.resizable()
+																		.aspectRatio(contentMode: .fit)
+																		.clipped()
+																		.cornerRadius(20)
+																		.frame(width: 45, height: 45)
+														})
+															.frame(width: 30, height: 30)
+															.padding(10)
+													}
+
+													VStack(alignment: .leading) {
+														Text("\(reply.body)").lineLimit(2000)
+														HStack() {
+															Text("@\(reply.owner.username)").bold()
+															Text("👏 \(reply.praise)")
+															Spacer()
+														}
+													}
+											}
+										}
 									}
-//									if reply.praise > 0 {
-									Text(reply.praise > 0 ? "👏 \(reply.praise)" : "")
-//									}
+									.padding([.leading], 40)
 								}
 							}
 						}
+					} else {
+						Text("loading ...!")
 					}
-				} else {
-					Text("loading ...!")
-				}
 
-				HStack() {
-					TextField("Add a comment", text: self.$data.reply)
-					Button(action: {
-						self.data.postReply()
-						self.data.reply = ""
-					}) {
-						Text("Send")
+				}.padding([.bottom], 60)
+
+				VStack() {
+					Spacer()
+					HStack() {
+						TextField("Add a comment", text: self.$data.reply)
+						Button(action: {
+							self.data.postReply()
+							self.data.reply = ""
+						}) {
+							Text("Send")
+						}
 					}
-				}.keyboardObserving()
+					.keyboardObserving()
+					.padding()
+					.background(Color.systemBackground)
+				}
 			}
 		}.onAppear(perform: {
 			self.data.getDissucionsReplies()
@@ -87,18 +121,20 @@ struct ReplayView: View {
 
 	var body: some View {
 		HStack(alignment: .top) {
-			URLImage(URL(string: response.owner.avatar)!,
-					 processors: [
-						Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
-				],
-					 content: {
-						$0.image
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.clipped()
-							.cornerRadius(20)
-							.frame(width: 60, height: 60)
-			}).frame(width: 60, height: 60)
+			VStack() {
+				URLImage(URL(string: response.owner.avatar)!,
+						 processors: [
+							Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
+					],
+						 content: {
+							$0.image
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.clipped()
+								.cornerRadius(20)
+								.frame(width: 60, height: 60)
+				}).frame(width: 60, height: 60)
+			}
 
 			VStack(alignment: .leading) {
 				Text("\(response.body)").lineLimit(20000)
