@@ -33,17 +33,21 @@ struct LogInteractive: View {
 				.font(.footnote)
 
 			Spacer()
-			if showDetailView != nil {
-				HStack() {
-					Image(systemName: "arrow.turn.left.up").imageScale(.small)
-					Text("Reply")
-						.onTapGesture {
-							self.showDetailView.toggle()
-						}
-						.padding(4)
-						.cornerRadius(6)
-						.font(.footnote)
-				}
+//			if showDetailView != nil {
+//				HStack() {
+//					Image(systemName: "arrow.turn.left.up").imageScale(.small)
+//					Text("Reply")
+//						.onTapGesture {
+//							self.showDetailView.toggle()
+//						}
+//						.padding(4)
+//						.cornerRadius(6)
+//						.font(.footnote)
+//				}
+//			}
+			HStack() {
+				Image(systemName: "bubble.right")
+				Text("\(self.log.data.commentCount)")
 			}
 			Spacer()
 			HStack() {

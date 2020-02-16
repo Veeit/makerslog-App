@@ -31,7 +31,7 @@ struct LogView: View {
 									 processors: [
 										 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
 									 ],
-									 placeholder: Image("github"),
+									 placeholder: Image("placeholder"),
 									 content: {
 								$0.image
 								.resizable()
@@ -76,7 +76,7 @@ struct LogView: View {
 							ForEach(self.log.data.projectSet) { project in
 								VStack(alignment: .leading) {
 									ProductView(data: ProductViewData(projectID: String(project.id)))
-								}
+								}.padding([.top, .bottom], 10)
 							}
 						}
 					}
@@ -90,14 +90,14 @@ struct LogView: View {
 					if self.log.data.attachment != nil {
 						Section() {
 							URLImage(URL(string: self.log.data.attachment!)!,
-									 placeholder: Image("github"),
+								 placeholder: Image("placeholder"),
 								 content: {
-							$0.image
-							.resizable()
-								.aspectRatio(contentMode: .fit)
-							.clipped()
-							.cornerRadius(7)
-							.frame( maxWidth: geometry.size.width - 20)
+									$0.image
+									.resizable()
+									.aspectRatio(contentMode: .fit)
+									.clipped()
+									.cornerRadius(7)
+									.frame( maxWidth: geometry.size.width - 20)
 							})
 							.frame( maxWidth: geometry.size.width - 20)
 						}
@@ -149,7 +149,7 @@ struct LogView: View {
 								Resize(size: CGSize(width: 40, height: 40),
 								scale: UIScreen.main.scale)
 							 ],
-							 placeholder: Image("github"),
+							 placeholder: Image("placeholder"),
 							 content: {
 						$0.image
 						.resizable()
