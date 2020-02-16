@@ -23,6 +23,7 @@ struct ProductView: View {
 								 processors: [ Resize(size: CGSize(width: 70, height: 70),
 													  scale: UIScreen.main.scale)
 											 ],
+								 placeholder: Image("github"),
 								 content: {
 							$0.image
 							.resizable()
@@ -39,17 +40,18 @@ struct ProductView: View {
 						}
 						Spacer()
 					}
-					.padding(10)
+					.padding([.leading, .trailing], 10)
 					.frame(minWidth: 0, maxWidth: .infinity)
-					.background(Color.primary.opacity(0.1))
-					.cornerRadius(10)
+					
+//					.background(Color.primary.opacity(0.1))
+//					.cornerRadius(10)
 				}
 			} else {
 				Text("no product set 🤷🏻‍♂️")
-				.padding(10)
+				.padding([.leading, .trailing], 10)
 				.frame(minWidth: 0, maxWidth: .infinity)
-				.background(Color.primary.opacity(0.1))
-				.cornerRadius(10)
+//				.background(Color.primary.opacity(0.1))
+//				.cornerRadius(10)
 			}
 		}
 	}

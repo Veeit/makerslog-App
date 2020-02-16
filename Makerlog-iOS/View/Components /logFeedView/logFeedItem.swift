@@ -10,32 +10,32 @@ import SwiftUI
 import URLImage
 
 struct LogFeedItem: View {
-	@ObservedObject var log: LogFeedItemData
-	@State var showDetailView = false
+	var log: LogViewData
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var makerlogAPI: MakerlogAPI
 	@EnvironmentObject var login: LoginData
+	@State var showDetailView = false
 
 	var body: some View {
 		let cmenu = ContextMenu {
 			Button("Open") {  self.showDetailView.toggle() }
-			Button("👏 \(self.log.log.praise)") {
-				self.makerlogAPI.addPraise(log: self.log.log)
+			Button("👏 \(self.log.data.praise)") {
+				self.makerlogAPI.addPraise(log: self.log.data)
 			}
-			if self.log.log.user.username == login.meData.first?.username ?? "" {
+			if self.log.data.user.username == login.meData.first?.username ?? "" {
 				Button("Delete") {
 					self.makerlogAPI.deleteItem.toggle()
 				}
 			}
 		}
 
-		return NavigationLink(destination: LogView(log: LogViewData(data: log.log)),
+		return NavigationLink(destination: LogView(log: log),
 							  isActive: self.$showDetailView) {
 
 			// swiftlint:disable empty_parentheses_with_trailing_closure
 			VStack(alignment: .leading) {
 				HStack() {
-					URLImage(URL(string: log.log.user.avatar)!,
+					URLImage(URL(string: log.data.user.avatar)!,
 							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
 							 content: {
 						$0.image
@@ -46,23 +46,23 @@ struct LogFeedItem: View {
 					})
 						.frame(width: 40, height: 40)
 
-					Text(self.log.log.user.firstName != "" && self.log.log.user.lastName != "" ? "\(self.log.log.user.firstName ) \(self.log.log.user.lastName)" : self.log.log.user.username)
+					Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
 						.font(.subheadline).bold()
 					Spacer()
 
-					Text("\(log.log.user.makerScore) 🏆")
+					Text("\(log.data.user.makerScore) 🏆")
 				}
 
 				HStack(alignment: .top) {
-					if log.log.done {
+					if log.data.done {
 						Image(systemName: "checkmark.circle").padding([.top], 5)
 					}
-					if log.log.inProgress {
+					if log.data.inProgress {
 						Image(systemName: "circle").padding([.top], 5)
 					}
-					EventImg(event: log.log.event ?? "")
+					EventImg(event: log.data.event ?? "")
 
-					Text(log.log.content)
+					Text(log.data.content)
 						.padding([.bottom], 15)
 						.lineLimit(20)
 
@@ -72,9 +72,9 @@ struct LogFeedItem: View {
 //					}
 				}
 
-				if log.log.attachment != nil {
+				if log.data.attachment != nil {
 					VStack(alignment: .center) {
-						URLImage(URL(string: log.log.attachment!)!,
+						URLImage(URL(string: log.data.attachment!)!,
 								 content: {
 							$0.image
 							.resizable()
@@ -86,53 +86,7 @@ struct LogFeedItem: View {
 					}.frame(minWidth: 0, maxWidth: .infinity)
 				}
 
-				HStack() {
-					Spacer()
-					Text("👏 \(self.log.log.praise)")
-						.onTapGesture {
-							self.makerlogAPI.addPraise(log: self.log.log)
-						}
-						.padding(4)
-						.cornerRadius(6)
-						.font(.footnote)
-
-					Spacer()
-					HStack() {
-						Image(systemName: "arrow.turn.left.up").imageScale(.small)
-						Text("Reply")
-							.onTapGesture {
-								self.showDetailView.toggle()
-							}
-							.padding(4)
-							.cornerRadius(6)
-							.font(.footnote)
-					}
-					Spacer()
-					HStack() {
-						Image(systemName: "link")
-						Text("Copy link")
-							.onTapGesture {
-								let link = "https://getmakerlog.com/tasks/\(self.log.log.id)"
-								UIPasteboard.general.string = link
-							}
-							.padding(4)
-							.cornerRadius(6)
-							.font(.footnote)
-					}
-					Spacer()
-					if self.log.log.user.username == login.meData.first?.username ?? "" {
-						HStack() {
-							Image(systemName: "trash")
-							Text("Delete")
-								.onTapGesture {
-									self.makerlogAPI.deleteItem.toggle()
-								}
-								.padding(4)
-								.cornerRadius(6)
-								.font(.footnote)
-						}
-					}
-				}
+				LogInteractive(log: log, showDetailView: self.$showDetailView)
 			}
 		}.onTapGesture {
 			self.showDetailView.toggle()
@@ -142,7 +96,7 @@ struct LogFeedItem: View {
 	}
 
 	func anAlert() -> Alert {
-        let send = ActionSheet.Button.default(Text("Send")) { self.makerlogAPI.deleteLog(log: self.log.log) }
+        let send = ActionSheet.Button.default(Text("Send")) { self.makerlogAPI.deleteLog(log: self.log.data) }
 
         // If the cancel label is omitted, the default "Cancel" text will be shown
 		let cancel = ActionSheet.Button.cancel(Text("Abort")) { self.makerlogAPI.deleteItem.toggle() }

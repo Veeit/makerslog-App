@@ -43,10 +43,10 @@ class MakerlogAPI: ObservableObject {
 
     private func startTimer() {
 		self.getResult()
-		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-			self.getResult()
+//		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+//			self.getResult()
 			print("run")
-		}
+//		}
     }
 
 	private var cancellable: AnyCancellable?

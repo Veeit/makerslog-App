@@ -42,11 +42,11 @@
 		567B8A8E23F7024600952D4C /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B8A8D23F7024600952D4C /* AddView.swift */; };
 		567B8A9123F815FF00952D4C /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 567B8A9023F815FF00952D4C /* SwiftUIX */; };
 		567B8A9323F81C9800952D4C /* TextView in Resources */ = {isa = PBXBuildFile; fileRef = 567B8A9223F81C9800952D4C /* TextView */; };
+		567B8A9523F8895600952D4C /* logInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B8A9423F8895600952D4C /* logInteractive.swift */; };
 		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
 		56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B4123F07CE1006EE3AF /* OAuthSwift */; };
-		56BE7B4423F0A685006EE3AF /* LogFeedItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */; };
 		56BE7B4623F0AA3B006EE3AF /* PraiseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */; };
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
@@ -140,7 +140,7 @@
 		5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsDetailView.swift; sourceTree = "<group>"; };
 		567B8A8D23F7024600952D4C /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		567B8A9223F81C9800952D4C /* TextView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextView; sourceTree = "<group>"; };
-		56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedItemData.swift; sourceTree = "<group>"; };
+		567B8A9423F8895600952D4C /* logInteractive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInteractive.swift; sourceTree = "<group>"; };
 		56BE7B4523F0AA3B006EE3AF /* PraiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseModel.swift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
 		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
@@ -335,6 +335,7 @@
 			children = (
 				56682BCE23E5C88000EF2C5B /* logFeedItem.swift */,
 				56D4E45923E9C26100679DD4 /* EventImg.swift */,
+				567B8A9423F8895600952D4C /* logInteractive.swift */,
 			);
 			path = logFeedView;
 			sourceTree = "<group>";
@@ -373,7 +374,6 @@
 				56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */,
 				566F1C7423D7977700518FFF /* CommentViewData.swift */,
 				56D4E45D23E9CCA900679DD4 /* AddLogData.swift */,
-				56BE7B4323F0A685006EE3AF /* LogFeedItemData.swift */,
 				5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */,
 			);
 			path = "View Model";
@@ -733,7 +733,6 @@
 				5670F30A23F5B4AB00B1D96E /* discussions.swift in Sources */,
 				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
-				56BE7B4423F0A685006EE3AF /* LogFeedItemData.swift in Sources */,
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
@@ -764,6 +763,7 @@
 				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
 				560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */,
 				566F1C6A23D7513800518FFF /* ProductViewData.swift in Sources */,
+				567B8A9523F8895600952D4C /* logInteractive.swift in Sources */,
 				56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */,
 				56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */,
 				56C94A8C23D6FBF5007840DB /* LogView.swift in Sources */,
