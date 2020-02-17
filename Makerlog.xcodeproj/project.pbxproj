@@ -40,7 +40,6 @@
 		5670F31023F5E30500B1D96E /* DiscussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30F23F5E30500B1D96E /* DiscussionResponse.swift */; };
 		5670F31223F5E45300B1D96E /* DiscussionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */; };
 		567B8A8E23F7024600952D4C /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B8A8D23F7024600952D4C /* AddView.swift */; };
-		567B8A9123F815FF00952D4C /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 567B8A9023F815FF00952D4C /* SwiftUIX */; };
 		567B8A9323F81C9800952D4C /* TextView in Resources */ = {isa = PBXBuildFile; fileRef = 567B8A9223F81C9800952D4C /* TextView */; };
 		567B8A9523F8895600952D4C /* logInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B8A9423F8895600952D4C /* logInteractive.swift */; };
 		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
@@ -65,6 +64,7 @@
 		56D4E47823EAB73900679DD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D4E47623EAB73900679DD4 /* Main.storyboard */; };
 		56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */; };
 		56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */; };
+		56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E3674623FAE0F600C69F8F /* SwiftUIX */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +175,7 @@
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
-				567B8A9123F815FF00952D4C /* SwiftUIX in Frameworks */,
+				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +488,7 @@
 				56BE7B3823EF462D006EE3AF /* KeychainSwift */,
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
-				567B8A9023F815FF00952D4C /* SwiftUIX */,
+				56E3674623FAE0F600C69F8F /* SwiftUIX */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -633,7 +633,7 @@
 				56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
-				567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1301,14 +1301,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1341,14 +1333,17 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		567B8A9023F815FF00952D4C /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 567B8A8F23F815FF00952D4C /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
 		56BE7B3323EF4297006EE3AF /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;
@@ -1368,6 +1363,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */;
 			productName = OAuthSwift;
+		};
+		56E3674623FAE0F600C69F8F /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */
 

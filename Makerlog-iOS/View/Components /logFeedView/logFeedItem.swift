@@ -63,8 +63,9 @@ struct LogFeedItem: View {
 					EventImg(event: log.data.event ?? "")
 
 					Text(log.data.content)
+						.lineLimit(nil)
+						.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 						.padding([.bottom], 15)
-						.lineLimit(20)
 
 //					if log.log.praise > 0 {
 //						Spacer()

@@ -9,6 +9,7 @@
 import SwiftUI
 import URLImage
 import KeyboardObserving
+import SwiftUIX
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
@@ -21,7 +22,7 @@ struct DiscussionsDetailView: View {
 						HStack() {
 							URLImage(URL(string: self.data.discussion.owner.avatar)!,
 									 processors: [
-										Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
+										Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
 								],
 									 content: {
 										$0.image
@@ -29,14 +30,14 @@ struct DiscussionsDetailView: View {
 											.aspectRatio(contentMode: .fit)
 											.clipped()
 											.cornerRadius(20)
-											.frame(width: 45, height: 45)
-							}).frame(width: 45, height: 45)
+											.frame(width: 60, height: 60)
+							}).frame(width: 60, height: 60)
 
 							Text("\(self.data.discussion.title)")
 								.font(.title)
 								.bold()
-								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-								.lineLimit(20000)
+								.lineLimit(nil)
+								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 								.multilineTextAlignment(.leading)
 						}
 						Text("\(self.data.discussion.body)")
@@ -52,38 +53,41 @@ struct DiscussionsDetailView: View {
 									ReplayView(response: response)
 									VStack(alignment: .leading) {
 										ForEach(self.data.getReplyReplys(reply: response)) { reply in
-												HStack() {
+											HStack(alignment: .top) {
 //													Disvider()
-													VStack() {
+												VStack() {
 //														Image(systemName: "arrow.uturn.left.circle")
-														URLImage(URL(string: "\(reply.owner.avatar)")!,
-																 processors: [
-																	Resize(size: CGSize(width: 30, height: 30), scale: UIScreen.main.scale)
-															],
-																 content: {
-																	$0.image
-																		.resizable()
-																		.aspectRatio(contentMode: .fit)
-																		.clipped()
-																		.cornerRadius(20)
-																		.frame(width: 45, height: 45)
-														})
-															.frame(width: 30, height: 30)
-															.padding(10)
-													}
+													URLImage(URL(string: "\(reply.owner.avatar)")!,
+															 processors: [
+																Resize(size: CGSize(width: 30, height: 30), scale: UIScreen.main.scale)
+														],
+															 content: {
+																$0.image
+																	.resizable()
+																	.aspectRatio(contentMode: .fit)
+																	.clipped()
+																	.cornerRadius(20)
+																	.frame(width: 45, height: 45)
+													})
+														.frame(width: 30, height: 30)
+														.padding(10)
+												}
 
-													VStack(alignment: .leading) {
-														Text("\(reply.body)").lineLimit(2000)
-														HStack() {
-															Text("@\(reply.owner.username)").bold()
-															Text("👏 \(reply.praise)")
-															Spacer()
-														}
+												VStack(alignment: .leading) {
+													Text("\(reply.body)")
+														.lineLimit(nil)
+														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+													HStack() {
+														Text("@\(reply.owner.username)").bold()
+														Text("👏 \(reply.praise)")
+														Spacer()
 													}
+													Divider()
+												}
 											}
 										}
 									}
-									.padding([.leading], 40)
+									.padding([.leading], 30)
 								}
 							}
 						}
@@ -137,7 +141,9 @@ struct ReplayView: View {
 			}
 
 			VStack(alignment: .leading) {
-				Text("\(response.body)").lineLimit(20000)
+				Text("\(response.body)")
+					.lineLimit(nil)
+					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 
 				HStack() {
 					Text("@\(response.owner.username)").bold()

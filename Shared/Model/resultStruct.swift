@@ -21,7 +21,7 @@ struct Result: Codable, Identifiable, Equatable {
 	var id: Int
     let event: String?
     let done, inProgress: Bool
-    let content, createdAt, updatedAt: String
+	var content, createdAt, updatedAt: String
     let dueAt, doneAt: String?
 	var user: User
     let projectSet: [ProjectSet]

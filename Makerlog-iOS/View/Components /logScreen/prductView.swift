@@ -23,7 +23,7 @@ struct ProductView: View {
 								 processors: [ Resize(size: CGSize(width: 70, height: 70),
 													  scale: UIScreen.main.scale)
 											 ],
-								 placeholder: Image("github"),
+								 placeholder: Image("placeholer"),
 								 content: {
 							$0.image
 							.resizable()

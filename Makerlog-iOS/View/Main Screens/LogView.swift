@@ -102,7 +102,7 @@ struct LogView: View {
 							.frame( maxWidth: geometry.size.width - 20)
 						}
 					}
-				}
+				}.padding([.bottom], 60)
 
 				VStack() {
 					Spacer()
