@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-//import SwiftUIX
+import SwiftUIX
 
 struct AddView: View {
     var types = ["log", "discussion", "milestone", "project"]
@@ -49,10 +49,10 @@ struct AddDiscussionView: View {
 			TextField("Add discussion title", text: self.$data.title)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 
-//			TextView("Add discussion text", text: self.$data.text)
-//				.padding(5)
-//				.addBorder(Color.gray, width: 1, cornerRadius: 7)
-			
+			TextView("Add discussion text", text: self.$data.text)
+				.padding(5)
+				.addBorder(Color.gray, width: 1, cornerRadius: 7)
+
 			Spacer()
 
 			HStack() {
