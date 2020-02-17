@@ -36,15 +36,18 @@ struct LogFeedItem: View {
 			VStack(alignment: .leading) {
 				HStack() {
 					URLImage(URL(string: log.data.user.avatar)!,
-							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
+							 processors: [
+								 Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale)
+							 ],
+							 placeholder: Image("placeholder"),
 							 content: {
 						$0.image
-						.resizable()
-						.aspectRatio(contentMode: .fill)
-						.clipped()
-						.cornerRadius(20)
+							.resizable()
+							.aspectRatio(contentMode: .fill)
+							.clipped()
+							.cornerRadius(20)
+							.frame(width: 40, height: 40)
 					})
-						.frame(width: 40, height: 40)
 
 					Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
 						.font(.subheadline).bold()
@@ -64,6 +67,7 @@ struct LogFeedItem: View {
 
 					Text(log.data.content)
 						.lineLimit(nil)
+						.fixedSize(horizontal: false, vertical: true)
 						.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 						.padding([.bottom], 15)
 

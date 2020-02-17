@@ -37,6 +37,7 @@ struct DiscussionsDetailView: View {
 								.font(.title)
 								.bold()
 								.lineLimit(nil)
+								.fixedSize(horizontal: false, vertical: true)
 								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 								.multilineTextAlignment(.leading)
 						}
@@ -44,6 +45,8 @@ struct DiscussionsDetailView: View {
 							.lineLimit(20000)
 							.layoutPriority(2)
 							.padding([.bottom], 30)
+							.fixedSize(horizontal: false, vertical: true)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 					}.layoutPriority(2)
 
 					if self.data.discussionResponse != nil {
@@ -77,6 +80,7 @@ struct DiscussionsDetailView: View {
 													Text("\(reply.body)")
 														.lineLimit(nil)
 														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+														.fixedSize(horizontal: false, vertical: true)
 													HStack() {
 														Text("@\(reply.owner.username)").bold()
 														Text("👏 \(reply.praise)")

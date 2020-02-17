@@ -68,6 +68,7 @@ struct LogView: View {
 							.cornerRadius(10)
 							.lineLimit(200)
 							.multilineTextAlignment(.leading)
+							.fixedSize(horizontal: false, vertical: true)
 					}
 					LogInteractive(log: self.log, showDetailView: self.$showDetailView).offset(x: -10)
 
@@ -167,6 +168,8 @@ struct LogView: View {
 					Spacer()
 				}
 				Text(comment.content)
+					.fixedSize(horizontal: false, vertical: true)
+					.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
 					.lineLimit(200)
 
 			}
