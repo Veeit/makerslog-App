@@ -68,7 +68,6 @@ struct LogFeedItem: View {
 					Text(log.data.content)
 						.lineLimit(nil)
 						.fixedSize(horizontal: false, vertical: true)
-						.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 						.padding([.bottom], 15)
 
 //					if log.log.praise > 0 {
@@ -88,7 +87,7 @@ struct LogFeedItem: View {
 							.cornerRadius(7)
 							.frame(maxHeight: 300)
 						}).frame(maxHeight: 300)
-					}.frame(minWidth: 0, maxWidth: .infinity)
+					}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
 				}
 
 				LogInteractive(log: log, showDetailView: self.$showDetailView)
