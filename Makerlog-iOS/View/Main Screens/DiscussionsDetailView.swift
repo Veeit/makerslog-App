@@ -66,6 +66,7 @@ struct DiscussionsDetailView: View {
 								.padding([.bottom], 30)
 								.fixedSize(horizontal: false, vertical: true)
 						}
+						LinkPreview(links: LinkData(text: self.data.discussion.body))
 						
 					}.layoutPriority(2)
 
@@ -74,50 +75,55 @@ struct DiscussionsDetailView: View {
 							if response.parent_reply == nil {
 								VStack(alignment: .leading) {
 									ReplayView(response: response)
+									LinkPreview(links: LinkData(text: response.body))
+									
 									VStack(alignment: .leading) {
 										ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
-											HStack(alignment: .top) {
-//													Disvider()
-												VStack() {
-													URLImage(URL(string: "\(reply.owner.avatar)")!,
-															 processors: [
-																Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
-														],
-															 placeholder: { _ in
-																 Image("placeholer")
-																	 .resizable()
-																	 .aspectRatio(contentMode: .fit)
-																	 .clipped()
-																	 .cornerRadius(20)
-																	 .frame(width: 45, height: 45)
-															 },
-															 content: {
-																$0.image
-																	.resizable()
-																	.aspectRatio(contentMode: .fit)
-																	.clipped()
-																	.cornerRadius(20)
-																	.frame(width: 45, height: 45)
-													})
-														.frame(width: 45, height: 45)
-												}
-
-												VStack(alignment: .leading) {
-													Divider()
-													Text("\(reply.body)")
-														.lineLimit(nil)
-														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-														.fixedSize(horizontal: false, vertical: true)
-													HStack() {
-														Text("@\(reply.owner.username)").bold()
-														Text("👏 \(reply.praise)")
-														Spacer()
+											VStack() {
+												HStack(alignment: .top) {
+													VStack() {
+														URLImage(URL(string: "\(reply.owner.avatar)")!,
+																 processors: [
+																	Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
+															],
+																 placeholder: { _ in
+																	 Image("placeholer")
+																		 .resizable()
+																		 .aspectRatio(contentMode: .fit)
+																		 .clipped()
+																		 .cornerRadius(20)
+																		 .frame(width: 45, height: 45)
+																 },
+																 content: {
+																	$0.image
+																		.resizable()
+																		.aspectRatio(contentMode: .fit)
+																		.clipped()
+																		.cornerRadius(20)
+																		.frame(width: 45, height: 45)
+														})
+															.frame(width: 45, height: 45)
 													}
+
+													VStack(alignment: .leading) {
+														Divider()
+														Text("\(reply.body)")
+															.lineLimit(nil)
+															.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+															.fixedSize(horizontal: false, vertical: true)
+														HStack() {
+															Text("@\(reply.owner.username)").bold()
+															Text("👏 \(reply.praise)")
+															Spacer()
+														}
+													}
+												}.padding([.leading], 30)
+												VStack() {
+													LinkPreview(links: LinkData(text: reply.body))
 												}
 											}
 										}
 									}
-									.padding([.leading], 30)
 								}
 							}
 						}
