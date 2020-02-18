@@ -10,6 +10,7 @@ import SwiftUI
 import URLImage
 import KeyboardObserving
 import SwiftUIX
+import MDText
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
@@ -23,7 +24,15 @@ struct DiscussionsDetailView: View {
 							URLImage(URL(string: self.data.discussion.owner.avatar)!,
 									 processors: [
 										Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
-								],
+									],
+									 placeholder: { _ in
+										 Image("placeholer")
+											 .resizable()
+											 .aspectRatio(contentMode: .fit)
+											 .clipped()
+											 .cornerRadius(20)
+											 .frame(width: 60, height: 60)
+									 },
 									 content: {
 										$0.image
 											.resizable()
@@ -43,12 +52,21 @@ struct DiscussionsDetailView: View {
 								.layoutPriority(2)
 						}
 
-						Text("\(self.data.discussion.body)")
-							.lineLimit(20000)
-							.layoutPriority(2)
-							.padding([.bottom], 30)
-							.fixedSize(horizontal: false, vertical: true)
-							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//
+						if self.data.discussion.body.count >= 8192 {
+							Text("\(self.data.discussion.body)")
+								.layoutPriority(2)
+								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+								.padding([.bottom], 30)
+								.fixedSize(horizontal: false, vertical: true)
+						} else {
+							MDText(markdown: "\(self.data.discussion.body)")
+								.layoutPriority(2)
+								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+								.padding([.bottom], 30)
+								.fixedSize(horizontal: false, vertical: true)
+						}
+						
 					}.layoutPriority(2)
 
 					if self.data.discussionResponse != nil {
@@ -63,8 +81,16 @@ struct DiscussionsDetailView: View {
 												VStack() {
 													URLImage(URL(string: "\(reply.owner.avatar)")!,
 															 processors: [
-																Resize(size: CGSize(width: 30, height: 30), scale: UIScreen.main.scale)
+																Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
 														],
+															 placeholder: { _ in
+																 Image("placeholer")
+																	 .resizable()
+																	 .aspectRatio(contentMode: .fit)
+																	 .clipped()
+																	 .cornerRadius(20)
+																	 .frame(width: 45, height: 45)
+															 },
 															 content: {
 																$0.image
 																	.resizable()
@@ -73,8 +99,7 @@ struct DiscussionsDetailView: View {
 																	.cornerRadius(20)
 																	.frame(width: 45, height: 45)
 													})
-														.frame(width: 30, height: 30)
-														.padding(10)
+														.frame(width: 45, height: 45)
 												}
 
 												VStack(alignment: .leading) {

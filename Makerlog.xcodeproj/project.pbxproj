@@ -22,6 +22,7 @@
 		560EFC9523EB028300E0B172 /* userProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9423EB028300E0B172 /* userProducts.swift */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
+		5622AFB423FBF54900CC1B76 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 5622AFB323FBF54900CC1B76 /* MDText */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* tabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* tabView.swift */; };
@@ -172,6 +173,7 @@
 			files = (
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
+				5622AFB423FBF54900CC1B76 /* MDText in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
@@ -486,6 +488,7 @@
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
 				56E3674623FAE0F600C69F8F /* SwiftUIX */,
+				5622AFB323FBF54900CC1B76 /* MDText */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -631,6 +634,7 @@
 				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1297,6 +1301,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lambdo-Labs/MDText.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1340,6 +1352,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5622AFB323FBF54900CC1B76 /* MDText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */;
+			productName = MDText;
+		};
 		56BE7B3323EF4297006EE3AF /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;

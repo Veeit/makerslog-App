@@ -22,6 +22,13 @@ struct UserView: View {
 			HStack(alignment: .center) {
 				URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
 						processors: [ Resize(size: CGSize(width: 130, height: 130), scale: UIScreen.main.scale) ],
+						 placeholder: { _ in
+							Image("placeholer")
+								.resizable()
+								.scaledToFill()
+								.cornerRadius(100)
+								.frame(width: 130, height: 130, alignment: .center)
+						},
 						content: {
 							$0.image
 								.resizable()
