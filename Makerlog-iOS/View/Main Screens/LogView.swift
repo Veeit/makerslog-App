@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import URLImage
 import KeyboardObserving
+import MDText
 
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
@@ -62,13 +63,25 @@ struct LogView: View {
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
 
-						Text(self.log.data.content)
-							.padding(10)
-							.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-							.cornerRadius(10)
-							.lineLimit(200)
-							.multilineTextAlignment(.leading)
-							.fixedSize(horizontal: false, vertical: true)
+						HStack() {
+							ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
+							EventImg(event: self.log.data.event ?? "")
+//							Text(self.log.data.content)
+//								.padding(10)
+//								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//								.cornerRadius(10)
+//								.lineLimit(200)
+//								.multilineTextAlignment(.leading)
+//								.fixedSize(horizontal: false, vertical: true)
+							MDText(markdown: self.log.data.content)
+								.padding(10)
+								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+								.cornerRadius(10)
+								.lineLimit(200)
+								.multilineTextAlignment(.leading)
+								.fixedSize(horizontal: false, vertical: true)
+						}
+						
 					}
 					LogInteractive(log: self.log, showDetailView: self.$showDetailView).offset(x: -10)
 

@@ -64,12 +64,7 @@ struct LogFeedItem: View {
 				}
 
 				HStack(alignment: .top) {
-					if log.data.done {
-						Image(systemName: "checkmark.circle").padding([.top], 5)
-					}
-					if log.data.inProgress {
-						Image(systemName: "circle").padding([.top], 5)
-					}
+					ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
 					EventImg(event: log.data.event ?? "")
 
 					Text(log.data.content)
