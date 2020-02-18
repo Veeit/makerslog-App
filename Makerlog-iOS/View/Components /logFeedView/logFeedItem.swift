@@ -39,7 +39,7 @@ struct LogFeedItem: View {
 							 processors: [
 								 Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale)
 							 ],
-							 placeholder: Image("placeholder"),
+//							 placeholder: Image("placeholder"),
 							 content: {
 						$0.image
 							.resizable()
@@ -47,7 +47,7 @@ struct LogFeedItem: View {
 							.clipped()
 							.cornerRadius(20)
 							.frame(width: 40, height: 40)
-					})
+					}).frame(width: 40, height: 40)
 
 					Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
 						.font(.subheadline).bold()

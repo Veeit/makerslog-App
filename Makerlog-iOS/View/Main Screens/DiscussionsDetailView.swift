@@ -16,10 +16,10 @@ struct DiscussionsDetailView: View {
 
     var body: some View {
 		VStack() {
-			ZStack() {
+			ZStack(alignment: .top) {
 				List() {
 					VStack(alignment: .leading) {
-						HStack() {
+						HStack(alignment: .top) {
 							URLImage(URL(string: self.data.discussion.owner.avatar)!,
 									 processors: [
 										Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
@@ -37,10 +37,12 @@ struct DiscussionsDetailView: View {
 								.font(.title)
 								.bold()
 								.lineLimit(nil)
-								.fixedSize(horizontal: false, vertical: true)
 								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+								.fixedSize(horizontal: false, vertical: true)
 								.multilineTextAlignment(.leading)
+								.layoutPriority(2)
 						}
+
 						Text("\(self.data.discussion.body)")
 							.lineLimit(20000)
 							.layoutPriority(2)
@@ -55,11 +57,10 @@ struct DiscussionsDetailView: View {
 								VStack(alignment: .leading) {
 									ReplayView(response: response)
 									VStack(alignment: .leading) {
-										ForEach(self.data.getReplyReplys(reply: response)) { reply in
+										ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
 											HStack(alignment: .top) {
 //													Disvider()
 												VStack() {
-//														Image(systemName: "arrow.uturn.left.circle")
 													URLImage(URL(string: "\(reply.owner.avatar)")!,
 															 processors: [
 																Resize(size: CGSize(width: 30, height: 30), scale: UIScreen.main.scale)

@@ -14,14 +14,14 @@ struct DiscussionResponseElement: Codable, Identifiable {
     let owner: User
     let body: String
     let praise: Int
-    let createdAt, updatedAt: String?
+    let created_at, updated_at: String?
 
     enum CodingKeys: String, CodingKey {
         case id, parent
         case parent_reply
         case owner, body, praise
-        case createdAt
-        case updatedAt
+        case created_at
+        case updated_at
     }
 }
 
