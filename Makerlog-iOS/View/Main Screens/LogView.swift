@@ -66,23 +66,24 @@ struct LogView: View {
 						HStack() {
 							ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
 							EventImg(event: self.log.data.event ?? "")
-//							Text(self.log.data.content)
-//								.padding(10)
-//								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-//								.cornerRadius(10)
-//								.lineLimit(200)
-//								.multilineTextAlignment(.leading)
-//								.fixedSize(horizontal: false, vertical: true)
-							MDText(markdown: self.log.data.content)
+							Text(self.log.data.content)
 								.padding(10)
 								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
 								.cornerRadius(10)
 								.lineLimit(200)
 								.multilineTextAlignment(.leading)
 								.fixedSize(horizontal: false, vertical: true)
+//							MDText(markdown: self.log.data.content)
+//								.padding(10)
+//								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//								.cornerRadius(10)
+//								.lineLimit(200)
+//								.multilineTextAlignment(.leading)
+//								.fixedSize(horizontal: false, vertical: true)
 						}
-						
 					}
+					LinkPreview(links: LinkData(text: self.log.data.content))
+
 					LogInteractive(log: self.log, showDetailView: self.$showDetailView).offset(x: -10)
 
 					if self.log.data.projectSet.first?.id != nil {

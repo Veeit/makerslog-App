@@ -39,7 +39,7 @@ struct TabScreen: View {
 			VStack {
 				NotificationsView()
 			}
-            .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+			.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
 
         }
 		.sheet(isPresented: self.$data.userSheet, content: {UserView(login: self.login)})

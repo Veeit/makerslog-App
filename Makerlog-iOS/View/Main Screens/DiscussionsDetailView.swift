@@ -103,6 +103,7 @@ struct DiscussionsDetailView: View {
 												}
 
 												VStack(alignment: .leading) {
+													Divider()
 													Text("\(reply.body)")
 														.lineLimit(nil)
 														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -112,7 +113,6 @@ struct DiscussionsDetailView: View {
 														Text("👏 \(reply.praise)")
 														Spacer()
 													}
-													Divider()
 												}
 											}
 										}
@@ -129,17 +129,21 @@ struct DiscussionsDetailView: View {
 
 				VStack() {
 					Spacer()
-					HStack() {
-						TextField("Add a comment", text: self.$data.reply)
-						Button(action: {
-							self.data.postReply()
-							self.data.reply = ""
-						}) {
-							Text("Send")
+					VStack() {
+						Divider()
+						HStack() {
+							TextField("Add a comment", text: self.$data.reply)
+							Button(action: {
+								self.data.postReply()
+								self.data.reply = ""
+							}) {
+								Text("Send")
+							}
 						}
 					}
 					.keyboardObserving()
-					.padding()
+					.padding([.leading, .trailing, .bottom])
+					.padding([.top], 0)
 					.background(Color.systemBackground)
 				}
 			}
