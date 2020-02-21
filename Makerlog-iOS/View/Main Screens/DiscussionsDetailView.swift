@@ -10,11 +10,12 @@ import SwiftUI
 import URLImage
 import KeyboardObserving
 import SwiftUIX
-import MDText
+import Down
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
 
+	let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {
@@ -52,20 +53,13 @@ struct DiscussionsDetailView: View {
 								.layoutPriority(2)
 						}
 
-//
-						if self.data.discussion.body.count >= 8192 {
-							Text("\(self.data.discussion.body)")
-								.layoutPriority(2)
-								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-								.padding([.bottom], 30)
-								.fixedSize(horizontal: false, vertical: true)
-						} else {
-							MDText(markdown: "\(self.data.discussion.body)")
-								.layoutPriority(2)
-								.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-								.padding([.bottom], 30)
-								.fixedSize(horizontal: false, vertical: true)
-						}
+						//swiftlint:disable force_try
+								
+						Text(self.data.discussion.body)
+							.layoutPriority(2)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+							.padding([.bottom], 30)
+
 						LinkPreview(links: LinkData(text: self.data.discussion.body))
 						
 					}.layoutPriority(2)
@@ -157,6 +151,31 @@ struct DiscussionsDetailView: View {
 			self.data.getDissucionsReplies()
 		})
 			.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
+	}
+	
+	struct StringID: Identifiable {
+		var id = UUID()
+		var string: String
+		
+		init(string: String) {
+			self.string = string
+		}
+	}
+	
+	func spriltby(toSplit: String, splitAt: Int) -> [StringID] {
+		var currentString = ""
+		var returnArray = [StringID]()
+		var index = 0
+		for char in toSplit {
+			currentString.append(char)
+			if index == splitAt {
+				returnArray.append(StringID(string: currentString))
+				currentString = ""
+				index = 0
+			}
+			index += 1
+		}
+		return returnArray
 	}
 }
 

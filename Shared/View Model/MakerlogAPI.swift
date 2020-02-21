@@ -12,6 +12,9 @@ import Combine
 import SwiftUI
 
 class MakerlogAPI: ObservableObject {
+	@Published var showError = false
+	@Published var errorText = "unknown error"
+
 	@Published var deleteItem = false
 
     @Published var logs = [Result]()
@@ -71,7 +74,9 @@ class MakerlogAPI: ObservableObject {
 					if error.localizedDescription == "The request timed out." {
 						print("time out")
 					} else {
-						fatalError(error.localizedDescription)
+//						fatalError(error.localizedDescription)
+						self.errorText = error.localizedDescription
+						self.showError = true
 					}
 				}
 			}, receiveValue: { result in
@@ -99,14 +104,16 @@ class MakerlogAPI: ObservableObject {
 						self.notificationisDone = true
 					 }
 				} catch {
-					print(response)
-					print(error)
+					self.errorText = error.localizedDescription
+					self.showError = true
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				self.errorText = error.localizedDescription
+				self.showError = true
 			}
 		}
 	}
@@ -122,7 +129,7 @@ class MakerlogAPI: ObservableObject {
 				do {
 					let generator = UINotificationFeedbackGenerator()
 					generator.notificationOccurred(.success)
-					
+
 					let decoder = JSONDecoder()
 					let data = try decoder.decode(Praise.self, from: response.data)
 
@@ -135,13 +142,16 @@ class MakerlogAPI: ObservableObject {
 						}
 					}
 				} catch {
-					print(error)
+					self.errorText = error.localizedDescription
+					self.showError = true
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				self.errorText = error.localizedDescription
+				self.showError = true
 			}
 		}
 	}
@@ -162,13 +172,16 @@ class MakerlogAPI: ObservableObject {
 						self.discussions = data.results
 					}
 				} catch {
-					print(error)
+					self.errorText = error.localizedDescription
+					self.showError = true
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				self.errorText = error.localizedDescription
+				self.showError = true
 			}
 		}
 	}
@@ -187,12 +200,16 @@ class MakerlogAPI: ObservableObject {
 //					generator.notificationOccurred(.success)
 				} catch {
 					print(error)
+					self.errorText = error.localizedDescription
+					self.showError = true
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				self.errorText = error.localizedDescription
+				self.showError = true
 			}
 		}
 	}

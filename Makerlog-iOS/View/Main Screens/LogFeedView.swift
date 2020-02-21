@@ -41,6 +41,11 @@ struct LogFeedView: View {
 						self.tabScreenData.userSheet.toggle()
 				}
 			}) {
+				Button(action: {
+					self.tabScreenData.showError.toggle()
+				}) {
+					Text("ww")
+				}
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}

@@ -22,7 +22,6 @@
 		560EFC9523EB028300E0B172 /* userProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9423EB028300E0B172 /* userProducts.swift */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
-		5622AFB423FBF54900CC1B76 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 5622AFB323FBF54900CC1B76 /* MDText */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
@@ -37,6 +36,10 @@
 		566F1C8223D8B99500518FFF /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* LoginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
+		56708E3623FD4E4100182AA8 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 56708E3523FD4E4100182AA8 /* Down */; };
+		56708E3823FD4E5200182AA8 /* DownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56708E3723FD4E5200182AA8 /* DownView.swift */; };
+		56708E3A23FEE15200182AA8 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56708E3923FEE15200182AA8 /* MarkdownView.swift */; };
+		56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56708E5E23FEFFD100182AA8 /* MDtest.swift */; };
 		5670F30A23F5B4AB00B1D96E /* discussions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30923F5B4AB00B1D96E /* discussions.swift */; };
 		5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */; };
 		5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30D23F5E21700B1D96E /* discussionResponse.swift */; };
@@ -136,6 +139,10 @@
 		566F1C8123D8B99500518FFF /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		566FACB223FC927700BE3F13 /* makerlog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = makerlog.entitlements; sourceTree = "<group>"; };
+		56708E3723FD4E5200182AA8 /* DownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownView.swift; sourceTree = "<group>"; };
+		56708E3923FEE15200182AA8 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		56708E5E23FEFFD100182AA8 /* MDtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDtest.swift; sourceTree = "<group>"; };
 		5670F30923F5B4AB00B1D96E /* discussions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discussions.swift; sourceTree = "<group>"; };
 		5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
 		5670F30D23F5E21700B1D96E /* discussionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discussionResponse.swift; sourceTree = "<group>"; };
@@ -177,10 +184,10 @@
 			files = (
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
-				5622AFB423FBF54900CC1B76 /* MDText in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
+				56708E3623FD4E4100182AA8 /* Down in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +232,7 @@
 		560E9F9423D5DB5100A12CF5 = {
 			isa = PBXGroup;
 			children = (
+				566FACB223FC927700BE3F13 /* makerlog.entitlements */,
 				56C1A28623EADB8400A70718 /* Shared */,
 				560E9F9F23D5DB5100A12CF5 /* Makerlog-iOS */,
 				56D4E46923EAB73600679DD4 /* Makerlog-macOS */,
@@ -327,6 +335,8 @@
 			children = (
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
+				56708E3723FD4E5200182AA8 /* DownView.swift */,
+				56708E5E23FEFFD100182AA8 /* MDtest.swift */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -415,6 +425,7 @@
 				5622AFB523FBFC8B00CC1B76 /* progressImg.swift */,
 				56D4E45923E9C26100679DD4 /* EventImg.swift */,
 				5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */,
+				56708E3923FEE15200182AA8 /* MarkdownView.swift */,
 			);
 			path = sharded;
 			sourceTree = "<group>";
@@ -494,7 +505,7 @@
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
 				56E3674623FAE0F600C69F8F /* SwiftUIX */,
-				5622AFB323FBF54900CC1B76 /* MDText */,
+				56708E3523FD4E4100182AA8 /* Down */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
@@ -640,7 +651,7 @@
 				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */,
+				56708E3423FD4E4100182AA8 /* XCRemoteSwiftPackageReference "Down" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -738,6 +749,8 @@
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
+				56708E3823FD4E5200182AA8 /* DownView.swift in Sources */,
+				56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
 				566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */,
 				56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */,
@@ -762,6 +775,7 @@
 				566DF0D423DF01E50085C318 /* tabView.swift in Sources */,
 				566F1C7323D7970300518FFF /* commentStruct.swift in Sources */,
 				5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */,
+				56708E3A23FEE15200182AA8 /* MarkdownView.swift in Sources */,
 				5670F31023F5E30500B1D96E /* DiscussionResponse.swift in Sources */,
 				56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */,
 				560E9FA823D5DB5100A12CF5 /* LogFeedView.swift in Sources */,
@@ -982,6 +996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
@@ -994,6 +1009,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
 				PRODUCT_NAME = makerlog;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1003,6 +1019,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
@@ -1015,6 +1032,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
 				PRODUCT_NAME = makerlog;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1309,12 +1327,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */ = {
+		56708E3423FD4E4100182AA8 /* XCRemoteSwiftPackageReference "Down" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lambdo-Labs/MDText.git";
+			repositoryURL = "https://github.com/iwasrobbed/Down";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
+				minimumVersion = 0.9.0;
 			};
 		};
 		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
@@ -1360,10 +1378,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5622AFB323FBF54900CC1B76 /* MDText */ = {
+		56708E3523FD4E4100182AA8 /* Down */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5622AFB223FBF54900CC1B76 /* XCRemoteSwiftPackageReference "MDText" */;
-			productName = MDText;
+			package = 56708E3423FD4E4100182AA8 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
 		};
 		56BE7B3323EF4297006EE3AF /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;

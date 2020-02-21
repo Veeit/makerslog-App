@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 import URLImage
 import KeyboardObserving
-import MDText
 
 struct LogView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure

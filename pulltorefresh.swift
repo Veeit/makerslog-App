@@ -114,7 +114,7 @@ public struct RefreshableNavigationViewWithItem<Content: View, LeadingItem: View
                 self.content()
             }.navigationBarTitle(title)
              .navigationBarItems(leading: self.leadingItem(), trailing: self.trailingItem())
-        }
+		}.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
