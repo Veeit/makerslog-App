@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class ProductViewData: ObservableObject {
+class ProductViewData: ApiModel, ObservableObject {
     @Published var products = [Product]()
 
     func getRelatedProject(projectID: String) {
@@ -29,17 +29,26 @@ class ProductViewData: ObservableObject {
 					self.products = data.products
 				} catch {
 					print(error.localizedDescription)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error.localizedDescription)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
     }
 
     init(projectID: String) {
+		super.init()
         self.getRelatedProject(projectID: projectID)
     }
 }

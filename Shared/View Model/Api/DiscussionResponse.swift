@@ -10,7 +10,7 @@ import Foundation
 import OAuthSwift
 import Combine
 
-class DiscussionModel: ObservableObject {
+class DiscussionModel: ApiModel, ObservableObject {
 	@Published var discussionResponse: DiscussionResponse?
 	@Published var discussion: ResultDiscussion
 	@Published var reply: String = ""
@@ -36,12 +36,20 @@ class DiscussionModel: ObservableObject {
 					}
 				} catch {
 					print(error)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
@@ -63,22 +71,28 @@ class DiscussionModel: ObservableObject {
 					}
 				} catch {
 					print(error)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
-	
+
 	func getReplyReplys(reply: DiscussionResponseElement) -> [DiscussionResponseElement] {
 		var replyReplys = [DiscussionResponseElement]()
-		for post in discussionResponse! {
-			if post.parent_reply == reply.id {
+		for post in discussionResponse!  where post.parent_reply == reply.id {
    				replyReplys.append(post)
-			}
 		}
 		return replyReplys
 	}

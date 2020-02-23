@@ -27,25 +27,29 @@ struct LogFeedView: View {
 			}, isDone: self.$data.isDone, leadingItem: {
 				EmptyView()
 			}, trailingItem: {
-				URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
-						 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
-						 content: {
-					$0.image
-					.resizable()
-					.aspectRatio(contentMode: .fill)
-					.clipped()
-					.cornerRadius(20)
-				})
-					.frame(width: 40, height: 40)
-					.onTapGesture {
-						self.tabScreenData.userSheet.toggle()
+				if self.login.isLoggedIn == true {
+					URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
+							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
+							 content: {
+						$0.image
+						.resizable()
+						.aspectRatio(contentMode: .fill)
+						.clipped()
+						.cornerRadius(20)
+					})
+						.frame(width: 40, height: 40)
+						.onTapGesture {
+							self.tabScreenData.userSheet.toggle()
+					}
+				} else {
+					Button(action: {
+						self.login.login()
+						self.login.getMe()
+					}) {
+						Text("Login").foregroundColor(Color.blue)
+					}
 				}
 			}) {
-				Button(action: {
-					self.tabScreenData.showError.toggle()
-				}) {
-					Text("ww")
-				}
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}

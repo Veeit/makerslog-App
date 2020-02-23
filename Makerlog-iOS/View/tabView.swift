@@ -20,7 +20,7 @@ class TabScreenData: ObservableObject {
 struct TabScreen: View {
     @EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
-//	@EnvironmentObject var makerlog: MakerlogAPI
+	@EnvironmentObject var makerlog: MakerlogAPI
     // swiftlint:disable empty_parentheses_with_trailing_closure
 
     var body: some View {
@@ -48,7 +48,7 @@ struct TabScreen: View {
         }
 		.sheet(isPresented: self.$data.userSheet, content: {UserView(login: self.login)})
 		.alert(isPresented: self.$data.showError, content: {anAlert(errorMessage: self.data.errorText)})
-//		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
+		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
     }
 
 	func anAlert(errorMessage: String) -> Alert {
