@@ -11,12 +11,18 @@ import SwiftUI
 import SwiftUIX
 
 struct AddView: View {
-    var types = ["log", "discussion", "milestone", "project"]
-    @State private var selectedType = 0
+//    var types = ["log", "discussion", "milestone", "project"]
+	var types = ["log", "discussion"]
+	@State private var selectedType = 0
 
 	var body: some View {
 		NavigationView() {
 			VStack() {
+				Picker(selection: $selectedType, label: Text("Types")) {
+					ForEach(0 ..< types.count) {
+						Text(self.types[$0]).tag($0)
+					}
+				}.pickerStyle(SegmentedPickerStyle())
 
 				if selectedType == 0 {
 					AddLogView()
@@ -25,12 +31,6 @@ struct AddView: View {
 				} else {
 					Spacer()
 				}
-
-				Picker(selection: $selectedType, label: Text("Types")) {
-					ForEach(0 ..< types.count) {
-						Text(self.types[$0]).tag($0)
-					}
-				}.pickerStyle(SegmentedPickerStyle())
 			}
 			.padding([.leading, .trailing], 20)
 			.padding([.bottom], 10)
@@ -46,31 +46,29 @@ struct AddDiscussionView: View {
 		VStack(alignment: .leading) {
 			Spacer()
 
-			TextField("Add discussion title", text: self.$data.title)
-				.textFieldStyle(RoundedBorderTextFieldStyle())
+			Text("Title:").font(Font.headline)
+			TextField("Discuss what ?", text: self.$data.title)
 
-			TextView("Add discussion text", text: self.$data.text)
-				.padding(5)
-				.addBorder(Color.gray, width: 1, cornerRadius: 7)
+			Text("Discussion:").font(Font.headline)
+			TextView("Describe your discussion", text: self.$data.text)
 
 			Spacer()
-
-			HStack() {
-				Text("Done")
-					.font(Font.system(size: 18))
-					.bold()
-			}
-			.padding(4)
-			.padding([.leading, .trailing], 10)
-			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
-			.addBorder(Color.blue, width: 2, cornerRadius: 13)
-			.foregroundColor(.blue)
-			.onTapGesture {
-				self.data.createNewDiscussion()
-				self.data.text = ""
-				self.data.title = ""
-				UIApplication.shared.windows.first?.endEditing(true)
-			}
 		}.navigationBarTitle("Add a Discussion")
+		.navigationBarItems(trailing:
+			HStack() {
+				Button(action: {
+					self.save()
+				}) {
+					Text("Send")
+				}
+			}
+		)
     }
+	
+	func save() {
+		self.data.createNewDiscussion()
+		self.data.text = ""
+		self.data.title = ""
+		UIApplication.shared.windows.first?.endEditing(true)
+	}
 }

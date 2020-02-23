@@ -7,50 +7,66 @@
 //
 
 import SwiftUI
+import SwiftUIX
+
+struct AddTyps {
+	var name: String
+	var title: String
+}
 
 struct AddLogView: View {
 	@ObservedObject var data = AddLogData()
+	@State private var selectedType = 0
+
+	var types = [AddTyps(name: "done", title: "What have you done today ?"),
+				 AddTyps(name: "to do", title: "What will you do ?"),
+				 AddTyps(name: "in work", title: "What are you working on ?")]
 
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
 
-			TextField("Add new log", text: self.$data.text)
-				.textFieldStyle(RoundedBorderTextFieldStyle())
-			HStack(spacing: 5) {
-				Image(systemName: self.data.isDone ? "checkmark.square": "square").imageScale(.large)
-				Text("is Done")
-			}.onTapGesture {
-				self.data.isDone.toggle()
-			}
+			Text("Log State:").font(Font.headline)
+			Picker(selection: $selectedType, label: Text("Log State")) {
+				ForEach(0 ..< types.count) {
+					Text(self.types[$0].name).tag($0)
+				}
+			}.pickerStyle(SegmentedPickerStyle())
 
-			HStack(spacing: 5) {
-				Image(systemName: self.data.isProgress ? "checkmark.square": "square").imageScale(.large)
-				Text("in Progress")
-			}.onTapGesture {
-				self.data.isProgress.toggle()
-			}
-			Spacer()
+			TextView(self.types[selectedType].title, text: self.$data.text)
+				.padding(5)
 
-			HStack() {
-				Text("Done")
-					.font(Font.system(size: 18))
-					.bold()
-			}
-			.padding(4)
-			.padding([.leading, .trailing], 10)
-			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
-			.addBorder(Color.blue, width: 2, cornerRadius: 13)
-			.foregroundColor(.blue)
-			.onTapGesture {
-				self.data.createNewLog()
-				self.data.text = ""
-				self.data.isDone = false
-				self.data.isProgress = false
-				UIApplication.shared.windows.first?.endEditing(true)
-			}
 		}.navigationBarTitle("Log your task")
+		.navigationBarItems(trailing:
+			HStack() {
+				Button(action: {
+					self.save()
+				}) {
+					Text("Send")
+				}
+			}
+		)
     }
+
+	func save() {
+		switch self.selectedType {
+		case 3:
+			self.data.isDone = false
+			self.data.isProgress = true
+		case 2:
+			self.data.isDone = false
+			self.data.isProgress = false
+		default:
+			self.data.isDone = true
+			self.data.isProgress = false
+		}
+
+		self.data.createNewLog()
+		self.data.text = ""
+		self.data.isDone = false
+		self.data.isProgress = false
+		UIApplication.shared.windows.first?.endEditing(true)
+	}
 }
 
 struct AddLogView_Previews: PreviewProvider {

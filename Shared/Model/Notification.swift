@@ -12,76 +12,18 @@ struct NotificationElement: Codable, Identifiable {
     let key: String
     let read: Bool
     let verb: String
-    let recipient, actor: Actor
+	let targetType: String?
+    let recipient, actor: User
     let target: Target?
     let broadcastLink: String?
-    let created, targetType: String?
+	let created: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, key, read, verb, recipient, actor, target
+        case id, key, read, verb, recipient, actor
+		case target
         case broadcastLink
         case created
         case targetType
-    }
-}
-
-// MARK: - Actor
-struct Actor: Codable {
-    let id: Int
-    let username: String
-    let firstName: String?
-    let lastName: String?
-    let status: String?
-    let actorDescription: String?
-    let verified, actorPrivate: Bool?
-    let avatar: String
-    let streak: Int
-    let timezone: String
-    let weekTda: Int?
-    let twitterHandle: String?
-    let instagramHandle: String?
-    let productHuntHandle: String?
-    let githubHandle: String?
-    let telegramHandle: String?
-    let nomadlistHandle: String?
-    let bmcHandle: String?
-    let header: String?
-    let isStaff, donor: Bool?
-    let shipstreamsHandle: String?
-    let website: String?
-    let tester, isLive, digest, gold: Bool?
-    let accent: String
-    let makerScore: Int?
-    let darkMode, weekendsOff, hardcoreMode: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case id, username
-        case firstName
-        case lastName
-        case status
-        case actorDescription
-        case verified
-        case actorPrivate
-        case avatar, streak, timezone
-        case weekTda
-        case twitterHandle
-        case instagramHandle
-        case productHuntHandle
-        case githubHandle
-        case telegramHandle
-        case nomadlistHandle
-        case bmcHandle
-        case header
-        case isStaff
-        case donor
-        case shipstreamsHandle
-        case website, tester
-        case isLive
-        case digest, gold, accent
-        case makerScore
-        case darkMode
-        case weekendsOff
-        case hardcoreMode
     }
 }
 
@@ -89,7 +31,7 @@ struct Actor: Codable {
 struct Target: Codable {
     let id: Int
     let slug, type: String?
-    let owner: Actor?
+    let owner: User?
     let title, body: String?
     let pinned: Bool?
     let createdAt, updatedAt: String?
@@ -99,7 +41,7 @@ struct Target: Codable {
     let content: String?
     let dueAt: String?
     let doneAt: String?
-    var user: Actor?
+//    var user: User?
     let projectSet: [ProjectSet]?
     let praise: Int?
     let attachment: String?
@@ -115,7 +57,7 @@ struct Target: Codable {
         case content
         case dueAt
         case doneAt
-        case user
+//        case user
         case projectSet
         case praise, attachment
         case commentCount

@@ -22,7 +22,7 @@ struct LogFeedView: View {
 	var body: some View {
 		GeometryReader() { geometry in
 
-			RefreshableNavigationViewWithItem(title: "Makerlog", action: {
+			RefreshableNavigationViewWithItem(title: "Logbot", action: {
 				self.data.getResult()
 			}, isDone: self.$data.isDone, leadingItem: {
 				EmptyView()
@@ -50,6 +50,11 @@ struct LogFeedView: View {
 					}
 				}
 			}) {
+//				Button(action: {
+//					self.login.getUserProducts()
+//				}) {
+//					Text("test")
+//				}
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}
@@ -60,6 +65,7 @@ struct LogFeedView: View {
 				print(urls[urls.count-1] as URL)
 			})
 		}
+		
 	}
 
 	struct EventView: View {

@@ -169,6 +169,7 @@ class LoginData: ApiModel, ObservableObject {
 					self.meProducts = data
                 } catch {
                     print(error)
+					print("decode error")
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true

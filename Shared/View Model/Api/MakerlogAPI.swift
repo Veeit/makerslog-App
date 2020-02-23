@@ -104,6 +104,8 @@ class MakerlogAPI: ApiModel, ObservableObject {
 					 }
 				} catch {
 					DispatchQueue.main.async {
+						print(response.data)
+						print(error)
 						self.errorText = error.localizedDescription
 						self.showError = true
 					}

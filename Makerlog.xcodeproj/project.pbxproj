@@ -304,11 +304,11 @@
 				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
 				56C94A8B23D6FBF5007840DB /* LogView.swift */,
 				56682BD123E610D700EF2C5B /* UserView.swift */,
-				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
 				560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */,
 				5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */,
 				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
 				567B8A8D23F7024600952D4C /* AddView.swift */,
+				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";

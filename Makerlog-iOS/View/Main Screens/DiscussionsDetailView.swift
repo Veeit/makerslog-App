@@ -151,16 +151,16 @@ struct DiscussionsDetailView: View {
 		})
 			.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
 	}
-	
+
 	struct StringID: Identifiable {
 		var id = UUID()
 		var string: String
-		
+
 		init(string: String) {
 			self.string = string
 		}
 	}
-	
+
 	func spriltby(toSplit: String, splitAt: Int) -> [StringID] {
 		var currentString = ""
 		var returnArray = [StringID]()
