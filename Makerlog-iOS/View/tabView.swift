@@ -15,6 +15,24 @@ class TabScreenData: ObservableObject {
 	@Published var showDetailView = false
 	@Published var showError = false
 	@Published var errorText = "unknown error"
+
+	@Published var showOnboarding = false
+	@Published var showSettings = false
+
+	let defaults = UserDefaults.standard
+
+	func getOnboarding() {
+		let onboarding = defaults.bool(forKey: "Onboarding")
+		self.showOnboarding = !onboarding
+	}
+
+	func setOnbaording() {
+		defaults.set(true, forKey: "Onboarding")
+	}
+
+	init() {
+		self.getOnboarding()
+	}
 }
 
 struct TabScreen: View {
@@ -49,7 +67,15 @@ struct TabScreen: View {
 		.sheet(isPresented: self.$data.userSheet, content: {UserView(login: self.login)})
 		.alert(isPresented: self.$data.showError, content: {anAlert(errorMessage: self.data.errorText)})
 		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
-    }
+		.sheet(isPresented: self.$data.showSettings, content: {SettingsView()})
+		.overlay(VStack() {
+			if self.data.showOnboarding {
+				Onboarding()
+			} else {
+				EmptyView()
+			}
+		})
+	}
 
 	func anAlert(errorMessage: String) -> Alert {
 		let send = ActionSheet.Button.default(Text("okay")) { print("hit send") }

@@ -71,6 +71,9 @@
 		56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */; };
 		56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */; };
 		56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E3674623FAE0F600C69F8F /* SwiftUIX */; };
+		56EEB54424043C9600522B8C /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = 56EEB54324043C9600522B8C /* Pages */; };
+		56EEB54624043CB100522B8C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54524043CB100522B8C /* Onboarding.swift */; };
+		56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54724045F5A00522B8C /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +108,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		560E9F9D23D5DB5100A12CF5 /* makerlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = makerlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		560E9F9D23D5DB5100A12CF5 /* logbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = logbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		560E9FA523D5DB5100A12CF5 /* Makerlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Makerlog.xcdatamodel; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 		56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSUITests.swift; sourceTree = "<group>"; };
 		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56EEB54524043CB100522B8C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		56EEB54724045F5A00522B8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +192,7 @@
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
+				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 				56708E3623FD4E4100182AA8 /* Down in Frameworks */,
@@ -247,7 +253,7 @@
 		560E9F9E23D5DB5100A12CF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				560E9F9D23D5DB5100A12CF5 /* makerlog.app */,
+				560E9F9D23D5DB5100A12CF5 /* logbot.app */,
 				560E9FB623D5DB5600A12CF5 /* MakerlogTests.xctest */,
 				560E9FC123D5DB5600A12CF5 /* MakerlogUITests.xctest */,
 				56D4E46823EAB73600679DD4 /* macOS.app */,
@@ -404,6 +410,8 @@
 				561A48D623E317C20077A1D2 /* Components  */,
 				561A48D423E317A40077A1D2 /* Main Screens */,
 				566DF0D323DF01E50085C318 /* tabView.swift */,
+				56EEB54524043CB100522B8C /* Onboarding.swift */,
+				56EEB54724045F5A00522B8C /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -517,9 +525,10 @@
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
 				56E3674623FAE0F600C69F8F /* SwiftUIX */,
 				56708E3523FD4E4100182AA8 /* Down */,
+				56EEB54324043C9600522B8C /* Pages */,
 			);
 			productName = Makerlog;
-			productReference = 560E9F9D23D5DB5100A12CF5 /* makerlog.app */;
+			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
 			productType = "com.apple.product-type.application";
 		};
 		560E9FB523D5DB5600A12CF5 /* MakerlogTests */ = {
@@ -663,6 +672,7 @@
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				56708E3423FD4E4100182AA8 /* XCRemoteSwiftPackageReference "Down" */,
+				56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -755,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670F30A23F5B4AB00B1D96E /* discussions.swift in Sources */,
+				56EEB54624043CB100522B8C /* Onboarding.swift in Sources */,
 				567CD4AA24029171009B944F /* ApiModel.swift in Sources */,
 				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */,
@@ -762,6 +773,7 @@
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
 				56708E3823FD4E5200182AA8 /* DownView.swift in Sources */,
+				56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */,
 				56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
 				566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */,
@@ -1020,7 +1032,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
-				PRODUCT_NAME = makerlog;
+				PRODUCT_NAME = logbot;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1043,7 +1055,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = veit.dev.makerlog;
-				PRODUCT_NAME = makerlog;
+				PRODUCT_NAME = logbot;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1387,6 +1399,14 @@
 				kind = branch;
 			};
 		};
+		56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nachonavarro/Pages";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1419,6 +1439,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		56EEB54324043C9600522B8C /* Pages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */;
+			productName = Pages;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -25,7 +25,11 @@ struct LogFeedView: View {
 			RefreshableNavigationViewWithItem(title: "Logbot", action: {
 				self.data.getResult()
 			}, isDone: self.$data.isDone, leadingItem: {
-				EmptyView()
+				Button(action: {
+					self.tabScreenData.showSettings = true
+				}) {
+					Image(systemName: "gear").imageScale(.large)
+				}
 			}, trailingItem: {
 				if self.login.isLoggedIn == true {
 					URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
@@ -50,11 +54,11 @@ struct LogFeedView: View {
 					}
 				}
 			}) {
-//				Button(action: {
-//					self.login.getUserProducts()
-//				}) {
-//					Text("test")
-//				}
+				Button(action: {
+					self.tabScreenData.showOnboarding = true
+				}) {
+					Text("test")
+				}
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}

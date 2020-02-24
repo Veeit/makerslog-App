@@ -37,14 +37,21 @@ struct AddLogView: View {
 				.padding(5)
 
 		}.navigationBarTitle("Log your task")
-		.navigationBarItems(trailing:
-			HStack() {
-				Button(action: {
-					self.save()
-				}) {
-					Text("Send")
+			.navigationBarItems(leading:
+				HStack() {
+					Button(action: {
+						self.cancel()
+					}) {
+						Text("Cancel")
+					}
+				}, trailing:
+				HStack() {
+					Button(action: {
+						self.save()
+					}) {
+						Text("Send")
+					}
 				}
-			}
 		)
     }
 
@@ -66,6 +73,13 @@ struct AddLogView: View {
 		self.data.isDone = false
 		self.data.isProgress = false
 		UIApplication.shared.windows.first?.endEditing(true)
+	}
+	
+	func cancel() {
+		UIApplication.shared.windows.first?.endEditing(true)
+		self.data.text = ""
+		self.data.isDone = false
+		self.data.isProgress = false
 	}
 }
 

@@ -54,7 +54,16 @@ struct AddDiscussionView: View {
 
 			Spacer()
 		}.navigationBarTitle("Add a Discussion")
-		.navigationBarItems(trailing:
+		.navigationBarItems(
+			leading:
+			HStack() {
+				Button(action: {
+					self.cancel()
+				}) {
+					Text("Cancel")
+				}
+			},
+			trailing:
 			HStack() {
 				Button(action: {
 					self.save()
@@ -64,9 +73,15 @@ struct AddDiscussionView: View {
 			}
 		)
     }
-	
+
 	func save() {
 		self.data.createNewDiscussion()
+		self.data.text = ""
+		self.data.title = ""
+		UIApplication.shared.windows.first?.endEditing(true)
+	}
+
+	func cancel() {
 		self.data.text = ""
 		self.data.title = ""
 		UIApplication.shared.windows.first?.endEditing(true)
