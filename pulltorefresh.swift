@@ -77,6 +77,31 @@ public struct RefreshableNavigationView<Content: View>: View {
 }
 
 @available(iOS 13.0, macOS 10.15, *)
+public struct RefreshablListView<Content: View>: View {
+    let content: () -> Content
+    let action: () -> Void
+    @Binding var isDone: Bool
+
+    @ObservedObject var data: RefreshData
+
+    public init(action: @escaping () -> Void,
+                isDone: Binding<Bool>,
+                @ViewBuilder content: @escaping () -> Content) {
+
+        self.action = action
+        self.content = content
+        self._isDone = isDone
+        self.data = RefreshData(isDone: isDone)
+    }
+
+    public var body: some View {
+		RefreshableList(data: data, action: self.action) {
+			self.content()
+		}
+    }
+}
+
+@available(iOS 13.0, macOS 10.15, *)
 public struct RefreshableNavigationViewWithItem<Content: View, LeadingItem: View, TrailingItem: View>: View {
     let content: () -> Content
     let leadingItem: () -> LeadingItem

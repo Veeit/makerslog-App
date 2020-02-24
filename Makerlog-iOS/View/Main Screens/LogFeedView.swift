@@ -21,55 +21,62 @@ struct LogFeedView: View {
 
 	var body: some View {
 		GeometryReader() { geometry in
-
-			RefreshableNavigationViewWithItem(title: "Logbot", action: {
-				self.data.getResult()
-			}, isDone: self.$data.isDone, leadingItem: {
-				Button(action: {
-					self.tabScreenData.showSettings = true
-				}) {
-					Image(systemName: "gear").imageScale(.large)
-				}
-			}, trailingItem: {
-				if self.login.isLoggedIn == true {
-					URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
-							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
-							 content: {
-						$0.image
-						.resizable()
-						.aspectRatio(contentMode: .fill)
-						.clipped()
-						.cornerRadius(20)
-					})
-						.frame(width: 40, height: 40)
-						.onTapGesture {
-							self.tabScreenData.userSheet.toggle()
-					}
-				} else {
-					Button(action: {
-						self.login.login()
-						self.login.getMe()
-					}) {
-						Text("Login").foregroundColor(Color.blue)
+			NavigationView() {
+				RefreshablListView(action: {
+					self.data.getResult()
+				}, isDone: self.$data.isDone) {
+//					Button(action: {
+//						self.tabScreenData.showOnboarding = true
+//					}) {
+//						Text("test")
+//					}
+					ForEach(self.data.logs) { log in
+						LogFeedItem(log: LogViewData(data: log))
 					}
 				}
-			}) {
-				Button(action: {
-					self.tabScreenData.showOnboarding = true
-				}) {
-					Text("test")
-				}
-				ForEach(self.data.logs) { log in
-					LogFeedItem(log: LogViewData(data: log))
-				}
-			}
-//			.edgesIgnoringSafeArea(.bottom)
-			.onAppear(perform: {
+				.navigationBarTitle("LogBot")
+				.navigationBarItems(leading:
+										Button(action: {
+											self.tabScreenData.showSettings = true
+										}) {
+											Image(systemName: "gear").imageScale(.large)
+										},
+									trailing:
+										VStack() {
+											if self.login.isLoggedIn == true {
+												
+												NavigationLink(destination: UserView(login: self.login), isActive: self.$tabScreenData.userSheet) {
+													Text("User")
+												}.overlay(
+													URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
+															 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
+															 content: {
+														$0.image
+														.resizable()
+														.aspectRatio(contentMode: .fill)
+														.clipped()
+														.cornerRadius(20)
+													})
+													.frame(width: 40, height: 40)
+														.onTapGesture {
+															self.tabScreenData.userSheet = true
+													}
+												)
+											} else {
+												Button(action: {
+													self.login.login()
+													self.login.getMe()
+												}) {
+													Text("Login").foregroundColor(Color.blue)
+												}
+											}
+										}
+									)
+			}.onAppear(perform: {
 				let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 				print(urls[urls.count-1] as URL)
 			})
 		}
-		
 	}
 
 	struct EventView: View {

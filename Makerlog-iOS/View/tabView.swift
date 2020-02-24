@@ -64,7 +64,6 @@ struct TabScreen: View {
 			.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
 
         }
-		.sheet(isPresented: self.$data.userSheet, content: {UserView(login: self.login)})
 		.alert(isPresented: self.$data.showError, content: {anAlert(errorMessage: self.data.errorText)})
 		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
 		.sheet(isPresented: self.$data.showSettings, content: {SettingsView()})
