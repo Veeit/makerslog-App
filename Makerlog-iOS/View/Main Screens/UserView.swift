@@ -66,7 +66,7 @@ struct UserView: View {
 					HStack(spacing: 20) {
 						ForEach(self.login.meProducts) { product in
 							VStack() {
-								URLImage(URL(string: "\(product.icon)")!,
+								URLImage(URL(string: "\(product.icon ?? self.defaultAvartar)")!,
 										processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],
 										content: {
 											$0.image

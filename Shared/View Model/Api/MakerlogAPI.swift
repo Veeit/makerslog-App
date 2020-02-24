@@ -11,10 +11,7 @@ import Combine
 //import OAuthSwift
 import SwiftUI
 
-class MakerlogAPI: ObservableObject {
-	@Published var showError = false
-	@Published var errorText = "unknown error"
-
+class MakerlogAPI: ApiModel, ObservableObject {
 	@Published var deleteItem = false
 
     @Published var logs = [Result]()
@@ -75,8 +72,10 @@ class MakerlogAPI: ObservableObject {
 						print("time out")
 					} else {
 //						fatalError(error.localizedDescription)
-						self.errorText = error.localizedDescription
-						self.showError = true
+						DispatchQueue.main.async {
+							self.errorText = error.localizedDescription
+							self.showError = true
+						}
 					}
 				}
 			}, receiveValue: { result in
@@ -104,16 +103,22 @@ class MakerlogAPI: ObservableObject {
 						self.notificationisDone = true
 					 }
 				} catch {
-					self.errorText = error.localizedDescription
-					self.showError = true
+					DispatchQueue.main.async {
+						print(response.data)
+						print(error)
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
-				self.errorText = error.localizedDescription
-				self.showError = true
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
@@ -142,16 +147,20 @@ class MakerlogAPI: ObservableObject {
 						}
 					}
 				} catch {
-					self.errorText = error.localizedDescription
-					self.showError = true
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
-				self.errorText = error.localizedDescription
-				self.showError = true
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
@@ -172,16 +181,20 @@ class MakerlogAPI: ObservableObject {
 						self.discussions = data.results
 					}
 				} catch {
-					self.errorText = error.localizedDescription
-					self.showError = true
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
-				self.errorText = error.localizedDescription
-				self.showError = true
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
@@ -193,28 +206,23 @@ class MakerlogAPI: ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters) { result in
 			switch result {
-			case .success(let response):
-				do {
+			case .success(_):
 					self.getResult()
-//					let generator = UINotificationFeedbackGenerator()
-//					generator.notificationOccurred(.success)
-				} catch {
-					print(error)
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
 				  print("old token")
 			   }
-				self.errorText = error.localizedDescription
-				self.showError = true
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
 		}
 	}
 
-	init() {
+	override init() {
+		super.init()
 		startTimer()
 	}
 }

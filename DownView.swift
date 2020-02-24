@@ -24,11 +24,11 @@ struct TextWithAttributedString: UIViewRepresentable {
     }
 }
 
-class ViewWithLabel : UIView {
+class ViewWithLabel: UIView {
     private var label = UILabel()
 
     override init(frame: CGRect) {
-        super.init(frame:frame)
+        super.init(frame: frame)
         self.addSubview(label)
         label.numberOfLines = 0
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -38,7 +38,7 @@ class ViewWithLabel : UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setString(_ attributedString:NSAttributedString) {
+    func setString(_ attributedString: NSAttributedString) {
         self.label.attributedText = attributedString
     }
 
@@ -61,15 +61,15 @@ struct HTMLStringView: UIViewRepresentable {
     }
 }
 
-struct WebView : UIViewRepresentable {
+struct WebView: UIViewRepresentable {
     let request: URLRequest
-      
-    func makeUIView(context: Context) -> WKWebView  {
+
+    func makeUIView(context: Context) -> WKWebView {
         return WKWebView()
     }
-      
+
     func updateUIView(_ uiView: WKWebView, context: Context) {
         uiView.load(request)
     }
-      
-}  
+
+}

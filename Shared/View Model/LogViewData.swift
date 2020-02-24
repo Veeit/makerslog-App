@@ -11,7 +11,7 @@ import Combine
 
 class LogViewData: ObservableObject {
     @Published var data: Result
-	
+
 	init(data: Result) {
         self.data = data
     }

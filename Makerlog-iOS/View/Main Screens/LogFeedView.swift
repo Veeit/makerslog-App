@@ -22,29 +22,42 @@ struct LogFeedView: View {
 	var body: some View {
 		GeometryReader() { geometry in
 
-			RefreshableNavigationViewWithItem(title: "Makerlog", action: {
+			RefreshableNavigationViewWithItem(title: "Logbot", action: {
 				self.data.getResult()
 			}, isDone: self.$data.isDone, leadingItem: {
-				EmptyView()
+				Button(action: {
+					self.tabScreenData.showSettings = true
+				}) {
+					Image(systemName: "gear").imageScale(.large)
+				}
 			}, trailingItem: {
-				URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
-						 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
-						 content: {
-					$0.image
-					.resizable()
-					.aspectRatio(contentMode: .fill)
-					.clipped()
-					.cornerRadius(20)
-				})
-					.frame(width: 40, height: 40)
-					.onTapGesture {
-						self.tabScreenData.userSheet.toggle()
+				if self.login.isLoggedIn == true {
+					URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
+							 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
+							 content: {
+						$0.image
+						.resizable()
+						.aspectRatio(contentMode: .fill)
+						.clipped()
+						.cornerRadius(20)
+					})
+						.frame(width: 40, height: 40)
+						.onTapGesture {
+							self.tabScreenData.userSheet.toggle()
+					}
+				} else {
+					Button(action: {
+						self.login.login()
+						self.login.getMe()
+					}) {
+						Text("Login").foregroundColor(Color.blue)
+					}
 				}
 			}) {
 				Button(action: {
-					self.tabScreenData.showError.toggle()
+					self.tabScreenData.showOnboarding = true
 				}) {
-					Text("ww")
+					Text("test")
 				}
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
@@ -56,6 +69,7 @@ struct LogFeedView: View {
 				print(urls[urls.count-1] as URL)
 			})
 		}
+		
 	}
 
 	struct EventView: View {

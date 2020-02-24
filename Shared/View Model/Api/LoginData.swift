@@ -13,7 +13,7 @@ import CoreData
 import OAuthSwift
 import KeychainSwift
 
-class LoginData: ObservableObject {
+class LoginData: ApiModel, ObservableObject {
 
     let generator = UINotificationFeedbackGenerator()
 
@@ -37,7 +37,8 @@ class LoginData: ObservableObject {
 	@Published var userName = "no user"
 	@Published var meProducts = UserProducts()
 
-    init() {
+	override init() {
+		super.init()
         self.getMe()
     }
 
@@ -74,8 +75,12 @@ class LoginData: ObservableObject {
 
 				self.getMe()
             case .failure(let error):
-              print(error.localizedDescription)
-                 print(result)
+				print(error.localizedDescription)
+				print(result)
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
             }
         }
     }
@@ -129,12 +134,20 @@ class LoginData: ObservableObject {
                 } catch {
                     print(error)
 					self.isLoggedIn = false
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
                 }
             case .failure(let error):
                 print(error)
                 if case .tokenExpired = error {
                   print("old token")
                }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
             }
         }
     }
@@ -156,12 +169,21 @@ class LoginData: ObservableObject {
 					self.meProducts = data
                 } catch {
                     print(error)
+					print("decode error")
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
                 }
             case .failure(let error):
                 print(error)
                 if case .tokenExpired = error {
                   print("old token")
                }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
             }
         }
 	}

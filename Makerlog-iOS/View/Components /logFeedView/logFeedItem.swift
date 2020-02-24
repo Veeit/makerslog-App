@@ -81,6 +81,7 @@ struct LogFeedItem: View {
 				if log.data.attachment != nil {
 					VStack(alignment: .center) {
 						URLImage(URL(string: log.data.attachment!)!,
+								 placeholder: Image("400x300"),
 								 content: {
 							$0.image
 							.resizable()

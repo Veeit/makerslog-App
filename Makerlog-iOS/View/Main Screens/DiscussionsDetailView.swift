@@ -54,14 +54,13 @@ struct DiscussionsDetailView: View {
 						}
 
 						//swiftlint:disable force_try
-								
+
 						Text(self.data.discussion.body)
 							.layoutPriority(2)
 							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 							.padding([.bottom], 30)
 
 						LinkPreview(links: LinkData(text: self.data.discussion.body))
-						
 					}.layoutPriority(2)
 
 					if self.data.discussionResponse != nil {
@@ -70,7 +69,7 @@ struct DiscussionsDetailView: View {
 								VStack(alignment: .leading) {
 									ReplayView(response: response)
 									LinkPreview(links: LinkData(text: response.body))
-									
+
 									VStack(alignment: .leading) {
 										ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
 											VStack() {
@@ -152,16 +151,16 @@ struct DiscussionsDetailView: View {
 		})
 			.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
 	}
-	
+
 	struct StringID: Identifiable {
 		var id = UUID()
 		var string: String
-		
+
 		init(string: String) {
 			self.string = string
 		}
 	}
-	
+
 	func spriltby(toSplit: String, splitAt: Int) -> [StringID] {
 		var currentString = ""
 		var returnArray = [StringID]()

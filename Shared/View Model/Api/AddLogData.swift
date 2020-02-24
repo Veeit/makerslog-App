@@ -11,7 +11,7 @@ import Combine
 import OAuthSwift
 import SwiftUI
 
-class AddLogData: ObservableObject {
+class AddLogData: ApiModel, ObservableObject {
 	@Published var text = ""
 	@Published var isDone = false
 	@Published var isProgress = false
@@ -47,6 +47,10 @@ class AddLogData: ObservableObject {
                 if case .tokenExpired = error {
                   print("old token")
                }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
             }
         }
 	}
@@ -58,14 +62,14 @@ class UpdateLogData: ObservableObject {
 	@Published var isProgress = false
 
 	@Published var log: Result
-	
+
 	init(log: Result) {
 		self.log = log
 		self.text = self.log.content
 		self.isDone = self.log.done
 		self.isProgress = self.log.inProgress
 	}
-	
+
 	func updateLog() {
 
         let token = oauthswift.client.credential.oauthToken
@@ -143,6 +147,10 @@ class AddDiscussionData: AddLogData {
 					generator.notificationOccurred(.success)
                 } catch {
 					print(error)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
                 }
             case .failure(let error):
                 print(error)

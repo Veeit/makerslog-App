@@ -24,15 +24,18 @@ struct LogInteractive: View {
     var body: some View {
         HStack() {
 			Spacer()
-			Text("👏 \(self.log.data.praise)")
-				.onTapGesture {
-					self.makerlogAPI.addPraise(log: self.log.data)
-				}
-				.padding(4)
-				.cornerRadius(6)
-				.font(.footnote)
 
-			Spacer()
+			if self.log.data.user.username != login.meData.first?.username ?? "" {
+				Text("👏 \(self.log.data.praise)")
+					.onTapGesture {
+						self.makerlogAPI.addPraise(log: self.log.data)
+					}
+					.padding(4)
+					.cornerRadius(6)
+					.font(.footnote)
+				Spacer()
+			}
+			
 //			if showDetailView != nil {
 //				HStack() {
 //					Image(systemName: "arrow.turn.left.up").imageScale(.small)
@@ -73,6 +76,7 @@ struct LogInteractive: View {
 						.cornerRadius(6)
 						.font(.footnote)
 				}
+				Spacer()
 			}
 		}
     }

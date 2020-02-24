@@ -18,7 +18,7 @@ struct UserProduct: Codable, Identifiable {
     let website: String
     let projects: [ProjectDetails]
     let launched: Bool
-    let icon: String
+    let icon: String?
     let userProductDescription, accent, createdAt: String?
     let launchedAt: String?
 

@@ -139,6 +139,7 @@ public struct RefreshableList<Content: View>: View {
 				Section(header: PullToRefreshView(data: self.data)) {
 					self.content()
 				}
+				Spacer()
 			}
 			.onPreferenceChange(RefreshableKeyTypes.PrefKey.self) { values in
 				guard let bounds = values.first?.bounds else { return }
