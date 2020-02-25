@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+	var data: TabScreenData
+	var loginData: LoginData
     var body: some View {
 		NavigationView() {
 			List() {
@@ -20,15 +22,28 @@ struct SettingsView: View {
 						Text("📖 Datasecurity")
 					}
 				}
+
+				Section() {
+					Button(action: {
+						self.loginData.logOut()
+					}) {
+						Text("Logout")
+					}
+					
+					Button(action: {
+						self.data.showOnboarding = true
+					}) {
+						Text("Show Onbording")
+					}
+					Button(action: {
+						self.loginData.logOut()
+					}) {
+						Text("Delete all Data").foregroundColor(Color.red)
+					}
+				}
 			}
 			.listStyle(GroupedListStyle())
 			.navigationBarTitle("Settings")
 		}
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }

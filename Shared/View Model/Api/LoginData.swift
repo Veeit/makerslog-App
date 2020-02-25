@@ -110,6 +110,10 @@ class LoginData: ApiModel, ObservableObject {
 			self.userToken = ""
 			self.userSecret = ""
 			self.userName = "no user"
+
+			if let bundleID = Bundle.main.bundleIdentifier {
+				UserDefaults.standard.removePersistentDomain(forName: bundleID)
+			}
 		}
 	}
 

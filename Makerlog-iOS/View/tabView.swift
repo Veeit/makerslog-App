@@ -66,7 +66,7 @@ struct TabScreen: View {
         }
 		.alert(isPresented: self.$data.showError, content: {anAlert(errorMessage: self.data.errorText)})
 		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
-		.sheet(isPresented: self.$data.showSettings, content: {SettingsView()})
+		.sheet(isPresented: self.$data.showSettings, content: {SettingsView(data: self.data, loginData: self.login)})
 		.overlay(VStack() {
 			if self.data.showOnboarding {
 				Onboarding()
