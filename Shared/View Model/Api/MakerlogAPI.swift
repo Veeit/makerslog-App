@@ -48,6 +48,8 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			print("run")
 		}
     }
+	
+	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
     func getResult() {
@@ -75,6 +77,9 @@ class MakerlogAPI: ApiModel, ObservableObject {
 						DispatchQueue.main.async {
 							self.errorText = error.localizedDescription
 							self.showError = true
+							if self.alertWithNetworkError >= 1 {
+								self.alertWithNetworkError += 1
+							}
 						}
 					}
 				}
@@ -82,6 +87,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 				 DispatchQueue.main.async {
 					self.logs = result.results
 					self.isDone = true
+					self.alertWithNetworkError = 0
 				}
 			})
 	}
