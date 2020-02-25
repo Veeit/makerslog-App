@@ -10,11 +10,20 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-		List() {
-			Text("Settings").font(Font.largeTitle.bold())
-			Text("Hello, World!")
+		NavigationView() {
+			List() {
+				Section() {
+					NavigationLink(destination: Imprint()) {
+						Text("📖 Imprint")
+					}
+					NavigationLink(destination: DataSecurity()) {
+						Text("📖 Datasecurity")
+					}
+				}
+			}
+			.listStyle(GroupedListStyle())
+			.navigationBarTitle("Settings")
 		}
-		.listStyle(GroupedListStyle())
     }
 }
 

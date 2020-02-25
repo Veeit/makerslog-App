@@ -74,6 +74,8 @@
 		56EEB54424043C9600522B8C /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = 56EEB54324043C9600522B8C /* Pages */; };
 		56EEB54624043CB100522B8C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54524043CB100522B8C /* Onboarding.swift */; };
 		56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54724045F5A00522B8C /* SettingsView.swift */; };
+		56EEB54A2405257D00522B8C /* Imprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB5492405257D00522B8C /* Imprint.swift */; };
+		56EEB54C2405284400522B8C /* DataSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54B2405284400522B8C /* DataSecurity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EEB54524043CB100522B8C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		56EEB54724045F5A00522B8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		56EEB5492405257D00522B8C /* Imprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imprint.swift; sourceTree = "<group>"; };
+		56EEB54B2405284400522B8C /* DataSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSecurity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +319,8 @@
 				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
 				567B8A8D23F7024600952D4C /* AddView.swift */,
 				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
+				56EEB5492405257D00522B8C /* Imprint.swift */,
+				56EEB54B2405284400522B8C /* DataSecurity.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -774,8 +780,10 @@
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
 				56708E3823FD4E5200182AA8 /* DownView.swift in Sources */,
 				56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */,
+				56EEB54A2405257D00522B8C /* Imprint.swift in Sources */,
 				56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
+				56EEB54C2405284400522B8C /* DataSecurity.swift in Sources */,
 				566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */,
 				56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */,
 				566F1C8023D8A59B00518FFF /* LogViewData.swift in Sources */,
