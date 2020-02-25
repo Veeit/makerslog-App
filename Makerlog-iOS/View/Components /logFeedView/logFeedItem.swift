@@ -29,7 +29,7 @@ struct LogFeedItem: View {
 			}
 		}
 
-		return NavigationLink(destination: LogView(log: log),
+		return NavigationLink(destination: LogDetailView(log: log),
 							  isActive: self.$showDetailView) {
 
 			// swiftlint:disable empty_parentheses_with_trailing_closure
@@ -50,7 +50,7 @@ struct LogFeedItem: View {
 							 content: {
 								$0.image
 									.resizable()
-									.aspectRatio(contentMode: .fill)
+									.aspectRatio(contentMode: .fit)
 									.clipped()
 									.cornerRadius(20)
 									.frame(width: 40, height: 40)

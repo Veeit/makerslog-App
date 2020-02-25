@@ -11,7 +11,7 @@ import SwiftUI
 import URLImage
 import KeyboardObserving
 
-struct LogView: View {
+struct LogDetailView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
 	@ObservedObject var log: LogViewData
 	@EnvironmentObject var comments: CommentViewData
@@ -35,7 +35,7 @@ struct LogView: View {
 									 content: {
 								$0.image
 								.resizable()
-								.aspectRatio(contentMode: .fill)
+								.aspectRatio(contentMode: .fit)
 								.clipped()
 								.cornerRadius(20)
 							})
