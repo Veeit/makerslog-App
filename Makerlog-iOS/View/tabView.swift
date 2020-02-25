@@ -18,6 +18,8 @@ class TabScreenData: ObservableObject {
 
 	@Published var showOnboarding = false
 	@Published var showSettings = false
+	
+	@Published var showLogin = false
 
 	let defaults = UserDefaults.standard
 
@@ -47,26 +49,30 @@ struct TabScreen: View {
 				LogFeedView()
 			}
 			.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
+			.sheet(isPresented: self.$data.showSettings, content: {
+				SettingsView(data: self.data, loginData: self.login)
+			})
 
 			VStack {
 				DiscussionsView()
 			}
 			.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
 
-            VStack {
-				AddView()
-			}
-            .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+			if login.isLoggedIn {
+				VStack {
+					AddView()
+				}
+				.tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
 
-			VStack {
-				NotificationsView()
+				VStack {
+					NotificationsView()
+				}
+				.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
 			}
-			.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
-
-        }
+		}
 		.alert(isPresented: self.$data.showError, content: {anAlert(errorMessage: self.data.errorText)})
 		.alert(isPresented: self.$makerlog.showError, content: {anAlert(errorMessage: self.makerlog.errorText)})
-		.sheet(isPresented: self.$data.showSettings, content: {SettingsView(data: self.data, loginData: self.login)})
+		.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
 		.overlay(VStack() {
 			if self.data.showOnboarding {
 				Onboarding()

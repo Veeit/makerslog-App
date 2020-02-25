@@ -14,7 +14,9 @@ import Down
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
-
+	@EnvironmentObject var tabScreenData: TabScreenData
+	@EnvironmentObject var login: LoginData
+	
 	let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
     var body: some View {
 		VStack() {
@@ -133,7 +135,11 @@ struct DiscussionsDetailView: View {
 						HStack() {
 							TextField("Add a comment", text: self.$data.reply)
 							Button(action: {
-								self.data.postReply()
+								if self.login.isLoggedIn == false {
+									self.tabScreenData.showLogin = true
+								} else {
+									self.data.postReply()
+								}
 								self.data.reply = ""
 							}) {
 								Text("Send")

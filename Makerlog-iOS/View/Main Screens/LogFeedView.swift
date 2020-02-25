@@ -26,7 +26,7 @@ struct LogFeedView: View {
 					self.data.getResult()
 				}, isDone: self.$data.isDone) {
 //					Button(action: {
-//						self.tabScreenData.showOnboarding = true
+//						self.tabScreenData.showLogin = true
 //					}) {
 //						Text("test")
 //					}

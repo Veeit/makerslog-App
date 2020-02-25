@@ -11,10 +11,11 @@ import SwiftUI
 struct LogInteractive: View {
 	@EnvironmentObject var makerlogAPI: MakerlogAPI
 	@EnvironmentObject var login: LoginData
+	@EnvironmentObject var tabScreenData: TabScreenData
+
 	var log: LogViewData
 
 	@Binding var showDetailView: Bool
-	
 
 	init(log: LogViewData, showDetailView: Binding<Bool>) {
 		self._showDetailView = showDetailView
@@ -28,26 +29,18 @@ struct LogInteractive: View {
 			if self.log.data.user.username != login.meData.first?.username ?? "" {
 				Text("👏 \(self.log.data.praise)")
 					.onTapGesture {
-						self.makerlogAPI.addPraise(log: self.log.data)
+						if self.login.isLoggedIn == false {
+							self.tabScreenData.showLogin = true
+						} else {
+							self.makerlogAPI.addPraise(log: self.log.data)
+						}
 					}
 					.padding(4)
 					.cornerRadius(6)
 					.font(.footnote)
 				Spacer()
 			}
-			
-//			if showDetailView != nil {
-//				HStack() {
-//					Image(systemName: "arrow.turn.left.up").imageScale(.small)
-//					Text("Reply")
-//						.onTapGesture {
-//							self.showDetailView.toggle()
-//						}
-//						.padding(4)
-//						.cornerRadius(6)
-//						.font(.footnote)
-//				}
-//			}
+
 			HStack() {
 				Image(systemName: "bubble.right")
 				Text("\(self.log.data.commentCount)")

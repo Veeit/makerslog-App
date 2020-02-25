@@ -72,13 +72,6 @@ struct LogDetailView: View {
 								.lineLimit(200)
 								.multilineTextAlignment(.leading)
 								.fixedSize(horizontal: false, vertical: true)
-//							MDText(markdown: self.log.data.content)
-//								.padding(10)
-//								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-//								.cornerRadius(10)
-//								.lineLimit(200)
-//								.multilineTextAlignment(.leading)
-//								.fixedSize(horizontal: false, vertical: true)
 						}
 					}
 					LinkPreview(links: LinkData(text: self.log.data.content))
@@ -136,6 +129,8 @@ struct LogDetailView: View {
     }
 
 	struct AddComment: View {
+		@EnvironmentObject var tabScreenData: TabScreenData
+		@EnvironmentObject var login: LoginData
 		@State var text: String = ""
 		var logID: Int
 		@ObservedObject var comments: CommentViewData
@@ -143,7 +138,11 @@ struct LogDetailView: View {
 			HStack() {
 				TextField("Add a comment", text: $text)
 				Button(action: {
-					self.comments.addComment(logID: self.logID, content: self.text)
+					if self.login.isLoggedIn == false {
+						self.tabScreenData.showLogin = true
+					} else {
+						self.comments.addComment(logID: self.logID, content: self.text)
+					}
 					self.text = ""
 				}) {
 					Text("Send")

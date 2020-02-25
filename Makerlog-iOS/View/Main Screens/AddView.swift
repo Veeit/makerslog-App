@@ -12,6 +12,9 @@ import SwiftUIX
 
 struct AddView: View {
 //    var types = ["log", "discussion", "milestone", "project"]
+	@EnvironmentObject var tabScreenData: TabScreenData
+	@EnvironmentObject var login: LoginData
+	
 	var types = ["log", "discussion"]
 	@State private var selectedType = 0
 

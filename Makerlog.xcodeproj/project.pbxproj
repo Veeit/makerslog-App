@@ -76,6 +76,7 @@
 		56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54724045F5A00522B8C /* SettingsView.swift */; };
 		56EEB54A2405257D00522B8C /* Imprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB5492405257D00522B8C /* Imprint.swift */; };
 		56EEB54C2405284400522B8C /* DataSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54B2405284400522B8C /* DataSecurity.swift */; };
+		56EEB54E2405632900522B8C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54D2405632800522B8C /* LoginScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		56EEB54724045F5A00522B8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56EEB5492405257D00522B8C /* Imprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imprint.swift; sourceTree = "<group>"; };
 		56EEB54B2405284400522B8C /* DataSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSecurity.swift; sourceTree = "<group>"; };
+		56EEB54D2405632800522B8C /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 		561A48D423E317A40077A1D2 /* Main Screens */ = {
 			isa = PBXGroup;
 			children = (
+				56EEB54D2405632800522B8C /* LoginScreen.swift */,
 				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
 				56C94A8B23D6FBF5007840DB /* LogDetailView.swift */,
 				56682BD123E610D700EF2C5B /* UserView.swift */,
@@ -321,6 +324,7 @@
 				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
 				56EEB5492405257D00522B8C /* Imprint.swift */,
 				56EEB54B2405284400522B8C /* DataSecurity.swift */,
+				56EEB54724045F5A00522B8C /* SettingsView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -417,7 +421,6 @@
 				561A48D423E317A40077A1D2 /* Main Screens */,
 				566DF0D323DF01E50085C318 /* tabView.swift */,
 				56EEB54524043CB100522B8C /* Onboarding.swift */,
-				56EEB54724045F5A00522B8C /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
 				5670F30E23F5E21700B1D96E /* discussionResponse.swift in Sources */,
 				560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */,
+				56EEB54E2405632900522B8C /* LoginScreen.swift in Sources */,
 				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
