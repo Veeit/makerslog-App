@@ -15,98 +15,72 @@ struct UserView: View {
 
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
-		VStack(spacing: 30) {
+		List() {
 
 //			Text(String("\(self.login.meData.first)"))
 
-			HStack(alignment: .center) {
-				URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
-						processors: [ Resize(size: CGSize(width: 130, height: 130), scale: UIScreen.main.scale) ],
-						 placeholder: { _ in
-							Image("placeholer")
-								.resizable()
-								.scaledToFill()
-								.cornerRadius(100)
-								.frame(width: 130, height: 130, alignment: .center)
-						},
-						content: {
-							$0.image
-								.resizable()
-								.scaledToFill()
-								.frame(width: 130, height: 130, alignment: .center)
-								.cornerRadius(100)
-						})
-						.frame(width: 130, height: 130, alignment: .center)
+			Section() {
+				HStack(alignment: .center) {
+					URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
+							 processors: [
+								 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
+							 ],
+							 placeholder: Image("placeholder"),
+							 content: {
+						$0.image
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.clipped()
+						.cornerRadius(20)
+					})
+						.frame(width: 70, height: 70)
+					VStack(alignment: .leading) {
+						Text(self.login.userName)
+								.font(.headline).bold()
+						Text("@ \(self.login.meData.last?.username ?? "usernameNotFound")")
 
-				Spacer()
-				VStack() {
-					Text(self.login.userName)
-							.font(.headline).bold()
+						HStack( spacing: 10) {
 
-					HStack( spacing: 10) {
-
-						Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
-						Text("\(self.login.meData.first?.streak ?? 0) 🔥")
-						Text("\(Int(self.login.meData.first?.weekTda ?? 0)) 🏁")
+							Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
+							Text("\(self.login.meData.first?.streak ?? 0) 🔥")
+							Text("\(Int(self.login.meData.first?.weekTda ?? 0)) 🏁")
+						}
+						Spacer()
 					}
 				}
-			}
-			.padding(20)
-			.frame(minWidth: 0, maxWidth: .infinity)
-			.background(Color.primary.opacity(0.1))
-			.cornerRadius(10)
 
-			VStack() {
-				Text(self.login.meData.first?.meDescription ?? "no desciption set")
+				VStack() {
+					Text(self.login.meData.first?.meDescription ?? "no desciption set")
+				}
 			}
 
-			VStack(alignment: .leading) {
-				Text("your products:").bold()
-				ScrollView(.horizontal) {
-					HStack(spacing: 20) {
-						ForEach(self.login.meProducts) { product in
-							VStack() {
-								URLImage(URL(string: "\(product.icon ?? self.defaultAvartar)")!,
-										processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],
-										content: {
-											$0.image
-												.resizable()
-												.scaledToFill()
-												.frame(width: 60, height: 60, alignment: .center)
-												.cornerRadius(10)
-										})
+			Section(header: Text("Your products")) {
+				ForEach(self.login.meProducts) { product in
+					HStack(alignment: .top) {
+						URLImage(URL(string: "\(product.icon ?? self.defaultAvartar)")!,
+								processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],
+								content: {
+									$0.image
+										.resizable()
+										.scaledToFill()
 										.frame(width: 60, height: 60, alignment: .center)
-								Text("\(product.name ?? "no name set")")
-
+										.cornerRadius(10)
+								})
+								.frame(width: 60, height: 60, alignment: .center)
+						VStack(alignment: .leading) {
+							HStack() {
+								Text("\(product.name ?? "no name set")").bold()
+								Spacer()
+								Text("\(product.launched ? "🚀" : "")").bold()
 							}
+							Text("\(product.productDescription ?? "no name set")")
+								.multilineTextAlignment(.leading)
 						}
 					}
 				}
 			}
-
-			Spacer()
-
-			HStack() {
-				Text(self.login.isLoggedIn ? "Logout" : "Login")
-					.font(Font.system(size: 18))
-					.bold()
-			}
-			.padding(4)
-			.padding([.leading, .trailing], 10)
-			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
-			.addBorder(Color.blue, width: 2, cornerRadius: 13)
-			.foregroundColor(.blue)
-			.onTapGesture {
-				if self.login.isLoggedIn {
-					self.login.logOut()
-				} else {
-					self.login.login()
-					self.login.getMe()
-				}
-			}
-
-			Spacer().frame(height: 150)
-		}.padding(10)
+		}.listStyle(GroupedListStyle())
+		.navigationBarTitle(self.login.userName)
 	}
 }
 
