@@ -83,7 +83,7 @@ struct DataSecurity: View {
 				}
 				Spacer()
 			}
-			.navigationBarTitle("Imprint")
+			.navigationBarTitle("Data Security")
 			.padding([.leading, .trailing])
 		}
 	}
