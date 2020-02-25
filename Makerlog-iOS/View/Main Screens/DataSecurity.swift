@@ -27,13 +27,20 @@ struct DataSecurity: View {
 						Other data is automatically collected by our IT systems when you open the app. These are mainly technical data (e.g. App user count, operating system or shaw onbording screen). This data is collected automatically as soon as you enter open the app.
 						The add log / discussion  data is not saved be us, we just send it to makerlog. We just save your login token (not the login data (user name and user password!)) on your device.
 						If the app crahses and you can send us a creash report, we get ther detailed information about where it creahsed, device information and time. This data can not be traced back to you.
-						In general we don't save any personal data that can be be traced back to you on our server, we just send it to makerlog to save it. You shoud read the makerlog privicy policy and contact the operator of makerlog if you have a problem with it.
-						Link to makerlog privicy policy:
 						""").multilineTextAlignment(.leading)
-					Button(action: {
-						self.openMakerlogAbout()
-					}) {
-						Text("https://getmakerlog.com/about")
+
+					Group() {
+						Text("Do you send data to third parties ?")
+						Text("""
+							Yes, this app is a client for getmakerlog.com / makerlog.io. To use the app with all features we need to shere data with them. If you want to use the add log feature we need to submit this log with your login token to makerlog. Otherwise it will not added to the makerlog database. Same for discussions, added paises and comments.
+							In general we don't save any personal data that can be be traced back to you on our server, we just send it to makerlog to save it. You shoud read the makerlog privicy policy and contact the operator of makerlog if you have a problem with it.
+							Link to makerlog privicy policy:
+							""").multilineTextAlignment(.leading)
+						Button(action: {
+							self.openMakerlogAbout()
+						}) {
+							Text("https://getmakerlog.com/about")
+						}
 					}
 					Text("Analysis tools and third-party tools").bold().padding([.top], 10)
 					Text("""
@@ -80,6 +87,9 @@ struct DataSecurity: View {
 					4. If you have lodged an objection in accordance with Art. 21 Paragraph 1 DSGVO, a balance must be struck between your interests and ours. As long as it has not yet been determined whose interests outweigh the interests of both parties, you have the right to demand that the processing of your personal data be restricted.
 					If you have restricted the processing of your personal data, these data - apart from their storage - may only be processed with your consent or for the assertion, exercise or defence of legal claims or for the protection of the rights of another natural or legal person or for reasons of an important public interest of the European Union or a Member State.
 					""")
+				}.padding([.bottom])
+				Group() {
+					Text("Written at: 25-02-2020")
 				}
 				Spacer()
 			}
