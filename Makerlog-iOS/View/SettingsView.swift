@@ -23,6 +23,14 @@ struct SettingsView: View {
 					}
 				}
 
+				Section(header: Text("Contact")) {
+					Button(action: {
+						self.openTelegramLink()
+					}) {
+						Text("Telegram")
+					}
+				}
+				
 				Section() {
 					Button(action: {
 						self.loginData.logOut()
@@ -46,4 +54,9 @@ struct SettingsView: View {
 			.navigationBarTitle("Settings")
 		}
     }
+	func openTelegramLink() {
+		if let url = URL(string: "https://t.me/Veitpro") {
+			UIApplication.shared.open(url)
+		}
+	}
 }
