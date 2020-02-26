@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Down
 
 class TabScreenData: ObservableObject {
 	@Published var userSheet = false

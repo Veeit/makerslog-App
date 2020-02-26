@@ -10,7 +10,7 @@ import Foundation
 import OAuthSwift
 import Combine
 
-class DiscussionModel: ApiModel, ObservableObject {
+class DiscussionData: ApiModel, ObservableObject {
 	@Published var discussionResponse: DiscussionResponse?
 	@Published var discussion: ResultDiscussion
 	@Published var reply: String = ""

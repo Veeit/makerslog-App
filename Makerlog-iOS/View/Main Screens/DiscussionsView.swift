@@ -18,7 +18,7 @@ struct DiscussionsView: View {
 			List() {
 				if self.data.discussions != nil {
 					ForEach(self.data.discussions!) { discussion in
-						NavigationLink(destination: DiscussionsDetailView(data: DiscussionModel(discussion: discussion))) {
+						NavigationLink(destination: DiscussionsDetailView(data: DiscussionData(discussion: discussion))) {
 							HStack(alignment: .top) {
 								URLImage(URL(string: discussion.owner.avatar)!,
 										 processors: [

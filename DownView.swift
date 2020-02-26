@@ -8,7 +8,6 @@
 
 import SwiftUI
 import UIKit
-import Down
 
 struct TextWithAttributedString: UIViewRepresentable {
 

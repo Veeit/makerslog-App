@@ -12,7 +12,7 @@ import KeyboardObserving
 import SwiftUIX
 
 struct DiscussionsDetailView: View {
-	@State var data: DiscussionModel
+	@State var data: DiscussionData
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
 

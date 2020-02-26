@@ -13,6 +13,8 @@
 
 import Foundation
 
+typealias UserProducts = [Product]
+
 // swiftlint:disable  identifier_name
 struct User: Codable {
     let id: Int

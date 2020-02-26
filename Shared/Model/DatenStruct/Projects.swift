@@ -15,7 +15,7 @@ struct Project: Codable {
     let products: [Product]
 }
 
-struct ProjectSet: Codable, Identifiable {
+struct Projects: Codable, Identifiable {
     let id: Int
     let name: String
     let projectSetPrivate: Bool

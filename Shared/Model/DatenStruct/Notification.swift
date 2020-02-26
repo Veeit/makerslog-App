@@ -42,7 +42,7 @@ struct Target: Codable {
     let dueAt: String?
     let doneAt: String?
 //    var user: User?
-    let projectSet: [ProjectSet]?
+    let projectSet: [Projects]?
     let praise: Int?
     let attachment: String?
     let commentCount: Int?
