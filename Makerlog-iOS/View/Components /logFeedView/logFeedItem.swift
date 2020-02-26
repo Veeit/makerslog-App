@@ -71,11 +71,6 @@ struct LogFeedItem: View {
 						.lineLimit(nil)
 						.fixedSize(horizontal: false, vertical: true)
 						.padding([.bottom], 15)
-
-//					if log.log.praise > 0 {
-//						Spacer()
-//						Text("\(log.log.praise) 👏")
-//					}
 				}
 
 				if log.data.attachment != nil {
@@ -114,9 +109,3 @@ struct LogFeedItem: View {
 					 secondaryButton: cancel)
     }
 }
-
-//struct logFeedItem_Previews: PreviewProvider {
-//    static var previews: some View {
-//        logFeedItem()
-//    }
-//}

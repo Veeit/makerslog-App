@@ -16,7 +16,6 @@ struct UserView: View {
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
 		List() {
-
 			Section() {
 				HStack(alignment: .center) {
 					URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
@@ -31,14 +30,14 @@ struct UserView: View {
 						.clipped()
 						.cornerRadius(20)
 					})
-						.frame(width: 70, height: 70)
+					.frame(width: 70, height: 70)
+
 					VStack(alignment: .leading) {
 						Text(self.login.userName)
 								.font(.headline).bold()
 						Text("@ \(self.login.meData.last?.username ?? "usernameNotFound")")
 
 						HStack( spacing: 10) {
-
 							Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
 							Text("\(self.login.meData.first?.streak ?? 0) 🔥")
 							Text("\(Int(self.login.meData.first?.weekTda ?? 0)) 🏁")

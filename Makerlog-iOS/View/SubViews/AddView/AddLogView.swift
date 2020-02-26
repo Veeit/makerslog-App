@@ -34,8 +34,12 @@ struct AddLogView: View {
 				}
 			}.pickerStyle(SegmentedPickerStyle())
 
-			TextView(self.types[selectedType].title, text: self.$data.text)
-				.padding(5)
+			GeometryReader() { geometry in
+				TextView(self.types[self.selectedType].title, text: self.$data.text)
+					.padding(5)
+					.keyboardObserving()
+				Spacer()
+			}
 
 		}.navigationBarTitle("Log your task")
 			.navigationBarItems(leading:
@@ -53,7 +57,7 @@ struct AddLogView: View {
 						Text("Send")
 					}
 				}
-		)
+			)
     }
 
 	func save() {
