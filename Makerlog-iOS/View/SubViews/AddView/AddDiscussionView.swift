@@ -21,8 +21,12 @@ struct AddDiscussionView: View {
 			TextField("Discuss what ?", text: self.$data.title)
 
 			Text("Discussion:").font(Font.headline)
-			TextView("Describe your discussion", text: self.$data.text)
-
+			GeometryReader() { geometry in
+				TextView("Describe your discussion", text: self.$data.text)
+					.padding(5)
+					.keyboardObserving()
+				Spacer()
+			}
 			Spacer()
 		}.navigationBarTitle("Add a Discussion")
 		.navigationBarItems(
