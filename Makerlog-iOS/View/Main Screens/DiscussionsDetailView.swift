@@ -17,7 +17,7 @@ struct DiscussionsDetailView: View {
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
 	
-	let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
+//	let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {

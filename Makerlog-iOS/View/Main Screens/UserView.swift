@@ -17,8 +17,6 @@ struct UserView: View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
 		List() {
 
-//			Text(String("\(self.login.meData.first)"))
-
 			Section() {
 				HStack(alignment: .center) {
 					URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
@@ -83,9 +81,3 @@ struct UserView: View {
 		.navigationBarTitle(self.login.userName)
 	}
 }
-
-//struct UserView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserView()
-//    }
-//}

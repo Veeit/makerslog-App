@@ -49,15 +49,11 @@ struct ProductView: View {
 					}
 					.padding([.leading, .trailing], 10)
 					.frame(minWidth: 0, maxWidth: .infinity)
-//					.background(Color.primary.opacity(0.1))
-//					.cornerRadius(10)
 				}
 			} else {
 				Text("no product set 🤷🏻‍♂️")
 				.padding([.leading, .trailing], 10)
 				.frame(minWidth: 0, maxWidth: .infinity)
-//				.background(Color.primary.opacity(0.1))
-//				.cornerRadius(10)
 			}
 		}
 	}
