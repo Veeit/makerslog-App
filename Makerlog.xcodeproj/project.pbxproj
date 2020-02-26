@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5603487F24068AF40089FECD /* ProductStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5603487E24068AF40089FECD /* ProductStruct.swift */; };
+		56034884240690D10089FECD /* ReplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034883240690D10089FECD /* ReplayView.swift */; };
+		56034887240691890089FECD /* AddDiscussionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034886240691890089FECD /* AddDiscussionView.swift */; };
 		560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */; };
 		560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */; };
 		560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA423D5DB5100A12CF5 /* Makerlog.xcdatamodeld */; };
@@ -111,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		5603487E24068AF40089FECD /* ProductStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStruct.swift; sourceTree = "<group>"; };
+		56034883240690D10089FECD /* ReplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayView.swift; sourceTree = "<group>"; };
+		56034886240691890089FECD /* AddDiscussionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiscussionView.swift; sourceTree = "<group>"; };
 		560E9F9D23D5DB5100A12CF5 /* logbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = logbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +262,59 @@
 			path = DatenStruct;
 			sourceTree = "<group>";
 		};
+		560348812406902E0089FECD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				56EEB5492405257D00522B8C /* Imprint.swift */,
+				56EEB54B2405284400522B8C /* DataSecurity.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		56034882240690B50089FECD /* Discussions */ = {
+			isa = PBXGroup;
+			children = (
+				56034883240690D10089FECD /* ReplayView.swift */,
+			);
+			path = Discussions;
+			sourceTree = "<group>";
+		};
+		560348852406916F0089FECD /* AddView */ = {
+			isa = PBXGroup;
+			children = (
+				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
+				56034886240691890089FECD /* AddDiscussionView.swift */,
+			);
+			path = AddView;
+			sourceTree = "<group>";
+		};
+		56034888240691D90089FECD /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				5603488A240692140089FECD /* Discussion */,
+				56034889240691FA0089FECD /* LogFeed */,
+				560348852406916F0089FECD /* AddView */,
+				560348812406902E0089FECD /* Settings */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		56034889240691FA0089FECD /* LogFeed */ = {
+			isa = PBXGroup;
+			children = (
+				56C94A8B23D6FBF5007840DB /* LogDetailView.swift */,
+			);
+			path = LogFeed;
+			sourceTree = "<group>";
+		};
+		5603488A240692140089FECD /* Discussion */ = {
+			isa = PBXGroup;
+			children = (
+				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
+			);
+			path = Discussion;
+			sourceTree = "<group>";
+		};
 		560E9F9423D5DB5100A12CF5 = {
 			isa = PBXGroup;
 			children = (
@@ -329,16 +386,11 @@
 			isa = PBXGroup;
 			children = (
 				56EEB54D2405632800522B8C /* LoginScreen.swift */,
-				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
-				56C94A8B23D6FBF5007840DB /* LogDetailView.swift */,
 				56682BD123E610D700EF2C5B /* UserView.swift */,
+				560E9FA723D5DB5100A12CF5 /* LogFeedView.swift */,
 				560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */,
 				5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */,
-				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
 				567B8A8D23F7024600952D4C /* AddView.swift */,
-				56D4E45B23E9C9C500679DD4 /* AddLogView.swift */,
-				56EEB5492405257D00522B8C /* Imprint.swift */,
-				56EEB54B2405284400522B8C /* DataSecurity.swift */,
 				56EEB54724045F5A00522B8C /* SettingsView.swift */,
 			);
 			path = "Main Screens";
@@ -348,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				56D4E46123EA070500679DD4 /* sharded */,
-				56682BD023E610C100EF2C5B /* userView */,
+				56034882240690B50089FECD /* Discussions */,
 				56682BCD23E5C84C00EF2C5B /* logFeedView */,
 				561A48D723E317CD0077A1D2 /* logScreen */,
 			);
@@ -381,13 +433,6 @@
 				56682BCE23E5C88000EF2C5B /* logFeedItem.swift */,
 			);
 			path = logFeedView;
-			sourceTree = "<group>";
-		};
-		56682BD023E610C100EF2C5B /* userView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = userView;
 			sourceTree = "<group>";
 		};
 		56AE33502402B7FB00A6B385 /* Api */ = {
@@ -433,6 +478,7 @@
 		56C94A8923D6FBAA007840DB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56034888240691D90089FECD /* SubViews */,
 				561A48D623E317C20077A1D2 /* Components  */,
 				561A48D423E317A40077A1D2 /* Main Screens */,
 				566DF0D323DF01E50085C318 /* tabView.swift */,
@@ -782,6 +828,7 @@
 				5603487F24068AF40089FECD /* ProductStruct.swift in Sources */,
 				56EEB54624043CB100522B8C /* Onboarding.swift in Sources */,
 				567CD4AA24029171009B944F /* ApiModel.swift in Sources */,
+				56034887240691890089FECD /* AddDiscussionView.swift in Sources */,
 				560EFC9523EB028300E0B172 /* userProducts.swift in Sources */,
 				5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
@@ -807,6 +854,7 @@
 				560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */,
 				566F1C6823D7511700518FFF /* prductView.swift in Sources */,
 				566F1C6623D73C9A00518FFF /* ProjectStruct.swift in Sources */,
+				56034884240690D10089FECD /* ReplayView.swift in Sources */,
 				561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */,
 				56D2C71523DF4BDB0017A7B4 /* UserModel.swift in Sources */,
 				5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */,

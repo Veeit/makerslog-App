@@ -11,6 +11,7 @@ import SwiftUI
 struct LoginScreen: View {
 	var login: LoginData
     var body: some View {
+//		swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
 		VStack() {
 			Text("You must be logged in for this function!")
 			Button(action: {
