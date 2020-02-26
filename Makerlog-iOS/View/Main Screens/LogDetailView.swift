@@ -122,7 +122,7 @@ struct LogDetailView: View {
 		}
 		.onAppear(perform: {
 			self.comments.comments.removeAll()
-			self.comments.getComments(logID: String(self.log.data.id))
+			_ = self.comments.getComments(logID: String(self.log.data.id))
 			print(self.userComments)
 		})
 		.navigationBarTitle("Detail Log", displayMode: .inline)

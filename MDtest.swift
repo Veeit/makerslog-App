@@ -13,7 +13,6 @@ import UIKit
 protocol MarkdownRule {
     var id: String { get }
     var regex: RegexMarkdown { get }
-    //    func replace(_ text: String) -> Text
 }
 
 //swiftlint:disable all

@@ -33,7 +33,7 @@ class LoginData: ApiModel, ObservableObject {
 	@Published var isLoggedIn = false
     @Published var userToken = ""
     @Published var userSecret = ""
-    @Published var meData = [Me]()
+    @Published var meData = [User]()
 	@Published var userName = "no user"
 	@Published var meProducts = UserProducts()
 
@@ -106,7 +106,7 @@ class LoginData: ApiModel, ObservableObject {
 			)
 			self.isLoggedIn = false
 
-			self.meData = [Me]()
+			self.meData = [User]()
 			self.userToken = ""
 			self.userSecret = ""
 			self.userName = "no user"
@@ -129,7 +129,7 @@ class LoginData: ApiModel, ObservableObject {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
-                    let data = try decoder.decode(Me.self, from: response.data)
+                    let data = try decoder.decode(User.self, from: response.data)
 
                     self.meData.append(data)
 					self.isLoggedIn = true

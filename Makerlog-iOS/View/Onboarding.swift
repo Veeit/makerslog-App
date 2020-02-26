@@ -42,6 +42,7 @@ And shere your opinon about other topics with the comunity.
 
     @State var index: Int = 0
 
+	// swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
     var body: some View {
 		ModelPages(pages, currentPage: self.$index) { _, data in
 			VStack() {

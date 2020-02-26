@@ -14,7 +14,7 @@ import SwiftUI
 class MakerlogAPI: ApiModel, ObservableObject {
 	@Published var deleteItem = false
 
-    @Published var logs = [Result]()
+    @Published var logs = [Log]()
     @Published var isDone = false {
         didSet {
 			if self.isDone {
@@ -48,7 +48,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			print("run")
 		}
     }
-	
+
 	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
@@ -129,7 +129,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		}
 	}
 
-	func addPraise(log: Result) {
+	func addPraise(log: Log) {
 		let token = oauthswift.client.credential.oauthToken
 		let parameters = ["token": token, "amount": "5"]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/praise/"
@@ -205,7 +205,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		}
 	}
 
-	func deleteLog(log: Result) {
+	func deleteLog(log: Log) {
 		let token = oauthswift.client.credential.oauthToken
 		let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/"

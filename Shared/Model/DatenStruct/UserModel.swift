@@ -1,49 +1,19 @@
+//
+//  meModel.swift
+//  Makerlog
+//
+//  Created by Veit Progl on 27.01.20.
+//  Copyright © 2020 Veit Progl. All rights reserved.
+//
+
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+//   let me = try? newJSONDecoder().decode(Me.self, from: jsonData)
 
 import Foundation
 
 // swiftlint:disable  identifier_name
-struct Logs: Codable {
-   let count: Int
-   let next: String?
-   let previous: String?
-   let results: [Result]
-}
-
-struct Result: Codable, Identifiable, Equatable {
-	static func == (lhs: Result, rhs: Result) -> Bool {
-		return lhs.id == rhs.id
-	}
-
-	var id: Int
-    let event: String?
-    let done, inProgress: Bool
-	var content, createdAt, updatedAt: String
-    let dueAt, doneAt: String?
-	var user: User
-    let projectSet: [ProjectSet]
-	var praise: Int
-    let attachment: String?
-    let commentCount: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id, event, done
-        case inProgress = "in_progress"
-        case content
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case dueAt = "due_at"
-        case doneAt = "done_at"
-        case user
-        case projectSet = "project_set"
-        case praise, attachment
-        case commentCount = "comment_count"
-    }
-}
-
 struct User: Codable {
     let id: Int
     let username, firstName, lastName: String
@@ -100,17 +70,4 @@ struct User: Codable {
 			return self.username
 		}
 	}
-}
-
-struct ProjectSet: Codable, Identifiable {
-    let id: Int
-    let name: String
-    let projectSetPrivate: Bool
-    let user: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case projectSetPrivate = "private"
-        case user
-    }
 }

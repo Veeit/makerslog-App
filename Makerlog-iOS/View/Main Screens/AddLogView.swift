@@ -14,6 +14,7 @@ struct AddTyps {
 	var title: String
 }
 
+//swiftlint:disable multiple_closures_with_trailing_closure
 struct AddLogView: View {
 	@ObservedObject var data = AddLogData()
 	@State private var selectedType = 0
@@ -74,7 +75,7 @@ struct AddLogView: View {
 		self.data.isProgress = false
 		UIApplication.shared.windows.first?.endEditing(true)
 	}
-	
+
 	func cancel() {
 		UIApplication.shared.windows.first?.endEditing(true)
 		self.data.text = ""

@@ -11,10 +11,11 @@ import SwiftUI
 import SwiftUIX
 
 struct AddView: View {
-//    var types = ["log", "discussion", "milestone", "project"]
+	//swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
+
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
-	
+
 	var types = ["log", "discussion"]
 	@State private var selectedType = 0
 

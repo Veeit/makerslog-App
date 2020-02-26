@@ -31,7 +31,7 @@ class AddLogData: ApiModel, ObservableObject {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
-                    let data = try decoder.decode(AddLog.self, from: response.data)
+                    let data = try decoder.decode(Log.self, from: response.data)
 
 					self.isDone = false
 					self.isProgress = false
@@ -61,9 +61,9 @@ class UpdateLogData: ObservableObject {
 	@Published var isDone = false
 	@Published var isProgress = false
 
-	@Published var log: Result
+	@Published var log: Log
 
-	init(log: Result) {
+	init(log: Log) {
 		self.log = log
 		self.text = self.log.content
 		self.isDone = self.log.done
@@ -85,7 +85,7 @@ class UpdateLogData: ObservableObject {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
-                    let data = try decoder.decode(AddLog.self, from: response.data)
+                    let data = try decoder.decode(Log.self, from: response.data)
 
 					self.isDone = false
 					self.isProgress = false
@@ -139,7 +139,7 @@ class AddDiscussionData: AddLogData {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
-                    let data = try decoder.decode(AddLog.self, from: response.data)
+                    let data = try decoder.decode(Log.self, from: response.data)
 
 					self.text = ""
 					print(data)

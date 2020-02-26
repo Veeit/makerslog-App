@@ -10,14 +10,13 @@ import SwiftUI
 import URLImage
 import KeyboardObserving
 import SwiftUIX
-import Down
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionModel
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
-	
-//	let down = Down(markdownString: "## [Down](https://github.com/iwasrobbed/Down)")
+
+	//swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {
@@ -159,12 +158,14 @@ struct DiscussionsDetailView: View {
 	}
 
 	struct StringID: Identifiable {
+		//swiftlint:disable identifier_name
 		var id = UUID()
 		var string: String
 
 		init(string: String) {
 			self.string = string
 		}
+		//swiftlint:enable identifier_name
 	}
 
 	func spriltby(toSplit: String, splitAt: Int) -> [StringID] {

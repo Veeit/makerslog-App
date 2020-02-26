@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
 struct Imprint: View {
     var body: some View {
 		ScrollView() {
@@ -37,7 +38,7 @@ struct Imprint: View {
 				.padding([.leading, .trailing])
 		}
     }
-	
+
 	func openMakerlogAbout() {
 		if let url = URL(string: "https://getmakerlog.com/about") {
 			UIApplication.shared.open(url)

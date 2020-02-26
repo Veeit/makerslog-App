@@ -48,7 +48,7 @@ struct UserView: View {
 				}
 
 				VStack() {
-					Text(self.login.meData.first?.meDescription ?? "no desciption set")
+					Text(self.login.meData.first?.userDescription ?? "no desciption set")
 				}
 			}
 
@@ -67,7 +67,7 @@ struct UserView: View {
 								.frame(width: 60, height: 60, alignment: .center)
 						VStack(alignment: .leading) {
 							HStack() {
-								Text("\(product.name ?? "no name set")").bold()
+								Text("\(product.name)").bold()
 								Spacer()
 								Text("\(product.launched ? "🚀" : "")").bold()
 							}

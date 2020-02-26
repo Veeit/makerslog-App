@@ -1,21 +1,16 @@
 //
-//  projectStruct.swift
-//  Makerlog
+//  ProductStruct.swift
+//  iOS
 //
-//  Created by Veit Progl on 21.01.20.
+//  Created by Veit Progl on 26.02.20.
 //  Copyright © 2020 Veit Progl. All rights reserved.
 //
 
 import Foundation
-
-// swiftlint:disable  identifier_name
-// MARK: - Project
-struct Project: Codable {
-    let user: User
-    let products: [Product]
-}
+import Combine
 
 // MARK: - Product
+//swiftlint:disable identifier_name
 struct Product: Codable, Identifiable {
     let id: Int
     let name, slug: String

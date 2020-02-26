@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
 struct SettingsView: View {
 	var data: TabScreenData
 	var loginData: LoginData
@@ -30,14 +31,14 @@ struct SettingsView: View {
 						Text("Telegram")
 					}
 				}
-				
+
 				Section() {
 					Button(action: {
 						self.loginData.logOut()
 					}) {
 						Text("Logout")
 					}
-					
+
 					Button(action: {
 						self.data.showOnboarding = true
 					}) {

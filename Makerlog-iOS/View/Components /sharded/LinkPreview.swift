@@ -50,7 +50,6 @@ struct StringLink: Identifiable {
 class LinkData: ObservableObject {
 	@Published var links = [StringLink]()
 	init(text: String) {
-//		let input = "This is a test with the URL https://www.hackingwithswift.com to be detected."
 		findLinks(input: text)
 	}
 	
@@ -69,7 +68,6 @@ class LinkData: ObservableObject {
 
 struct LinkPreview: View {
     @State var redrawPreview = false
-//	@ObservedObject var links = LinkData(text: "This is a test with the URL https://www.hackingwithswift.com to be detected.")
 	@State var links: LinkData
 
 	var body: some View {
