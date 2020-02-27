@@ -88,12 +88,6 @@ struct LogDetailView: View {
 						}
 					}
 
-					Section(header: Text("Comments: ") ) {
-						ForEach(self.comments.comments) { comment in
-							CommentView(comment: comment)
-						}
-					}
-
 					if self.log.data.attachment != nil {
 						Section() {
 							URLImage(URL(string: self.log.data.attachment!)!,
@@ -109,6 +103,13 @@ struct LogDetailView: View {
 							.frame( maxWidth: geometry.size.width - 20)
 						}
 					}
+
+					Section(header: Text("Comments: ") ) {
+						ForEach(self.comments.comments) { comment in
+							CommentView(comment: comment)
+						}
+					}
+
 				}.padding([.bottom], 60)
 
 				VStack() {
