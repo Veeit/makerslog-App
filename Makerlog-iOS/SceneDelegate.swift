@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import OAuthSwift
+import URLImage
 
 // swiftlint:disable line_length
 
@@ -39,6 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let loginData = LoginData()
 		let commentViewData = CommentViewData()
 
+		URLImageService.shared.setDefaultExpiryTime(3600.0)
+		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = TabScreen()

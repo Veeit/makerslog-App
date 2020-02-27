@@ -32,64 +32,65 @@ struct LogFeedItem: View {
 		return NavigationLink(destination: LogDetailView(log: log),
 							  isActive: self.$showDetailView) {
 
-			// swiftlint:disable empty_parentheses_with_trailing_closure
-			VStack(alignment: .leading) {
-				HStack() {
-					URLImage(URL(string: log.data.user.avatar)!,
-							 processors: [
-								 Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale)
-							 ],
-							 placeholder: { _ in
-								Image("placeholer")
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.clipped()
-									.cornerRadius(20)
-									.frame(width: 40, height: 40)
-							},
-							 content: {
-								$0.image
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.clipped()
-									.cornerRadius(20)
-									.frame(width: 40, height: 40)
-							}).frame(width: 40, height: 40)
+						// swiftlint:disable empty_parentheses_with_trailing_closure
+						VStack(alignment: .leading) {
+							HStack() {
+								URLImage(URL(string: log.data.user.avatar)!,
+										 processors: [
+											 Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale)
+										 ],
+										 placeholder: { _ in
+											Image("placeholer")
+												.resizable()
+												.aspectRatio(contentMode: .fit)
+												.clipped()
+												.cornerRadius(20)
+												.frame(width: 40, height: 40)
+										},
+										 content: {
+											$0.image
+												.resizable()
+												.aspectRatio(contentMode: .fit)
+												.clipped()
+												.cornerRadius(20)
+												.frame(width: 40, height: 40)
+										}).frame(width: 40, height: 40)
 
-					Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
-						.font(.subheadline).bold()
-					Spacer()
+								Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
+									.font(.subheadline).bold()
+								Spacer()
 
-					Text("\(log.data.user.makerScore) 🏆")
-				}
+								Text("\(log.data.user.makerScore) 🏆")
+							}
 
-				HStack(alignment: .top) {
-					ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
-					EventImg(event: log.data.event ?? "")
+							HStack(alignment: .top) {
+								ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+								EventImg(event: log.data.event ?? "")
 
-					Text(log.data.content)
-						.lineLimit(nil)
-						.fixedSize(horizontal: false, vertical: true)
-						.padding([.bottom], 15)
-				}
+								Text(log.data.content)
+									.lineLimit(nil)
+									.fixedSize(horizontal: false, vertical: true)
+									.padding([.bottom], 15)
+							}
 
-				if log.data.attachment != nil {
-					VStack(alignment: .center) {
-						URLImage(URL(string: log.data.attachment!)!,
-								 placeholder: Image("400x300"),
-								 content: {
-							$0.image
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.clipped()
-							.cornerRadius(7)
-							.frame(maxHeight: 300)
-						}).frame(maxHeight: 300)
-					}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
-				}
+							if log.data.attachment != nil {
+								VStack(alignment: .center) {
+									URLImage(URL(string: log.data.attachment!)!,
+											 processors: [ Resize(size: CGSize(width: 300, height: 300), scale: UIScreen.main.scale) ],
+											 placeholder: Image("400x300"),
+											 content: {
+												$0.image
+												.resizable()
+												.aspectRatio(contentMode: .fit)
+												.frame(width: 300, height: 300)
+												.clipped()
+												.cornerRadius(7)
+											}).frame(width: 300, height: 300)
+								}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
+							}
 
-				LogInteractive(log: log, showDetailView: self.$showDetailView)
-			}
+							LogInteractive(log: log, showDetailView: self.$showDetailView)
+						}
 		}.onTapGesture {
 			self.showDetailView.toggle()
 		}

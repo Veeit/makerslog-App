@@ -58,8 +58,8 @@ struct LogFeedView: View {
 														.cornerRadius(20)
 													})
 													.frame(width: 40, height: 40)
-														.onTapGesture {
-															self.tabScreenData.userSheet = true
+													.onTapGesture {
+														self.tabScreenData.userSheet = true
 													}
 												)
 											} else {
