@@ -62,10 +62,10 @@ And shere your opinon about other topics with the comunity.
 					Text(self.pages.count - 1 == self.index ? "Close": "Next")
 						.bold()
 						.foregroundColor(Color.white)
+						.frame(minWidth: 0, maxWidth: 300, minHeight: 40)
+						.background(Color.blue)
+						.cornerRadius(10)
 				}
-				.frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)
-				.background(Color.blue)
-				.cornerRadius(10)
 
 				if self.index != 0 {
 					Button(action: {
@@ -74,7 +74,7 @@ And shere your opinon about other topics with the comunity.
 						}
 					}) {
 						Text("Prev")
-					}
+					}.padding([.top], 10)
 				}
 			}.padding(50)
 		}.background(Color.systemBackground)
