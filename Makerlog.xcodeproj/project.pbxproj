@@ -1082,7 +1082,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1.42;
+				CURRENT_PROJECT_VERSION = 1.1.2.42;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -1106,7 +1106,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1.42;
+				CURRENT_PROJECT_VERSION = 1.1.2.42;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -1141,7 +1141,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Makerlog.app/Makerlog";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/logbot.app/logbot";
 			};
 			name = Debug;
 		};
@@ -1162,7 +1162,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Makerlog.app/Makerlog";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/logbot.app/logbot";
 			};
 			name = Release;
 		};

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Pages
 
 struct Page: Identifiable {
 	var id = UUID().uuidString
@@ -18,48 +17,102 @@ struct Page: Identifiable {
 }
 
 struct Onboarding: View {
-	@EnvironmentObject var tabBata: TabScreenData
-	var pages = [Page(title: "LogBot",
-					  subTitle: "a nativ makerlog client",
-					  text: """
-The makerlog comunity is one of the biggest comunity of makers.
-We love to share and ship things !
-""",
-					  img: ""),
-				 Page(title: "Logs!",
-						  subTitle: "LogBot can log your daily tasks",
-						  text: """
-Every maker loves to shere this work, with logbot you can shere you tasks without any touble!
-""",
-						  img: ""),
-				 Page(title: "Log your tasks",
-							  subTitle: "Discussions!",
-							  text: """
-Start a new discussion about any topic and discuss with other makers.
-And shere your opinon about other topics with the comunity.
-""",
-							  img: "")]
+	@EnvironmentObject var tabData: TabScreenData
+	@EnvironmentObject var login: LoginData
 
     @State var index: Int = 0
 
 	// swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
     var body: some View {
-		ModelPages(pages, currentPage: self.$index) { _, data in
-			VStack() {
-				Spacer()
-				Text(data.title).font(Font.title).bold()
-				Text(data.subTitle).font(Font.headline).bold().padding([.bottom], 15)
-				Text(data.text)
-				Spacer()
-				Button(action: {
-					if self.pages.count - 1 > self.index {
-						self.index += 1
-					} else {
-						self.tabBata.setOnbaording()
-						self.tabBata.showOnboarding = false
+		ScrollView() {
+			Group() {
+				HStack() {
+					Group() {
+						Text("LogBot").font(.largeTitle).bold().foregroundColor(Color.green) +
+						Text(" a nativ makerlog client").font(.largeTitle).bold()
 					}
+				}
+				.lineLimit(nil)
+				.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+				.fixedSize(horizontal: false, vertical: true)
+				.multilineTextAlignment(.leading)
+				.layoutPriority(2)
+				
+				Text("""
+				The makerlog comunity is one of the biggest comunity of makers.
+				We love to share and ship things !
+				""")
+					.font(.headline)
+					.lineLimit(nil)
+					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+					.fixedSize(horizontal: false, vertical: true)
+					.multilineTextAlignment(.leading)
+					.layoutPriority(2)
+			}.padding([.bottom], 20)
+			Group() {
+				HStack(alignment: .top) {
+					Image(systemName: "book")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.clipped()
+						.frame(width: 60, height: 60, alignment: .leading)
+					VStack(alignment: .leading) {
+						Text("Browse the log feed").font(.title).bold()
+						Text("You can browse all logs from every single maker")
+							.font(.headline)
+							.lineLimit(nil)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+							.fixedSize(horizontal: false, vertical: true)
+							.multilineTextAlignment(.leading)
+							.layoutPriority(2)
+					}
+				}
+			}.padding([.bottom], 20)
+			Group() {
+				HStack(alignment: .top) {
+					Image(systemName: "paperplane.fill")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.clipped()
+						.frame(width: 60, height: 60, alignment: .leading)
+					VStack(alignment: .leading) {
+						Text("Log your daily tasks").font(.title).bold()
+						Text("Every maker loves to shere this work, with logbot you can shere you tasks without any touble!")
+							.font(.headline)
+							.lineLimit(nil)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+							.fixedSize(horizontal: false, vertical: true)
+							.multilineTextAlignment(.leading)
+							.layoutPriority(2)
+					}
+				}
+			}.padding([.bottom], 20)
+			Group() {
+				HStack(alignment: .top) {
+					Image(systemName: "person.3.fill")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.clipped()
+						.frame(width: 60, height: 60, alignment: .leading)
+					VStack(alignment: .leading) {
+						Text("Discussions for everthing!").font(.title).bold()
+						Text("Start a new discussion about any topic and discuss with other makers. And shere your opinon about other topics with the comunity.")
+							.font(.headline)
+							.lineLimit(nil)
+							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+							.fixedSize(horizontal: false, vertical: true)
+							.multilineTextAlignment(.leading)
+							.layoutPriority(2)
+					}
+				}
+			}.padding([.bottom], 30)
+			Group() {
+				Button(action: {
+					self.login.login()
+					self.tabData.setOnbaording()
+					self.tabData.showOnboarding = false
 				}) {
-					Text(self.pages.count - 1 == self.index ? "Close": "Next")
+					Text("Login with makerlog")
 						.bold()
 						.foregroundColor(Color.white)
 						.frame(minWidth: 0, maxWidth: 300, minHeight: 40)
@@ -67,17 +120,17 @@ And shere your opinon about other topics with the comunity.
 						.cornerRadius(10)
 				}
 
-				if self.index != 0 {
-					Button(action: {
-						if 0 < self.index {
-							self.index -= 1
-						}
-					}) {
-						Text("Prev")
-					}.padding([.top], 10)
-				}
-			}.padding(50)
-		}.background(Color.systemBackground)
+				Button(action: {
+					self.tabData.setOnbaording()
+					self.tabData.showOnboarding = false
+				}) {
+					Text("Skip login")
+				}.padding([.top], 20)
+			}
+		}
+		.frame(minWidth: 0, maxWidth: .infinity)
+		.padding([.leading, .trailing], 20)
+		.background(Color.systemBackground)
 	}
 }
 

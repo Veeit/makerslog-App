@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Makerlog
+//@testable import Makerlog
 
 class MakerlogTests: XCTestCase {
 
