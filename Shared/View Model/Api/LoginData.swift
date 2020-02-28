@@ -33,6 +33,7 @@ class LoginData: ApiModel, ObservableObject {
 	@Published var isLoggedIn = false
     @Published var userToken = ""
     @Published var userSecret = ""
+	@Published var userRefreshToken = ""
     @Published var meData = [User]()
 	@Published var userName = "no user"
 	@Published var meProducts = UserProducts()
@@ -54,7 +55,7 @@ class LoginData: ApiModel, ObservableObject {
         oauthswift.client.credential.oauthTokenSecret = self.userSecret
         print("user Token: \(self.userToken)")
     }
-
+	
     func login() {
         oauthswift.allowMissingStateCheck = true
         oauthswift.authorize(
@@ -69,21 +70,100 @@ class LoginData: ApiModel, ObservableObject {
                 print(credential)
                 self.userToken = credential.oauthToken
                 self.userSecret = credential.consumerSecret
+				self.userRefreshToken = credential.oauthRefreshToken
+				print(self.userRefreshToken)
+//				print(JSON.stringify({refresh_token: refreshToken}))
                 self.keychain.set(self.userToken, forKey: "userToken")
                 self.keychain.set(self.userSecret, forKey: "userSecret")
 				self.isLoggedIn = true
 
 				self.getMe()
             case .failure(let error):
-				print(error.localizedDescription)
-				print(result)
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
+//				print(error.localizedDescription)
+//				print(result)
+				
+				if self.userRefreshToken != "" {
+//					self.refreshToken()
+					print(error.localizedDescription)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
+				} else {
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
 				}
             }
         }
     }
+	
+	private var cancellable: AnyCancellable?
+
+	enum HTTPError2: LocalizedError {
+		case statusCode
+	}
+	
+//	func refreshToken() {
+//		/*
+//		function refreshMakerlogToken(notify = false) {
+//			if(typeof refreshToken !== 'undefined' && refreshToken.length > 0) {
+//				return fetch('https://makerlog-menubar-cloud-functions.netlify.com/.netlify/functions/refreshMakerlogToken', {
+//					method: 'POST',
+//					body: JSON.stringify({refresh_token: refreshToken})
+//				}).then(r => r.json()).then(r => {
+//					token = r.access_token;
+//					refreshToken = r.refresh_token;
+//					getGlobal('storeToken')(`${token}|${refreshToken}`);
+//					if(notify) {
+//						alert('Failed. Please try that again!')
+//					}
+//					if(data.taskComposer.content.length == 0) {
+//						window.location.reload();
+//					}
+//				}, err => alert('Failed. Please try that again!'))
+//				.catch(r => alert('Failed. Please try that again!'))
+//			} else {
+//				login(); // Can't refresh so log in again
+//			}
+//		}
+//		*/
+//
+//		let url = URL(string: "https://makerlog-menubar-cloud-functions.netlify.com/.netlify/functions/refreshMakerlogToken")!
+//
+//				self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
+//					.tryMap { output in
+//						guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+//							throw HTTPError2.statusCode
+//						}
+//						return output.data
+//					}
+//					.decode(type: Logs.self, decoder: JSONDecoder())
+//					.eraseToAnyPublisher()
+//					.sink(receiveCompletion: { completion in
+//						switch completion {
+//						case .finished:
+//							break
+//						case .failure(let error):
+//							if error.localizedDescription == "The request timed out." {
+//								print("time out")
+//							} else {
+//		//						fatalError(error.localizedDescription)
+//								DispatchQueue.main.async {
+//
+//
+//								}
+//							}
+//						}
+//					}, receiveValue: { result in
+//						 DispatchQueue.main.async {
+//
+//						}
+//					})
+//
+//		print(self.userRefreshToken)
+//	}
 
 	func getUserName() {
 		self.checkLogin()
@@ -110,6 +190,7 @@ class LoginData: ApiModel, ObservableObject {
 			self.userToken = ""
 			self.userSecret = ""
 			self.userName = "no user"
+			self.userRefreshToken = ""
 
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
