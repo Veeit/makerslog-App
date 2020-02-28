@@ -37,6 +37,8 @@ class LoginData: ApiModel, ObservableObject {
     @Published var meData = [User]()
 	@Published var userName = "no user"
 	@Published var meProducts = UserProducts()
+	@Published var showDatapolicyAlert = false
+	@Published var acceptedDatapolicy = false
 
 	override init() {
 		super.init()
@@ -44,15 +46,16 @@ class LoginData: ApiModel, ObservableObject {
     }
 
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-    let keychain = KeychainSwift()
     private var responseData = [Login]()
 
     func checkLogin() {
         self.userToken = keychain.get("userToken") ?? ""
         self.userSecret = keychain.get("userSecret") ?? ""
+		self.userRefreshToken = keychain.get("userRefreshToken") ?? ""
 
-        oauthswift.client.credential.oauthToken = self.userToken
-        oauthswift.client.credential.oauthTokenSecret = self.userSecret
+		oauthswift.client.credential.oauthToken = self.userToken
+		oauthswift.client.credential.oauthTokenSecret = self.userSecret
+		oauthswift.client.credential.oauthRefreshToken = self.userRefreshToken
         print("user Token: \(self.userToken)")
     }
 	
@@ -72,18 +75,15 @@ class LoginData: ApiModel, ObservableObject {
                 self.userSecret = credential.consumerSecret
 				self.userRefreshToken = credential.oauthRefreshToken
 				print(self.userRefreshToken)
-//				print(JSON.stringify({refresh_token: refreshToken}))
-                self.keychain.set(self.userToken, forKey: "userToken")
-                self.keychain.set(self.userSecret, forKey: "userSecret")
+                keychain.set(self.userToken, forKey: "userToken")
+                keychain.set(self.userSecret, forKey: "userSecret")
+				keychain.set(self.userRefreshToken, forKey: "userRefreshToken")
 				self.isLoggedIn = true
 
 				self.getMe()
             case .failure(let error):
-//				print(error.localizedDescription)
-//				print(result)
 				
 				if self.userRefreshToken != "" {
-//					self.refreshToken()
 					print(error.localizedDescription)
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
@@ -98,72 +98,6 @@ class LoginData: ApiModel, ObservableObject {
             }
         }
     }
-	
-	private var cancellable: AnyCancellable?
-
-	enum HTTPError2: LocalizedError {
-		case statusCode
-	}
-	
-//	func refreshToken() {
-//		/*
-//		function refreshMakerlogToken(notify = false) {
-//			if(typeof refreshToken !== 'undefined' && refreshToken.length > 0) {
-//				return fetch('https://makerlog-menubar-cloud-functions.netlify.com/.netlify/functions/refreshMakerlogToken', {
-//					method: 'POST',
-//					body: JSON.stringify({refresh_token: refreshToken})
-//				}).then(r => r.json()).then(r => {
-//					token = r.access_token;
-//					refreshToken = r.refresh_token;
-//					getGlobal('storeToken')(`${token}|${refreshToken}`);
-//					if(notify) {
-//						alert('Failed. Please try that again!')
-//					}
-//					if(data.taskComposer.content.length == 0) {
-//						window.location.reload();
-//					}
-//				}, err => alert('Failed. Please try that again!'))
-//				.catch(r => alert('Failed. Please try that again!'))
-//			} else {
-//				login(); // Can't refresh so log in again
-//			}
-//		}
-//		*/
-//
-//		let url = URL(string: "https://makerlog-menubar-cloud-functions.netlify.com/.netlify/functions/refreshMakerlogToken")!
-//
-//				self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
-//					.tryMap { output in
-//						guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
-//							throw HTTPError2.statusCode
-//						}
-//						return output.data
-//					}
-//					.decode(type: Logs.self, decoder: JSONDecoder())
-//					.eraseToAnyPublisher()
-//					.sink(receiveCompletion: { completion in
-//						switch completion {
-//						case .finished:
-//							break
-//						case .failure(let error):
-//							if error.localizedDescription == "The request timed out." {
-//								print("time out")
-//							} else {
-//		//						fatalError(error.localizedDescription)
-//								DispatchQueue.main.async {
-//
-//
-//								}
-//							}
-//						}
-//					}, receiveValue: { result in
-//						 DispatchQueue.main.async {
-//
-//						}
-//					})
-//
-//		print(self.userRefreshToken)
-//	}
 
 	func getUserName() {
 		self.checkLogin()
@@ -176,7 +110,7 @@ class LoginData: ApiModel, ObservableObject {
 
 	func logOut() {
 		if isLoggedIn {
-			self.keychain.clear()
+			keychain.clear()
 			oauthswift = OAuth2Swift(
 				consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
 				consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",

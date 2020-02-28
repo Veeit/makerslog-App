@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import OAuthSwift
 import URLImage
+import KeychainSwift
 
 // swiftlint:disable line_length
 
@@ -20,6 +21,8 @@ var oauthswift = OAuth2Swift(
 	accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
 	responseType: "code"
 )
+let keychain = KeychainSwift()
+
 // swiftlint:enable line_length
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -101,6 +104,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+
+		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
     }
 
 }
