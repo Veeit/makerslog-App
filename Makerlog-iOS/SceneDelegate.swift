@@ -10,20 +10,6 @@ import UIKit
 import SwiftUI
 import OAuthSwift
 import URLImage
-import KeychainSwift
-
-// swiftlint:disable line_length
-
-var oauthswift = OAuth2Swift(
-	consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
-	consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
-	authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
-	accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
-	responseType: "code"
-)
-let keychain = KeychainSwift()
-
-// swiftlint:enable line_length
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
@@ -95,9 +81,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-		oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
-		oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
-		oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -111,6 +94,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
 		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
 		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-    }
+	}
 
 }

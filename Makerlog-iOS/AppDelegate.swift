@@ -8,12 +8,38 @@
 
 import UIKit
 import CoreData
+import OAuthSwift
+import KeychainSwift
+
+// swiftlint:disable line_length
+
+var oauthswift = OAuth2Swift(
+	consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
+	consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
+	authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
+	accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
+	responseType: "code"
+)
+let keychain = KeychainSwift()
+let defaults = UserDefaults.standard
+
+// swiftlint:enable line_length
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // swiftlint:disable all
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+		oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
+		print(oauthswift.client.credential.oauthToken)
+		oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
+		oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+		if oauthswift.client.credential.oauthToken != "" {
+			defaults.set(true, forKey: "isLogedIn")
+		} else {
+			defaults.set(false, forKey: "isLogedIn")
+		}
+		
         return true
     }
 

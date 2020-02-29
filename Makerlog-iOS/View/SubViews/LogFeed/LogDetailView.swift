@@ -20,61 +20,70 @@ struct LogDetailView: View {
 
 	@State var userComments = Comment()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
+	var userData = UserData()
 
+	init(log: LogViewData) {
+		self.log = log
+		self.userData.userData = [self.log.data.user]
+	}
     var body: some View {
 		GeometryReader() { geometry in
 			ZStack() {
 				List() {
-					VStack() {
-						HStack(alignment: .center) {
-							URLImage(URL(string: self.log.data.user.avatar)!,
-									 processors: [
-										 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
-									 ],
-									 placeholder: Image("placeholder"),
-									 content: {
-								$0.image
-								.resizable()
-								.aspectRatio(contentMode: .fit)
-								.clipped()
-								.cornerRadius(20)
-							})
-								.frame(width: 70, height: 70)
-							VStack(alignment: .leading, spacing: 5) {
-								if self.log.data.user.firstName != "" && self.log.data.user.lastName != "" {
-									VStack(alignment: .leading) {
-										Text("\(self.log.data.user.firstName) \(self.log.data.user.lastName)").font(.headline).bold()
-										Text("@\(self.log.data.user.username)")
-											.font(.subheadline)
-									}
-								} else {
-									Text("@\(self.log.data.user.username)")
-										.font(.headline)
-								}
+					NavigationLink(destination: UserView(user: self.userData)) {
+						VStack() {
+							VStack() {
+								HStack(alignment: .center) {
+									URLImage(URL(string: self.log.data.user.avatar)!,
+											 processors: [
+												 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
+											 ],
+											 placeholder: Image("placeholder"),
+											 content: {
+										$0.image
+										.resizable()
+										.aspectRatio(contentMode: .fit)
+										.clipped()
+										.cornerRadius(20)
+									})
+										.frame(width: 70, height: 70)
+									VStack(alignment: .leading, spacing: 5) {
+										if self.log.data.user.firstName != "" && self.log.data.user.lastName != "" {
+											VStack(alignment: .leading) {
+												Text("\(self.log.data.user.firstName) \(self.log.data.user.lastName)").font(.headline).bold()
+												Text("@\(self.log.data.user.username)")
+													.font(.subheadline)
+											}
+										} else {
+											Text("@\(self.log.data.user.username)")
+												.font(.headline)
+										}
 
-								HStack(spacing: 10) {
-									Text("\(self.log.data.user.makerScore) 🏆")
-									Text("\(self.log.data.user.streak) 🔥")
-									Text("\(Int(self.log.data.user.weekTda)) 🏁")
+										HStack(spacing: 10) {
+											Text("\(self.log.data.user.makerScore) 🏆")
+											Text("\(self.log.data.user.streak) 🔥")
+											Text("\(Int(self.log.data.user.weekTda)) 🏁")
+										}
+									}
+									Spacer()
+								}
+								.frame(minWidth: 0, maxWidth: .infinity)
+
+								HStack() {
+									ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
+									EventImg(event: self.log.data.event ?? "")
+									Text(self.log.data.content)
+										.padding(10)
+										.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+										.cornerRadius(10)
+										.lineLimit(200)
+										.multilineTextAlignment(.leading)
+										.fixedSize(horizontal: false, vertical: true)
 								}
 							}
-							Spacer()
-						}
-						.frame(minWidth: 0, maxWidth: .infinity)
-
-						HStack() {
-							ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
-							EventImg(event: self.log.data.event ?? "")
-							Text(self.log.data.content)
-								.padding(10)
-								.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-								.cornerRadius(10)
-								.lineLimit(200)
-								.multilineTextAlignment(.leading)
-								.fixedSize(horizontal: false, vertical: true)
+							LinkPreview(links: LinkData(text: self.log.data.content))
 						}
 					}
-					LinkPreview(links: LinkData(text: self.log.data.content))
 
 					LogInteractive(log: self.log, showDetailView: self.$showDetailView).offset(x: -10)
 

@@ -55,7 +55,10 @@ struct Onboarding: View {
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.clipped()
-						.frame(width: 60, height: 60, alignment: .leading)
+						.frame(width: 45, height: 45, alignment: .leading)
+						.padding([.trailing], 10)
+						.foregroundColor(Color.green)
+
 					VStack(alignment: .leading) {
 						Text("Browse the log feed").font(.title).bold()
 						Text("You can browse all logs from every single maker")
@@ -67,14 +70,17 @@ struct Onboarding: View {
 							.layoutPriority(2)
 					}
 				}
-			}.padding([.bottom], 20)
+			}.padding([.bottom], 15)
 			Group() {
 				HStack(alignment: .top) {
 					Image(systemName: "paperplane.fill")
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.clipped()
-						.frame(width: 60, height: 60, alignment: .leading)
+						.frame(width: 45, height: 45, alignment: .leading)
+						.padding([.trailing], 10)
+						.foregroundColor(Color.green)
+
 					VStack(alignment: .leading) {
 						Text("Log your daily tasks").font(.title).bold()
 						Text("Every maker loves to shere this work, with logbot you can shere you tasks without any touble!")
@@ -86,14 +92,17 @@ struct Onboarding: View {
 							.layoutPriority(2)
 					}
 				}
-			}.padding([.bottom], 20)
+			}.padding([.bottom], 15)
 			Group() {
 				HStack(alignment: .top) {
 					Image(systemName: "person.3.fill")
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.clipped()
-						.frame(width: 60, height: 60, alignment: .leading)
+						.frame(width: 45, height: 45, alignment: .leading)
+						.padding([.trailing], 10)
+						.foregroundColor(Color.green)
+
 					VStack(alignment: .leading) {
 						Text("Discussions for everthing!").font(.title).bold()
 						Text("Start a new discussion about any topic and discuss with other makers. And shere your opinon about other topics with the comunity.")
@@ -105,7 +114,7 @@ struct Onboarding: View {
 							.layoutPriority(2)
 					}
 				}
-			}.padding([.bottom], 30)
+			}.padding([.bottom], 20)
 			Group() {
 				Button(action: {
 					self.login.login()
@@ -130,7 +139,9 @@ struct Onboarding: View {
 		}
 		.frame(minWidth: 0, maxWidth: .infinity)
 		.padding([.leading, .trailing], 20)
+		.padding([.bottom, .top], 10)
 		.background(Color.systemBackground)
+		.edgesIgnoringSafeArea(.bottom)
 	}
 }
 

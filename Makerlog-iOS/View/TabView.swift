@@ -12,6 +12,8 @@ struct TabScreen: View {
 	@EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
 	@EnvironmentObject var makerlog: MakerlogAPI
+
+    @State private var show: Bool = false
 	// swiftlint:disable empty_parentheses_with_trailing_closure
 
 	var body: some View {
@@ -52,19 +54,20 @@ struct TabScreen: View {
 				EmptyView()
 			}
 		})
+        .actionSheet(isPresented: $show, content: acceptDataPolicy)
 	}
 
 	func errorAlert(errorMessage: String) -> Alert {
 		let send = ActionSheet.Button.default(Text("okay")) { print("hit send") }
 		return Alert(title: Text("Error!"), message: Text(errorMessage), dismissButton: send)
 	}
-	
+
 	func anAlert() -> Alert {
         let save = ActionSheet.Button.default(Text("Okay, I'm fine ")) { print("hit save") }
 
         // If the cancel label is omitted, the default "Cancel" text will be shown
         let cancel = ActionSheet.Button.cancel(Text("No")) { print("hit abort") }
-        
+
         return Alert(title: Text("Datasecurity is important"),
                      message: Text("""
 	You need to read the datasecurity policy first, you will accept is automatily when you login.
@@ -74,6 +77,21 @@ struct TabScreen: View {
 	"""),
                      primaryButton: save,
                      secondaryButton: cancel)
+    }
+
+	func acceptDataPolicy() -> ActionSheet {
+
+        let send = ActionSheet.Button.default(Text("Send")) { print("hit send") }
+        let draft = ActionSheet.Button.default(Text("Draft")) { print("hit draft") }
+
+        // If the cancel label is omitted, the default "Cancel" text will be shown
+        let cancel = ActionSheet.Button.cancel(Text("Abort")) { print("hit abort") }
+
+        let buttons: [ActionSheet.Button] = [send, draft, cancel]
+
+        return ActionSheet(title: Text("Title"),
+                           message: Text("Message goes here"),
+                           buttons: buttons)
     }
 
 	struct TabLabel: View {

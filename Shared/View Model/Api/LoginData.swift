@@ -17,11 +17,13 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userData = [User]()
 	@Published var userName = "no user"
 	@Published var userProducts = UserProducts()
+	@Published var userRecentLogs = UserRecentLogs()
 
 	func getUserProducts() {
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/products/"
+		print(requestURL)
 
         oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
@@ -51,7 +53,7 @@ class UserData: ApiModel, ObservableObject {
             }
         }
 	}
-	
+
 	func getUserName() {
 		if self.userData.first?.firstName != "" && self.userData.first?.lastName != "" {
 			self.userName = "\(self.userData.first?.firstName ?? "no") \(self.userData.first?.lastName ?? "name")"
@@ -59,9 +61,10 @@ class UserData: ApiModel, ObservableObject {
 			self.userName = self.userData.first?.username ?? "no username"
 		}
 	}
-	
+
 	func getUser() {
         let token = oauthswift.client.credential.oauthToken
+		print("user token \(token)")
         let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/me/"
 
@@ -94,6 +97,40 @@ class UserData: ApiModel, ObservableObject {
             }
         }
     }
+	
+	func getRecentLogs() {
+		let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(UserRecentLogs.self, from: response.data)
+
+					self.userRecentLogs = data
+                } catch {
+                    print(error)
+					print("decode error")
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
+            }
+        }
+	}
 }
 
 class LoginData: UserData {
@@ -119,6 +156,7 @@ class LoginData: UserData {
 
 	override init() {
 		super.init()
+		self.isLoggedIn = defaults.bool(forKey: "isLogedIn")
         self.getUser()
     }
 

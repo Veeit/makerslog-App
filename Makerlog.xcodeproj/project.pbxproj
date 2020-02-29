@@ -476,8 +476,8 @@
 		56C94A8923D6FBAA007840DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				56034888240691D90089FECD /* SubViews */,
 				561A48D623E317C20077A1D2 /* Components  */,
+				56034888240691D90089FECD /* SubViews */,
 				561A48D423E317A40077A1D2 /* Main Screens */,
 				566DF0D323DF01E50085C318 /* TabView.swift */,
 				56EEB54524043CB100522B8C /* Onboarding.swift */,

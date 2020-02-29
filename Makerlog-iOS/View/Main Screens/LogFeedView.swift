@@ -11,36 +11,6 @@ import Foundation
 import URLImage
 //import SwiftUIPullToRefresh
 
-struct ExampleView: View {
-    @State private var show: Bool = false
-    
-    var body: some View {
-        
-        Button("Open Sheet") {
-            self.show = true
-        }
-        .padding(10).border(show ? Color.red : Color.clear)
-        .actionSheet(isPresented: $show, content: aSheet)
-        
-    }
-    
-    func aSheet() -> ActionSheet {
-
-        let send = ActionSheet.Button.default(Text("Send")) { print("hit send") }
-        let draft = ActionSheet.Button.default(Text("Draft")) { print("hit draft") }
-
-        // If the cancel label is omitted, the default "Cancel" text will be shown
-        let cancel = ActionSheet.Button.cancel(Text("Abort")) { print("hit abort") }
-
-        let buttons: [ActionSheet.Button] = [send, draft, cancel]
-        
-        return ActionSheet(title: Text("Title"),
-                           message: Text("Message goes here"),
-                           buttons: buttons)
-    }
-
-}
-
 struct LogFeedView: View {
 	// swiftlint:disable all
 	@EnvironmentObject var tabScreenData: TabScreenData
@@ -60,9 +30,6 @@ struct LogFeedView: View {
 //					}) {
 //						Text("test")
 //					}
-					NavigationLink(destination: ExampleView()) {
-						Text("test")
-					}
 					ForEach(self.data.logs) { log in
 						LogFeedItem(log: LogViewData(data: log))
 					}
@@ -78,7 +45,7 @@ struct LogFeedView: View {
 										VStack() {
 											if self.login.isLoggedIn == true {
 												
-												NavigationLink(destination: UserView(login: self.login), isActive: self.$tabScreenData.userSheet) {
+												NavigationLink(destination: UserView(user: self.login), isActive: self.$tabScreenData.userSheet) {
 													Text("User")
 												}.overlay(
 													URLImage(URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar)!,
