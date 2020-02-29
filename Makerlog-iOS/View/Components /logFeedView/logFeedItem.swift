@@ -22,7 +22,7 @@ struct LogFeedItem: View {
 			Button("👏 \(self.log.data.praise)") {
 				self.makerlogAPI.addPraise(log: self.log.data)
 			}
-			if self.log.data.user.username == login.meData.first?.username ?? "" {
+			if self.log.data.user.username == login.userData.first?.username ?? "" {
 				Button("Delete") {
 					self.makerlogAPI.deleteItem.toggle()
 				}

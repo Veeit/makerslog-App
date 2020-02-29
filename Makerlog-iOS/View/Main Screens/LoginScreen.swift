@@ -16,7 +16,7 @@ struct LoginScreen: View {
 			Text("You must be logged in for this function!")
 			Button(action: {
 				self.login.login()
-				self.login.getMe()
+				self.login.getUser()
 			}) {
 				Text("Login")
 			}.frame(minWidth: 0, maxWidth: .infinity, minHeight: 40)

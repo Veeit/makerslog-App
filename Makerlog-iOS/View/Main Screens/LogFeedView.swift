@@ -81,7 +81,7 @@ struct LogFeedView: View {
 												NavigationLink(destination: UserView(login: self.login), isActive: self.$tabScreenData.userSheet) {
 													Text("User")
 												}.overlay(
-													URLImage(URL(string: self.login.meData.first?.avatar ?? self.defaultAvartar)!,
+													URLImage(URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar)!,
 															 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
 															 content: {
 														$0.image
@@ -98,7 +98,7 @@ struct LogFeedView: View {
 											} else {
 												Button(action: {
 													self.login.login()
-													self.login.getMe()
+													self.login.getUser()
 												}) {
 													Text("Login").foregroundColor(Color.blue)
 												}

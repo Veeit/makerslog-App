@@ -18,7 +18,7 @@ struct UserView: View {
 		List() {
 			Section() {
 				HStack(alignment: .center) {
-					URLImage(URL(string: self.login.meData.first?.avatar ?? defaultAvartar)!,
+					URLImage(URL(string: self.login.userData.first?.avatar ?? defaultAvartar)!,
 							 processors: [
 								 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
 							 ],
@@ -35,24 +35,24 @@ struct UserView: View {
 					VStack(alignment: .leading) {
 						Text(self.login.userName)
 								.font(.headline).bold()
-						Text("@ \(self.login.meData.last?.username ?? "usernameNotFound")")
+						Text("@ \(self.login.userData.last?.username ?? "usernameNotFound")")
 
 						HStack( spacing: 10) {
-							Text("\(self.login.meData.first?.makerScore ?? 0) 🏆")
-							Text("\(self.login.meData.first?.streak ?? 0) 🔥")
-							Text("\(Int(self.login.meData.first?.weekTda ?? 0)) 🏁")
+							Text("\(self.login.userData.first?.makerScore ?? 0) 🏆")
+							Text("\(self.login.userData.first?.streak ?? 0) 🔥")
+							Text("\(Int(self.login.userData.first?.weekTda ?? 0)) 🏁")
 						}
 						Spacer()
 					}
 				}
 
 				VStack() {
-					Text(self.login.meData.first?.userDescription ?? "no desciption set")
+					Text(self.login.userData.first?.userDescription ?? "no desciption set")
 				}
 			}
 
 			Section(header: Text("Your products")) {
-				ForEach(self.login.meProducts) { product in
+				ForEach(self.login.userProducts) { product in
 					HStack(alignment: .top) {
 						URLImage(URL(string: "\(product.icon ?? self.defaultAvartar)")!,
 								processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],

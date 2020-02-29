@@ -13,7 +13,90 @@ import CoreData
 import OAuthSwift
 import KeychainSwift
 
-class LoginData: ApiModel, ObservableObject {
+class UserData: ApiModel, ObservableObject {
+	@Published var userData = [User]()
+	@Published var userName = "no user"
+	@Published var userProducts = UserProducts()
+
+	func getUserProducts() {
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/products/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(UserProducts.self, from: response.data)
+
+					self.userProducts = data
+                } catch {
+                    print(error)
+					print("decode error")
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
+            }
+        }
+	}
+	
+	func getUserName() {
+		if self.userData.first?.firstName != "" && self.userData.first?.lastName != "" {
+			self.userName = "\(self.userData.first?.firstName ?? "no") \(self.userData.first?.lastName ?? "name")"
+		} else {
+			self.userName = self.userData.first?.username ?? "no username"
+		}
+	}
+	
+	func getUser() {
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+        let requestURL = "https://api.getmakerlog.com/me/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(User.self, from: response.data)
+
+                    self.userData.append(data)
+					self.getUserName()
+					self.getUserProducts()
+                } catch {
+                    print(error)
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
+            }
+        }
+    }
+}
+
+class LoginData: UserData {
 
     let generator = UINotificationFeedbackGenerator()
 
@@ -31,15 +114,12 @@ class LoginData: ApiModel, ObservableObject {
     }
     @Published var isOpen = false
 	@Published var isLoggedIn = false
-    @Published var meData = [User]()
-	@Published var userName = "no user"
-	@Published var meProducts = UserProducts()
 	@Published var showDatapolicyAlert = false
 	@Published var acceptedDatapolicy = false
 
 	override init() {
 		super.init()
-        self.getMe()
+        self.getUser()
     }
 
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
@@ -74,7 +154,7 @@ class LoginData: ApiModel, ObservableObject {
 				self.setLogin()
 				self.isLoggedIn = true
 
-				self.getMe()
+				self.getUser()
             case .failure(let error):
 				DispatchQueue.main.async {
 					self.errorText = error.localizedDescription
@@ -83,14 +163,6 @@ class LoginData: ApiModel, ObservableObject {
             }
         }
     }
-
-	func getUserName() {
-		if self.meData.first?.firstName != "" && self.meData.first?.lastName != "" {
-			self.userName = "\(self.meData.first?.firstName ?? "no") \(self.meData.first?.lastName ?? "name")"
-		} else {
-			self.userName = self.meData.first?.username ?? "no username"
-		}
-	}
 
 	func logOut() {
 		if isLoggedIn {
@@ -104,89 +176,12 @@ class LoginData: ApiModel, ObservableObject {
 			)
 			self.isLoggedIn = false
 
-			self.meData = [User]()
+			self.userData = [User]()
 			self.userName = "no user"
 
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}
 		}
-	}
-
-    func getMe() {
-        self.getLogin()
-
-        let token = oauthswift.client.credential.oauthToken
-        let parameters = ["token": token]
-        let requestURL = "https://api.getmakerlog.com/me/"
-
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoder = JSONDecoder()
-                    let data = try decoder.decode(User.self, from: response.data)
-
-                    self.meData.append(data)
-					self.isLoggedIn = true
-					self.getUserName()
-					self.getUserProducts()
-					self.setLogin()
-                } catch {
-                    print(error)
-					self.isLoggedIn = false
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
-                }
-            case .failure(let error):
-                print(error)
-                if case .tokenExpired = error {
-                  print("old token")
-               }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-            }
-        }
-    }
-
-	func getUserProducts() {
-		self.getLogin()
-
-        let token = oauthswift.client.credential.oauthToken
-        let parameters = ["token": token]
-		let requestURL = "https://api.getmakerlog.com/users/" + (self.meData.first?.username ?? "") + "/products/"
-
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoder = JSONDecoder()
-                    let data = try decoder.decode(UserProducts.self, from: response.data)
-
-					self.meProducts = data
-					self.setLogin()
-                } catch {
-                    print(error)
-					print("decode error")
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
-                }
-            case .failure(let error):
-                print(error)
-                if case .tokenExpired = error {
-                  print("old token")
-               }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-            }
-        }
 	}
 }

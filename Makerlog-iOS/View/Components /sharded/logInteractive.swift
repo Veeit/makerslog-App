@@ -22,24 +22,23 @@ struct LogInteractive: View {
 		self.log = log
 	}
 
+	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
         HStack() {
 			Spacer()
 
-			if self.log.data.user.username != login.meData.first?.username ?? "" {
-				Text("👏 \(self.log.data.praise)")
-					.onTapGesture {
-						if self.login.isLoggedIn == false {
-							self.tabScreenData.showLogin = true
-						} else {
-							self.makerlogAPI.addPraise(log: self.log.data)
-						}
+			Text("👏 \(self.log.data.praise)")
+				.onTapGesture {
+					if self.login.isLoggedIn == false {
+						self.tabScreenData.showLogin = true
+					} else {
+						self.makerlogAPI.addPraise(log: self.log.data)
 					}
-					.padding(4)
-					.cornerRadius(6)
-					.font(.footnote)
-				Spacer()
-			}
+				}
+				.padding(4)
+				.font(.footnote)
+				.cornerRadius(6)
+			Spacer()
 
 			HStack() {
 				Image(systemName: "bubble.right")
@@ -58,7 +57,7 @@ struct LogInteractive: View {
 					.font(.footnote)
 			}
 			Spacer()
-			if self.log.data.user.username == login.meData.first?.username ?? "" {
+			if self.log.data.user.username == login.userData.first?.username ?? "" {
 				HStack() {
 					Image(systemName: "trash")
 					Text("Delete")
