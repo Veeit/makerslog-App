@@ -31,9 +31,6 @@ class LoginData: ApiModel, ObservableObject {
     }
     @Published var isOpen = false
 	@Published var isLoggedIn = false
-    @Published var userToken = ""
-    @Published var userSecret = ""
-	@Published var userRefreshToken = ""
     @Published var meData = [User]()
 	@Published var userName = "no user"
 	@Published var meProducts = UserProducts()
@@ -48,17 +45,20 @@ class LoginData: ApiModel, ObservableObject {
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     private var responseData = [Login]()
 
-    func checkLogin() {
-        self.userToken = keychain.get("userToken") ?? ""
-        self.userSecret = keychain.get("userSecret") ?? ""
-		self.userRefreshToken = keychain.get("userRefreshToken") ?? ""
-
-		oauthswift.client.credential.oauthToken = self.userToken
-		oauthswift.client.credential.oauthTokenSecret = self.userSecret
-		oauthswift.client.credential.oauthRefreshToken = self.userRefreshToken
-        print("user Token: \(self.userToken)")
+    func getLogin() {
+		if oauthswift.client.credential.oauthToken == "" {
+			oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
+			oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
+			oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+		}
     }
-	
+
+	func setLogin() {
+		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+		keychain.set(oauthswift.client.credential.consumerSecret, forKey: "userSecret")
+		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+	}
+
     func login() {
         oauthswift.allowMissingStateCheck = true
         oauthswift.authorize(
@@ -71,36 +71,20 @@ class LoginData: ApiModel, ObservableObject {
                 print(response ?? "w")
                 print(parameters)
                 print(credential)
-                self.userToken = credential.oauthToken
-                self.userSecret = credential.consumerSecret
-				self.userRefreshToken = credential.oauthRefreshToken
-				print(self.userRefreshToken)
-                keychain.set(self.userToken, forKey: "userToken")
-                keychain.set(self.userSecret, forKey: "userSecret")
-				keychain.set(self.userRefreshToken, forKey: "userRefreshToken")
+				self.setLogin()
 				self.isLoggedIn = true
 
 				self.getMe()
             case .failure(let error):
-				
-				if self.userRefreshToken != "" {
-					print(error.localizedDescription)
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
-				} else {
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
 				}
             }
         }
     }
 
 	func getUserName() {
-		self.checkLogin()
 		if self.meData.first?.firstName != "" && self.meData.first?.lastName != "" {
 			self.userName = "\(self.meData.first?.firstName ?? "no") \(self.meData.first?.lastName ?? "name")"
 		} else {
@@ -121,10 +105,7 @@ class LoginData: ApiModel, ObservableObject {
 			self.isLoggedIn = false
 
 			self.meData = [User]()
-			self.userToken = ""
-			self.userSecret = ""
 			self.userName = "no user"
-			self.userRefreshToken = ""
 
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
@@ -133,7 +114,7 @@ class LoginData: ApiModel, ObservableObject {
 	}
 
     func getMe() {
-        self.checkLogin()
+        self.getLogin()
 
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
@@ -150,6 +131,7 @@ class LoginData: ApiModel, ObservableObject {
 					self.isLoggedIn = true
 					self.getUserName()
 					self.getUserProducts()
+					self.setLogin()
                 } catch {
                     print(error)
 					self.isLoggedIn = false
@@ -172,7 +154,7 @@ class LoginData: ApiModel, ObservableObject {
     }
 
 	func getUserProducts() {
-		self.checkLogin()
+		self.getLogin()
 
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
@@ -186,6 +168,7 @@ class LoginData: ApiModel, ObservableObject {
                     let data = try decoder.decode(UserProducts.self, from: response.data)
 
 					self.meProducts = data
+					self.setLogin()
                 } catch {
                     print(error)
 					print("decode error")
