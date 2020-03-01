@@ -102,7 +102,7 @@ struct UserView: View {
 			self.user.getUserProducts()
 			self.user.getUserName()
 			self.user.getRecentLogs()
-			self.user.getUser()
+//			self.user.getUser()
 		})
 	}
 }

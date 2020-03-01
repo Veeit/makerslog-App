@@ -65,15 +65,15 @@ class UserData: ApiModel, ObservableObject {
 	func getUser() {
 		print(oauthswift.client.credential.oauthVerifier)
         let token = oauthswift.client.credential.oauthToken
-		let tokenRefresh = oauthswift.client.credential.oauthRefreshToken
-		let clientSecret = oauthswift.client.credential.oauthTokenSecret
-		let currentDateTime = Date()
-		oauthswift.client.credential.oauthTokenExpiresAt = currentDateTime
+//		let tokenRefresh = oauthswift.client.credential.oauthRefreshToken
+//		let clientSecret = oauthswift.client.credential.oauthTokenSecret
+//		let currentDateTime = Date()
+//		oauthswift.client.credential.oauthTokenExpiresAt = currentDateTime
 
-		print("test \(		oauthswift.client.credential.isTokenExpired())")
+//		print("test \(		oauthswift.client.credential.isTokenExpired())")
 		print("user token \(token)")
-		print("user refresh \(tokenRefresh)")
-		print("user secret \(clientSecret)")
+//		print("user refresh \(tokenRefresh)")
+//		print("user secret \(clientSecret)")
 		let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/me/"
 
@@ -109,7 +109,7 @@ class UserData: ApiModel, ObservableObject {
             }
         }
     }
-	
+
 	func getRecentLogs() {
 		let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
