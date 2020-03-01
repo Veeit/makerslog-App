@@ -66,6 +66,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded
         // (see `application:didDiscardSceneSessions` instead).
+		
+		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -90,10 +94,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-
-		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 	}
 
 }

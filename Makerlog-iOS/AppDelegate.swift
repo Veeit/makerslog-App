@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print(oauthswift.client.credential.oauthToken)
 		oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
 		oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+
 		if oauthswift.client.credential.oauthToken != "" {
 			defaults.set(true, forKey: "isLogedIn")
 		} else {
