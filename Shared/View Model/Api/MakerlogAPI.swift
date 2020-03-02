@@ -134,7 +134,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	func addPraise(log: Log) {
 		let token = oauthswift.client.credential.oauthToken
-		let parameters = ["token": token, "amount": "5"]
+		let parameters = ["token": token, "amount": "5", "increment": "true"]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/praise/"
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
