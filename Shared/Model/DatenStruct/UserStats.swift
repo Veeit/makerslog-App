@@ -6,24 +6,25 @@
 import Foundation
 
 // MARK: - UserStats
+//swiftlint:disable all
 struct UserStats: Codable {
-    let remainingTasks, doneToday, tda: Int
-    let doneWeek: DoneWeek
+    let remaining_tasks, done_today, tda: Int
+    let done_week: DoneWeek
     let streak: Int
-    let activityTrend: [Int]
-    let praiseReceived, followerCount, makerScore, restDayBalance: Int
+    let activity_trend: [Int]
+    let praise_received, follower_count, maker_score, rest_day_balance: Int
 
     enum CodingKeys: String, CodingKey {
-        case remainingTasks
-        case doneToday
+        case remaining_tasks
+        case done_today
         case tda
-        case doneWeek
+        case done_week
         case streak
-        case activityTrend
-        case praiseReceived
-        case followerCount
-        case makerScore
-        case restDayBalance
+        case activity_trend
+        case praise_received
+        case follower_count
+        case maker_score
+        case rest_day_balance
     }
 }
 
@@ -36,5 +37,6 @@ struct DoneWeek: Codable {
 // MARK: - Dataset
 struct Dataset: Codable {
     let label, backgroundColor: String
-    let data: [Int]
+    let data: [Float]
 }
+

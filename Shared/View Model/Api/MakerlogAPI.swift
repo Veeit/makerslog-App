@@ -46,6 +46,9 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
 			self.getResult()
 			print("run")
+			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 		}
     }
 

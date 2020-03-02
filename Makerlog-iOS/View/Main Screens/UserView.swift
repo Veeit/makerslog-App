@@ -8,6 +8,7 @@
 
 import SwiftUI
 import URLImage
+import SwiftUICharts
 
 struct UserView: View {
 	@ObservedObject var user: UserData
@@ -77,6 +78,9 @@ struct UserView: View {
 				}
 			}
 
+			Section() {
+				BarChartView(data: ChartData(points: self.user.userStats?.done_week.datasets[0].data ?? [0, 0, 0, 5]), title: "Title")
+			}
 			Section(header: Text("Your Logs")) {
 				ForEach(self.user.userRecentLogs) { log in
 					NavigationLink(destination: LogDetailView(log: LogViewData(data: log))) {
@@ -102,7 +106,7 @@ struct UserView: View {
 			self.user.getUserProducts()
 			self.user.getUserName()
 			self.user.getRecentLogs()
-//			self.user.getUser()
+			self.user.getUserStats()
 		})
 	}
 }

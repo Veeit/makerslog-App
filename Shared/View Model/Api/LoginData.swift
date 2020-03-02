@@ -18,6 +18,7 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userName = "no user"
 	@Published var userProducts = UserProducts()
 	@Published var userRecentLogs = UserRecentLogs()
+	@Published var userStats: UserStats?
 
 	func getUserProducts() {
         let token = oauthswift.client.credential.oauthToken
@@ -123,6 +124,41 @@ class UserData: ApiModel, ObservableObject {
                     let data = try decoder.decode(UserRecentLogs.self, from: response.data)
 
 					self.userRecentLogs = data
+                } catch {
+                    print(error)
+					print("decode error")
+					DispatchQueue.main.async {
+						self.errorText = error.localizedDescription
+						self.showError = true
+					}
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+				DispatchQueue.main.async {
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
+            }
+        }
+	}
+
+	func getUserStats() {
+		let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/stats/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(UserStats.self, from: response.data)
+
+					self.userStats = data
+					print(self.userStats)
                 } catch {
                     print(error)
 					print("decode error")

@@ -7,18 +7,14 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct UserStatsView: View {
+	@State var input: [Float]
     var body: some View {
 		VStack() {
-			Text("ww")
-			Spacer()
+			BarChartView(data: ChartData(points: input), title: "Title")
 		}
     }
 }
 
-struct UserStatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserStatsView()
-    }
-}
