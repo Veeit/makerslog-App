@@ -11,7 +11,7 @@ struct UserStats: Codable {
     let remaining_tasks, done_today, tda: Int
     let done_week: DoneWeek
     let streak: Int
-    let activity_trend: [Int]
+    let activity_trend: [Double]
     let praise_received, follower_count, maker_score, rest_day_balance: Int
 
     enum CodingKeys: String, CodingKey {

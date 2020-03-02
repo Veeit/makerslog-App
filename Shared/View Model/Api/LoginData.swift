@@ -18,7 +18,7 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userName = "no user"
 	@Published var userProducts = UserProducts()
 	@Published var userRecentLogs = UserRecentLogs()
-	@Published var userStats: UserStats?
+	@Published var userStats = [UserStats]()
 
 	func getUserProducts() {
         let token = oauthswift.client.credential.oauthToken
@@ -156,9 +156,9 @@ class UserData: ApiModel, ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserStats.self, from: response.data)
-
-					self.userStats = data
-					print(self.userStats)
+					DispatchQueue.main.async {
+						self.userStats.append(data)
+					}
                 } catch {
                     print(error)
 					print("decode error")

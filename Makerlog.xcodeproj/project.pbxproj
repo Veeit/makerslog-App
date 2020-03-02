@@ -26,7 +26,7 @@
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
-		5662E80B240C673E00DB89A7 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 5662E80A240C673E00DB89A7 /* SwiftUICharts */; };
+		56569BA6240D531C009F81E3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 56569BA5240D531C009F81E3 /* SwiftUICharts */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* TabView.swift */; };
@@ -39,7 +39,6 @@
 		566F1C8223D8B99500518FFF /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8123D8B99500518FFF /* LoginData.swift */; };
 		566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */; };
 		566F1C8623D8BBC800518FFF /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566F1C8523D8BBC800518FFF /* loginModel.swift */; };
-		56708E3823FD4E5200182AA8 /* DownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56708E3723FD4E5200182AA8 /* DownView.swift */; };
 		56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56708E5E23FEFFD100182AA8 /* MDtest.swift */; };
 		5670F30A23F5B4AB00B1D96E /* Discussions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30923F5B4AB00B1D96E /* Discussions.swift */; };
 		5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */; };
@@ -139,6 +138,7 @@
 		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
 		5622AFB523FBFC8B00CC1B76 /* progressImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressImg.swift; sourceTree = "<group>"; };
 		5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
+		56569B70240D52B6009F81E3 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
 		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		566DF0D323DF01E50085C318 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -152,7 +152,6 @@
 		566F1C8323D8BB0800518FFF /* FetchedObjectsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsViewModel.swift; sourceTree = "<group>"; };
 		566F1C8523D8BBC800518FFF /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
 		566FACB223FC927700BE3F13 /* makerlog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = makerlog.entitlements; sourceTree = "<group>"; };
-		56708E3723FD4E5200182AA8 /* DownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownView.swift; sourceTree = "<group>"; };
 		56708E5E23FEFFD100182AA8 /* MDtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDtest.swift; sourceTree = "<group>"; };
 		5670F30923F5B4AB00B1D96E /* Discussions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discussions.swift; sourceTree = "<group>"; };
 		5670F30B23F5BCE900B1D96E /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
@@ -202,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
-				5662E80B240C673E00DB89A7 /* SwiftUICharts in Frameworks */,
+				56569BA6240D531C009F81E3 /* SwiftUICharts in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
@@ -425,8 +424,8 @@
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
-				56708E3723FD4E5200182AA8 /* DownView.swift */,
 				56708E5E23FEFFD100182AA8 /* MDtest.swift */,
+				56569B70240D52B6009F81E3 /* ChartView-master */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -599,7 +598,7 @@
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
 				56E3674623FAE0F600C69F8F /* SwiftUIX */,
 				56EEB54324043C9600522B8C /* Pages */,
-				5662E80A240C673E00DB89A7 /* SwiftUICharts */,
+				56569BA5240D531C009F81E3 /* SwiftUICharts */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -746,7 +745,6 @@
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */,
-				5662E809240C673E00DB89A7 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -847,7 +845,6 @@
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
 				566F1C8223D8B99500518FFF /* LoginData.swift in Sources */,
 				56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */,
-				56708E3823FD4E5200182AA8 /* DownView.swift in Sources */,
 				56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */,
 				56EEB54A2405257D00522B8C /* Imprint.swift in Sources */,
 				56708E5F23FEFFD100182AA8 /* MDtest.swift in Sources */,
@@ -1433,14 +1430,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5662E809240C673E00DB89A7 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.8;
-			};
-		};
 		56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
@@ -1492,9 +1481,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5662E80A240C673E00DB89A7 /* SwiftUICharts */ = {
+		56569BA5240D531C009F81E3 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5662E809240C673E00DB89A7 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
 		56BE7B3323EF4297006EE3AF /* URLImage */ = {
