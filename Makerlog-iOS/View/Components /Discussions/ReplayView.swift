@@ -8,6 +8,7 @@
 
 import SwiftUI
 import URLImage
+import MDText
 
 struct ReplayView: View {
 	var response: DiscussionResponseElement
@@ -19,6 +20,14 @@ struct ReplayView: View {
 						 processors: [
 							Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
 					],
+						 placeholder: { _ in
+							 Image("imagePlaceholder")
+								 .resizable()
+								 .aspectRatio(contentMode: .fit)
+								 .clipped()
+								 .cornerRadius(20)
+								 .frame(width: 60, height: 60)
+						 },
 						 content: {
 							$0.image
 								.resizable()
@@ -30,15 +39,16 @@ struct ReplayView: View {
 			}
 
 			VStack(alignment: .leading) {
-				Text("\(response.body)")
+				MDText(markdown: "\(response.body)")
 					.lineLimit(nil)
-					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//					.fixedSize(horizontal: false, vertical: true)
+//					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 
 				HStack() {
 					Text("@\(response.owner.username)").bold()
 					Text("👏 \(response.praise)")
 				}.padding([.top], 10)
-			}
-		}
+			}.padding([.leading], 10)
+		}.frame(minHeight: 70)
 	}
 }

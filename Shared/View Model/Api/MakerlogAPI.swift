@@ -186,9 +186,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 					let decoder = JSONDecoder()
 					let data = try decoder.decode(Discussions.self, from: response.data)
 
-					DispatchQueue.main.async {
-						self.discussions = data.results
-					}
+					self.discussions = data.results
 				} catch {
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription

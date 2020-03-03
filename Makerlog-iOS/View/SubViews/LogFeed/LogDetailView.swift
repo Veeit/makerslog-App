@@ -38,7 +38,13 @@ struct LogDetailView: View {
 											 processors: [
 												 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
 											 ],
-											 placeholder: Image("placeholder"),
+											 placeholder: { _ in
+												 Image("imagePlaceholder")
+													 .resizable()
+													 .aspectRatio(contentMode: .fit)
+													 .clipped()
+													 .cornerRadius(20)
+											 },
 											 content: {
 										$0.image
 										.resizable()
@@ -100,7 +106,14 @@ struct LogDetailView: View {
 					if self.log.data.attachment != nil {
 						Section() {
 							URLImage(URL(string: self.log.data.attachment!)!,
-								 placeholder: Image("placeholder"),
+								 placeholder: { _ in
+									 Image("imagePlaceholder")
+										 .resizable()
+										 .aspectRatio(contentMode: .fit)
+										 .clipped()
+										 .cornerRadius(7)
+										 .frame( maxWidth: geometry.size.width - 20)
+								 },
 								 content: {
 									$0.image
 									.resizable()
@@ -172,11 +185,19 @@ struct LogDetailView: View {
 								Resize(size: CGSize(width: 40, height: 40),
 								scale: UIScreen.main.scale)
 							 ],
-							 placeholder: Image("placeholder"),
+							 placeholder: { _ in
+								 Image("imagePlaceholder")
+									.resizable()
+									.aspectRatio(contentMode: .fill)
+									.frame(width: 40, height: 40)
+									.clipped()
+									.cornerRadius(20)
+							 },
 							 content: {
 						$0.image
 						.resizable()
 						.aspectRatio(contentMode: .fill)
+						.frame(width: 40, height: 40)
 						.clipped()
 						.cornerRadius(20)
 					})

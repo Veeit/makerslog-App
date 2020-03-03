@@ -26,7 +26,11 @@ struct ResultDiscussion: Codable, Identifiable {
     let reply_count: Int?
 
     enum CodingKeys: String, CodingKey {
-        case id, slug, type, owner, title, body, pinned
+        case id
+		case slug, type
+		case owner
+		case title, body
+		case pinned
         case createdAt
         case updatedAt
         case reply_count

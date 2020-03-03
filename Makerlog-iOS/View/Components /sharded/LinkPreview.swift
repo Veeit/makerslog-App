@@ -45,6 +45,7 @@ struct LinkRow: UIViewRepresentable {
 struct StringLink: Identifiable {
 	var id = UUID()
 	var string: String
+	var url: URL?
 }
 
 class LinkData: ObservableObject {
@@ -52,8 +53,8 @@ class LinkData: ObservableObject {
 	init(text: String) {
 		findLinks(input: text)
 	}
-	
-	//swiftlint:disable force_try
+
+	//swiftlint:disable force_try 
 	func findLinks(input: String) {
 		let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
 		let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
@@ -61,7 +62,7 @@ class LinkData: ObservableObject {
 		for match in matches {
 			guard let range = Range(match.range, in: input) else { continue }
 			let url = input[range]
-			links.append(StringLink(string: String(url)))
+			links.append(StringLink(string: String(url), url: URL(string: String(url))))
 		}
 	}
 }
@@ -71,8 +72,13 @@ struct LinkPreview: View {
 	@State var links: LinkData
 
 	var body: some View {
+		//swiftlint:disable empty_parentheses_with_trailing_closure
 		ForEach(links.links) { link in
-            LinkRow(previewURL: URL(string: link.string)!, redraw: self.$redrawPreview)
+			VStack() {
+				if link.url != nil {
+					LinkRow(previewURL: link.url!, redraw: self.$redrawPreview)
+				}
+			}
         }
         .environment(\.defaultMinListRowHeight, 200)
     }

@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Down",
+        "repositoryURL": "https://github.com/iwasrobbed/Down",
+        "state": {
+          "branch": null,
+          "revision": "79c3d29f13039a5a55372e60a1d355222ae08047",
+          "version": "0.9.1"
+        }
+      },
+      {
         "package": "Erik",
         "repositoryURL": "https://github.com/phimage/Erik.git",
         "state": {
@@ -53,6 +62,15 @@
           "branch": null,
           "revision": "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
           "version": "19.0.0"
+        }
+      },
+      {
+        "package": "MDText",
+        "repositoryURL": "https://github.com/enrico-querci/MDText",
+        "state": {
+          "branch": null,
+          "revision": "894ad22c59ec7f3cc5d72826d445acb43a03fa17",
+          "version": "0.0.6"
         }
       },
       {

@@ -10,6 +10,26 @@ import SwiftUI
 import URLImage
 import KeyboardObserving
 import SwiftUIX
+import Down
+import MDText
+
+struct AttributedText: UIViewRepresentable {
+    var attributedText: NSAttributedString
+
+    init(_ attributedText: NSAttributedString) {
+        self.attributedText = attributedText
+    }
+
+    func makeUIView(context: Context) -> UITextView {
+        return UITextView()
+    }
+
+    func updateUIView(_ label: UITextView, context: Context) {
+        label.attributedText = attributedText
+    }
+}
+
+//usage:
 
 struct DiscussionsDetailView: View {
 	@State var data: DiscussionData
@@ -20,7 +40,7 @@ struct DiscussionsDetailView: View {
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {
-				List() {
+				ScrollView(.vertical, showsIndicators: true) {
 					VStack(alignment: .leading) {
 						HStack(alignment: .top) {
 							URLImage(URL(string: self.data.discussion.owner.avatar)!,
@@ -28,7 +48,7 @@ struct DiscussionsDetailView: View {
 										Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
 									],
 									 placeholder: { _ in
-										 Image("placeholer")
+										 Image("imagePlaceholder")
 											 .resizable()
 											 .aspectRatio(contentMode: .fit)
 											 .clipped()
@@ -54,76 +74,92 @@ struct DiscussionsDetailView: View {
 								.layoutPriority(2)
 						}
 
-						Text(self.data.discussion.body)
+//						Text(self.data.discussion.body)
+//							.layoutPriority(2)
+//							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//							.padding([.bottom], 30)
+
+//						LinkPreview(links: LinkData(text: self.data.discussion.body))
+						//swiftlint:disable force_try
+//						AttributedText( try! Down(markdownString: self.data.discussion.body).toAttributedString())
+//							.layoutPriority(2)
+//							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//							.fixedSize(horizontal: false, vertical: true)
+//							.padding([.bottom], 30)
+						MDText(markdown: self.data.discussion.body)
 							.layoutPriority(2)
-							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 							.padding([.bottom], 30)
+							.fixedSize(horizontal: false, vertical: true)
+						Divider()
+					}
 
-						LinkPreview(links: LinkData(text: self.data.discussion.body))
-					}.layoutPriority(2)
-
-					if self.data.discussionResponse != nil {
-						ForEach(self.data.discussionResponse!) { response in
-							if response.parent_reply == nil {
-								VStack(alignment: .leading) {
-									ReplayView(response: response)
-									LinkPreview(links: LinkData(text: response.body))
-
+					VStack() {
+						if self.data.discussionResponse != nil {
+							ForEach(self.data.discussionResponse!) { response in
+								if response.parent_reply == nil {
 									VStack(alignment: .leading) {
-										ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
-											VStack() {
-												HStack(alignment: .top) {
-													VStack() {
-														URLImage(URL(string: "\(reply.owner.avatar)")!,
-																 processors: [
-																	Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
-															],
-																 placeholder: { _ in
-																	 Image("placeholer")
-																		 .resizable()
-																		 .aspectRatio(contentMode: .fit)
-																		 .clipped()
-																		 .cornerRadius(20)
-																		 .frame(width: 45, height: 45)
-																 },
-																 content: {
-																	$0.image
-																		.resizable()
-																		.aspectRatio(contentMode: .fit)
-																		.clipped()
-																		.cornerRadius(20)
-																		.frame(width: 45, height: 45)
-														})
-															.frame(width: 45, height: 45)
-													}
+										ReplayView(response: response)
+										Divider()
+	//									LinkPreview(links: LinkData(text: response.body))
 
-													VStack(alignment: .leading) {
-														Divider()
-														Text("\(reply.body)")
-															.lineLimit(nil)
-															.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-															.fixedSize(horizontal: false, vertical: true)
-														HStack() {
-															Text("@\(reply.owner.username)").bold()
-															Text("👏 \(reply.praise)")
-															Spacer()
-														}
-													}
-												}.padding([.leading], 30)
+										VStack(alignment: .leading) {
+											ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
 												VStack() {
-													LinkPreview(links: LinkData(text: reply.body))
+													HStack(alignment: .top) {
+														VStack() {
+															URLImage(URL(string: "\(reply.owner.avatar)")!,
+																	 processors: [
+																		Resize(size: CGSize(width: 45, height: 45), scale: UIScreen.main.scale)
+																],
+																	 placeholder: { _ in
+																		 Image("imagePlaceholder")
+																			 .resizable()
+																			 .aspectRatio(contentMode: .fit)
+																			 .clipped()
+																			 .cornerRadius(20)
+																			 .frame(width: 45, height: 45)
+																	 },
+																	 content: {
+																		$0.image
+																			.resizable()
+																			.aspectRatio(contentMode: .fit)
+																			.clipped()
+																			.cornerRadius(20)
+																			.frame(width: 45, height: 45)
+															})
+																.frame(width: 45, height: 45)
+														}
+
+														VStack(alignment: .leading) {
+															MDText(markdown: "\(reply.body)")
+																.lineLimit(nil)
+//																.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+//																.fixedSize(horizontal: false, vertical: true)
+															HStack() {
+																Text("@\(reply.owner.username)").bold()
+																Text("👏 \(reply.praise)")
+																Spacer()
+															}
+															Divider()
+
+														}.padding([.leading], 10)
+													}.padding([.leading], 30)
+	//												VStack() {
+	//													LinkPreview(links: LinkData(text: reply.body))
+	//												}
 												}
 											}
 										}
-									}
+									}.padding([.top], 5)
 								}
 							}
+						} else {
+							Text("loading ...!")
 						}
-					} else {
-						Text("loading ...!")
 					}
 
-				}.padding([.bottom], 60)
+				}.padding().padding([.bottom], 60)
 
 				VStack() {
 					Spacer()

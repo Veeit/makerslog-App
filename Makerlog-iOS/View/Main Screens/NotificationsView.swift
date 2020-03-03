@@ -25,6 +25,14 @@ struct NotificationsView: View {
 									 processors: [
 										 Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
 									 ],
+									 placeholder: { _ in
+										 Image("imagePlaceholder")
+											 .resizable()
+											 .aspectRatio(contentMode: .fit)
+											 .clipped()
+											 .cornerRadius(20)
+											 .frame(width: 60, height: 60)
+									 },
 									 content: {
 										$0.image
 											.resizable()

@@ -37,6 +37,7 @@ struct ProductView: View {
 									.aspectRatio(contentMode: .fit)
 									.clipped()
 									.cornerRadius(20)
+									.frame(width: 70, height: 70)
 								})
 									.frame(width: 70, height: 70)
 

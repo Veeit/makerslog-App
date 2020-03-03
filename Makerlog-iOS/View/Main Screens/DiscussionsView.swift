@@ -25,7 +25,7 @@ struct DiscussionsView: View {
 											 Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
 										 ],
 										 placeholder: { _ in
-											 Image("placeholer")
+											 Image("imagePlaceholder")
 												 .resizable()
 												 .aspectRatio(contentMode: .fit)
 												 .clipped()

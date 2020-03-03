@@ -38,7 +38,7 @@ struct UserView: View {
 									 Resize(size: CGSize(width: 120, height: 120), scale: UIScreen.main.scale)
 								 ],
 								 placeholder: { _ in
-									 Image("placeholer")
+									 Image("imagePlaceholder")
 										 .resizable()
 										 .aspectRatio(contentMode: .fit)
 										 .clipped()
@@ -146,6 +146,13 @@ struct UserView: View {
 						HStack(alignment: .top) {
 							URLImage(URL(string: "\(product.icon ?? self.defaultAvartar)")!,
 								processors: [ Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale) ],
+								placeholder: { _ in
+									Image("imagePlaceholder")
+										.resizable()
+										.scaledToFill()
+										.frame(width: 60, height: 60, alignment: .center)
+										.cornerRadius(10)
+								},
 								content: {
 									$0.image
 										.resizable()
