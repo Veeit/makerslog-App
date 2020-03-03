@@ -24,7 +24,7 @@ struct ProductView: View {
 													  scale: UIScreen.main.scale)
 											 ],
 								 placeholder: { _ in
-									Image("placeholer")
+									Image("imagePlaceholder")
 										.resizable()
 										.aspectRatio(contentMode: .fit)
 										.clipped()
