@@ -37,7 +37,7 @@ struct Onboarding: View {
 				.fixedSize(horizontal: false, vertical: true)
 				.multilineTextAlignment(.leading)
 				.layoutPriority(2)
-				
+
 				Text("""
 				The Makerlog community is one of the largest communities of creators.
 				We love to share and send things!
@@ -117,9 +117,13 @@ struct Onboarding: View {
 			}.padding([.bottom], 20)
 			Group() {
 				Button(action: {
-					self.login.login()
-					self.tabData.setOnbaording()
-					self.tabData.showOnboarding = false
+					if self.login.acceptedDatapolicy == false {
+						self.login.showDatapolicyAlert = true
+					} else {
+						self.login.login()
+						self.tabData.setOnbaording()
+						self.tabData.showOnboarding = false
+					}
 				}) {
 					Text("Login with makerlog")
 						.bold()

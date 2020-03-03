@@ -71,8 +71,12 @@ struct LogFeedView: View {
 												)
 											} else {
 												Button(action: {
-													self.login.login()
-													self.login.getUser()
+													if self.login.acceptedDatapolicy == false {
+														self.login.showDatapolicyAlert = true
+													} else {
+														self.login.login()
+														self.login.getUser()
+													}
 												}) {
 													Text("Login").foregroundColor(Color.blue)
 												}

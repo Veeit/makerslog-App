@@ -206,10 +206,20 @@ class LoginData: UserData {
 		super.init()
 		self.isLoggedIn = defaults.bool(forKey: "isLogedIn")
         self.getUser()
+		self.getDatapolicy()
     }
 
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     private var responseData = [Login]()
+
+	func acceptDatapolicy() {
+		self.acceptedDatapolicy = true
+		defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
+	}
+
+	func getDatapolicy() {
+		self.acceptedDatapolicy = defaults.bool(forKey: "AcceptedDatapolicy")
+	}
 
     func getLogin() {
 		if oauthswift.client.credential.oauthToken == "" {
@@ -265,6 +275,7 @@ class LoginData: UserData {
 			self.userData = [User]()
 			self.userName = "no user"
 
+			self.acceptedDatapolicy = false
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}
