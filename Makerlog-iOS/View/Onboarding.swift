@@ -39,8 +39,8 @@ struct Onboarding: View {
 				.layoutPriority(2)
 				
 				Text("""
-				The makerlog comunity is one of the biggest comunity of makers.
-				We love to share and ship things !
+				The Makerlog community is one of the largest communities of creators.
+				We love to share and send things!
 				""")
 					.font(.headline)
 					.lineLimit(nil)
@@ -60,8 +60,8 @@ struct Onboarding: View {
 						.foregroundColor(Color.green)
 
 					VStack(alignment: .leading) {
-						Text("Browse the log feed").font(.title).bold()
-						Text("You can browse all logs from every single maker")
+						Text("Explore the logs").font(.title).bold()
+						Text("You can explore every log, from every single creator")
 							.font(.headline)
 							.lineLimit(nil)
 							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -83,7 +83,7 @@ struct Onboarding: View {
 
 					VStack(alignment: .leading) {
 						Text("Log your daily tasks").font(.title).bold()
-						Text("Every maker loves to shere this work, with logbot you can shere you tasks without any touble!")
+						Text("Every creator loves to share this work, with the Logbot you can do this without any effort!")
 							.font(.headline)
 							.lineLimit(nil)
 							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
@@ -105,7 +105,7 @@ struct Onboarding: View {
 
 					VStack(alignment: .leading) {
 						Text("Discussions for everthing!").font(.title).bold()
-						Text("Start a new discussion about any topic and discuss with other makers. And shere your opinon about other topics with the comunity.")
+						Text("Start a new discussion on any topic you like and discuss with other creators. And share your opinion on other topics with the community.")
 							.font(.headline)
 							.lineLimit(nil)
 							.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
