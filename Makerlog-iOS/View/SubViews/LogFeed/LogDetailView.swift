@@ -159,6 +159,14 @@ struct LogDetailView: View {
 		@ObservedObject var comments: CommentViewData
 		var body: some View {
 			HStack() {
+				Button(action: {
+					UIApplication.shared.endEditing()
+					self.text = ""
+				}) {
+					Image(systemName: "xmark.square")
+						.imageScale(.large)
+						.foregroundColor(Color.blue)
+				}
 				TextField("Add a comment", text: $text)
 				Button(action: {
 					if self.login.isLoggedIn == false {

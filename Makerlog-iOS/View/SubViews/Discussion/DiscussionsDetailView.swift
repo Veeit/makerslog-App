@@ -166,6 +166,14 @@ struct DiscussionsDetailView: View {
 					VStack() {
 						Divider()
 						HStack() {
+							Button(action: {
+								UIApplication.shared.endEditing()
+								self.data.reply = ""
+							}) {
+								Image(systemName: "xmark.square")
+									.imageScale(.large)
+									.foregroundColor(Color.blue)
+							}
 							TextField("Add a comment", text: self.$data.reply)
 							Button(action: {
 								if self.login.isLoggedIn == false {
