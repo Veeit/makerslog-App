@@ -20,6 +20,7 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userRecentLogs = UserRecentLogs()
 	@Published var userStats = [UserStats]()
 
+	var stop = false
 	func getUserProducts() {
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
@@ -33,8 +34,10 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserProducts.self, from: response.data)
 
-					self.userProducts = data
-                } catch {
+					if !self.stop {
+						self.userProducts = data
+					}
+				} catch {
                     print(error)
 					print("decode error")
 					DispatchQueue.main.async {
@@ -117,7 +120,7 @@ class UserData: ApiModel, ObservableObject {
                     let data = try decoder.decode(UserRecentLogs.self, from: response.data)
 
 					newLogs = data
-					if newLogs != self.userRecentLogs {
+					if newLogs != self.userRecentLogs && !self.stop {
 						self.userRecentLogs = newLogs
 					}
                 } catch {
@@ -152,8 +155,10 @@ class UserData: ApiModel, ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserStats.self, from: response.data)
-					DispatchQueue.main.async {
-						self.userStats.append(data)
+					if !self.stop {
+						DispatchQueue.main.async {
+							self.userStats.append(data)
+						}
 					}
                 } catch {
                     print(error)

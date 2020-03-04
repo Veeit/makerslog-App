@@ -14,84 +14,31 @@ import KeyboardObserving
 struct LogDetailView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
 	@ObservedObject var log: LogViewData
-	@EnvironmentObject var comments: CommentViewData
-	@EnvironmentObject var makerlogAPI: MakerlogAPI
-	@State var showDetailView = false
+	@State var comments = CommentViewData()
 
 	@State var userComments = Comment()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 //	var userData = UserData()
+	var fromUser = false
 
-	init(log: LogViewData) {
+	init(log: LogViewData, fromUser: Bool) {
 		self.log = log
+		self.fromUser = fromUser
 //		self.userData.userData = [self.log.data.user]
 	}
     var body: some View {
 		GeometryReader() { geometry in
 			ZStack() {
 				List() {
-					NavigationLink(destination: UserView(userData: [self.log.data.user])) {
-						VStack() {
-							VStack() {
-								HStack(alignment: .center) {
-									URLImage(URL(string: self.log.data.user.avatar)!,
-											 processors: [
-												 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
-											 ],
-											 placeholder: { _ in
-												 Image("imagePlaceholder")
-													 .resizable()
-													 .aspectRatio(contentMode: .fit)
-													 .clipped()
-													 .cornerRadius(20)
-											 },
-											 content: {
-										$0.image
-										.resizable()
-										.aspectRatio(contentMode: .fit)
-										.clipped()
-										.cornerRadius(20)
-									})
-										.frame(width: 70, height: 70)
-									VStack(alignment: .leading, spacing: 5) {
-										if self.log.data.user.firstName != "" && self.log.data.user.lastName != "" {
-											VStack(alignment: .leading) {
-												Text("\(self.log.data.user.firstName) \(self.log.data.user.lastName)").font(.headline).bold()
-												Text("@\(self.log.data.user.username)")
-													.font(.subheadline)
-											}
-										} else {
-											Text("@\(self.log.data.user.username)")
-												.font(.headline)
-										}
-
-										HStack(spacing: 10) {
-											Text("\(self.log.data.user.makerScore) 🏆")
-											Text("\(self.log.data.user.streak) 🔥")
-											Text("\(Int(self.log.data.user.weekTda)) 🏁")
-										}
-									}
-									Spacer()
-								}
-								.frame(minWidth: 0, maxWidth: .infinity)
-
-								HStack() {
-									ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
-									EventImg(event: self.log.data.event ?? "")
-									Text(self.log.data.content)
-										.padding(10)
-										.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-										.cornerRadius(10)
-										.lineLimit(200)
-										.multilineTextAlignment(.leading)
-										.fixedSize(horizontal: false, vertical: true)
-								}
-							}
-							LinkPreview(links: LinkData(text: self.log.data.content))
+					if self.fromUser {
+						UserHeader(log: self.log)
+					} else {
+						NavigationLink(destination: UserView(userData: [self.log.data.user])) {
+							UserHeader(log: self.log)
 						}
 					}
 
-					LogInteractive(log: self.log, showDetailView: self.$showDetailView).offset(x: -10)
+//					LogInteractive(log: self.log).offset(x: -10)
 
 					if self.log.data.projectSet.first?.id != nil {
 						Section(header: Text("Products:")) {
@@ -149,8 +96,78 @@ struct LogDetailView: View {
 			_ = self.comments.getComments(logID: String(self.log.data.id))
 			print(self.userComments)
 		})
+		.onDisappear(perform: {
+			print("trigger")
+			self.comments.stop = true
+			self.comments.comments.removeAll()
+		})
 		.navigationBarTitle("Detail Log", displayMode: .inline)
     }
+
+	struct UserHeader: View {
+		@ObservedObject var log: LogViewData
+
+		var body: some View {
+			VStack() {
+				VStack() {
+					HStack(alignment: .center) {
+						URLImage(URL(string: self.log.data.user.avatar)!,
+								 processors: [
+									 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
+								 ],
+								 placeholder: { _ in
+									 Image("imagePlaceholder")
+										 .resizable()
+										 .aspectRatio(contentMode: .fit)
+										 .clipped()
+										 .cornerRadius(20)
+								 },
+								 content: {
+							$0.image
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.clipped()
+							.cornerRadius(20)
+						})
+							.frame(width: 70, height: 70)
+						VStack(alignment: .leading, spacing: 5) {
+							if self.log.data.user.firstName != "" && self.log.data.user.lastName != "" {
+								VStack(alignment: .leading) {
+									Text("\(self.log.data.user.firstName) \(self.log.data.user.lastName)").font(.headline).bold()
+									Text("@\(self.log.data.user.username)")
+										.font(.subheadline)
+								}
+							} else {
+								Text("@\(self.log.data.user.username)")
+									.font(.headline)
+							}
+
+							HStack(spacing: 10) {
+								Text("\(self.log.data.user.makerScore) 🏆")
+								Text("\(self.log.data.user.streak) 🔥")
+								Text("\(Int(self.log.data.user.weekTda)) 🏁")
+							}
+						}
+						Spacer()
+					}
+					.frame(minWidth: 0, maxWidth: .infinity)
+
+					HStack() {
+						ProgressImg(done: self.log.data.done, inProgress: self.log.data.inProgress)
+						EventImg(event: self.log.data.event ?? "")
+						Text(self.log.data.content)
+							.padding(10)
+							.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+							.cornerRadius(10)
+							.lineLimit(200)
+							.multilineTextAlignment(.leading)
+							.fixedSize(horizontal: false, vertical: true)
+					}
+				}
+				LinkPreview(links: LinkData(text: self.log.data.content))
+			}
+		}
+	}
 
 	struct AddComment: View {
 		@EnvironmentObject var tabScreenData: TabScreenData

@@ -15,12 +15,12 @@ struct LogInteractive: View {
 
 	var log: LogViewData
 
-	@Binding var showDetailView: Bool
+//	@Binding var showDetailView: Bool
 
-	init(log: LogViewData, showDetailView: Binding<Bool>) {
-		self._showDetailView = showDetailView
-		self.log = log
-	}
+//	init(log: LogViewData, showDetailView: Binding<Bool>) {
+//		self._showDetailView = showDetailView
+//		self.log = log
+//	}
 
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {

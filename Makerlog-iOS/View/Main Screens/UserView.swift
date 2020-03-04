@@ -38,7 +38,7 @@ struct UserView: View {
 						VStack(alignment: .center) {
 							WebImage(url: URL(string: self.user.userData.first?.avatar ?? self.defaultAvartar),
 								 options: [.decodeFirstFrameOnly],
-								 context: [.imageThumbnailPixelSize : CGSize(width: 240, height: 240)])
+								 context: [.imageThumbnailPixelSize: CGSize(width: 240, height: 240)])
 							.placeholder(Image("imagePlaceholder"))
 							.resizable()
 							.aspectRatio(contentMode: .fit)
@@ -50,7 +50,8 @@ struct UserView: View {
 								VStack(alignment: .leading) {
 									Text("@\(self.user.userData.first?.username ?? "")")
 										.font(.subheadline)
-									Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")").font(.headline).bold()
+									Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
+										.font(.headline).bold()
 								}
 							} else {
 								Text("@\(self.user.userData.first?.username ?? "")")
@@ -136,15 +137,15 @@ struct UserView: View {
 					Section(header: Text("Products").bold()) {
 						ForEach(self.user.userProducts) { product in
 							HStack(alignment: .top) {
-								AnimatedImage(url: URL(string: "\(product.icon ?? self.defaultAvartar)")!, options: [.progressiveLoad])
-									.customLoopCount(10)
-									.playbackRate(2.0)
-									.placeholder(PlatformImage(named: "imagePlaceholder"))
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(width: 60, height: 60)
-									.clipped()
-									.cornerRadius(10)
+								WebImage(url: URL(string: "\(product.icon ?? self.defaultAvartar)")!,
+									 options: [.decodeFirstFrameOnly],
+									 context: [.imageThumbnailPixelSize: CGSize(width: 120, height: 120)])
+								.placeholder(Image("imagePlaceholder"))
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.frame(width: 60, height: 60)
+								.clipped()
+								.cornerRadius(20)
 								VStack(alignment: .leading) {
 									HStack() {
 										Text("\(product.name)").bold()
@@ -164,7 +165,7 @@ struct UserView: View {
 					Spacer()
 					Section(header: Text("Last logs").bold()) {
 						ForEach(self.user.userRecentLogs) { log in
-							NavigationLink(destination: LogDetailView(log: LogViewData(data: log))) {
+							NavigationLink(destination: LogDetailView(log: LogViewData(data: log), fromUser: true)) {
 								VStack() {
 									HStack(alignment: .top) {
 										Spacer()
@@ -187,6 +188,13 @@ struct UserView: View {
 		}
 		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
 		.onAppear(perform: {
+			self.user.stop = false
+			self.user.userData = [User]()
+			self.user.userName = "no user"
+			self.user.userProducts = UserProducts()
+			self.user.userRecentLogs = UserRecentLogs()
+			self.user.userStats = [UserStats]()
+
 			self.user.userData = self.userData
 			self.user.getUserProducts()
 			self.user.getUserName()
@@ -194,11 +202,7 @@ struct UserView: View {
 			self.user.getUserStats()
 		})
 		.onDisappear(perform: {
-			self.user.userData = [User]()
-			self.user.userName = "no user"
-			self.user.userProducts = UserProducts()
-			self.user.userRecentLogs = UserRecentLogs()
-			self.user.userStats = [UserStats]()
+			self.user.stop = true
 		})
 	}
 }

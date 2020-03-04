@@ -29,7 +29,7 @@ struct LogFeedItem: View {
 			}
 		}
 
-		return NavigationLink(destination: LogDetailView(log: log),
+		return NavigationLink(destination: LogDetailView(log: log, fromUser: false),
 							  isActive: self.$showDetailView) {
 
 						// swiftlint:disable empty_parentheses_with_trailing_closure
@@ -77,7 +77,7 @@ struct LogFeedItem: View {
 								}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
 							}
 
-							LogInteractive(log: log, showDetailView: self.$showDetailView)
+							LogInteractive(log: log)
 						}
 		}.onTapGesture {
 			self.showDetailView.toggle()

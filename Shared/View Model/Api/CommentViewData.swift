@@ -12,6 +12,7 @@ import OAuthSwift
 
 class CommentViewData: ApiModel, ObservableObject {
     @Published var comments = Comment()
+	var stop = false
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
@@ -48,9 +49,11 @@ class CommentViewData: ApiModel, ObservableObject {
 				}
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {
-					self.comments = result
-					print(self.comments)
-					self.cancellable?.cancel()
+					if !self.stop {
+						self.comments = result
+						print(self.comments)
+						self.cancellable?.cancel()
+					}
 				}
 			})
 		return self.comments
