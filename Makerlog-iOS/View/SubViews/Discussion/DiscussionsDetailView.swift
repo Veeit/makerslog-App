@@ -134,8 +134,8 @@ struct DiscussionsDetailView: View {
 														VStack(alignment: .leading) {
 															MDText(markdown: "\(reply.body)")
 																.lineLimit(nil)
-//																.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-//																.fixedSize(horizontal: false, vertical: true)
+																.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+																.fixedSize(horizontal: false, vertical: true)
 															HStack() {
 																Text("@\(reply.owner.username)").bold()
 																Text("👏 \(reply.praise)")
