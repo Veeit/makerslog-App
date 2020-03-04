@@ -38,7 +38,7 @@ struct LogDetailView: View {
 						}
 					}
 
-//					LogInteractive(log: self.log).offset(x: -10)
+					LogInteractive(log: self.log).offset(x: -10)
 
 					if self.log.data.projectSet.first?.id != nil {
 						Section(header: Text("Products:")) {
