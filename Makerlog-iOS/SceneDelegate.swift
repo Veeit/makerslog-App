@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let makerlogApiData = MakerlogAPI()
         let loginData = LoginData()
 		let commentViewData = CommentViewData()
+		let userData = UserData()
 
 		URLImageService.shared.setDefaultExpiryTime(3600.0)
 		
@@ -39,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 							.environmentObject(makerlogApiData)
 							.environmentObject(loginData)
 							.environmentObject(commentViewData)
+							.environmentObject(userData)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

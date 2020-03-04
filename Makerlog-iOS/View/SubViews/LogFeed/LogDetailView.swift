@@ -20,17 +20,17 @@ struct LogDetailView: View {
 
 	@State var userComments = Comment()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
-	var userData = UserData()
+//	var userData = UserData()
 
 	init(log: LogViewData) {
 		self.log = log
-		self.userData.userData = [self.log.data.user]
+//		self.userData.userData = [self.log.data.user]
 	}
     var body: some View {
 		GeometryReader() { geometry in
 			ZStack() {
 				List() {
-					NavigationLink(destination: UserView(user: self.userData)) {
+					NavigationLink(destination: UserView(userData: [self.log.data.user])) {
 						VStack() {
 							VStack() {
 								HStack(alignment: .center) {
@@ -97,7 +97,8 @@ struct LogDetailView: View {
 						Section(header: Text("Products:")) {
 							ForEach(self.log.data.projectSet) { project in
 								VStack(alignment: .leading) {
-									ProductView(data: ProductViewData(projectID: String(project.id)))
+//									ProductView(data: ProductViewData(projectID: String(project.id)))
+									ProductView(projectID: String(project.id))
 								}.padding([.top, .bottom], 10)
 							}
 						}

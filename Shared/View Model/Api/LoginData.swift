@@ -66,15 +66,7 @@ class UserData: ApiModel, ObservableObject {
 	func getUser() {
 		print(oauthswift.client.credential.oauthVerifier)
         let token = oauthswift.client.credential.oauthToken
-//		let tokenRefresh = oauthswift.client.credential.oauthRefreshToken
-//		let clientSecret = oauthswift.client.credential.oauthTokenSecret
-//		let currentDateTime = Date()
-//		oauthswift.client.credential.oauthTokenExpiresAt = currentDateTime
-
-//		print("test \(		oauthswift.client.credential.isTokenExpired())")
 		print("user token \(token)")
-//		print("user refresh \(tokenRefresh)")
-//		print("user secret \(clientSecret)")
 		let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/me/"
 
@@ -116,6 +108,7 @@ class UserData: ApiModel, ObservableObject {
         let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
 
+		var newLogs = UserRecentLogs()
         oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
             case .success(let response):
@@ -123,7 +116,10 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserRecentLogs.self, from: response.data)
 
-					self.userRecentLogs = data
+					newLogs = data
+					if newLogs != self.userRecentLogs {
+						self.userRecentLogs = newLogs
+					}
                 } catch {
                     print(error)
 					print("decode error")
@@ -178,6 +174,13 @@ class UserData: ApiModel, ObservableObject {
 				}
             }
         }
+	}
+}
+
+class UserViewData: UserData {
+	init(userData: [User]) {
+		super.init()
+		self.userData = userData
 	}
 }
 

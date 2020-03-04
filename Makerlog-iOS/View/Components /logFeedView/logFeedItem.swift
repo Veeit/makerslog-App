@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 import SDWebImageSwiftUI
 
 struct LogFeedItem: View {
@@ -36,26 +35,6 @@ struct LogFeedItem: View {
 						// swiftlint:disable empty_parentheses_with_trailing_closure
 						VStack(alignment: .leading) {
 							HStack() {
-//								URLImage(URL(string: log.data.user.avatar)!,
-//										 processors: [
-//											 Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale)
-//										 ],
-//										 placeholder: { _ in
-//											Image("imagePlaceholder")
-//												.resizable()
-//												.aspectRatio(contentMode: .fit)
-//												.clipped()
-//												.cornerRadius(20)
-//												.frame(width: 40, height: 40)
-//										},
-//										 content: {
-//											$0.image
-//												.resizable()
-//												.aspectRatio(contentMode: .fit)
-//												.clipped()
-//												.cornerRadius(20)
-//												.frame(width: 40, height: 40)
-//										}).frame(width: 40, height: 40)
 								WebImage(url: URL(string: log.data.user.avatar)!,
 										 options: [.decodeFirstFrameOnly],
 										 context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
@@ -85,17 +64,6 @@ struct LogFeedItem: View {
 
 							if log.data.attachment != nil {
 								VStack(alignment: .center) {
-//									URLImage(URL(string: log.data.attachment!)!,
-//											 processors: [ Resize(size: CGSize(width: 300, height: 300), scale: UIScreen.main.scale) ],
-//											 placeholder: Image("400x300"),
-//											 content: {
-//												$0.image
-//												.resizable()
-//												.aspectRatio(contentMode: .fit)
-//												.frame(width: 300, height: 300)
-//												.clipped()
-//												.cornerRadius(7)
-//											}).frame(width: 300, height: 300)
 									WebImage(url: URL(string: log.data.attachment!),
 											 options: [.decodeFirstFrameOnly],
 											 context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
