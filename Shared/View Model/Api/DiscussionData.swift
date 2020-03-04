@@ -24,6 +24,7 @@ class DiscussionData: ApiModel, ObservableObject {
 		let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/discussions/\(self.discussion.slug)/replies/"
 
+		print(requestURL)
 		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
 			switch result {
 			case .success(let response):

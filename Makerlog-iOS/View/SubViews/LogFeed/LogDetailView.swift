@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-import URLImage
+import SDWebImageSwiftUI
 import KeyboardObserving
 
 struct LogDetailView: View {
@@ -53,24 +53,14 @@ struct LogDetailView: View {
 
 					if self.log.data.attachment != nil {
 						Section() {
-							URLImage(URL(string: self.log.data.attachment!)!,
-								 placeholder: { _ in
-									 Image("imagePlaceholder")
-										 .resizable()
-										 .aspectRatio(contentMode: .fit)
-										 .clipped()
-										 .cornerRadius(7)
-										 .frame( maxWidth: geometry.size.width - 20)
-								 },
-								 content: {
-									$0.image
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.clipped()
-									.cornerRadius(7)
-									.frame( maxWidth: geometry.size.width - 20)
-							})
+							WebImage(url: URL(string: self.log.data.attachment!)!,
+								 options: [.decodeFirstFrameOnly])
+							.placeholder(Image("imagePlaceholder"))
+							.resizable()
+							.aspectRatio(contentMode: .fit)
 							.frame( maxWidth: geometry.size.width - 20)
+							.clipped()
+							.cornerRadius(7)
 						}
 					}
 
@@ -111,25 +101,15 @@ struct LogDetailView: View {
 			VStack() {
 				VStack() {
 					HStack(alignment: .center) {
-						URLImage(URL(string: self.log.data.user.avatar)!,
-								 processors: [
-									 Resize(size: CGSize(width: 70, height: 70), scale: UIScreen.main.scale)
-								 ],
-								 placeholder: { _ in
-									 Image("imagePlaceholder")
-										 .resizable()
-										 .aspectRatio(contentMode: .fit)
-										 .clipped()
-										 .cornerRadius(20)
-								 },
-								 content: {
-							$0.image
+						WebImage(url: URL(string: self.log.data.user.avatar)!,
+							 options: [.decodeFirstFrameOnly],
+							 context: [.imageThumbnailPixelSize: CGSize(width: 140, height: 140)])
+							.placeholder(Image("imagePlaceholder"))
 							.resizable()
 							.aspectRatio(contentMode: .fit)
-							.clipped()
-							.cornerRadius(20)
-						})
 							.frame(width: 70, height: 70)
+							.cornerRadius(20)
+							.clipped()
 						VStack(alignment: .leading, spacing: 5) {
 							if self.log.data.user.firstName != "" && self.log.data.user.lastName != "" {
 								VStack(alignment: .leading) {
@@ -206,28 +186,15 @@ struct LogDetailView: View {
 		var body: some View {
 			VStack(alignment: .leading) {
 				HStack() {
-					URLImage(URL(string: comment.user.avatar)!,
-							 processors: [
-								Resize(size: CGSize(width: 40, height: 40),
-								scale: UIScreen.main.scale)
-							 ],
-							 placeholder: { _ in
-								 Image("imagePlaceholder")
-									.resizable()
-									.aspectRatio(contentMode: .fill)
-									.frame(width: 40, height: 40)
-									.clipped()
-									.cornerRadius(20)
-							 },
-							 content: {
-						$0.image
+					WebImage(url: URL(string: comment.user.avatar)!,
+						 options: [.decodeFirstFrameOnly],
+						 context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
+						.placeholder(Image("imagePlaceholder"))
 						.resizable()
-						.aspectRatio(contentMode: .fill)
+						.aspectRatio(contentMode: .fit)
 						.frame(width: 40, height: 40)
-						.clipped()
 						.cornerRadius(20)
-					})
-						.frame(width: 40, height: 40)
+						.clipped()
 					VStack() {
 						if comment.user.firstName != "" && comment.user.lastName != "" {
 							Text("\(comment.user.firstName) \(comment.user.lastName)").font(.subheadline).bold()

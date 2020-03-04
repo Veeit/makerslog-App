@@ -50,7 +50,6 @@
 		567CD4AA24029171009B944F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CD4A924029171009B944F /* ApiModel.swift */; };
 		5683E075240AFA2600A15518 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E074240AFA2500A15518 /* UserStats.swift */; };
 		5683E078240AFB3600A15518 /* UserStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E077240AFB3600A15518 /* UserStatsView.swift */; };
-		56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3323EF4297006EE3AF /* URLImage */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
 		56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B4123F07CE1006EE3AF /* OAuthSwift */; };
@@ -216,7 +215,6 @@
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
-				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,7 +600,6 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
-				56BE7B3323EF4297006EE3AF /* URLImage */,
 				56BE7B3823EF462D006EE3AF /* KeychainSwift */,
 				56BE7B3A23EF4631006EE3AF /* KeyboardObserving */,
 				56BE7B4123F07CE1006EE3AF /* OAuthSwift */,
@@ -756,7 +753,6 @@
 			packageReferences = (
 				56BE7B1E23EEFDF0006EE3AF /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				56BE7B2423EF1753006EE3AF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
-				56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */,
 				56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */,
@@ -1465,14 +1461,6 @@
 				minimumVersion = 0.2.1;
 			};
 		};
-		56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.10;
-			};
-		};
 		56BE7B4023F07CE1006EE3AF /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -1535,11 +1523,6 @@
 		56569BA5240D531C009F81E3 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUICharts;
-		};
-		56BE7B3323EF4297006EE3AF /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56BE7B3223EF4297006EE3AF /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
 		};
 		56BE7B3823EF462D006EE3AF /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;

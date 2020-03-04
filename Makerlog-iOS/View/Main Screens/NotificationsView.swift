@@ -7,7 +7,8 @@
 //
 
 import SwiftUI
-import URLImage
+//import URLImage
+import SDWebImageSwiftUI
 
 struct NotificationsView: View {
 	@EnvironmentObject var data: MakerlogAPI
@@ -21,26 +22,15 @@ struct NotificationsView: View {
 				if self.data.notification != nil {
 					ForEach(self.data.notification!) { notification in
 						HStack() {
-							URLImage(URL(string: notification.actor.avatar)!,
-									 processors: [
-										 Resize(size: CGSize(width: 60, height: 60), scale: UIScreen.main.scale)
-									 ],
-									 placeholder: { _ in
-										 Image("imagePlaceholder")
-											 .resizable()
-											 .aspectRatio(contentMode: .fit)
-											 .clipped()
-											 .cornerRadius(20)
-											 .frame(width: 60, height: 60)
-									 },
-									 content: {
-										$0.image
-											.resizable()
-											.aspectRatio(contentMode: .fit)
-											.clipped()
-											.cornerRadius(20)
-											.frame(width: 60, height: 60)
-							}).frame(width: 60, height: 60)
+							WebImage(url: URL(string: notification.actor.avatar)!,
+								 options: [.decodeFirstFrameOnly],
+								 context: [.imageThumbnailPixelSize : CGSize(width: 120, height: 120)])
+							.placeholder(Image("imagePlaceholder"))
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.frame(width: 60, height: 60)
+							.clipped()
+							.cornerRadius(20)
 							VStack(alignment: .leading) {
 								Text("\((notification.actor.username))").bold()
 								if notification.target != nil {

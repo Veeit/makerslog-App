@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Foundation
-import URLImage
 import SDWebImageSwiftUI
 //import SwiftUIPullToRefresh
 
@@ -42,7 +41,7 @@ struct LogFeedView: View {
 				.onDisappear(perform: {
 					self.data.stopTimer = true
 				})
-				.navigationBarTitle("LogBot")
+					.navigationBarTitle("LogBot", displayMode: .large)
 				.navigationBarItems(leading:
 										Button(action: {
 											self.tabScreenData.showSettings = true

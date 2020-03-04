@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 import OAuthSwift
-import URLImage
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
@@ -29,8 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let loginData = LoginData()
 		let commentViewData = CommentViewData()
 		let userData = UserData()
-
-		URLImageService.shared.setDefaultExpiryTime(3600.0)
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
