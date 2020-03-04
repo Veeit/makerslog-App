@@ -58,7 +58,10 @@
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C44F8D240E5BAD0057220D /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 56C44F8C240E5BAD0057220D /* Down */; };
-		56C44F90240E5D480057220D /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56C44F8F240E5D480057220D /* MDText */; };
+		56C8FE3F240FDA8500E28FC5 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE3E240FDA8500E28FC5 /* MDText */; };
+		56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE41240FDACF00E28FC5 /* SDWebImage */; };
+		56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */; };
+		56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogDetailView.swift */; };
 		56D2C71523DF4BDB0017A7B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D2C71423DF4BDB0017A7B4 /* User.swift */; };
@@ -202,12 +205,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */,
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56569BA6240D531C009F81E3 /* SwiftUICharts in Frameworks */,
-				56C44F90240E5D480057220D /* MDText in Frameworks */,
+				56C8FE3F240FDA8500E28FC5 /* MDText in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
+				56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
+				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 				56BE7B3423EF4297006EE3AF /* URLImage in Frameworks */,
@@ -604,7 +610,10 @@
 				56EEB54324043C9600522B8C /* Pages */,
 				56569BA5240D531C009F81E3 /* SwiftUICharts */,
 				56C44F8C240E5BAD0057220D /* Down */,
-				56C44F8F240E5D480057220D /* MDText */,
+				56C8FE3E240FDA8500E28FC5 /* MDText */,
+				56C8FE41240FDACF00E28FC5 /* SDWebImage */,
+				56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */,
+				56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -752,7 +761,9 @@
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */,
 				56C44F8B240E5BAD0057220D /* XCRemoteSwiftPackageReference "Down" */,
-				56C44F8E240E5D480057220D /* XCRemoteSwiftPackageReference "MDText" */,
+				56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */,
+				56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1478,12 +1489,28 @@
 				minimumVersion = 0.9.1;
 			};
 		};
-		56C44F8E240E5D480057220D /* XCRemoteSwiftPackageReference "MDText" */ = {
+		56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/enrico-querci/MDText";
+			repositoryURL = "https://github.com/Lambdo-Labs/MDText";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
+				minimumVersion = 1.0.0;
 			};
 		};
 		56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
@@ -1534,10 +1561,25 @@
 			package = 56C44F8B240E5BAD0057220D /* XCRemoteSwiftPackageReference "Down" */;
 			productName = Down;
 		};
-		56C44F8F240E5D480057220D /* MDText */ = {
+		56C8FE3E240FDA8500E28FC5 /* MDText */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 56C44F8E240E5D480057220D /* XCRemoteSwiftPackageReference "MDText" */;
+			package = 56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */;
 			productName = MDText;
+		};
+		56C8FE41240FDACF00E28FC5 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		56E3674623FAE0F600C69F8F /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
