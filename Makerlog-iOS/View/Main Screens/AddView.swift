@@ -38,6 +38,6 @@ struct AddView: View {
 			}
 			.padding([.leading, .trailing], 20)
 			.padding([.bottom], 10)
-		}
+		}.navigationViewStyle(StackNavigationViewStyle())
 	}
 }

@@ -58,7 +58,7 @@ struct TabScreen: View {
 		}.sheet(isPresented: self.$showDataPolicy, content: {
 			NavigationView() {
 				DataSecurity()
-			}
+			}.navigationViewStyle(StackNavigationViewStyle())
 		})
 	}
 

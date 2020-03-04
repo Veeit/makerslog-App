@@ -61,7 +61,7 @@ struct DiscussionsView: View {
 				self.data.getDissucions()
 			})
 			.navigationBarTitle("Discussion")
-		}
+		}.navigationViewStyle(StackNavigationViewStyle())
 	}
 }
 

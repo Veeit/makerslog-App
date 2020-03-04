@@ -60,7 +60,7 @@ struct SettingsView: View {
 			}
 			.listStyle(GroupedListStyle())
 			.navigationBarTitle("Settings")
-		}
+		}.navigationViewStyle(StackNavigationViewStyle())
     }
 	func openTelegramLink() {
 		if let url = URL(string: "https://t.me/Veitpro") {

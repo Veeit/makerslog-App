@@ -54,6 +54,7 @@ struct NotificationsView: View {
 			}.onAppear(perform: {
 				self.data.getNotifications()
 			})
+			.navigationViewStyle(StackNavigationViewStyle())
 		}
 	}
 
