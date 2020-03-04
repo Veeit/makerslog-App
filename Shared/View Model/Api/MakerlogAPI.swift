@@ -36,29 +36,34 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	   }
 
 	@Published var discussions: [ResultDiscussion]?
+	@Published var stopTimer = false
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
 
-    private func startTimer() {
-		self.getResult()
-		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-			self.getResult()
+	func startTimer() {
+		self.getLogs()
+		Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { timer in
+			self.getLogs()
 			print("run")
 			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
 			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
 			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+			if self.stopTimer == true {
+				timer.invalidate()
+			}
 		}
     }
 
 	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
-    func getResult() {
+    func getLogs() {
         print("start")
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
 
+		var newLogs = [Log]()
 		self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
 			.tryMap { output in
 				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -88,7 +93,10 @@ class MakerlogAPI: ApiModel, ObservableObject {
 				}
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {
-					self.logs = result.results
+					newLogs = result.results
+					if newLogs != self.logs {
+						self.logs = newLogs
+					}
 					self.isDone = true
 					self.alertWithNetworkError = 0
 				}
@@ -152,7 +160,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 							self.objectWillChange.send()
 							self.logs[index].praise = data.total
 							print(self.logs[index].praise)
-							self.getResult()
+							self.getLogs()
 						}
 					}
 				} catch {
@@ -214,7 +222,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters) { result in
 			switch result {
 			case .success(_):
-					self.getResult()
+					self.getLogs()
 			case .failure(let error):
 				print(error)
 				if case .tokenExpired = error {
@@ -226,10 +234,5 @@ class MakerlogAPI: ApiModel, ObservableObject {
 				}
 			}
 		}
-	}
-
-	override init() {
-		super.init()
-		startTimer()
 	}
 }

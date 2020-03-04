@@ -23,7 +23,7 @@ struct LogFeedView: View {
 		GeometryReader() { geometry in
 			NavigationView() {
 				RefreshablListView(action: {
-					self.data.getResult()
+					self.data.getLogs()
 				}, isDone: self.$data.isDone) {
 //					Button(action: {
 //						self.tabScreenData.showLogin = true
@@ -34,6 +34,13 @@ struct LogFeedView: View {
 						LogFeedItem(log: LogViewData(data: log))
 					}
 				}
+				.onAppear(perform: {
+					self.data.stopTimer = false
+					self.data.startTimer()
+				})
+				.onDisappear(perform: {
+					self.data.stopTimer = true
+				})
 				.navigationBarTitle("LogBot")
 				.navigationBarItems(leading:
 										Button(action: {
