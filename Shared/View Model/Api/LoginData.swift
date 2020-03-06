@@ -284,6 +284,7 @@ class LoginData: UserData {
 			self.userName = "no user"
 
 			self.acceptedDatapolicy = false
+			defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}

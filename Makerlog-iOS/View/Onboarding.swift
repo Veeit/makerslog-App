@@ -29,7 +29,7 @@ struct Onboarding: View {
 				HStack() {
 					Group() {
 						Text("LogBot").font(.largeTitle).bold().foregroundColor(Color.green) +
-						Text(" a nativ makerlog client").font(.largeTitle).bold()
+						Text(" a native makerlog client").font(.largeTitle).bold()
 					}
 				}
 				.lineLimit(nil)

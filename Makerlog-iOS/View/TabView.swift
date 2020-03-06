@@ -44,10 +44,6 @@ struct TabScreen: View {
 					.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
 				}
 			}
-			.alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
-			.alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
-			.alert(isPresented: self.$login.showDatapolicyAlert, content: {datasecurityAlert()})
-			.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
 			.overlay(VStack() {
 				if self.data.showOnboarding {
 					Onboarding()
@@ -55,6 +51,11 @@ struct TabScreen: View {
 					EmptyView()
 				}
 			})
+			.alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
+			.alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
+			.alert(isPresented: self.$login.showDatapolicyAlert, content: {datasecurityAlert()})
+			.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
+			
 		}.sheet(isPresented: self.$showDataPolicy, content: {
 			NavigationView() {
 				DataSecurity()

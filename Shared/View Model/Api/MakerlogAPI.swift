@@ -66,6 +66,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
+
     func getLogs() {
         print("start")
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
