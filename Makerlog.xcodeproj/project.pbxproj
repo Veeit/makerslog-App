@@ -25,6 +25,9 @@
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
 		562065A3240E99DF0016B21D /* closeKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562065A2240E99DF0016B21D /* closeKeyboard.swift */; };
+		56209D0A2412D7BD002848F5 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56209D092412D7BD002848F5 /* MDText */; };
+		56209D0F2412E8A3002848F5 /* WebSocketConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56209D0E2412E8A3002848F5 /* WebSocketConnector.swift */; };
+		56209D112412E8B1002848F5 /* WebSocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56209D102412E8B1002848F5 /* WebSocketProtocol.swift */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
 		56569BA6240D531C009F81E3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 56569BA5240D531C009F81E3 /* SwiftUICharts */; };
@@ -57,7 +60,6 @@
 		56C1A29123EAE99500A70718 /* LogFeedViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */; };
 		56C1A29323EAE9A500A70718 /* LogViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */; };
 		56C44F8D240E5BAD0057220D /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 56C44F8C240E5BAD0057220D /* Down */; };
-		56C8FE3F240FDA8500E28FC5 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE3E240FDA8500E28FC5 /* MDText */; };
 		56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE41240FDACF00E28FC5 /* SDWebImage */; };
 		56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */; };
 		56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */; };
@@ -141,6 +143,9 @@
 		561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulltorefresh.swift; sourceTree = "<group>"; };
 		561A48DA23E31A990077A1D2 /* BulletinBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoard.swift; sourceTree = "<group>"; };
 		562065A2240E99DF0016B21D /* closeKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeKeyboard.swift; sourceTree = "<group>"; };
+		56209D082412D73D002848F5 /* MDText-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "MDText-master"; path = "../../../Downloads/MDText-master"; sourceTree = "<group>"; };
+		56209D0E2412E8A3002848F5 /* WebSocketConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketConnector.swift; sourceTree = "<group>"; };
+		56209D102412E8B1002848F5 /* WebSocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProtocol.swift; sourceTree = "<group>"; };
 		5622AFB523FBFC8B00CC1B76 /* progressImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressImg.swift; sourceTree = "<group>"; };
 		5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
 		56569B70240D52B6009F81E3 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
@@ -207,8 +212,8 @@
 				56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */,
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56569BA6240D531C009F81E3 /* SwiftUICharts in Frameworks */,
-				56C8FE3F240FDA8500E28FC5 /* MDText in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
+				56209D0A2412D7BD002848F5 /* MDText in Frameworks */,
 				56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
@@ -426,12 +431,22 @@
 			path = logScreen;
 			sourceTree = "<group>";
 		};
+		56209D0D2412E883002848F5 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				56209D0E2412E8A3002848F5 /* WebSocketConnector.swift */,
+				56209D102412E8B1002848F5 /* WebSocketProtocol.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
+				56209D082412D73D002848F5 /* MDText-master */,
 				56569B70240D52B6009F81E3 /* ChartView-master */,
 			);
 			name = Frameworks;
@@ -488,6 +503,7 @@
 		56C94A8623D6F992007840DB /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				56209D0D2412E883002848F5 /* Socket */,
 				56AE33502402B7FB00A6B385 /* Api */,
 				566F1C7F23D8A59B00518FFF /* LogViewData.swift */,
 				56FD23AC2406BC8B00883C27 /* TabScreenData.swift */,
@@ -607,10 +623,10 @@
 				56EEB54324043C9600522B8C /* Pages */,
 				56569BA5240D531C009F81E3 /* SwiftUICharts */,
 				56C44F8C240E5BAD0057220D /* Down */,
-				56C8FE3E240FDA8500E28FC5 /* MDText */,
 				56C8FE41240FDACF00E28FC5 /* SDWebImage */,
 				56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */,
 				56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */,
+				56209D092412D7BD002848F5 /* MDText */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -757,7 +773,6 @@
 				56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */,
 				56C44F8B240E5BAD0057220D /* XCRemoteSwiftPackageReference "Down" */,
-				56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */,
 				56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
@@ -872,6 +887,8 @@
 				567B8A8E23F7024600952D4C /* AddView.swift in Sources */,
 				561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */,
 				5670F30E23F5E21700B1D96E /* DiscussionResponse.swift in Sources */,
+				56209D0F2412E8A3002848F5 /* WebSocketConnector.swift in Sources */,
+				56209D112412E8B1002848F5 /* WebSocketProtocol.swift in Sources */,
 				560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */,
 				56EEB54E2405632900522B8C /* LoginScreen.swift in Sources */,
 				56D4E46323EA072500679DD4 /* addBorder.swift in Sources */,
@@ -1477,14 +1494,6 @@
 				minimumVersion = 0.9.1;
 			};
 		};
-		56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lambdo-Labs/MDText";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -1520,6 +1529,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		56209D092412D7BD002848F5 /* MDText */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MDText;
+		};
 		56569BA5240D531C009F81E3 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUICharts;
@@ -1543,11 +1556,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56C44F8B240E5BAD0057220D /* XCRemoteSwiftPackageReference "Down" */;
 			productName = Down;
-		};
-		56C8FE3E240FDA8500E28FC5 /* MDText */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56C8FE3D240FDA8500E28FC5 /* XCRemoteSwiftPackageReference "MDText" */;
-			productName = MDText;
 		};
 		56C8FE41240FDACF00E28FC5 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

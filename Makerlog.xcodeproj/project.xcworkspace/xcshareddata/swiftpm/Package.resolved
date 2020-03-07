@@ -65,15 +65,6 @@
         }
       },
       {
-        "package": "MDText",
-        "repositoryURL": "https://github.com/Lambdo-Labs/MDText",
-        "state": {
-          "branch": "master",
-          "revision": "7e5d48f03715e8529e9f2321ce171f459bd896c3",
-          "version": null
-        }
-      },
-      {
         "package": "OAuthSwift",
         "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
         "state": {

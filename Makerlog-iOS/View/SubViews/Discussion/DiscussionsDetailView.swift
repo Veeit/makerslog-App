@@ -39,7 +39,8 @@ struct DiscussionsDetailView: View {
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {
-				ScrollView(.vertical, showsIndicators: true) {
+//				ScrollView(.vertical, showsIndicators: true) {
+				List() {
 					VStack(alignment: .leading) {
 						HStack(alignment: .top) {
 							WebImage(url: URL(string: self.data.discussion.owner.avatar)!,
@@ -66,59 +67,60 @@ struct DiscussionsDetailView: View {
 							.layoutPriority(2)
 							.padding([.bottom], 30)
 							.fixedSize(horizontal: false, vertical: true)
-						Divider()
+//						Divider()
 					}
 
-					VStack() {
+//					VStack() {
 						if self.data.discussionResponse != nil {
 							ForEach(self.data.discussionResponse!) { response in
 								if response.parent_reply == nil {
 									VStack(alignment: .leading) {
 										ReplayView(response: response)
-										Divider()
+//										Divider()
 
-										VStack(alignment: .leading) {
-											ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
-												VStack() {
-													HStack(alignment: .top) {
-														VStack() {
-															WebImage(url: URL(string: "\(reply.owner.avatar)"),
-																 options: [.decodeFirstFrameOnly],
-																 context: [.imageThumbnailPixelSize: CGSize(width: 90, height: 90)])
-																.placeholder(Image("imagePlaceholder"))
-																.resizable()
-																.aspectRatio(contentMode: .fit)
-																.frame(width: 45, height: 45)
-																.clipped()
-																.cornerRadius(20)
-														}
-
-														VStack(alignment: .leading) {
-															MDText(markdown: "\(reply.body)")
-																.lineLimit(nil)
-																.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-																.fixedSize(horizontal: false, vertical: true)
-															HStack() {
-																Text("@\(reply.owner.username)").bold()
-																Text("👏 \(reply.praise)")
-																Spacer()
-															}
-															Divider()
-
-														}.padding([.leading], 10)
-													}.padding([.leading], 30)
-												}
-											}
-										}
+//										VStack(alignment: .leading) {
+											
+//										}
 									}.padding([.top], 5)
+									ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
+										VStack() {
+											HStack(alignment: .top) {
+												VStack() {
+													WebImage(url: URL(string: "\(reply.owner.avatar)"),
+														 options: [.decodeFirstFrameOnly],
+														 context: [.imageThumbnailPixelSize: CGSize(width: 90, height: 90)])
+														.placeholder(Image("imagePlaceholder"))
+														.resizable()
+														.aspectRatio(contentMode: .fit)
+														.frame(width: 45, height: 45)
+														.clipped()
+														.cornerRadius(20)
+												}
+
+												VStack(alignment: .leading) {
+													MDText(markdown: "\(reply.body)")
+														.lineLimit(nil)
+														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+														.fixedSize(horizontal: false, vertical: true)
+													HStack() {
+														Text("@\(reply.owner.username)").bold()
+														Text("👏 \(reply.praise)")
+														Spacer()
+													}
+//															Divider()
+
+												}.padding([.leading], 10)
+											}.padding([.leading], 30 )
+										}
+									}
 								}
 							}
 						} else {
 							Text("loading ...!")
 						}
-					}
+//					}
 
-				}.padding().padding([.bottom], 60)
+				}.padding([.bottom], 60)
 
 				VStack() {
 					Spacer()
@@ -155,7 +157,7 @@ struct DiscussionsDetailView: View {
 		}.onAppear(perform: {
 			self.data.getDissucionsReplies()
 		})
-			.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
+		.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
 	}
 
 }

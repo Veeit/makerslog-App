@@ -36,10 +36,12 @@ class UserData: ApiModel, ObservableObject {
 
 					if !self.stop {
 						self.userProducts = data
+						print(self.userProducts)
 					}
 				} catch {
                     print(error)
 					print("decode error")
+					self.userProducts.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -47,6 +49,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userProducts.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -80,13 +83,15 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(User.self, from: response.data)
 
-                    self.userData.append(data)
+					self.userData.removeAll()
+					self.userData.append(data)
 					self.getUserName()
 					self.getUserProducts()
 					print("worked")
 					print("user token \(oauthswift.client.credential.oauthToken)")
                 } catch {
                     print(error)
+					self.userData.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -94,6 +99,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userData.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -126,6 +132,7 @@ class UserData: ApiModel, ObservableObject {
                 } catch {
                     print(error)
 					print("decode error")
+					self.userRecentLogs.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -133,6 +140,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userRecentLogs.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -163,6 +171,7 @@ class UserData: ApiModel, ObservableObject {
                 } catch {
                     print(error)
 					print("decode error")
+					self.userStats.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -170,6 +179,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userStats.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
