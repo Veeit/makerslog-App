@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/iwasrobbed/Down",
         "state": {
           "branch": null,
-          "revision": "79c3d29f13039a5a55372e60a1d355222ae08047",
-          "version": "0.9.1"
+          "revision": "2aada56e6a0a5593a58e1ad583bd605b6d0b58dd",
+          "version": "0.9.2"
         }
       },
       {
@@ -65,15 +65,6 @@
         }
       },
       {
-        "package": "MDText",
-        "repositoryURL": "https://github.com/enrico-querci/MDText",
-        "state": {
-          "branch": null,
-          "revision": "894ad22c59ec7f3cc5d72826d445acb43a03fa17",
-          "version": "0.0.6"
-        }
-      },
-      {
         "package": "OAuthSwift",
         "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
         "state": {
@@ -92,6 +83,24 @@
         }
       },
       {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
+        "state": {
+          "branch": "master",
+          "revision": "8736d98f850ab1cceb9629d8270a48546ee8e382",
+          "version": null
+        }
+      },
+      {
+        "package": "SDWebImageSwiftUI",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImageSwiftUI",
+        "state": {
+          "branch": null,
+          "revision": "b60924f6b83bd942b88282ee6da277cfc3b7383a",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "Swifter",
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
@@ -105,17 +114,8 @@
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
           "branch": "master",
-          "revision": "2a54115462ceef673400b7c16154d0cb37b2ff6a",
+          "revision": "ca55fa478325b634206cda50160608128aca3eef",
           "version": null
-        }
-      },
-      {
-        "package": "URLImage",
-        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
-        "state": {
-          "branch": null,
-          "revision": "dc913391b6fc0c9de283ef111eb90d0e9abf4c36",
-          "version": "0.9.10"
         }
       }
     ]

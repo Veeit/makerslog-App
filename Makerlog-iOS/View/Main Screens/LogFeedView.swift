@@ -8,7 +8,7 @@
 
 import SwiftUI
 import Foundation
-import URLImage
+import SDWebImageSwiftUI
 //import SwiftUIPullToRefresh
 
 struct LogFeedView: View {
@@ -41,7 +41,7 @@ struct LogFeedView: View {
 				.onDisappear(perform: {
 					self.data.stopTimer = true
 				})
-				.navigationBarTitle("LogBot")
+					.navigationBarTitle("LogBot", displayMode: .large)
 				.navigationBarItems(leading:
 										Button(action: {
 											self.tabScreenData.showSettings = true
@@ -52,26 +52,18 @@ struct LogFeedView: View {
 										VStack() {
 											if self.login.isLoggedIn == true {
 												
-												NavigationLink(destination: UserView(user: self.login), isActive: self.$tabScreenData.userSheet) {
+												NavigationLink(destination: UserView(userData: self.login.userData), isActive: self.$tabScreenData.userSheet) {
 													Text("User")
 												}.overlay(
-													URLImage(URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar)!,
-															 processors: [ Resize(size: CGSize(width: 40, height: 40), scale: UIScreen.main.scale) ],
-															 placeholder: { _ in
-																 Image("imagePlaceholder")
-																	 .resizable()
-																	 .aspectRatio(contentMode: .fit)
-																	 .clipped()
-																	 .cornerRadius(20)
-															 },
-															 content: {
-														$0.image
-														.resizable()
-														.aspectRatio(contentMode: .fill)
-														.clipped()
-														.cornerRadius(20)
-													})
+													WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
+														 options: [.decodeFirstFrameOnly],
+														 context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
+													.placeholder(Image("imagePlaceholder"))
+													.resizable()
+													.aspectRatio(contentMode: .fit)
 													.frame(width: 40, height: 40)
+													.clipped()
+													.cornerRadius(20)
 													.onTapGesture {
 														self.tabScreenData.userSheet = true
 													}

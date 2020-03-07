@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 import OAuthSwift
-import URLImage
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
@@ -28,8 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let makerlogApiData = MakerlogAPI()
         let loginData = LoginData()
 		let commentViewData = CommentViewData()
-
-		URLImageService.shared.setDefaultExpiryTime(3600.0)
+		let userData = UserData()
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -39,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 							.environmentObject(makerlogApiData)
 							.environmentObject(loginData)
 							.environmentObject(commentViewData)
+							.environmentObject(userData)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

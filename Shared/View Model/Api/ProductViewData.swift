@@ -47,8 +47,8 @@ class ProductViewData: ApiModel, ObservableObject {
 		}
     }
 
-    init(projectID: String) {
-		super.init()
-        self.getRelatedProject(projectID: projectID)
-    }
+//    init(projectID: String) {
+//		super.init()
+//        self.getRelatedProject(projectID: projectID)
+//    }
 }

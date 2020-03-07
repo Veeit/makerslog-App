@@ -8,10 +8,11 @@
 
 import Foundation
 import SwiftUI
-import URLImage
+import SDWebImageSwiftUI
 
 struct ProductView: View {
-	@State var data: ProductViewData
+	@State var data = ProductViewData()
+	var projectID: String
 
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
@@ -19,28 +20,15 @@ struct ProductView: View {
 			if self.data.products.count > 0 {
 				ForEach(self.data.products) { product in
 					HStack() {
-						URLImage(URL(string: product.icon ?? "https://via.placeholder.com/500?text=No+icon")!,
-								 processors: [ Resize(size: CGSize(width: 70, height: 70),
-													  scale: UIScreen.main.scale)
-											 ],
-								 placeholder: { _ in
-									Image("imagePlaceholder")
-										.resizable()
-										.aspectRatio(contentMode: .fit)
-										.clipped()
-										.cornerRadius(20)
-										.frame(width: 70, height: 70)
-								},
-								 content: {
-									$0.image
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.clipped()
-									.cornerRadius(20)
-									.frame(width: 70, height: 70)
-								})
-									.frame(width: 70, height: 70)
-
+							WebImage(url: URL(string: product.icon ?? "https://via.placeholder.com/500?text=No+icon")!,
+								 options: [.decodeFirstFrameOnly],
+								 context: [.imageThumbnailPixelSize: CGSize(width: 140, height: 140)])
+							.placeholder(Image("imagePlaceholder"))
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.frame(width: 70, height: 70)
+							.clipped()
+							.cornerRadius(20)
 						VStack(alignment: .leading) {
 							Text(product.name)
 								.bold()
@@ -56,6 +44,8 @@ struct ProductView: View {
 				.padding([.leading, .trailing], 10)
 				.frame(minWidth: 0, maxWidth: .infinity)
 			}
-		}
+		}.onAppear(perform: {
+			self.data.getRelatedProject(projectID: self.projectID)
+		})
 	}
 }

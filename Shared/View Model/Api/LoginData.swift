@@ -20,6 +20,7 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userRecentLogs = UserRecentLogs()
 	@Published var userStats = [UserStats]()
 
+	var stop = false
 	func getUserProducts() {
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
@@ -33,10 +34,14 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserProducts.self, from: response.data)
 
-					self.userProducts = data
-                } catch {
+					if !self.stop {
+						self.userProducts = data
+						print(self.userProducts)
+					}
+				} catch {
                     print(error)
 					print("decode error")
+					self.userProducts.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -44,6 +49,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userProducts.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -66,15 +72,7 @@ class UserData: ApiModel, ObservableObject {
 	func getUser() {
 		print(oauthswift.client.credential.oauthVerifier)
         let token = oauthswift.client.credential.oauthToken
-//		let tokenRefresh = oauthswift.client.credential.oauthRefreshToken
-//		let clientSecret = oauthswift.client.credential.oauthTokenSecret
-//		let currentDateTime = Date()
-//		oauthswift.client.credential.oauthTokenExpiresAt = currentDateTime
-
-//		print("test \(		oauthswift.client.credential.isTokenExpired())")
 		print("user token \(token)")
-//		print("user refresh \(tokenRefresh)")
-//		print("user secret \(clientSecret)")
 		let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/me/"
 
@@ -85,13 +83,15 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(User.self, from: response.data)
 
-                    self.userData.append(data)
+					self.userData.removeAll()
+					self.userData.append(data)
 					self.getUserName()
 					self.getUserProducts()
 					print("worked")
 					print("user token \(oauthswift.client.credential.oauthToken)")
                 } catch {
                     print(error)
+					self.userData.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -99,6 +99,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userData.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -116,6 +117,7 @@ class UserData: ApiModel, ObservableObject {
         let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
 
+		var newLogs = UserRecentLogs()
         oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
             case .success(let response):
@@ -123,10 +125,14 @@ class UserData: ApiModel, ObservableObject {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserRecentLogs.self, from: response.data)
 
-					self.userRecentLogs = data
+					newLogs = data
+					if newLogs != self.userRecentLogs && !self.stop {
+						self.userRecentLogs = newLogs
+					}
                 } catch {
                     print(error)
 					print("decode error")
+					self.userRecentLogs.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -134,6 +140,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userRecentLogs.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -156,12 +163,15 @@ class UserData: ApiModel, ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(UserStats.self, from: response.data)
-					DispatchQueue.main.async {
-						self.userStats.append(data)
+					if !self.stop {
+						DispatchQueue.main.async {
+							self.userStats.append(data)
+						}
 					}
                 } catch {
                     print(error)
 					print("decode error")
+					self.userStats.removeAll()
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
@@ -169,6 +179,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+				self.userStats.removeAll()
                 if case .tokenExpired = error {
                   print("old token")
                }
@@ -178,6 +189,13 @@ class UserData: ApiModel, ObservableObject {
 				}
             }
         }
+	}
+}
+
+class UserViewData: UserData {
+	init(userData: [User]) {
+		super.init()
+		self.userData = userData
 	}
 }
 
@@ -276,6 +294,7 @@ class LoginData: UserData {
 			self.userName = "no user"
 
 			self.acceptedDatapolicy = false
+			defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}

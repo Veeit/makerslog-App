@@ -36,7 +36,13 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	   }
 
 	@Published var discussions: [ResultDiscussion]?
-	@Published var stopTimer = false
+	@Published var stopTimer = false {
+		didSet {
+			if self.stopTimer == true {
+				cancellable?.cancel()
+			}
+		}
+	}
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
@@ -45,13 +51,14 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	func startTimer() {
 		self.getLogs()
 		Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { timer in
-			self.getLogs()
-			print("run")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 			if self.stopTimer == true {
 				timer.invalidate()
+			} else {
+				self.getLogs()
+				print("run")
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 			}
 		}
     }
@@ -59,6 +66,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
+
     func getLogs() {
         print("start")
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
