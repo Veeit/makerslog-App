@@ -50,17 +50,74 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	func startTimer() {
 		self.getLogs()
-		Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { timer in
-			if self.stopTimer == true {
-				timer.invalidate()
-			} else {
-				self.getLogs()
-				print("run")
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+//		Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { timer in
+//			if self.stopTimer == true {
+//				timer.invalidate()
+//			} else {
+//				self.getLogs()
+//				print("run")
+//				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+//				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+//				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+//			}
+//		}
+		let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
+
+		socketConnection.establishConnection()
+        
+        socketConnection.didReceiveMessage = { message in
+			print("message")
+
+			do {
+				let decoder = JSONDecoder()
+				let data = try decoder.decode(LogsSocket.self, from: message.data(using: .utf8)!)
+
+				DispatchQueue.main.async {
+					switch data.type {
+					case "task.sync":
+						print("sync")
+					case "task.deleted":
+						print("deleted")
+						self.logs.remove(at: self.logs.firstIndex(of: data.payload)!)
+					case "task.updated":
+						print("updated")
+						self.logs = self.logs.map({ return $0.id == data.payload.id ? data.payload : $0 })
+					case "task.created":
+						print("created")
+						self.logs.insert(data.payload, at: 0)
+					default:
+						print("upps")
+					}
+				}
+			} catch {
+				DispatchQueue.main.async {
+					print(error)
+					self.errorText = error.localizedDescription
+					self.showError = true
+				}
 			}
-		}
+        }
+        
+        socketConnection.didReceiveError = { error in
+            //Handle error here
+			print(error)
+        }
+        
+        socketConnection.didOpenConnection = {
+            //Connection opened
+			print("open")
+        }
+        
+        socketConnection.didCloseConnection = {
+            // Connection closed
+			print("closed")
+        }
+        
+        socketConnection.didReceiveData = { data in
+            // Get your data here
+			print("data")
+			print(data)
+        }
     }
 
 	private var alertWithNetworkError = 0
