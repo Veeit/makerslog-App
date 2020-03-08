@@ -46,7 +46,9 @@ struct LogDetailView: View {
 								VStack(alignment: .leading) {
 //									ProductView(data: ProductViewData(projectID: String(project.id)))
 									ProductView(projectID: String(project.id))
-								}.padding([.top, .bottom], 10)
+								}
+								.padding([.top, .bottom], 10)
+								.frame(minHeight: 60)
 							}
 						}
 					}

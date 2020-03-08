@@ -158,7 +158,7 @@ struct UserView: View {
 										.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
 										.fixedSize(horizontal: false, vertical: true)
 								}
-							}
+							}.frame(minHeight: 60)
 						}
 					}
 
