@@ -7,7 +7,11 @@ import Foundation
 
 // swiftlint:disable all
 // MARK: - DiscussionResponseElement
-struct DiscussionResponseElement: Codable, Identifiable {
+struct DiscussionResponseElement: Codable, Identifiable, Equatable {
+	static func == (lhs: DiscussionResponseElement, rhs: DiscussionResponseElement) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
     let id: Int
     let parent: String
     let parent_reply: Int?

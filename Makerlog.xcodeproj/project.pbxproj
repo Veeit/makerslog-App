@@ -10,6 +10,7 @@
 		5603487F24068AF40089FECD /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5603487E24068AF40089FECD /* Products.swift */; };
 		56034884240690D10089FECD /* ReplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034883240690D10089FECD /* ReplayView.swift */; };
 		56034887240691890089FECD /* AddDiscussionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034886240691890089FECD /* AddDiscussionView.swift */; };
+		5605C91C24156C37009CB030 /* DiscussionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5605C91B24156C37009CB030 /* DiscussionSocket.swift */; };
 		560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */; };
 		560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */; };
 		560E9FA623D5DB5100A12CF5 /* Makerlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA423D5DB5100A12CF5 /* Makerlog.xcdatamodeld */; };
@@ -123,6 +124,7 @@
 		5603487E24068AF40089FECD /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		56034883240690D10089FECD /* ReplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayView.swift; sourceTree = "<group>"; };
 		56034886240691890089FECD /* AddDiscussionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiscussionView.swift; sourceTree = "<group>"; };
+		5605C91B24156C37009CB030 /* DiscussionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionSocket.swift; sourceTree = "<group>"; };
 		560E9F9D23D5DB5100A12CF5 /* logbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = logbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				5670F30D23F5E21700B1D96E /* DiscussionResponse.swift */,
 				5683E074240AFA2500A15518 /* UserStats.swift */,
 				56ADC48424144A940082930A /* logsSocket.swift */,
+				5605C91B24156C37009CB030 /* DiscussionSocket.swift */,
 			);
 			path = DatenStruct;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				566DF0D423DF01E50085C318 /* TabView.swift in Sources */,
 				562065A3240E99DF0016B21D /* closeKeyboard.swift in Sources */,
 				566F1C7323D7970300518FFF /* Comment.swift in Sources */,
+				5605C91C24156C37009CB030 /* DiscussionSocket.swift in Sources */,
 				5670F30C23F5BCE900B1D96E /* DiscussionsView.swift in Sources */,
 				5670F31023F5E30500B1D96E /* DiscussionData.swift in Sources */,
 				56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */,

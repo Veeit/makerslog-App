@@ -36,36 +36,29 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	   }
 
 	@Published var discussions: [ResultDiscussion]?
-//	@Published var stopTimer = false {
-//		didSet {
-//			if self.stopTimer == true {
-//				cancellable?.cancel()
-//				socketConnection.disconnect()
-//			}
-//		}
-//	}
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
-	
+
 	override init() {
 		super.init()
 		self.startSocket()
 		self.feedSocket()
+		self.getDissucions()
 	}
 
 	private let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
 	private var logFeedConnected = false
-	
+
 	func stopSockets() {
 		self.logFeedConnected = false
 		self.socketConnection.disconnect()
 	}
 
 	func startSocket() {
+		self.getLogs()
 		if !logFeedConnected {
-			self.getLogs()
 			socketConnection.establishConnection()
 		}
 	}
@@ -113,7 +106,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 				self.showError = true
 			}
         }
-        
+
         socketConnection.didOpenConnection = {
             //Connection opened
 			print("open")
@@ -122,7 +115,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 			self.logFeedConnected = true
         }
-        
+
         socketConnection.didCloseConnection = {
             // Connection closed
 			print("closed")
@@ -131,49 +124,8 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 			self.logFeedConnected = false
         }
-        
-        socketConnection.didReceiveData = { data in
-            // Get your data here
-			print("data")
-			print(data)
-        }
-    }
-	
-	private let socketConnectionDiscussion = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/discussions/")!)
-	func startDiscussionFeed() {
-		socketConnectionDiscussion.didReceiveMessage = { message in
-			print(message)
-			print("something magic")
-        }
 
-        socketConnectionDiscussion.didReceiveError = { error in
-            //Handle error here
-			DispatchQueue.main.async {
-				print(error)
-				self.errorText = error.localizedDescription
-				self.showError = true
-			}
-        }
-        
-        socketConnectionDiscussion.didOpenConnection = {
-            //Connection opened
-			print("open")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-			self.logFeedConnected = true
-        }
-        
-        socketConnectionDiscussion.didCloseConnection = {
-            // Connection closed
-			print("closed")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-			self.logFeedConnected = false
-        }
-        
-        socketConnectionDiscussion.didReceiveData = { data in
+        socketConnection.didReceiveData = { data in
             // Get your data here
 			print("data")
 			print(data)
@@ -183,6 +135,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	private var alertWithNetworkError = 0
 
 	private var cancellable: AnyCancellable?
+	private var cancellableDiscussion: AnyCancellable?
 
     func getLogs() {
         print("start")
@@ -213,15 +166,14 @@ class MakerlogAPI: ApiModel, ObservableObject {
 							if self.alertWithNetworkError >= 1 {
 								self.alertWithNetworkError += 1
 							}
+							print(error)
 						}
 					}
 				}
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {
 					newLogs = result.results
-					if newLogs != self.logs {
-						self.logs = newLogs
-					}
+					self.logs = newLogs
 					self.isDone = true
 					self.alertWithNetworkError = 0
 				}
@@ -316,7 +268,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		var request = URLRequest(url: URL(string: requestURL)!)
 
 		var newLogs = [Log]()
-		self.cancellable = URLSession.shared.dataTaskPublisher(for: request)
+		self.cancellableDiscussion = URLSession.shared.dataTaskPublisher(for: request)
 			.tryMap { output in
 				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
 					throw HTTPError2.statusCode

@@ -46,9 +46,10 @@ struct DiscussionsView: View {
 					Text("loading ...")
 				}
 
-			}.onAppear(perform: {
-				self.data.getDissucions()
-			})
+			}
+//			.onAppear(perform: {
+//				self.data.getDissucions()
+//			})
 			.navigationBarTitle("Discussion")
 		}.navigationViewStyle(StackNavigationViewStyle())
 	}

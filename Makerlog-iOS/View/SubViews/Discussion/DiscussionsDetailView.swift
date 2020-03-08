@@ -72,7 +72,7 @@ struct DiscussionsDetailView: View {
 
 //					VStack() {
 						if self.data.discussionResponse != nil {
-							ForEach(self.data.discussionResponse!) { response in
+							ForEach(self.data.discussionResponse) { response in
 								if response.parent_reply == nil {
 									VStack(alignment: .leading) {
 										ReplayView(response: response)
@@ -156,6 +156,7 @@ struct DiscussionsDetailView: View {
 			}
 		}.onAppear(perform: {
 			self.data.getDissucionsReplies()
+			self.data.startSocket()
 		})
 		.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
 	}
