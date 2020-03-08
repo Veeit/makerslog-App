@@ -21,44 +21,50 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userStats = [UserStats]()
 
 	var stop = false
+	private var cancellable: AnyCancellable?
+	private var cancellableStats: AnyCancellable?
+	private var cancellableProducts: AnyCancellable?
+
+	enum HTTPError2: LocalizedError {
+		case statusCode
+	}
+
 	func getUserProducts() {
-        let token = oauthswift.client.credential.oauthToken
-        let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/products/"
 		print(requestURL)
 
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoder = JSONDecoder()
-                    let data = try decoder.decode(UserProducts.self, from: response.data)
-
-					if !self.stop {
-						self.userProducts = data
-						print(self.userProducts)
-					}
-				} catch {
-                    print(error)
-					print("decode error")
-					self.userProducts.removeAll()
+		self.cancellableProducts = URLSession.shared.dataTaskPublisher(for: URL(string: requestURL)!)
+		.tryMap { output in
+			guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+				throw HTTPError2.statusCode
+			}
+			return output.data
+		}
+		.decode(type: UserProducts.self, decoder: JSONDecoder())
+		.eraseToAnyPublisher()
+		.sink(receiveCompletion: { completion in
+			switch completion {
+			case .finished:
+				break
+			case .failure(let error):
+				if error.localizedDescription == "The request timed out." {
+					print("time out")
+				} else {
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
+						print(error)
 					}
-                }
-            case .failure(let error):
-                print(error)
-				self.userProducts.removeAll()
-                if case .tokenExpired = error {
-                  print("old token")
-               }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
 				}
-            }
-        }
+			}
+		}, receiveValue: { result in
+			 DispatchQueue.main.async {
+				if !self.stop {
+					self.userProducts = result
+					print(self.userProducts)
+				}
+			}
+		})
 	}
 
 	func getUserName() {
@@ -77,7 +83,7 @@ class UserData: ApiModel, ObservableObject {
         let requestURL = "https://api.getmakerlog.com/me/"
 
 		print("getME")
-		
+
         oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
             case .success(let response):
@@ -115,82 +121,74 @@ class UserData: ApiModel, ObservableObject {
     }
 
 	func getRecentLogs() {
-		let token = oauthswift.client.credential.oauthToken
-        let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
 
-		var newLogs = UserRecentLogs()
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoder = JSONDecoder()
-                    let data = try decoder.decode(UserRecentLogs.self, from: response.data)
-
-					newLogs = data
-					if newLogs != self.userRecentLogs && !self.stop {
-						self.userRecentLogs = newLogs
-					}
-                } catch {
-                    print(error)
-					print("decode error")
-					self.userRecentLogs.removeAll()
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
-                }
-            case .failure(let error):
-                print(error)
-				self.userRecentLogs.removeAll()
-                if case .tokenExpired = error {
-                  print("old token")
-               }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
+		self.cancellable = URLSession.shared.dataTaskPublisher(for: URL(string: requestURL)!)
+			.tryMap { output in
+				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+					throw HTTPError2.statusCode
 				}
-            }
-        }
+				return output.data
+			}
+			.decode(type: UserRecentLogs.self, decoder: JSONDecoder())
+			.eraseToAnyPublisher()
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case .finished:
+					break
+				case .failure(let error):
+					if error.localizedDescription == "The request timed out." {
+						print("time out")
+					} else {
+						DispatchQueue.main.async {
+							self.errorText = error.localizedDescription
+							self.showError = true
+							print(error)
+						}
+					}
+				}
+			}, receiveValue: { result in
+				 DispatchQueue.main.async {
+					if result != self.userRecentLogs && !self.stop {
+						self.userRecentLogs = result
+					}
+				}
+			})
 	}
 
 	func getUserStats() {
-		let token = oauthswift.client.credential.oauthToken
-        let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/stats/"
 
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let decoder = JSONDecoder()
-                    let data = try decoder.decode(UserStats.self, from: response.data)
-					if !self.stop {
-						DispatchQueue.main.async {
-							self.userStats.append(data)
-						}
-					}
-                } catch {
-                    print(error)
-					print("decode error")
-					self.userStats.removeAll()
+		self.cancellableStats = URLSession.shared.dataTaskPublisher(for: URL(string: requestURL)!)
+		.tryMap { output in
+			guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+				throw HTTPError2.statusCode
+			}
+			return output.data
+		}
+		.decode(type: UserStats.self, decoder: JSONDecoder())
+		.eraseToAnyPublisher()
+		.sink(receiveCompletion: { completion in
+			switch completion {
+			case .finished:
+				break
+			case .failure(let error):
+				if error.localizedDescription == "The request timed out." {
+					print("time out")
+				} else {
 					DispatchQueue.main.async {
 						self.errorText = error.localizedDescription
 						self.showError = true
+						print(error)
 					}
-                }
-            case .failure(let error):
-                print(error)
-				self.userStats.removeAll()
-                if case .tokenExpired = error {
-                  print("old token")
-               }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
 				}
-            }
-        }
+			}
+		}, receiveValue: { result in
+			 DispatchQueue.main.async {
+				self.userStats.removeAll()
+				self.userStats.append(result)
+			}
+		})
 	}
 }
 
