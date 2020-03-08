@@ -35,13 +35,10 @@ struct LogFeedView: View {
 					}
 				}
 				.onAppear(perform: {
-					self.data.stopTimer = false
-					self.data.startTimer()
+//					self.data.stopTimer = false
+//					self.data.feedSocket()
 				})
-				.onDisappear(perform: {
-					self.data.stopTimer = true
-				})
-					.navigationBarTitle("LogBot", displayMode: .large)
+				.navigationBarTitle("LogBot", displayMode: .large)
 				.navigationBarItems(leading:
 										Button(action: {
 											self.tabScreenData.showSettings = true
@@ -70,6 +67,7 @@ struct LogFeedView: View {
 												)
 											} else {
 												Button(action: {
+//													self.data.stopTimer = true
 													if self.login.acceptedDatapolicy == false {
 														self.login.showDatapolicyAlert = true
 													} else {

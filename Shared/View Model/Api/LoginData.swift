@@ -76,6 +76,8 @@ class UserData: ApiModel, ObservableObject {
 		let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/me/"
 
+		print("getME")
+		
         oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
             switch result {
             case .success(let response):

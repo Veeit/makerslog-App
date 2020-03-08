@@ -36,37 +36,42 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	   }
 
 	@Published var discussions: [ResultDiscussion]?
-	@Published var stopTimer = false {
-		didSet {
-			if self.stopTimer == true {
-				cancellable?.cancel()
-			}
-		}
-	}
+//	@Published var stopTimer = false {
+//		didSet {
+//			if self.stopTimer == true {
+//				cancellable?.cancel()
+//				socketConnection.disconnect()
+//			}
+//		}
+//	}
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
+	
+	override init() {
+		super.init()
+		self.startSocket()
+		self.feedSocket()
+	}
 
-	func startTimer() {
-		self.getLogs()
-//		Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { timer in
-//			if self.stopTimer == true {
-//				timer.invalidate()
-//			} else {
-//				self.getLogs()
-//				print("run")
-//				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-//				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-//				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-//			}
-//		}
-		let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
+	private let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
+	private var logFeedConnected = false
+	
+	func stopSockets() {
+		self.logFeedConnected = false
+		self.socketConnection.disconnect()
+	}
 
-		socketConnection.establishConnection()
-        
-        socketConnection.didReceiveMessage = { message in
-			print("message")
+	func startSocket() {
+		if !logFeedConnected {
+			self.getLogs()
+			socketConnection.establishConnection()
+		}
+	}
+
+	func feedSocket() {
+		socketConnection.didReceiveMessage = { message in
 
 			do {
 				let decoder = JSONDecoder()
@@ -95,25 +100,80 @@ class MakerlogAPI: ApiModel, ObservableObject {
 					self.errorText = error.localizedDescription
 					self.showError = true
 				}
+				self.getLogs()
 			}
+			print("something magic")
         }
-        
+
         socketConnection.didReceiveError = { error in
             //Handle error here
-			print(error)
+			DispatchQueue.main.async {
+				print(error)
+				self.errorText = error.localizedDescription
+				self.showError = true
+			}
         }
         
         socketConnection.didOpenConnection = {
             //Connection opened
 			print("open")
+			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+			self.logFeedConnected = true
         }
         
         socketConnection.didCloseConnection = {
             // Connection closed
 			print("closed")
+			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+			self.logFeedConnected = false
         }
         
         socketConnection.didReceiveData = { data in
+            // Get your data here
+			print("data")
+			print(data)
+        }
+    }
+	
+	private let socketConnectionDiscussion = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/discussions/")!)
+	func startDiscussionFeed() {
+		socketConnectionDiscussion.didReceiveMessage = { message in
+			print(message)
+			print("something magic")
+        }
+
+        socketConnectionDiscussion.didReceiveError = { error in
+            //Handle error here
+			DispatchQueue.main.async {
+				print(error)
+				self.errorText = error.localizedDescription
+				self.showError = true
+			}
+        }
+        
+        socketConnectionDiscussion.didOpenConnection = {
+            //Connection opened
+			print("open")
+			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+			self.logFeedConnected = true
+        }
+        
+        socketConnectionDiscussion.didCloseConnection = {
+            // Connection closed
+			print("closed")
+			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+			self.logFeedConnected = false
+        }
+        
+        socketConnectionDiscussion.didReceiveData = { data in
             // Get your data here
 			print("data")
 			print(data)
@@ -249,34 +309,45 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	func getDissucions() {
 		let token = oauthswift.client.credential.oauthToken
-		let parameters = ["token": token, "limit": "50"]
-		let requestURL = "https://api.getmakerlog.com/discussions/"
+		let requestURL = "https://api.getmakerlog.com/discussions/?limit=50"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
-			switch result {
-			case .success(let response):
-				do {
-					let decoder = JSONDecoder()
-					let data = try decoder.decode(Discussions.self, from: response.data)
+		print("start Discussion")
 
-					self.discussions = data.results
-				} catch {
-					DispatchQueue.main.async {
-						self.errorText = error.localizedDescription
-						self.showError = true
+		var request = URLRequest(url: URL(string: requestURL)!)
+
+		var newLogs = [Log]()
+		self.cancellable = URLSession.shared.dataTaskPublisher(for: request)
+			.tryMap { output in
+				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+					throw HTTPError2.statusCode
+				}
+				return output.data
+			}
+			.decode(type: Discussions.self, decoder: JSONDecoder())
+			.eraseToAnyPublisher()
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case .finished:
+					break
+				case .failure(let error):
+					if error.localizedDescription == "The request timed out." {
+						print("time out")
+					} else {
+//						fatalError(error.localizedDescription)
+						DispatchQueue.main.async {
+							self.errorText = error.localizedDescription
+							self.showError = true
+							if self.alertWithNetworkError >= 1 {
+								self.alertWithNetworkError += 1
+							}
+						}
 					}
 				}
-			case .failure(let error):
-				print(error)
-				if case .tokenExpired = error {
-				  print("old token")
-			   }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-			}
-		}
+			}, receiveValue: { result in
+				 DispatchQueue.main.async {
+					 self.discussions = result.results
+				 }
+			})
 	}
 
 	func deleteLog(log: Log) {

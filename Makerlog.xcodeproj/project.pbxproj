@@ -29,6 +29,8 @@
 		56209D112412E8B1002848F5 /* WebSocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56209D102412E8B1002848F5 /* WebSocketProtocol.swift */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
+		56306075241500FD007173A0 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56306074241500FD007173A0 /* MDText */; };
+		5630607724150101007173A0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 5630607624150101007173A0 /* SwiftUICharts */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
 		566DF0D423DF01E50085C318 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DF0D323DF01E50085C318 /* TabView.swift */; };
@@ -51,8 +53,6 @@
 		567CD4AA24029171009B944F /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567CD4A924029171009B944F /* ApiModel.swift */; };
 		5683E075240AFA2600A15518 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E074240AFA2500A15518 /* UserStats.swift */; };
 		5683E078240AFB3600A15518 /* UserStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E077240AFB3600A15518 /* UserStatsView.swift */; };
-		56ADC481241413100082930A /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56ADC480241413100082930A /* MDText */; };
-		56ADC483241413130082930A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 56ADC482241413130082930A /* SwiftUICharts */; };
 		56ADC48524144A940082930A /* logsSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADC48424144A940082930A /* logsSocket.swift */; };
 		56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3823EF462D006EE3AF /* KeychainSwift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
@@ -211,14 +211,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56ADC481241413100082930A /* MDText in Frameworks */,
+				56306075241500FD007173A0 /* MDText in Frameworks */,
 				56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */,
 				56BE7B4223F07CE1006EE3AF /* OAuthSwift in Frameworks */,
 				56BE7B3923EF462D006EE3AF /* KeychainSwift in Frameworks */,
 				56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
-				56ADC483241413130082930A /* SwiftUICharts in Frameworks */,
+				5630607724150101007173A0 /* SwiftUICharts in Frameworks */,
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
@@ -628,8 +628,8 @@
 				56C8FE41240FDACF00E28FC5 /* SDWebImage */,
 				56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */,
 				56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */,
-				56ADC480241413100082930A /* MDText */,
-				56ADC482241413130082930A /* SwiftUICharts */,
+				56306074241500FD007173A0 /* MDText */,
+				5630607624150101007173A0 /* SwiftUICharts */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -1533,11 +1533,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		56ADC480241413100082930A /* MDText */ = {
+		56306074241500FD007173A0 /* MDText */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MDText;
 		};
-		56ADC482241413130082930A /* SwiftUICharts */ = {
+		5630607624150101007173A0 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUICharts;
 		};

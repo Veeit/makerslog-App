@@ -13,6 +13,12 @@ import OAuthSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
     var window: UIWindow?
+	// Envoierment Objects
+	let tabScreenData = TabScreenData()
+	let makerlogApiData = MakerlogAPI()
+	let loginData = LoginData()
+	let commentViewData = CommentViewData()
+	let userData = UserData()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,12 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Get the managed object context from the shared persistent container.
         let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
 
-        // Envoierment Objects
-        let tabScreenData = TabScreenData()
-        let makerlogApiData = MakerlogAPI()
-        let loginData = LoginData()
-		let commentViewData = CommentViewData()
-		let userData = UserData()
+       
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -49,6 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+		print("scene")
             guard let url = URLContexts.first?.url else {
                 return
             }
@@ -67,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:didDiscardSceneSessions` instead).
 		
 		setData()
+		makerlogApiData.stopSockets()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -92,6 +95,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
 		setData()
+		makerlogApiData.stopSockets()
 	}
 	
 	func setData() {

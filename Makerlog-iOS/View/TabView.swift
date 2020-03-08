@@ -55,7 +55,6 @@ struct TabScreen: View {
 			.alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
 			.alert(isPresented: self.$login.showDatapolicyAlert, content: {datasecurityAlert()})
 			.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
-			
 		}.sheet(isPresented: self.$showDataPolicy, content: {
 			NavigationView() {
 				DataSecurity()
@@ -72,6 +71,7 @@ struct TabScreen: View {
 		let save = ActionSheet.Button.default(Text("Accept")) {
 			self.login.acceptDatapolicy()
 			self.login.login()
+//			self.makerlog.stopTimer = true
 			self.data.setOnbaording()
 			self.data.showOnboarding = false
 		}
