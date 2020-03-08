@@ -46,6 +46,9 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		self.startSocket()
 		self.feedSocket()
 		self.getDissucions()
+		if defaults.bool(forKey: "isLogedIn") {
+			self.getNotifications()
+		}
 	}
 
 	private let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
@@ -260,14 +263,11 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	}
 
 	func getDissucions() {
-		let token = oauthswift.client.credential.oauthToken
 		let requestURL = "https://api.getmakerlog.com/discussions/?limit=50"
+		let request = URLRequest(url: URL(string: requestURL)!)
 
 		print("start Discussion")
 
-		var request = URLRequest(url: URL(string: requestURL)!)
-
-		var newLogs = [Log]()
 		self.cancellableDiscussion = URLSession.shared.dataTaskPublisher(for: request)
 			.tryMap { output in
 				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
