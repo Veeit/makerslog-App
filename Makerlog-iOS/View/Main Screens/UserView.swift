@@ -189,22 +189,16 @@ struct UserView: View {
 		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
 		.onAppear(perform: {
 			self.user.stop = false
-//			self.user.userData = [User]()
-//			self.user.userName = "no user"
-//			self.user.userProducts = UserProducts()
-//			self.user.userRecentLogs = UserRecentLogs()
-//			self.user.userStats = [UserStats]()
-
-//			self.user.userData.removeAll()
-//			self.user.userProducts.removeAll()
-//			self.user.userRecentLogs.removeAll()
-//			self.user.userStats.removeAll()
 			
 			self.user.userData = self.userData
 			self.user.getUserProducts()
 			self.user.getUserName()
 			self.user.getRecentLogs()
 			self.user.getUserStats()
+			
+			self.user.setSocket()
+			self.user.userFeedSocket()
+			self.user.startSocket()
 		})
 		.onDisappear(perform: {
 			self.user.stop = true
