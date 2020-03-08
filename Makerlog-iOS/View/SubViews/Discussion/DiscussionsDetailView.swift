@@ -158,6 +158,9 @@ struct DiscussionsDetailView: View {
 			self.data.getDissucionsReplies()
 			self.data.startSocket()
 		})
+		.onDisappear(perform: {
+			self.data.stopSockets()
+		})
 		.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
 	}
 
