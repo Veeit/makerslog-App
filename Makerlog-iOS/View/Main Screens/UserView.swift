@@ -196,9 +196,9 @@ struct UserView: View {
 			self.user.getRecentLogs()
 			self.user.getUserStats()
 			
-			self.user.setSocket()
-			self.user.userFeedSocket()
-			self.user.startSocket()
+//			self.user.setSocket()
+//			self.user.userFeedSocket()
+//			self.user.startSocket()
 		})
 		.onDisappear(perform: {
 			self.user.stop = true
