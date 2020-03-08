@@ -16,9 +16,9 @@ struct Discussions: Codable {
 
 // MARK: - Result
 struct ResultDiscussion: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let slug: String
-    let type: String
+    let type: String?
     let owner: User
     let title, body: String
     let pinned: Bool
