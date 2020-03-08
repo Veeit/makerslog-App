@@ -87,7 +87,7 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
         "state": {
           "branch": "master",
-          "revision": "8736d98f850ab1cceb9629d8270a48546ee8e382",
+          "revision": "aa7cc070ccf01ce6ea85dd0b3176f712ac23ea1a",
           "version": null
         }
       },
@@ -114,7 +114,7 @@
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
           "branch": "master",
-          "revision": "ca55fa478325b634206cda50160608128aca3eef",
+          "revision": "afb6b8a23f28b247ef6bb8a49754c0f05fd207d8",
           "version": null
         }
       }
