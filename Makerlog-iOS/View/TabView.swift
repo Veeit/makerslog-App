@@ -18,32 +18,45 @@ struct TabScreen: View {
 
 	var body: some View {
 		VStack() {
-			TabView {
-				VStack {
-					LogFeedView()
-				}
-				.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
-				.sheet(isPresented: self.$data.showSettings, content: {
-					SettingsView(data: self.data, loginData: self.login)
-				})
-
-				VStack {
-					DiscussionsView()
-				}
-				.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
-
-				if login.isLoggedIn {
+				TabView {
 					VStack {
-						AddView()
+						NavigationView() {
+							LogFeedView()
+						}
 					}
-					.tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+					.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
+					.sheet(isPresented: self.$data.showSettings, content: {
+						SettingsView(data: self.data, loginData: self.login)
+					})
+					.tag(0)
 
 					VStack {
-						NotificationsView()
+						NavigationView() {
+							DiscussionsView()
+						}
 					}
-					.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+					.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
+					.tag(1)
+
+					if login.isLoggedIn {
+						VStack {
+							NavigationView() {
+								AddView()
+							}
+						}
+						.tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+						.tag(2)
+
+						VStack {
+							NavigationView() {
+								NotificationsView()
+							}
+						}
+						.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+						.tag(3)
+					}
 				}
-			}
+//			}.navigationViewStyle(StackNavigationViewStyle())
 			.overlay(VStack() {
 				if self.data.showOnboarding {
 					Onboarding()

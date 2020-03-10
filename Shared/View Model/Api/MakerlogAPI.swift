@@ -44,6 +44,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	override init() {
 		super.init()
 		self.startSocket()
+		socketConnection.setlistener()
 		self.feedSocket()
 		self.getDissucions()
 		if defaults.bool(forKey: "isLogedIn") {
@@ -57,12 +58,14 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	func stopSockets() {
 		self.logFeedConnected = false
 		self.socketConnection.disconnect()
+		cancellable?.cancel()
 	}
 
 	func startSocket() {
 		self.getLogs()
 		if !logFeedConnected {
 			socketConnection.establishConnection()
+			self.logFeedConnected = true
 		}
 	}
 

@@ -14,7 +14,7 @@ struct DiscussionsView: View {
 
     var body: some View {
 		//swiftlint:disable empty_parentheses_with_trailing_closure
-		NavigationView() {
+//		NavigationView() {
 			List() {
 				if self.data.discussions != nil {
 					ForEach(self.data.discussions!) { discussion in
@@ -51,7 +51,7 @@ struct DiscussionsView: View {
 //				self.data.getDissucions()
 //			})
 			.navigationBarTitle("Discussion")
-		}.navigationViewStyle(StackNavigationViewStyle())
+//		}
 	}
 }
 

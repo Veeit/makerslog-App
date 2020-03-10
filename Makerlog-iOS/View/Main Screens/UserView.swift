@@ -202,6 +202,10 @@ struct UserView: View {
 		})
 		.onDisappear(perform: {
 			self.user.stop = true
+			self.user.userData.removeAll()
+			self.user.userProducts.removeAll()
+			self.user.userRecentLogs.removeAll()
+			self.user.userStats.removeAll()
 		})
 	}
 }

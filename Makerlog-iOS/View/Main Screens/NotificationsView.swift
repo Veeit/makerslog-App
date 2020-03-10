@@ -16,7 +16,7 @@ struct NotificationsView: View {
 	// swiftlint:disable multiple_closures_with_trailing_closure empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack() {
-			RefreshableNavigationView(title: "Notification", action: {
+			RefreshablListView(action: {
 				self.data.getNotifications()
 			}, isDone: self.$data.notificationisDone) {
 				if self.data.notification != nil {
@@ -44,6 +44,7 @@ struct NotificationsView: View {
 			}.onAppear(perform: {
 				self.data.getNotifications()
 			})
+			.navigationBarTitle("Notifications")
 			.navigationViewStyle(StackNavigationViewStyle())
 		}
 	}

@@ -23,6 +23,7 @@ class DiscussionData: ApiModel, ObservableObject {
 
 		super.init()
 		self.discussionReplyUpdates()
+		socketConnectionDiscussion.setlistener()
 	}
 
 	func getDissucionsReplies() {

@@ -20,72 +20,65 @@ struct LogFeedView: View {
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
 	var body: some View {
-		GeometryReader() { geometry in
-			NavigationView() {
-				RefreshablListView(action: {
-					self.data.getLogs()
-				}, isDone: self.$data.isDone) {
+//		GeometryReader() { geometry in
+			RefreshablListView(action: {
+				self.data.getLogs()
+			}, isDone: self.$data.isDone) {
 //					Button(action: {
 //						self.tabScreenData.showLogin = true
 //					}) {
 //						Text("test")
 //					}
-					ForEach(self.data.logs) { log in
-						LogFeedItem(log: LogViewData(data: log))
-					}
+				ForEach(self.data.logs) { log in
+					LogFeedItem(log: LogViewData(data: log))
 				}
-				.onAppear(perform: {
-//					self.data.stopTimer = false
-//					self.data.feedSocket()
-				})
-				.navigationBarTitle("LogBot", displayMode: .large)
-				.navigationBarItems(leading:
-										Button(action: {
-											self.tabScreenData.showSettings = true
-										}) {
-											Image(systemName: "gear").imageScale(.large)
-										},
-									trailing:
-										VStack() {
-											if self.login.isLoggedIn == true {
-												
-												NavigationLink(destination: UserView(userData: self.login.userData), isActive: self.$tabScreenData.userSheet) {
-													Text("User")
-												}.overlay(
-													WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
-														 options: [.decodeFirstFrameOnly],
-														 context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
-													.placeholder(Image("imagePlaceholder"))
-													.resizable()
-													.aspectRatio(contentMode: .fit)
-													.frame(width: 40, height: 40)
-													.clipped()
-													.cornerRadius(20)
-													.onTapGesture {
-														self.tabScreenData.userSheet = true
-													}
-												)
-											} else {
-												Button(action: {
-//													self.data.stopTimer = true
-													if self.login.acceptedDatapolicy == false {
-														self.login.showDatapolicyAlert = true
-													} else {
-														self.login.login()
-														self.login.getUser()
-													}
-												}) {
-													Text("Login").foregroundColor(Color.blue)
-												}
-											}
-										}
-									)
-			}.onAppear(perform: {
-				let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-				print(urls[urls.count-1] as URL)
-			})
-			.navigationViewStyle(StackNavigationViewStyle())
-		}
+			}
+//		}
+		.navigationBarTitle("LogBot", displayMode: .large)
+		.navigationBarItems(leading:
+					Button(action: {
+						self.tabScreenData.showSettings = true
+					}) {
+						Image(systemName: "gear").imageScale(.large)
+					},
+				trailing:
+					VStack() {
+						if self.login.isLoggedIn == true {
+							
+							NavigationLink(destination: UserView(userData: self.login.userData), isActive: self.$tabScreenData.userSheet) {
+								Text("User")
+							}.overlay(
+								WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
+									 options: [.decodeFirstFrameOnly],
+									 context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
+								.placeholder(Image("imagePlaceholder"))
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.frame(width: 40, height: 40)
+								.clipped()
+								.cornerRadius(20)
+								.onTapGesture {
+									self.tabScreenData.userSheet = true
+								}
+							)
+						} else {
+							Button(action: {
+								if self.login.acceptedDatapolicy == false {
+									self.login.showDatapolicyAlert = true
+								} else {
+									self.login.login()
+									self.login.getUser()
+								}
+							}) {
+								Text("Login").foregroundColor(Color.blue)
+							}
+						}
+					}
+				)
+		.onAppear(perform: {
+			let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+			print(urls[urls.count-1] as URL)
+		})
 	}
 
 	struct EventView: View {
