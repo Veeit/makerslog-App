@@ -8,6 +8,76 @@
 
 import SwiftUI
 
+struct TabBarItemData {
+    var tag: Int
+    var content: AnyView
+}
+
+struct TabBarPreferenceData {
+    var tabBarBounds: Anchor<CGRect>? = nil
+    var tabBarItemData: [TabBarItemData] = []
+}
+
+struct TabBarPreferenceKey: PreferenceKey {
+    typealias Value = TabBarPreferenceData
+
+    static var defaultValue: TabBarPreferenceData = TabBarPreferenceData()
+
+    static func reduce(value: inout TabBarPreferenceData, nextValue: () -> TabBarPreferenceData) {
+        if let tabBarBounds = nextValue().tabBarBounds {
+            value.tabBarBounds = tabBarBounds
+        }
+        value.tabBarItemData.append(contentsOf: nextValue().tabBarItemData)
+    }
+}
+struct CustomTabBarItem<Content: View>: View {
+    let iconName: String
+    let label: String
+    let selection: Binding<Int>
+    let tag: Int
+    let content: () -> Content
+
+    init(iconName: String,
+         label: String,
+         selection: Binding<Int>,
+         tag: Int,
+         @ViewBuilder _ content: @escaping () -> Content) {
+        self.iconName = iconName
+        self.label = label
+        self.selection = selection
+        self.tag = tag
+        self.content = content
+    }
+
+    var body: some View {
+        VStack(alignment: .center) {
+            Image(systemName: iconName)
+                .frame(minWidth: 25, minHeight: 25)
+            Text(label)
+				.font(.caption)
+//				.multilineTextAlignment(.center)
+//				.fixedSize(horizontal: false, vertical: true)
+			.layoutPriority(2)
+        }
+        .padding([.top, .bottom], 5)
+        .foregroundColor(fgColor())
+        .frame(maxWidth: .infinity)
+        .contentShape(Rectangle())
+        .onTapGesture { self.selection.wrappedValue = self.tag }
+        .preference(key: TabBarPreferenceKey.self,
+                    value: TabBarPreferenceData(
+                        tabBarItemData: [TabBarItemData(tag: tag,
+                                                        content: AnyView(self.content())
+                        )]
+                    )
+        )
+    }
+
+    private func fgColor() -> Color {
+        return selection.wrappedValue == tag ? Color(UIColor.systemBlue) : Color(UIColor.systemGray)
+    }
+}
+
 struct TabScreen: View {
 	@EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
@@ -15,48 +85,63 @@ struct TabScreen: View {
 
     @State private var showDataPolicy: Bool = false
 	// swiftlint:disable empty_parentheses_with_trailing_closure
+	@State private var selection: Int = 0
 
 	var body: some View {
 		VStack() {
-				TabView {
-					VStack {
-						NavigationView() {
-							LogFeedView()
+				VStack(alignment: .center, spacing: 0) {
+					HStack(alignment: .lastTextBaseline) {
+						CustomTabBarItem(iconName: "house.fill",
+										 label: "Home",
+										 selection: $selection,
+										 tag: 0) {
+							NavigationView() {
+								LogFeedView()
+								.sheet(isPresented: self.$data.showSettings, content: {
+									SettingsView(data: self.data, loginData: self.login)
+								})
+							}.navigationViewStyle(StackNavigationViewStyle())
 						}
-					}
-					.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
-					.sheet(isPresented: self.$data.showSettings, content: {
-						SettingsView(data: self.data, loginData: self.login)
-					})
-					.tag(0)
 
-					VStack {
-						NavigationView() {
-							DiscussionsView()
+						CustomTabBarItem(iconName: "bubble.left.and.bubble.right.fill",
+										 label:"Discussions",
+										 selection: $selection,
+										 tag: 1) {
+							NavigationView() {
+								DiscussionsView()
+							}.navigationViewStyle(StackNavigationViewStyle())
 						}
-					}
-					.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
-					.tag(1)
-
-					if login.isLoggedIn {
-						VStack {
+						CustomTabBarItem(iconName: "plus.square.fill",
+										 label: "Add",
+										 selection: $selection,
+										 tag: 2) {
 							NavigationView() {
 								AddView()
-							}
+							}.navigationViewStyle(StackNavigationViewStyle())
 						}
-						.tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
-						.tag(2)
-
-						VStack {
+						CustomTabBarItem(iconName: "bell.fill",
+										 label: "Notification",
+										 selection: $selection,
+										 tag: 4) {
 							NavigationView() {
 								NotificationsView()
-							}
+							}.navigationViewStyle(StackNavigationViewStyle())
 						}
-						.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
-						.tag(3)
+					}
+
+					.background(Color(UIColor.systemGray6))
+					.transformAnchorPreference(key: TabBarPreferenceKey.self,
+											   value: .bounds,
+											   transform: { (value: inout TabBarPreferenceData, anchor: Anchor<CGRect>) in
+												value.tabBarBounds = anchor
+					})
+				}
+				.frame(maxHeight: .infinity, alignment: .bottom)
+				.overlayPreferenceValue(TabBarPreferenceKey.self) { (preferences: TabBarPreferenceData) in
+					return GeometryReader { geometry in
+						self.createTabBarContentOverlay(geometry, preferences)
 					}
 				}
-//			}.navigationViewStyle(StackNavigationViewStyle())
 			.overlay(VStack() {
 				if self.data.showOnboarding {
 					Onboarding()
@@ -84,7 +169,6 @@ struct TabScreen: View {
 		let save = ActionSheet.Button.default(Text("Accept")) {
 			self.login.acceptDatapolicy()
 			self.login.login()
-//			self.makerlog.stopTimer = true
 			self.data.setOnbaording()
 			self.data.showOnboarding = false
 		}
@@ -111,6 +195,24 @@ struct TabScreen: View {
 			}
 		}
 	}
+
+	private func createTabBarContentOverlay(_ geometry: GeometryProxy,
+                                            _ preferences: TabBarPreferenceData) -> some View {
+        let tabBarBounds = preferences.tabBarBounds != nil ? geometry[preferences.tabBarBounds!] : .zero
+        let contentToDisplay = preferences.tabBarItemData.first(where: { $0.tag == self.selection })
+        return ZStack {
+            if contentToDisplay == nil {
+                Text("Empty View")
+            } else {
+                contentToDisplay!.content
+            }
+        }
+        .frame(width: geometry.size.width,
+               height: geometry.size.height - tabBarBounds.size.height,
+               alignment: .center)
+        .position(x: geometry.size.width / 2,
+                  y: (geometry.size.height - tabBarBounds.size.height) / 2) // 6
+    }
 }
 
 struct TabScreen_Previews: PreviewProvider {
