@@ -28,25 +28,7 @@ class UserData: ApiModel, ObservableObject {
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
-//
-//	private var socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss:://api.getmakerlog.com/users//stream")!)
-//	private var logFeedConnected = false
-//
-//	func setSocket() {
-//		socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss:://api.getmakerlog.com/users/" + (String(self.userData.first?.id ?? 0)) + "/stream/")!)
-//	}
-//
-//	func stopSockets() {
-//		self.logFeedConnected = false
-//		self.socketConnection.disconnect()
-//	}
-//
-//	func startSocket() {
-//		if !logFeedConnected {
-//			socketConnection.establishConnection()
-//		}
-//	}
-//
+
 	func getUserProducts() {
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/products/"
 		print(requestURL)
@@ -84,71 +66,6 @@ class UserData: ApiModel, ObservableObject {
 			}
 		})
 	}
-//
-//	func userFeedSocket() {
-//		socketConnection.didReceiveMessage = { message in
-//			do {
-//				let decoder = JSONDecoder()
-//				let data = try decoder.decode(LogsSocket.self, from: message.data(using: .utf8)!)
-//
-//				DispatchQueue.main.async {
-//					switch data.type {
-//					case "task.deleted":
-//						print("deleted")
-//						self.userRecentLogs.remove(at: self.userRecentLogs.firstIndex(of: data.payload)!)
-//					case "task.updated":
-//						print("updated")
-//						self.userRecentLogs = self.userRecentLogs.map({ return $0.id == data.payload.id ? data.payload : $0 })
-//					case "task.created":
-//						print("created")
-//						self.userRecentLogs.insert(data.payload, at: 0)
-//					default:
-//						print("upps")
-//					}
-//				}
-//			} catch {
-//				DispatchQueue.main.async {
-//					print(error)
-//					self.errorText = error.localizedDescription
-//					self.showError = true
-//				}
-//			}
-//			print("something magic")
-//        }
-//
-//        socketConnection.didReceiveError = { error in
-//            //Handle error here
-//			DispatchQueue.main.async {
-//				print(error)
-//				self.errorText = error.localizedDescription
-//				self.showError = true
-//			}
-//        }
-//
-//        socketConnection.didOpenConnection = {
-//            //Connection opened
-//			print("open")
-//			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-//			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-//			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-//			self.logFeedConnected = true
-//        }
-//
-//        socketConnection.didCloseConnection = {
-//            // Connection closed
-//			print("closed")
-//			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-//			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-//			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-//			self.logFeedConnected = false
-//        }
-//
-//        socketConnection.didReceiveData = { data in
-//            // Get your data here
-//			print("data")
-//			print(data)
-//        }
-//    }
 
 	func getUserName() {
 		if self.userData.first?.firstName != "" && self.userData.first?.lastName != "" {
