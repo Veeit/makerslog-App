@@ -43,100 +43,11 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	override init() {
 		super.init()
-		self.startSocket()
-		socketConnection.setlistener()
-		self.feedSocket()
 		self.getDissucions()
 		if defaults.bool(forKey: "isLogedIn") {
 			self.getNotifications()
 		}
 	}
-
-	private let socketConnection = WebSocketConnector(withSocketURL: URL(string: "wss://api.getmakerlog.com/explore/stream/")!)
-	private var logFeedConnected = false
-
-	func stopSockets() {
-		self.logFeedConnected = false
-		self.socketConnection.disconnect()
-		cancellable?.cancel()
-	}
-
-	func startSocket() {
-		self.getLogs()
-		if !logFeedConnected {
-			socketConnection.establishConnection()
-			self.logFeedConnected = true
-		}
-	}
-
-	func feedSocket() {
-		socketConnection.didReceiveMessage = { message in
-
-			do {
-				let decoder = JSONDecoder()
-				let data = try decoder.decode(LogsSocket.self, from: message.data(using: .utf8)!)
-
-				DispatchQueue.main.async {
-					switch data.type {
-					case "task.sync":
-						print("sync")
-					case "task.deleted":
-						print("deleted")
-						self.logs.remove(at: self.logs.firstIndex(of: data.payload)!)
-					case "task.updated":
-						print("updated")
-						self.logs = self.logs.map({ return $0.id == data.payload.id ? data.payload : $0 })
-					case "task.created":
-						print("created")
-						self.logs.insert(data.payload, at: 0)
-					default:
-						print("upps")
-					}
-				}
-			} catch {
-				DispatchQueue.main.async {
-					print(error)
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-				self.getLogs()
-			}
-			print("something magic")
-        }
-
-        socketConnection.didReceiveError = { error in
-            //Handle error here
-			DispatchQueue.main.async {
-				print(error)
-				self.errorText = error.localizedDescription
-				self.showError = true
-			}
-        }
-
-        socketConnection.didOpenConnection = {
-            //Connection opened
-			print("open")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-			self.logFeedConnected = true
-        }
-
-        socketConnection.didCloseConnection = {
-            // Connection closed
-			print("closed")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-			self.logFeedConnected = false
-        }
-
-        socketConnection.didReceiveData = { data in
-            // Get your data here
-			print("data")
-			print(data)
-        }
-    }
 
 	private var alertWithNetworkError = 0
 
