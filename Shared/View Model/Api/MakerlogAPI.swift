@@ -102,7 +102,12 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/notifications/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
 			switch result {
 			case .success(let response):
 				do {
@@ -139,7 +144,12 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		let parameters = ["token": token, "amount": "5", "increment": "true"]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/praise/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
 			switch result {
 			case .success(let response):
 				do {
@@ -221,7 +231,12 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		let parameters = ["token": token]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
 			switch result {
 			case .success(_):
 					self.getLogs()

@@ -1,6 +1,7 @@
 // swift-tools-version:5.1
 import PackageDescription
 
+//swiftlint:disable all
 let package = Package(
     name: "MDText",
     platforms: [

@@ -8,6 +8,7 @@
 //
 
 import SwiftUI
+//swiftlint:disable all
 
 @available(iOS 13.0, macOS 10.15, *)
 class RefreshData: ObservableObject {

@@ -26,7 +26,12 @@ class AddLogData: ApiModel, ObservableObject {
 						  "due_at": ""]
         let requestURL = "https://api.getmakerlog.com/tasks/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
             switch result {
             case .success(let response):
                 do {
@@ -80,7 +85,12 @@ class UpdateLogData: ObservableObject {
 						  "due_at": ""]
         let requestURL = "https://api.getmakerlog.com/tasks/239874/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .PATCH, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .PATCH, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
             switch result {
             case .success(let response):
                 do {
@@ -134,7 +144,12 @@ class AddDiscussionData: AddLogData {
 						  "title": title]
         let requestURL = "https://api.getmakerlog.com/discussions/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
             switch result {
             case .success(let response):
                 do {

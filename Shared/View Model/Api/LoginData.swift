@@ -84,7 +84,12 @@ class UserData: ApiModel, ObservableObject {
 
 		print("getME")
 
-        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
             switch result {
             case .success(let response):
                 do {

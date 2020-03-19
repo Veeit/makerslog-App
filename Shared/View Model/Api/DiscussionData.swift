@@ -65,7 +65,12 @@ class DiscussionData: ApiModel, ObservableObject {
 		let parameters = ["token": token, "body": reply]
 		let requestURL = "https://api.getmakerlog.com/discussions/\(self.discussion.slug)/replies/"
 
-		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters) { result in
+		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
+			(credential) in
+				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		}) { result in
 			switch result {
 			case .success(let response):
 				do {

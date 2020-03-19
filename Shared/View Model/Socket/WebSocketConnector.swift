@@ -8,6 +8,7 @@
 
 import Foundation
 
+//swiftlint:disable all
 class WebSocketConnector : NSObject {
 
     var didOpenConnection : (()->())?
