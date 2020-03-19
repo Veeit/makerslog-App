@@ -189,16 +189,11 @@ struct UserView: View {
 		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
 		.onAppear(perform: {
 			self.user.stop = false
-			
 			self.user.userData = self.userData
 			self.user.getUserProducts()
 			self.user.getUserName()
 			self.user.getRecentLogs()
 			self.user.getUserStats()
-			
-//			self.user.setSocket()
-//			self.user.userFeedSocket()
-//			self.user.startSocket()
 		})
 		.onDisappear(perform: {
 			self.user.stop = true
@@ -207,5 +202,17 @@ struct UserView: View {
 			self.user.userRecentLogs.removeAll()
 			self.user.userStats.removeAll()
 		})
+		.navigationBarItems(trailing:
+			Button(action: {
+				self.user.stop = false
+				self.user.userData = self.userData
+				self.user.getUserProducts()
+				self.user.getUserName()
+				self.user.getRecentLogs()
+				self.user.getUserStats()
+			}) {
+				Image(systemName: "arrow.2.circlepath")
+			}
+		)
 	}
 }

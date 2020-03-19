@@ -148,7 +148,6 @@
 		562065A2240E99DF0016B21D /* closeKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeKeyboard.swift; sourceTree = "<group>"; };
 		56209D0E2412E8A3002848F5 /* WebSocketConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketConnector.swift; sourceTree = "<group>"; };
 		56209D102412E8B1002848F5 /* WebSocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProtocol.swift; sourceTree = "<group>"; };
-		56209D1224141177002848F5 /* MDText-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "MDText-master"; path = "../../../Downloads/MDText-master"; sourceTree = "<group>"; };
 		5622AFB523FBFC8B00CC1B76 /* progressImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressImg.swift; sourceTree = "<group>"; };
 		5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
 		56569B70240D52B6009F81E3 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
@@ -200,6 +199,7 @@
 		56D4E48A23EAB73A00679DD4 /* makerlog-macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makerlog-macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSUITests.swift; sourceTree = "<group>"; };
 		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56D7B4F82423872900664710 /* MDText-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MDText-master"; sourceTree = "<group>"; };
 		56EEB54524043CB100522B8C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		56EEB54724045F5A00522B8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56EEB5492405257D00522B8C /* Imprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imprint.swift; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56209D1224141177002848F5 /* MDText-master */,
+				56D7B4F82423872900664710 /* MDText-master */,
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,

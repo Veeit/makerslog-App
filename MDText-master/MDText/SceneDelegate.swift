@@ -1,44 +1,26 @@
 //
 //  SceneDelegate.swift
-//  Makerlog
+//  MDText
 //
-//  Created by Veit Progl on 20.01.20.
-//  Copyright © 2020 Veit Progl. All rights reserved.
+//  Created by Andre Carrera on 10/9/19.
+//  Copyright © 2019 Lambdo. All rights reserved.
 //
 
 import UIKit
 import SwiftUI
-import OAuthSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    // swiftlint:disable all
+
     var window: UIWindow?
-	// Envoierment Objects
-	let tabScreenData = TabScreenData()
-	let makerlogApiData = MakerlogAPI()
-	let loginData = LoginData()
-	let commentViewData = CommentViewData()
-	let userData = UserData()
+
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        // Get the managed object context from the shared persistent container.
-        let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
-
-       
-		
-        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
-        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = TabScreen()
-							.environment(\.managedObjectContext, context)
-							.environmentObject(tabScreenData)
-							.environmentObject(makerlogApiData)
-							.environmentObject(loginData)
-							.environmentObject(commentViewData)
-							.environmentObject(userData)
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = MDText(markdown: "")
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -49,34 +31,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-		print("scene")
-            guard let url = URLContexts.first?.url else {
-                return
-            }
-            if url.host == "oauth-callback" {
-                OAuthSwift.handle(url: url)
-            } else {
-                print(url)
-        }
-    }
-
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded
-        // (see `application:didDiscardSceneSessions` instead).
-		
-		setData()
-//		makerlogApiData.stopSockets()
+        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-		makerlogApiData.getLogs()
-		makerlogApiData.getDissucions()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -93,17 +57,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
 
-        // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-		setData()
-//		makerlogApiData.stopSockets()
-	}
-	
-	func setData() {
-		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-	}
 
 }
+

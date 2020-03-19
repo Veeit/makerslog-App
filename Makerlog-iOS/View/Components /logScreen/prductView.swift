@@ -11,7 +11,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProductView: View {
-	@State var data = ProductViewData()
+	@ObservedObject var data = ProductViewData()
 	var projectID: String
 
 	var body: some View {
@@ -46,6 +46,7 @@ struct ProductView: View {
 			}
 		}.onAppear(perform: {
 			self.data.getRelatedProject(projectID: self.projectID)
+			print(self.data.products)
 		})
 	}
 }

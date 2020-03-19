@@ -15,38 +15,42 @@ struct NotificationsView: View {
 
 	// swiftlint:disable multiple_closures_with_trailing_closure empty_parentheses_with_trailing_closure
     var body: some View {
-		VStack() {
-			RefreshablListView(action: {
-				self.data.getNotifications()
-			}, isDone: self.$data.notificationisDone) {
-				if self.data.notification != nil {
-					ForEach(self.data.notification!) { notification in
-						HStack() {
-							WebImage(url: URL(string: notification.actor.avatar)!,
-								 options: [.decodeFirstFrameOnly],
-								 context: [.imageThumbnailPixelSize : CGSize(width: 120, height: 120)])
-							.placeholder(Image("imagePlaceholder"))
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.frame(width: 60, height: 60)
-							.clipped()
-							.cornerRadius(20)
-							VStack(alignment: .leading) {
-								Text("\((notification.actor.username))").bold()
-								if notification.target != nil {
-									TargetView(target: notification.target!)
-								}
-								Text("\((notification.verb))").font(.subheadline)
+		List() {
+			if self.data.notification != nil {
+				ForEach(self.data.notification!) { notification in
+					HStack() {
+						WebImage(url: URL(string: notification.actor.avatar)!,
+							 options: [.decodeFirstFrameOnly],
+							 context: [.imageThumbnailPixelSize : CGSize(width: 120, height: 120)])
+						.placeholder(Image("imagePlaceholder"))
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.frame(width: 60, height: 60)
+						.clipped()
+						.cornerRadius(20)
+						VStack(alignment: .leading) {
+							Text("\((notification.actor.username))").bold()
+							if notification.target != nil {
+								TargetView(target: notification.target!)
 							}
+							Text("\((notification.verb))").font(.subheadline)
 						}
 					}
 				}
-			}.onAppear(perform: {
-				self.data.getNotifications()
-			})
-			.navigationBarTitle("Notifications")
-			.navigationViewStyle(StackNavigationViewStyle())
+			}
 		}
+		.onAppear(perform: {
+			self.data.getNotifications()
+		})
+		.navigationBarTitle("Notifications")
+		.navigationViewStyle(StackNavigationViewStyle())
+		.navigationBarItems(trailing:
+			Button(action: {
+				self.data.getNotifications()
+			}) {
+				Image(systemName: "arrow.2.circlepath")
+			}
+		)
 	}
 
 	struct TargetView: View {

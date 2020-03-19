@@ -86,6 +86,7 @@ struct LogDetailView: View {
 		.onAppear(perform: {
 			self.comments.comments.removeAll()
 			_ = self.comments.getComments(logID: String(self.log.data.id))
+//			self.log.data.projectSet
 			print(self.userComments)
 		})
 		.onDisappear(perform: {
@@ -94,6 +95,13 @@ struct LogDetailView: View {
 			self.comments.comments.removeAll()
 		})
 		.navigationBarTitle("Detail Log", displayMode: .inline)
+		.navigationBarItems(trailing:
+			Button(action: {
+				_ = self.comments.getComments(logID: String(self.log.data.id))
+			}) {
+				Image(systemName: "arrow.2.circlepath")
+			}
+		)
     }
 
 	struct UserHeader: View {

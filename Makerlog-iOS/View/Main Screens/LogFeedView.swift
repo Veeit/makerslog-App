@@ -20,20 +20,11 @@ struct LogFeedView: View {
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
 	var body: some View {
-//		GeometryReader() { geometry in
-			RefreshablListView(action: {
-				self.data.getLogs()
-			}, isDone: self.$data.isDone) {
-//					Button(action: {
-//						self.tabScreenData.showLogin = true
-//					}) {
-//						Text("test")
-//					}
-				ForEach(self.data.logs) { log in
-					LogFeedItem(log: LogViewData(data: log))
-				}
+		List() {
+			ForEach(self.data.logs) { log in
+				LogFeedItem(log: LogViewData(data: log))
 			}
-//		}
+		}
 		.navigationBarTitle("LogBot", displayMode: .large)
 		.navigationBarItems(leading:
 					Button(action: {
@@ -42,9 +33,14 @@ struct LogFeedView: View {
 						Image(systemName: "gear").imageScale(.large)
 					},
 				trailing:
-					VStack() {
+					HStack() {
+						Button(action: {
+							self.data.getLogs()
+						}) {
+							Image(systemName: "arrow.2.circlepath")
+						}.padding([.trailing], 8)
+
 						if self.login.isLoggedIn == true {
-							
 							NavigationLink(destination: UserView(userData: self.login.userData), isActive: self.$tabScreenData.userSheet) {
 								Text("User")
 							}.overlay(

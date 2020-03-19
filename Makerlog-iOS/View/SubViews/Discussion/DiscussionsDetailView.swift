@@ -39,7 +39,6 @@ struct DiscussionsDetailView: View {
     var body: some View {
 		VStack() {
 			ZStack(alignment: .top) {
-//				ScrollView(.vertical, showsIndicators: true) {
 				List() {
 					VStack(alignment: .leading) {
 						HStack(alignment: .top) {
@@ -67,58 +66,49 @@ struct DiscussionsDetailView: View {
 							.layoutPriority(2)
 							.padding([.bottom], 30)
 							.fixedSize(horizontal: false, vertical: true)
-//						Divider()
 					}
 
-//					VStack() {
-						if self.data.discussionResponse != nil {
-							ForEach(self.data.discussionResponse) { response in
-								if response.parent_reply == nil {
-									VStack(alignment: .leading) {
-										ReplayView(response: response)
-//										Divider()
+					if self.data.discussionResponse != [] {
+						ForEach(self.data.discussionResponse) { response in
+							if response.parent_reply == nil {
+								VStack(alignment: .leading) {
+									ReplayView(response: response)
+								}.padding([.top], 5)
+								ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
+									VStack() {
+										HStack(alignment: .top) {
+											VStack() {
+												WebImage(url: URL(string: "\(reply.owner.avatar)"),
+													 options: [.decodeFirstFrameOnly],
+													 context: [.imageThumbnailPixelSize: CGSize(width: 90, height: 90)])
+													.placeholder(Image("imagePlaceholder"))
+													.resizable()
+													.aspectRatio(contentMode: .fit)
+													.frame(width: 45, height: 45)
+													.clipped()
+													.cornerRadius(20)
+											}
 
-//										VStack(alignment: .leading) {
-											
-//										}
-									}.padding([.top], 5)
-									ForEach(self.data.getReplyReplys(reply: response).reversed()) { reply in
-										VStack() {
-											HStack(alignment: .top) {
-												VStack() {
-													WebImage(url: URL(string: "\(reply.owner.avatar)"),
-														 options: [.decodeFirstFrameOnly],
-														 context: [.imageThumbnailPixelSize: CGSize(width: 90, height: 90)])
-														.placeholder(Image("imagePlaceholder"))
-														.resizable()
-														.aspectRatio(contentMode: .fit)
-														.frame(width: 45, height: 45)
-														.clipped()
-														.cornerRadius(20)
+											VStack(alignment: .leading) {
+												MDText(markdown: "\(reply.body)")
+													.lineLimit(nil)
+													.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+													.fixedSize(horizontal: false, vertical: true)
+												HStack() {
+													Text("@\(reply.owner.username)").bold()
+													Text("👏 \(reply.praise)")
+													Spacer()
 												}
 
-												VStack(alignment: .leading) {
-													MDText(markdown: "\(reply.body)")
-														.lineLimit(nil)
-														.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-														.fixedSize(horizontal: false, vertical: true)
-													HStack() {
-														Text("@\(reply.owner.username)").bold()
-														Text("👏 \(reply.praise)")
-														Spacer()
-													}
-//															Divider()
-
-												}.padding([.leading], 10)
-											}.padding([.leading], 30 )
-										}
+											}.padding([.leading], 10)
+										}.padding([.leading], 30 )
 									}
 								}
 							}
-						} else {
-							Text("loading ...!")
 						}
-//					}
+					} else {
+						Text("loading ...!")
+					}
 
 				}.padding([.bottom], 60)
 
@@ -156,12 +146,15 @@ struct DiscussionsDetailView: View {
 			}
 		}.onAppear(perform: {
 			self.data.getDissucionsReplies()
-			self.data.startSocket()
-		})
-		.onDisappear(perform: {
-			self.data.stopSockets()
 		})
 		.navigationBarTitle("\(self.data.discussion.title)", displayMode: .inline)
+		.navigationBarItems(trailing:
+			Button(action: {
+				self.data.getDissucionsReplies()
+			}) {
+				Image(systemName: "arrow.2.circlepath")
+			}
+		)
 	}
 
 }

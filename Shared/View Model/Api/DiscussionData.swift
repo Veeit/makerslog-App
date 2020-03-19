@@ -15,15 +15,8 @@ class DiscussionData: ApiModel, ObservableObject {
 	@Published var discussion: ResultDiscussion
 	@Published var reply: String = ""
 
-	private var socketConnectionDiscussion: WebSocketConnector
-
 	init(discussion: ResultDiscussion) {
 		self.discussion = discussion
-		socketConnectionDiscussion = WebSocketConnector(withSocketURL:  URL(string: "wss://api.getmakerlog.com/discussions/\(discussion.slug)/")!)
-
-		super.init()
-		self.discussionReplyUpdates()
-		socketConnectionDiscussion.setlistener()
 	}
 
 	func getDissucionsReplies() {
@@ -60,79 +53,6 @@ class DiscussionData: ApiModel, ObservableObject {
 						}
 					})
 	}
-
-	func startSocket() {
-		socketConnectionDiscussion.establishConnection()
-	}
-
-	func stopSockets() {
-		self.socketConnectionDiscussion.disconnect()
-	}
-
-	func discussionReplyUpdates() {
-		socketConnectionDiscussion.didReceiveMessage = { message in
-			print(message)
-			print("something magic")
-
-			do {
-				let decoder = JSONDecoder()
-				let data = try decoder.decode(DiscussionSocket.self, from: message.data(using: .utf8)!)
-
-				DispatchQueue.main.async {
-					switch data.type {
-					case "reply.created":
-						if data.payload.parent_reply == nil {
-							self.discussionResponse.insert(data.payload, at: 0)
-						}
-					case "reply.updated":
-						self.discussionResponse = self.discussionResponse.map({ return $0.id == data.payload.id ? data.payload : $0 })
-					case "reply.deleted":
-						self.discussionResponse.remove(at: self.discussionResponse.firstIndex(of: data.payload)!)
-					default:
-						print("upps")
-					}
-				}
-			} catch {
-				DispatchQueue.main.async {
-					print(error)
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-				self.getDissucionsReplies()
-			}
-        }
-
-        socketConnectionDiscussion.didReceiveError = { error in
-            //Handle error here
-			DispatchQueue.main.async {
-				print(error)
-				self.errorText = error.localizedDescription
-				self.showError = true
-			}
-        }
-
-        socketConnectionDiscussion.didOpenConnection = {
-            //Connection opened
-			print("open Discussion")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-        }
-
-        socketConnectionDiscussion.didCloseConnection = {
-            // Connection closed
-			print("closed Discussion")
-			keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-			keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-			keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-        }
-
-        socketConnectionDiscussion.didReceiveData = { data in
-            // Get your data here
-			print("data")
-			print(data)
-        }
-    }
 
 	private var cancellablePostReply: AnyCancellable?
 
