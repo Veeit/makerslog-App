@@ -18,6 +18,7 @@ class TabScreenData: ObservableObject {
 
 	@Published var showOnboarding = false
 	@Published var showSettings = false
+	@Published var showDataPolicy = false
 
 	@Published var showLogin = false
 

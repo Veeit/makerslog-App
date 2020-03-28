@@ -204,7 +204,7 @@ class UserViewData: UserData {
 	}
 }
 
-class LoginData: UserData {
+final class LoginData: UserData {
 
     let generator = UINotificationFeedbackGenerator()
 
@@ -299,7 +299,8 @@ class LoginData: UserData {
 			self.userName = "no user"
 
 			self.acceptedDatapolicy = false
-			defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
+//			defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
+			defaults = UserDefaults.standard
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}

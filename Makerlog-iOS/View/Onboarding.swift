@@ -21,6 +21,7 @@ struct Onboarding: View {
 	@EnvironmentObject var login: LoginData
 
     @State var index: Int = 0
+	@State var showData = false
 
 	// swiftlint:disable empty_parentheses_with_trailing_closure multiple_closures_with_trailing_closure
     var body: some View {
@@ -118,7 +119,7 @@ struct Onboarding: View {
 			Group() {
 				Button(action: {
 					if self.login.acceptedDatapolicy == false {
-						self.login.showDatapolicyAlert = true
+						self.showData.toggle()
 					} else {
 						self.login.login()
 						self.tabData.setOnbaording()
@@ -146,7 +147,30 @@ struct Onboarding: View {
 		.padding([.bottom, .top], 10)
 		.background(Color.systemBackground)
 		.edgesIgnoringSafeArea(.bottom)
+		.alert(isPresented: $showData, content: {datasecurityAlert()})
+
 	}
+
+	func datasecurityAlert() -> Alert {
+		let save = ActionSheet.Button.default(Text("Accept")) {
+			self.login.acceptDatapolicy()
+			self.login.login()
+			self.tabData.setOnbaording()
+			self.tabData.showOnboarding = false
+		}
+
+        // If the cancel label is omitted, the default "Cancel" text will be shown
+		let cancel = ActionSheet.Button.cancel(Text("Open policy")) {
+			self.tabData.showDataPolicy.toggle()
+		}
+
+        return Alert(title: Text("Datasecurity is important"),
+                     message: Text("""
+	You need to read the datasecurity policy first.
+	"""),
+                     primaryButton: save,
+                     secondaryButton: cancel)
+    }
 }
 
 struct Onboarding_Previews: PreviewProvider {

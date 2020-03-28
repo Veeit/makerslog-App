@@ -21,7 +21,7 @@ var oauthswift = OAuth2Swift(
 	responseType: "code"
 )
 let keychain = KeychainSwift()
-let defaults = UserDefaults.standard
+var defaults = UserDefaults.standard
 
 // swiftlint:enable line_length
 
