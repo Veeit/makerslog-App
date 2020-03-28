@@ -45,8 +45,10 @@ class ProductViewData: ApiModel, ObservableObject {
 				}
 			}
 		}, receiveValue: { result in
-			 self.products = result.products
-			print(result)
+			DispatchQueue.main.async {
+				self.products = result.products
+				print(result)
+			}
 		})
     }
 
