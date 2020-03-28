@@ -20,7 +20,7 @@ struct AddView: View {
 	@State private var selectedType = 0
 
 	var body: some View {
-//		NavigationView() {
+		NavigationView() {
 			VStack() {
 				Picker(selection: $selectedType, label: Text("Types")) {
 					ForEach(0 ..< types.count) {
@@ -38,6 +38,6 @@ struct AddView: View {
 			}
 			.padding([.leading, .trailing], 20)
 			.padding([.bottom], 10)
-//		}.navigationViewStyle(StackNavigationViewStyle())
+		}.navigationViewStyle(StackNavigationViewStyle())
 	}
 }
