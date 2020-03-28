@@ -19,7 +19,7 @@ struct LogFeedView: View {
 	@ObservedObject var addData = AddLogData()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
-	@State var showData = false
+	@State var showData = false 
 	var body: some View {
 		NavigationView() {
 			List() {
