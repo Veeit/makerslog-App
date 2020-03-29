@@ -24,7 +24,7 @@ struct Log: Codable, Identifiable, Equatable {
 	var content, createdAt, updatedAt: String
     let dueAt, doneAt: String?
 	var user: User
-    let projectSet: [Projects]
+	var projectSet: [Projects]
 	var praise: Int
     let attachment: String?
     let commentCount: Int

@@ -11,8 +11,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProductView: View {
-	@ObservedObject var data = ProductViewData()
-	var projectID: String
+	@ObservedObject var data: ProductViewData
 
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure
@@ -44,9 +43,11 @@ struct ProductView: View {
 				.padding([.leading, .trailing], 10)
 				.frame(minWidth: 0, maxWidth: .infinity)
 			}
-		}.onAppear(perform: {
-			self.data.getRelatedProject(projectID: self.projectID)
-			print(self.data.products)
+		}.onDisappear(perform: {
+			self.data.stop = true
+		})
+		.onAppear(perform: {
+			self.data.stop = false
 		})
 	}
 }

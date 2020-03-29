@@ -14,7 +14,7 @@ import KeyboardObserving
 struct LogDetailView: View {
     // swiftlint:disable empty_parentheses_with_trailing_closure
 	@ObservedObject var log: LogViewData
-	@State var comments = CommentViewData()
+	@ObservedObject var comments = CommentViewData()
 
 	@State var userComments = Comment()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
@@ -40,16 +40,13 @@ struct LogDetailView: View {
 
 					LogInteractive(log: self.log).offset(x: -10)
 
-					if self.log.data.projectSet.first?.id != nil {
-						Section(header: Text("Products:")) {
-							ForEach(self.log.data.projectSet) { project in
-								VStack(alignment: .leading) {
-//									ProductView(data: ProductViewData(projectID: String(project.id)))
-									ProductView(projectID: String(project.id))
-								}
-								.padding([.top, .bottom], 10)
-								.frame(minHeight: 60)
+					Section(header: Text("Products:")) {
+						ForEach(self.log.data.projectSet) { project in
+							VStack(alignment: .leading) {
+								ProductView(data: ProductViewData(projectID: String(project.id)))
 							}
+							.padding([.top, .bottom], 10)
+							.frame(minHeight: 60)
 						}
 					}
 
@@ -86,7 +83,6 @@ struct LogDetailView: View {
 		.onAppear(perform: {
 			self.comments.comments.removeAll()
 			_ = self.comments.getComments(logID: String(self.log.data.id))
-//			self.log.data.projectSet
 			print(self.userComments)
 		})
 		.onDisappear(perform: {

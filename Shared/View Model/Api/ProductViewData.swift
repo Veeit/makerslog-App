@@ -12,6 +12,7 @@ import Combine
 class ProductViewData: ApiModel, ObservableObject {
     @Published var products = [Product]()
 	private var cancellable: AnyCancellable?
+	var stop = false
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
@@ -46,14 +47,16 @@ class ProductViewData: ApiModel, ObservableObject {
 			}
 		}, receiveValue: { result in
 			DispatchQueue.main.async {
-				self.products = result.products
-				print(result)
+				if !self.stop {
+					self.products = result.products
+					print(result)
+				}
 			}
 		})
     }
 
-//    init(projectID: String) {
-//		super.init()
-//        self.getRelatedProject(projectID: projectID)
-//    }
+    init(projectID: String) {
+		super.init()
+        self.getRelatedProject(projectID: projectID)
+    }
 }
