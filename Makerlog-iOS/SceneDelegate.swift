@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import OAuthSwift
+import UserNotifications
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // swiftlint:disable all
@@ -20,6 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	let commentViewData = CommentViewData()
 	let userData = UserData()
 
+    let center = UNUserNotificationCenter.current()
+
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -27,8 +31,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
         let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
-
-       
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -47,6 +49,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        center.removeAllDeliveredNotifications()
+        
+        center.getNotificationSettings { (settings) in
+          if settings.authorizationStatus != .authorized {
+                self.registerNotification()
+          } else {
+              self.removeAllNotification()
+          }
+        }
+        
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if let error = error {
+                // Handle the error here.
+                print(error)
+            }
+            if granted {
+                self.registerNotification()
+            } else {
+                self.removeAllNotification()
+            }
+            // Enable or disable features based on the authorization.
+        }
+            
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -105,5 +132,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
 		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 	}
+    
+    func registerNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Log your daily tasks!"
+        content.body = "keep on logging, don't lose your streak!"
+
+        #if targetEnvironment(macCatalyst)
+        #else
+            let date = DateComponents(hour: 17, minute: 00)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                                content: content,
+                                                trigger: trigger)
+            center.add(request)
+        #endif
+    }
+    
+    func removeAllNotification() {
+        center.removeAllPendingNotificationRequests()
+        center.removeAllDeliveredNotifications()
+    }
 
 }

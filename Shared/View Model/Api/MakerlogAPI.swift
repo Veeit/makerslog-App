@@ -93,6 +93,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 					self.logs = newLogs
 					self.isDone = true
 					self.alertWithNetworkError = 0
+                    self.cancellable?.cancel()
 				}
 			})
 	}
@@ -222,6 +223,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {
 					 self.discussions = result.results
+                    self.cancellableDiscussion?.cancel()
 				 }
 			})
 	}

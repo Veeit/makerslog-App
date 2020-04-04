@@ -16,7 +16,7 @@ struct LogDetailView: View {
 	@ObservedObject var log: LogViewData
 	@ObservedObject var comments = CommentViewData()
 
-	@State var userComments = Comment()
+//	@State var userComments = Comment()
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 //	var userData = UserData()
 	var fromUser = false
@@ -80,16 +80,15 @@ struct LogDetailView: View {
 			}.listStyle(GroupedListStyle())
 
 		}
-		.onAppear(perform: {
-			self.comments.comments.removeAll()
-			_ = self.comments.getComments(logID: String(self.log.data.id))
-			print(self.userComments)
-		})
-		.onDisappear(perform: {
-			print("trigger")
-			self.comments.stop = true
-			self.comments.comments.removeAll()
-		})
+//		.onAppear(perform: {
+//			self.comments.comments.removeAll()
+//			_ = self.comments.getComments(logID: String(self.log.data.id))
+//		})
+//		.onDisappear(perform: {
+//			print("trigger")
+//			self.comments.stop = true
+//			self.comments.comments.removeAll()
+//		})
 		.navigationBarTitle("Detail Log", displayMode: .inline)
 		.navigationBarItems(trailing:
 			Button(action: {
