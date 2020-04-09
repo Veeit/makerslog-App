@@ -28,9 +28,7 @@ class AddLogData: ApiModel, ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
             switch result {
             case .success(let response):
@@ -87,9 +85,7 @@ class UpdateLogData: ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .PATCH, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
             switch result {
             case .success(let response):
@@ -146,9 +142,7 @@ class AddDiscussionData: AddLogData {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
             switch result {
             case .success(let response):

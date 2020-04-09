@@ -8,7 +8,6 @@
 
 import SwiftUI
 import OAuthSwift
-import KeychainSwift
 import URLImage
 
 struct ContentView: View {

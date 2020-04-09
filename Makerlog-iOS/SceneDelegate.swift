@@ -126,12 +126,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		setData()
 //		makerlogApiData.stopSockets()
 	}
-	
-	func setData() {
-		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-		keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-	}
     
     func registerNotification() {
         

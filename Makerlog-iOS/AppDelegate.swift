@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import OAuthSwift
-import KeychainSwift
 
 // swiftlint:disable line_length
 
@@ -20,8 +19,20 @@ var oauthswift = OAuth2Swift(
 	accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
 	responseType: "code"
 )
-let keychain = KeychainSwift()
 var defaults = UserDefaults.standard
+
+func setData() {
+    let defaults = UserDefaults.standard
+    defaults.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+    defaults.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+    defaults.set(oauthswift.client.credential.oauthRefreshToken, forKey: "Pi")
+}
+
+func getLoginData() {
+    oauthswift.client.credential.oauthToken = defaults.string(forKey: "userToken") ?? ""
+    oauthswift.client.credential.oauthTokenSecret = defaults.string(forKey: "userSecret") ?? ""
+    oauthswift.client.credential.oauthRefreshToken = defaults.string(forKey: "userRefreshToken") ?? ""
+}
 
 // swiftlint:enable line_length
 
@@ -30,10 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // swiftlint:disable all
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-		oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
-		print(oauthswift.client.credential.oauthToken)
-		oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
-		oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+        getLoginData()
 		oauthswift.client.credential.oauthTokenExpiresAt = Date()
 
 		if oauthswift.client.credential.oauthToken != "" {

@@ -105,10 +105,8 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
-		}) { result in
+            setData()
+        }) { result in
 			switch result {
 			case .success(let response):
 				do {
@@ -147,9 +145,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
 			switch result {
 			case .success(let response):
@@ -235,9 +231,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
 			switch result {
 			case .success(_):

@@ -11,7 +11,6 @@ import Combine
 import SwiftUI
 import CoreData
 import OAuthSwift
-import KeychainSwift
 
 class UserData: ApiModel, ObservableObject {
 	@Published var userData = [User]()
@@ -86,9 +85,7 @@ class UserData: ApiModel, ObservableObject {
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
 			(credential) in
-				keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-				keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-				keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+				setData()
 		}) { result in
             switch result {
             case .success(let response):
@@ -246,16 +243,12 @@ final class LoginData: UserData {
 
     func getLogin() {
 		if oauthswift.client.credential.oauthToken == "" {
-			oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
-			oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
-			oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+			getLogin()
 		}
     }
 
 	func setLogin() {
-		keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-		keychain.set(oauthswift.client.credential.consumerSecret, forKey: "userSecret")
-		keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+		setData()
 	}
 
     func login() {
@@ -285,7 +278,6 @@ final class LoginData: UserData {
 
 	func logOut() {
 		if isLoggedIn {
-			keychain.clear()
 			oauthswift = OAuth2Swift(
 				consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
 				consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
