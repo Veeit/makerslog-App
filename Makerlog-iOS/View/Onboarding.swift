@@ -143,10 +143,11 @@ struct Onboarding: View {
                         Text("Skip login")
                     }.padding([.top], 20)
                 } else {
-                    
+                    Text(oauthswift.client.credential.oauthToken)
+                    Text(oauthswift.client.credential.oauthRefreshToken)
                     Button(action: {
-                       self.tabData.setOnbaording()
-                       self.tabData.showOnboarding = false
+                        self.tabData.setOnbaording()
+                        self.tabData.showOnboarding = false
                         self.sceneDelegate.showMain()
                    }) {
                        Text("Okay")
