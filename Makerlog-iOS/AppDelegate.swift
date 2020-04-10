@@ -25,7 +25,7 @@ func setData() {
     let defaults = UserDefaults.standard
     defaults.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
     defaults.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-    defaults.set(oauthswift.client.credential.oauthRefreshToken, forKey: "Pi")
+    defaults.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 }
 
 func getLoginData() {

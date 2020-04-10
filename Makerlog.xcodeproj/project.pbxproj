@@ -79,6 +79,7 @@
 		56D4E48423EAB73900679DD4 /* makerlog_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48323EAB73900679DD4 /* makerlog_macOSTests.swift */; };
 		56D4E48F23EAB73A00679DD4 /* makerlog_macOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */; };
 		56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 56E3674623FAE0F600C69F8F /* SwiftUIX */; };
+		56E7916324405B2E00227885 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 56E7916224405B2E00227885 /* KeychainSwift */; };
 		56EEB54424043C9600522B8C /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = 56EEB54324043C9600522B8C /* Pages */; };
 		56EEB54624043CB100522B8C /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54524043CB100522B8C /* Onboarding.swift */; };
 		56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB54724045F5A00522B8C /* SettingsView.swift */; };
@@ -218,6 +219,7 @@
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
 				5630607724150101007173A0 /* SwiftUICharts in Frameworks */,
+				56E7916324405B2E00227885 /* KeychainSwift in Frameworks */,
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				565A70002423E837006F4A4E /* OAuthSwift in Frameworks */,
@@ -630,6 +632,7 @@
 				56306074241500FD007173A0 /* MDText */,
 				5630607624150101007173A0 /* SwiftUICharts */,
 				565A6FFF2423E837006F4A4E /* OAuthSwift */,
+				56E7916224405B2E00227885 /* KeychainSwift */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -777,6 +780,7 @@
 				56C8FE40240FDACF00E28FC5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				56E7916124405B2E00227885 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1516,6 +1520,14 @@
 				kind = branch;
 			};
 		};
+		56E7916124405B2E00227885 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 		56EEB54224043C9600522B8C /* XCRemoteSwiftPackageReference "Pages" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nachonavarro/Pages";
@@ -1569,6 +1581,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56E3674523FAE0F600C69F8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		56E7916224405B2E00227885 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56E7916124405B2E00227885 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		56EEB54324043C9600522B8C /* Pages */ = {
 			isa = XCSwiftPackageProductDependency;
