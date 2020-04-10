@@ -227,6 +227,7 @@ final class LoginData: UserData {
 		self.isLoggedIn = defaults.bool(forKey: "isLogedIn")
         self.getUser()
 		self.getDatapolicy()
+        self.getLogin()
     }
 
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext

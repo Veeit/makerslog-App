@@ -42,9 +42,11 @@ struct DiscussionsView: View {
 							}
 						}
 					}
-				} else {
+                } else if self.data.discussions?.first?.reply_count != 0 {
 					Text("loading ...")
-				}
+                } else {
+                    Text("Be the first to reply!")
+                }
 			}
 			.navigationBarTitle("Discussion")
 			.navigationBarItems(trailing:
