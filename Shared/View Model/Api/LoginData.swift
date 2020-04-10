@@ -249,6 +249,7 @@ final class LoginData: UserData {
 
 	func setLogin() {
 		setData()
+        self.isLoggedIn = true
 	}
 
     func login() {

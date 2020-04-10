@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import OAuthSwift
+import KeychainSwift
 
 // swiftlint:disable line_length
 
@@ -20,18 +21,19 @@ var oauthswift = OAuth2Swift(
 	responseType: "code"
 )
 var defaults = UserDefaults.standard
+let keychain = KeychainSwift()
 
 func setData() {
-    let defaults = UserDefaults.standard
-    defaults.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-    defaults.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-    defaults.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+    keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
+    keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
+    keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
 }
 
 func getLoginData() {
-    oauthswift.client.credential.oauthToken = defaults.string(forKey: "userToken") ?? ""
-    oauthswift.client.credential.oauthTokenSecret = defaults.string(forKey: "userSecret") ?? ""
-    oauthswift.client.credential.oauthRefreshToken = defaults.string(forKey: "userRefreshToken") ?? ""
+    oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
+    oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
+    oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+    print(oauthswift.client.credential.oauthRefreshToken)
 }
 
 // swiftlint:enable line_length
@@ -41,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // swiftlint:disable all
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        keychain.synchronizable = true
+        
         getLoginData()
 		oauthswift.client.credential.oauthTokenExpiresAt = Date()
 

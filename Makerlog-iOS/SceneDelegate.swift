@@ -11,7 +11,7 @@ import SwiftUI
 import OAuthSwift
 import UserNotifications
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
     // swiftlint:disable all
     var window: UIWindow?
 	// Envoierment Objects
@@ -23,14 +23,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let center = UNUserNotificationCenter.current()
 
+    // Get the managed object context from the shared persistent container.
+    let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
 
+    func show<V: View>(view: V) {
+        self.window?.rootViewController = UIHostingController(rootView: view)
+    }
+    
+    func showMain() {
+        self.show(view: TabScreen()
+                        .environment(\.managedObjectContext, context)
+                        .environmentObject(tabScreenData)
+                        .environmentObject(makerlogApiData)
+                        .environmentObject(loginData)
+                        .environmentObject(commentViewData)
+                        .environmentObject(userData)
+                    )
+    }
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        // Get the managed object context from the shared persistent container.
-        let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -42,10 +57,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 							.environmentObject(commentViewData)
 							.environmentObject(userData)
 
+        let onboarding = Onboarding()
+                            .environment(\.managedObjectContext, context)
+                            .environmentObject(tabScreenData)
+                            .environmentObject(loginData)
+                            .environmentObject(userData)
+                            .environmentObject(self)
+        
+        let root: UIViewController
+        if !UserDefaults.standard.bool(forKey: "Onboarding") {
+            root = UIHostingController(rootView: onboarding)
+        } else {
+            root = UIHostingController(rootView: contentView)
+        }
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = root
             self.window = window
             window.makeKeyAndVisible()
         }

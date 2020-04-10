@@ -51,13 +51,6 @@ struct TabScreen: View {
 				DataSecurity()
 			}.navigationViewStyle(StackNavigationViewStyle())
 		})
-		.overlay(VStack() {
-			if self.data.showOnboarding {
-				Onboarding()
-			} else {
-				EmptyView()
-				}
-		})
 	}
 
 	func errorAlert(errorMessage: String) -> Alert {
