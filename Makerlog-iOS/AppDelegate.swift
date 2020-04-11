@@ -30,10 +30,13 @@ func setData() {
     print("UPDATE    _______--------____-----____")
     do {
         try keychain
+            .synchronizable(true)
             .set(oauthswift.client.credential.oauthToken, key: "userToken")
         try keychain
+            .synchronizable(true)
             .set(oauthswift.client.credential.oauthTokenSecret, key: "userSecret")
         try keychain
+            .synchronizable(true)
             .set(oauthswift.client.credential.oauthRefreshToken, key: "userRefreshToken")
     } catch let error {
         print("error: \(error)")
