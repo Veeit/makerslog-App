@@ -124,7 +124,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         // The scene may re-connect later, as its session was not neccessarily discarded
         // (see `application:didDiscardSceneSessions` instead).
 		
-		setData()
+//		setData()
 //		makerlogApiData.stopSockets()
     }
 
@@ -133,6 +133,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
 		makerlogApiData.getLogs()
 		makerlogApiData.getDissucions()
+        getLoginData()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -152,7 +153,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-		setData()
+//		setData()
 //		makerlogApiData.stopSockets()
 	}
     

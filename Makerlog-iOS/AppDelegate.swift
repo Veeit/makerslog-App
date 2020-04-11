@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import OAuthSwift
-import KeychainSwift
+import KeychainAccess
 
 // swiftlint:disable line_length
 
@@ -21,18 +21,30 @@ var oauthswift = OAuth2Swift(
 	responseType: "code"
 )
 var defaults = UserDefaults.standard
-let keychain = KeychainSwift()
+let keychain = Keychain(service: "dev.veit.logbot" , accessGroup: "7RPD69GC7T.veit.dev.logbot")
 
 func setData() {
-    keychain.set(oauthswift.client.credential.oauthToken, forKey: "userToken")
-    keychain.set(oauthswift.client.credential.oauthTokenSecret, forKey: "userSecret")
-    keychain.set(oauthswift.client.credential.oauthRefreshToken, forKey: "userRefreshToken")
+//    keychain["userToken"] = oauthswift.client.credential.oauthToken
+//    keychain["userSecret"] = oauthswift.client.credential.oauthTokenSecret
+//    keychain["userRefreshToken"] = oauthswift.client.credential.oauthRefreshToken
+    print("UPDATE    _______--------____-----____")
+    do {
+        try keychain
+            .set(oauthswift.client.credential.oauthToken, key: "userToken")
+        try keychain
+            .set(oauthswift.client.credential.oauthTokenSecret, key: "userSecret")
+        try keychain
+            .set(oauthswift.client.credential.oauthRefreshToken, key: "userRefreshToken")
+    } catch let error {
+        print("error: \(error)")
+    }
 }
 
 func getLoginData() {
-    oauthswift.client.credential.oauthToken = keychain.get("userToken") ?? ""
-    oauthswift.client.credential.oauthTokenSecret = keychain.get("userSecret") ?? ""
-    oauthswift.client.credential.oauthRefreshToken = keychain.get("userRefreshToken") ?? ""
+    oauthswift.client.credential.oauthToken = keychain["userToken"] ?? ""
+    oauthswift.client.credential.oauthTokenSecret = keychain["userSecret"] ?? ""
+    oauthswift.client.credential.oauthRefreshToken = keychain["userRefreshToken"] ?? ""
+    
     print(oauthswift.client.credential.oauthRefreshToken)
 }
 
@@ -43,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // swiftlint:disable all
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        keychain.synchronizable = true
         
         getLoginData()
 		oauthswift.client.credential.oauthTokenExpiresAt = Date()

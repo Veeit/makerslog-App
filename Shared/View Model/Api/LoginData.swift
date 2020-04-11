@@ -244,7 +244,7 @@ final class LoginData: UserData {
 
     func getLogin() {
 		if oauthswift.client.credential.oauthToken == "" {
-			getLogin()
+			getLoginData()
 		}
     }
 
