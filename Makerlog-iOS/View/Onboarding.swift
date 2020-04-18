@@ -139,6 +139,7 @@ struct Onboarding: View {
                     Button(action: {
                         self.tabData.setOnbaording()
                         self.tabData.showOnboarding = false
+                         self.sceneDelegate.showMain()
                     }) {
                         Text("Skip login")
                     }.padding([.top], 20)
@@ -166,9 +167,6 @@ struct Onboarding: View {
 		.background(Color.systemBackground)
 		.edgesIgnoringSafeArea(.bottom)
 		.alert(isPresented: $showData, content: {datasecurityAlert()})
-        .onAppear(perform: {
-            self.login.setLogin()
-        })
 
 	}
 

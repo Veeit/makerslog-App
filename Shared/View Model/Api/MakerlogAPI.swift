@@ -44,9 +44,9 @@ class MakerlogAPI: ApiModel, ObservableObject {
 	override init() {
 		super.init()
 		self.getDissucions()
-		if defaults.bool(forKey: "isLogedIn") {
-			self.getNotifications()
-		}
+//		if defaults.bool(forKey: "isLogedIn") {
+//			self.getNotifications()
+//		}
 	}
 
 	private var alertWithNetworkError = 0

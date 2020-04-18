@@ -52,9 +52,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         let contentView = TabScreen()
 							.environment(\.managedObjectContext, context)
 							.environmentObject(tabScreenData)
-							.environmentObject(makerlogApiData)
+							.environmentObject(makerlogApiData) // sorgen
 							.environmentObject(loginData)
-							.environmentObject(commentViewData)
+							.environmentObject(commentViewData) // sorgen
 							.environmentObject(userData)
 
         let onboarding = Onboarding()
@@ -64,12 +64,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
                             .environmentObject(userData)
                             .environmentObject(self)
         
-        let root: UIViewController
+        let testLogin = TestLogin()
+                            .environment(\.managedObjectContext, context)
+                            .environmentObject(tabScreenData)
+                            .environmentObject(loginData)
+                            .environmentObject(userData)
+                            .environmentObject(self)
+        
+        var root: UIViewController
         if !UserDefaults.standard.bool(forKey: "Onboarding") {
             root = UIHostingController(rootView: onboarding)
         } else {
             root = UIHostingController(rootView: contentView)
         }
+        
+//        root = UIHostingController(rootView: testLogin)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

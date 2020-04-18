@@ -51,6 +51,43 @@ func getLoginData() {
     print(oauthswift.client.credential.oauthRefreshToken)
 }
 
+func newToken() {
+    print(oauthswift.client.credential.oauthVerifier)
+    let token = oauthswift.client.credential.oauthToken
+    print("user token \(token)")
+    let parameters = ["token": token]
+    let requestURL = "https://api.getmakerlog.com/me/"
+
+    print("getME")
+
+    oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
+        (credential) in
+        do {
+            let newCredential = try credential.get()
+            oauthswift.client.credential.oauthToken = newCredential.oauthToken
+            print("=========== New Token: ===========")
+            print(newCredential.oauthToken)
+            print(oauthswift.client.credential.oauthToken)
+            print("=========== New Token End ===========")
+            setData()
+        } catch {
+            print("error")
+        }
+    }) { result in
+        switch result {
+        case .success(let response):
+            print("worked")
+            print("user token \(oauthswift.client.credential.oauthToken)")
+        case .failure(let error):
+            print(error)
+            if case .tokenExpired = error {
+              print("old token")
+           }
+            print(".failure")
+        }
+    }
+}
+
 // swiftlint:enable line_length
 
 @UIApplicationMain
@@ -58,15 +95,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // swiftlint:disable all
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+    
+        // Get Login Data
         getLoginData()
-		oauthswift.client.credential.oauthTokenExpiresAt = Date()
+        oauthswift.client.credential.oauthTokenExpiresAt = Date()
 
-		if oauthswift.client.credential.oauthToken != "" {
-			defaults.set(true, forKey: "isLogedIn")
-		} else {
-			defaults.set(false, forKey: "isLogedIn")
-		}
+        if oauthswift.client.credential.oauthToken != "" {
+            defaults.set(true, forKey: "isLogedIn")
+//            newToken()
+        } else {
+            defaults.set(false, forKey: "isLogedIn")
+        }
 		
         UNUserNotificationCenter.current().delegate = self
         

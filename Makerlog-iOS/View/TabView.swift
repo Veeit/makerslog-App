@@ -50,6 +50,9 @@ struct TabScreen: View {
 				DataSecurity()
 			}.navigationViewStyle(StackNavigationViewStyle())
 		})
+        .onAppear(perform: {
+            self.login.getUser()
+        })
 	}
 
 	func errorAlert(errorMessage: String) -> Alert {

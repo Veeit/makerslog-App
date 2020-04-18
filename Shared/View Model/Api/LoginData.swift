@@ -225,9 +225,9 @@ final class LoginData: UserData {
 	override init() {
 		super.init()
 		self.isLoggedIn = defaults.bool(forKey: "isLogedIn")
-        self.getUser()
+//        self.getUser()
 		self.getDatapolicy()
-        self.getLogin()
+//        self.getLogin()
     }
 
     let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
