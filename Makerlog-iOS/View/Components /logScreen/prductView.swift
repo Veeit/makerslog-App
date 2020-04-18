@@ -18,7 +18,7 @@ struct ProductView: View {
 		VStack() {
 			if self.data.products.count > 0 {
 				ForEach(self.data.products) { product in
-					HStack() {
+                    HStack(alignment: .top) {
 							WebImage(url: URL(string: product.icon ?? "https://via.placeholder.com/500?text=No+icon")!,
 								 options: [.decodeFirstFrameOnly],
 								 context: [.imageThumbnailPixelSize: CGSize(width: 140, height: 140)])
