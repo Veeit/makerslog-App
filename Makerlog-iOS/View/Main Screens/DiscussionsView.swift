@@ -42,10 +42,8 @@ struct DiscussionsView: View {
 							}
 						}
 					}
-                } else if self.data.discussions?.first?.reply_count != 0 {
-					Text("loading ...")
                 } else {
-                    Text("Be the first to reply!")
+					Text("loading ...")
                 }
 			}
 			.navigationBarTitle("Discussion")

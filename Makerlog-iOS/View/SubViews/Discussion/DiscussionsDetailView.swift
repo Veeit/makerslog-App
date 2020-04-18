@@ -106,9 +106,11 @@ struct DiscussionsDetailView: View {
 								}
 							}
 						}
-					} else {
-						Text("loading ...!")
-					}
+                    } else if self.data.discussion.reply_count == 0 {
+						Text("Be the first to reply!")
+                    } else {
+                        Text("loading ...!")
+                    }
 
 				}.padding([.bottom], 60)
 

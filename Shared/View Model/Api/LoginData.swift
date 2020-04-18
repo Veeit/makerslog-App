@@ -292,12 +292,21 @@ final class LoginData: UserData {
 			self.userData = [User]()
 			self.userName = "no user"
 
+            do {
+                try keychain.remove("userToken")
+                try keychain.remove("userSecret")
+                try keychain.remove("userRefreshToken")
+            } catch let error {
+                print("error: \(error)")
+            }
+            
 			self.acceptedDatapolicy = false
 //			defaults.set(self.acceptedDatapolicy, forKey: "AcceptedDatapolicy")
 			defaults = UserDefaults.standard
 			if let bundleID = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleID)
 			}
+            
 		}
 	}
 }

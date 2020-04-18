@@ -21,7 +21,7 @@ var oauthswift = OAuth2Swift(
 	responseType: "code"
 )
 var defaults = UserDefaults.standard
-let keychain = Keychain(service: "dev.veit.logbot" , accessGroup: "7RPD69GC7T.veit.dev.logbot")
+let keychain = Keychain(service: "dev.veit.logbot" , accessGroup: "7RPD69GC7T.veit.dev.logbot").synchronizable(true)
 
 func setData() {
 //    keychain["userToken"] = oauthswift.client.credential.oauthToken
