@@ -10,6 +10,11 @@ import UIKit
 import SwiftUI
 import OAuthSwift
 import UserNotifications
+import Combine
+
+final class Device: ObservableObject {
+    @Published var isLandscape: Bool = false
+}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
     // swiftlint:disable all
@@ -20,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
 	let loginData = LoginData()
 	let commentViewData = CommentViewData()
 	let userData = UserData()
+    let device = Device()
 
     let center = UNUserNotificationCenter.current()
 
@@ -56,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
 							.environmentObject(loginData)
 							.environmentObject(commentViewData) // sorgen
 							.environmentObject(userData)
+                            .environmentObject(device)
 
         let onboarding = Onboarding()
                             .environment(\.managedObjectContext, context)
@@ -82,6 +89,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+            device.isLandscape = (windowScene.interfaceOrientation.isLandscape == true)
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = root
             self.window = window
@@ -112,6 +120,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
             // Enable or disable features based on the authorization.
         }
             
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, didUpdate previousCoordinateSpace: UICoordinateSpace, interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation, traitCollection previousTraitCollection: UITraitCollection) {
+        device.isLandscape.toggle()
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -189,4 +201,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         center.removeAllDeliveredNotifications()
     }
 
+}
+
+extension View {
+    func ipadNavigationView(oriantation: Bool) -> some View {
+        if UIDevice.current.userInterfaceIdiom == .pad && oriantation {
+            print(oriantation)
+            return AnyView(self.navigationViewStyle(DoubleColumnNavigationViewStyle()))
+        } else {
+            print(oriantation)
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        }
+    }
 }

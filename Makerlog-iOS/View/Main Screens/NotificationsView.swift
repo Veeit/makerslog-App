@@ -52,7 +52,7 @@ struct NotificationsView: View {
 					Image(systemName: "arrow.2.circlepath")
 				}
 			)
-		}
+        }.navigationViewStyle(StackNavigationViewStyle())
 	}
 
 	struct TargetView: View {
