@@ -17,6 +17,8 @@ struct UserView: View {
 	var userData: [User]
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
+    @State var showContact = false
+    
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure opening_brace
 		VStack() {
@@ -133,6 +135,13 @@ struct UserView: View {
 							}
 						}
 					}
+                    
+                    Button(action: {
+                        self.showContact.toggle()
+                    }) {
+                        Text("Contact")
+                            .foregroundColor(Color.blue)
+                    }
 
 					Section(header: Text("Products").bold()) {
 						ForEach(self.user.userProducts) { product in
@@ -214,5 +223,8 @@ struct UserView: View {
 				Image(systemName: "arrow.2.circlepath")
 			}
 		)
+            .sheet(isPresented: self.$showContact, content: {
+                ContactScreen(user: self.user.userData[0])
+            })
 	}
 }

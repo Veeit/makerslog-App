@@ -10,6 +10,7 @@
 		5603487F24068AF40089FECD /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5603487E24068AF40089FECD /* Products.swift */; };
 		56034884240690D10089FECD /* ReplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034883240690D10089FECD /* ReplayView.swift */; };
 		56034887240691890089FECD /* AddDiscussionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56034886240691890089FECD /* AddDiscussionView.swift */; };
+		56045170244C6D0E005C7FCF /* ContactScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5604516F244C6D0E005C7FCF /* ContactScreen.swift */; };
 		5605C91C24156C37009CB030 /* DiscussionSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5605C91B24156C37009CB030 /* DiscussionSocket.swift */; };
 		560E9FA123D5DB5100A12CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */; };
 		560E9FA323D5DB5100A12CF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FA223D5DB5100A12CF5 /* SceneDelegate.swift */; };
@@ -125,6 +126,7 @@
 		5603487E24068AF40089FECD /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		56034883240690D10089FECD /* ReplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayView.swift; sourceTree = "<group>"; };
 		56034886240691890089FECD /* AddDiscussionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiscussionView.swift; sourceTree = "<group>"; };
+		5604516F244C6D0E005C7FCF /* ContactScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactScreen.swift; sourceTree = "<group>"; };
 		5605C91B24156C37009CB030 /* DiscussionSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionSocket.swift; sourceTree = "<group>"; };
 		560E9F9D23D5DB5100A12CF5 /* logbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = logbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		560E9FA023D5DB5100A12CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		56034888240691D90089FECD /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				5604516E244C6C90005C7FCF /* UserView */,
 				5603488A240692140089FECD /* Discussion */,
 				56034889240691FA0089FECD /* LogFeed */,
 				560348852406916F0089FECD /* AddView */,
@@ -337,6 +340,14 @@
 				5670F31123F5E45300B1D96E /* DiscussionsDetailView.swift */,
 			);
 			path = Discussion;
+			sourceTree = "<group>";
+		};
+		5604516E244C6C90005C7FCF /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				5604516F244C6D0E005C7FCF /* ContactScreen.swift */,
+			);
+			path = UserView;
 			sourceTree = "<group>";
 		};
 		560E9F9423D5DB5100A12CF5 = {
@@ -887,6 +898,7 @@
 				56EEB54824045F5A00522B8C /* SettingsView.swift in Sources */,
 				56EEB54A2405257D00522B8C /* Imprint.swift in Sources */,
 				566F1C8423D8BB0800518FFF /* FetchedObjectsViewModel.swift in Sources */,
+				56045170244C6D0E005C7FCF /* ContactScreen.swift in Sources */,
 				56EEB54C2405284400522B8C /* DataSecurity.swift in Sources */,
 				566F1C7523D7977700518FFF /* CommentViewData.swift in Sources */,
 				56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */,
