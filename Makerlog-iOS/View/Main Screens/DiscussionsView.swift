@@ -11,7 +11,8 @@ import SDWebImageSwiftUI
 
 struct DiscussionsView: View {
 	@EnvironmentObject var data: MakerlogAPI
-
+    @EnvironmentObject var device: Device
+    
     var body: some View {
 		//swiftlint:disable empty_parentheses_with_trailing_closure
 		NavigationView() {
@@ -42,9 +43,9 @@ struct DiscussionsView: View {
 							}
 						}
 					}
-				} else {
+                } else {
 					Text("loading ...")
-				}
+                }
 			}
 			.navigationBarTitle("Discussion")
 			.navigationBarItems(trailing:
@@ -54,7 +55,7 @@ struct DiscussionsView: View {
 					Image(systemName: "arrow.2.circlepath")
 				}
 			)
-		}
+		}.ipadNavigationView(oriantation: device.isLandscape)
 	}
 }
 

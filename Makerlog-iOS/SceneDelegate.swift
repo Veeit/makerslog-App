@@ -10,8 +10,13 @@ import UIKit
 import SwiftUI
 import OAuthSwift
 import UserNotifications
+import Combine
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class Device: ObservableObject {
+    @Published var isLandscape: Bool = false
+}
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
     // swiftlint:disable all
     var window: UIWindow?
 	// Envoierment Objects
@@ -20,32 +25,73 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	let loginData = LoginData()
 	let commentViewData = CommentViewData()
 	let userData = UserData()
+    let device = Device()
 
     let center = UNUserNotificationCenter.current()
 
+    // Get the managed object context from the shared persistent container.
+    let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
 
+    func show<V: View>(view: V) {
+        self.window?.rootViewController = UIHostingController(rootView: view)
+    }
+    
+    func showMain() {
+        self.show(view: TabScreen()
+                        .environment(\.managedObjectContext, context)
+                        .environmentObject(tabScreenData)
+                        .environmentObject(makerlogApiData)
+                        .environmentObject(loginData)
+                        .environmentObject(commentViewData)
+                        .environmentObject(userData)
+                    )
+    }
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        // Get the managed object context from the shared persistent container.
-        let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!
 		
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = TabScreen()
 							.environment(\.managedObjectContext, context)
 							.environmentObject(tabScreenData)
-							.environmentObject(makerlogApiData)
+							.environmentObject(makerlogApiData) // sorgen
 							.environmentObject(loginData)
-							.environmentObject(commentViewData)
+							.environmentObject(commentViewData) // sorgen
 							.environmentObject(userData)
+                            .environmentObject(device)
 
+        let onboarding = Onboarding()
+                            .environment(\.managedObjectContext, context)
+                            .environmentObject(tabScreenData)
+                            .environmentObject(loginData)
+                            .environmentObject(userData)
+                            .environmentObject(self)
+        
+        let testLogin = TestLogin()
+                            .environment(\.managedObjectContext, context)
+                            .environmentObject(tabScreenData)
+                            .environmentObject(loginData)
+                            .environmentObject(userData)
+                            .environmentObject(self)
+        
+        var root: UIViewController
+        if !UserDefaults.standard.bool(forKey: "Onboarding") {
+            root = UIHostingController(rootView: onboarding)
+        } else {
+            root = UIHostingController(rootView: contentView)
+        }
+        
+//        root = UIHostingController(rootView: testLogin)
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+            device.isLandscape = (windowScene.interfaceOrientation.isLandscape == true)
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = root
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -75,6 +121,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
             
     }
+    
+    func windowScene(_ windowScene: UIWindowScene, didUpdate previousCoordinateSpace: UICoordinateSpace, interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation, traitCollection previousTraitCollection: UITraitCollection) {
+        device.isLandscape.toggle()
+    }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
 		print("scene")
@@ -95,7 +145,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // The scene may re-connect later, as its session was not neccessarily discarded
         // (see `application:didDiscardSceneSessions` instead).
 		
-		setData()
+//		setData()
 //		makerlogApiData.stopSockets()
     }
 
@@ -104,6 +154,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
 		makerlogApiData.getLogs()
 		makerlogApiData.getDissucions()
+        getLoginData()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -123,7 +174,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-		setData()
+//		setData()
 //		makerlogApiData.stopSockets()
 	}
     
@@ -150,4 +201,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         center.removeAllDeliveredNotifications()
     }
 
+}
+
+extension View {
+    func ipadNavigationView(oriantation: Bool) -> some View {
+        if UIDevice.current.userInterfaceIdiom == .pad && oriantation {
+            print(oriantation)
+            return AnyView(self.navigationViewStyle(DoubleColumnNavigationViewStyle()))
+        } else {
+            print(oriantation)
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        }
+    }
 }

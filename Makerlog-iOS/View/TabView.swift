@@ -20,29 +20,28 @@ struct TabScreen: View {
 	var body: some View {
 		VStack() {
 //			Text(String(self.login.showDatapolicyAlert))
-				TabView {
-					LogFeedView()
-					.sheet(isPresented: self.$data.showSettings, content: {
-						SettingsView(data: self.data, loginData: self.login)
-					})
-					.tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
+            TabView {
+                LogFeedView()
+                .sheet(isPresented: self.$data.showSettings, content: {
+                    SettingsView(data: self.data, loginData: self.login)
+                })
+                .tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
 
-					VStack {
-							DiscussionsView()
-					}
-					.tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
+                VStack {
+                        DiscussionsView()
+                }
+                .tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
 
-					VStack {
-							AddView()
-					}
-					.tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+                VStack {
+                        AddView()
+                }
+                .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
 
-					VStack {
-							NotificationsView()
-					}
-					.tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
-
-				}
+                VStack {
+                        NotificationsView()
+                }
+                .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+            }
 			.alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
 			.alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
 			.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
@@ -51,13 +50,9 @@ struct TabScreen: View {
 				DataSecurity()
 			}.navigationViewStyle(StackNavigationViewStyle())
 		})
-		.overlay(VStack() {
-			if self.data.showOnboarding {
-				Onboarding()
-			} else {
-				EmptyView()
-				}
-		})
+        .onAppear(perform: {
+            self.login.getUser()
+        })
 	}
 
 	func errorAlert(errorMessage: String) -> Alert {

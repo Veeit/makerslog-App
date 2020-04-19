@@ -19,7 +19,8 @@ struct Page: Identifiable {
 struct Onboarding: View {
 	@EnvironmentObject var tabData: TabScreenData
 	@EnvironmentObject var login: LoginData
-
+    @EnvironmentObject var sceneDelegate: SceneDelegate
+    
     @State var index: Int = 0
 	@State var showData = false
 
@@ -117,29 +118,47 @@ struct Onboarding: View {
 				}
 			}.padding([.bottom], 20)
 			Group() {
-				Button(action: {
-					if self.login.acceptedDatapolicy == false {
-						self.showData.toggle()
-					} else {
-						self.login.login()
-						self.tabData.setOnbaording()
-						self.tabData.showOnboarding = false
-					}
-				}) {
-					Text("Login with makerlog")
-						.bold()
-						.foregroundColor(Color.white)
-						.frame(minWidth: 0, maxWidth: 300, minHeight: 40)
-						.background(Color.blue)
-						.cornerRadius(10)
-				}
+                if oauthswift.client.credential.oauthToken == "" {
+                    Button(action: {
+                        if self.login.acceptedDatapolicy == false {
+                            self.showData.toggle()
+                        } else {
+                            self.login.login()
+                            self.tabData.setOnbaording()
+                            self.tabData.showOnboarding = false
+                        }
+                    }) {
+                        Text("Login with makerlog")
+                            .bold()
+                            .foregroundColor(Color.white)
+                            .frame(minWidth: 0, maxWidth: 300, minHeight: 40)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
 
-				Button(action: {
-					self.tabData.setOnbaording()
-					self.tabData.showOnboarding = false
-				}) {
-					Text("Skip login")
-				}.padding([.top], 20)
+                    Button(action: {
+                        self.tabData.setOnbaording()
+                        self.tabData.showOnboarding = false
+                         self.sceneDelegate.showMain()
+                    }) {
+                        Text("Skip login")
+                    }.padding([.top], 20)
+                } else {
+                    Text(oauthswift.client.credential.oauthToken)
+                    Text(oauthswift.client.credential.oauthRefreshToken)
+                    Button(action: {
+                        self.tabData.setOnbaording()
+                        self.tabData.showOnboarding = false
+                        self.sceneDelegate.showMain()
+                   }) {
+                       Text("Okay")
+                            .bold()
+                            .foregroundColor(Color.white)
+                            .frame(minWidth: 0, maxWidth: 300, minHeight: 40)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                   }
+                }
 			}
 		}
 		.frame(minWidth: 0, maxWidth: .infinity)
