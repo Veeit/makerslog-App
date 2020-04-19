@@ -164,7 +164,7 @@ struct UserView: View {
 
 					Spacer()
 					Section(header: Text("Last logs").bold()) {
-						ForEach(self.user.userRecentLogs) { log in
+                        ForEach(self.user.userRecentLogs) { log in
 							NavigationLink(destination: LogDetailView(log: LogViewData(data: log), fromUser: true)) {
 								VStack() {
 									HStack(alignment: .top) {

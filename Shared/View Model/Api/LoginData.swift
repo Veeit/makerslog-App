@@ -123,8 +123,10 @@ class UserData: ApiModel, ObservableObject {
     }
 
 	func getRecentLogs() {
-		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
+//		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/recent_tasks/"
+        let requestURL = "https://api.getmakerlog.com/tasks/?limit=50&user=\(self.userData.first?.id ?? 0)"
 
+        print(requestURL)
 		self.cancellable = URLSession.shared.dataTaskPublisher(for: URL(string: requestURL)!)
 			.tryMap { output in
 				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -132,7 +134,7 @@ class UserData: ApiModel, ObservableObject {
 				}
 				return output.data
 			}
-			.decode(type: UserRecentLogs.self, decoder: JSONDecoder())
+			.decode(type: Logs.self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
 			.sink(receiveCompletion: { completion in
 				switch completion {
@@ -151,8 +153,8 @@ class UserData: ApiModel, ObservableObject {
 				}
 			}, receiveValue: { result in
 				 DispatchQueue.main.async {
-					if result != self.userRecentLogs && !self.stop {
-						self.userRecentLogs = result
+                    if result.results != self.userRecentLogs && !self.stop {
+                        self.userRecentLogs = result.results
 					}
 				}
 			})
