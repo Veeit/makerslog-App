@@ -83,8 +83,8 @@ struct LogFeedView: View {
 			})
 			.alert(isPresented: $showData, content: {datasecurityAlert()})
 //
-		}
-        .ipadNavigationView(oriantation: device.isLandscape)
+		}.navigationViewStyle(StackNavigationViewStyle())
+//        .ipadNavigationView(oriantation: device.isLandscape)
 	}
 
 	struct EventView: View {

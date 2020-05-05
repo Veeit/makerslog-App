@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 // MARK: - Product
-//swiftlint:disable identifier_name
+//swiftlint:disable identifier_name 
 struct Product: Codable, Identifiable {
     let id: Int
     let name, slug: String

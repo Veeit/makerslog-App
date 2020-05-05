@@ -55,7 +55,9 @@ struct DiscussionsView: View {
 					Image(systemName: "arrow.2.circlepath")
 				}
 			)
-		}.ipadNavigationView(oriantation: device.isLandscape)
+		}
+        .navigationViewStyle(StackNavigationViewStyle())
+        //.ipadNavigationView(oriantation: device.isLandscape)
 	}
 }
 
