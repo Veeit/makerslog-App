@@ -130,7 +130,9 @@ struct DiscussionsDetailView: View {
 							TextField("Add a comment", text: self.$data.reply)
 							Button(action: {
 								if self.login.isLoggedIn == false {
-									self.tabScreenData.showLogin = true
+//									self.tabScreenData.showLogin = true
+                                    self.tabScreenData.presentSheet = .showLogin
+                                    self.tabScreenData.showSheet = true
 								} else {
 									self.data.postReply()
 								}

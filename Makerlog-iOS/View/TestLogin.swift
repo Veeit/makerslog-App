@@ -105,7 +105,9 @@ struct TestLogin: View {
                                     Image(systemName: "trash").imageScale(.large)
                                 }
                                 Button(action: {
-                                    self.tabScreenData.showSettings = true
+//                                    self.tabScreenData.showSettings = true
+                                    self.tabScreenData.presentSheet = .showSettings
+                                    self.tabScreenData.showSheet = true
                                 }) {
                                    Image(systemName: "gear").imageScale(.large)
                                 }
@@ -163,9 +165,9 @@ struct TestLogin: View {
 //                    refreshToken: oauthswift.client.credential.oauthRefreshToken,
 //                    clientSecret: oauthswift.client.credential.oauthTokenSecret))
                 })
-                .sheet(isPresented: self.$tabScreenData.showSettings, content: {
-                    SettingsView(data: self.tabScreenData, loginData: self.login)
-                })
+//                .sheet(isPresented: self.$tabScreenData.showSettings, content: {
+//                    SettingsView(data: self.tabScreenData, loginData: self.login)
+//                })
         }
     }
     
@@ -179,7 +181,9 @@ struct TestLogin: View {
 
         // If the cancel label is omitted, the default "Cancel" text will be shown
         let cancel = ActionSheet.Button.cancel(Text("Open policy")) {
-            self.tabScreenData.showDataPolicy.toggle()
+//            self.tabScreenData.showDataPolicy.toggle()
+            self.tabScreenData.presentSheet = .showDataPolicy
+            self.tabScreenData.showSheet.toggle()
         }
 
         return Alert(title: Text("Datasecurity is important"),

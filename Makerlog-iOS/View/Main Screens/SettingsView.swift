@@ -37,7 +37,9 @@ struct SettingsView: View {
 					Button(action: {
 						self.loginData.logOut()
 						self.data.showOnboarding = true
-						self.data.showSettings = false
+//						self.data.showSettings = false
+                        
+                        self.data.showSheet = false
 					}) {
 						Text("Logout")
 					}
@@ -45,14 +47,16 @@ struct SettingsView: View {
 					Button(action: {
 						self.data.showOnboarding = true
 						self.data.showOnboarding = true
-						self.data.showSettings = false
+//						self.data.showSettings = false
+                         self.data.showSheet = false
 					}) {
 						Text("Show Onbording")
 					}
 					Button(action: {
 						self.loginData.logOut()
 						self.data.showOnboarding = true
-						self.data.showSettings = false
+//						self.data.showSettings = false
+                         self.data.showSheet = false
 					}) {
 						Text("Delete all Data").foregroundColor(Color.red)
 					}

@@ -8,6 +8,43 @@
 
 import SwiftUI
 
+enum TabScreenSheets: Int, Identifiable {
+    case showDataPolicy
+    case showLogin
+    case showSettings
+    
+    var id: Int {
+        return self.rawValue
+    }
+}
+
+private struct TabScreenSheet: View {
+    var selectedItem: TabScreenSheets
+    var login: LoginData
+    var data: TabScreenData
+    
+    var body: some View {
+        switch selectedItem {
+        case .showDataPolicy:
+            return AnyView(
+                NavigationView() {
+                    DataSecurity()
+                }.navigationViewStyle(StackNavigationViewStyle())
+            )
+        case .showLogin:
+            return AnyView(
+                LoginScreen(login: self.login)
+            )
+        case .showSettings:
+            return AnyView(
+                SettingsView(data: self.data, loginData: self.login)
+            )
+        }
+    }
+}
+
+
+
 struct TabScreen: View {
 	@EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
@@ -15,16 +52,17 @@ struct TabScreen: View {
 
     @State private var showDataPolicy: Bool = false
 	// swiftlint:disable empty_parentheses_with_trailing_closure
-	@State private var selection: Int = 0
 
 	var body: some View {
-		VStack() {
-//			Text(String(self.login.showDatapolicyAlert))
+        VStack() {
+            //            Text(String(self.login.showDatapolicyAlert))
             TabView {
-                LogFeedView()
-                .sheet(isPresented: self.$data.showSettings, content: {
-                    SettingsView(data: self.data, loginData: self.login)
-                })
+                VStack {
+                    LogFeedView()
+                }
+//                .sheet(isPresented: self.$data.showSettings, content: {
+//                    SettingsView(data: self.data, loginData: self.login)
+//                })
                 .tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
 
                 VStack {
@@ -42,14 +80,19 @@ struct TabScreen: View {
                 }
                 .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
             }
-			.alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
-			.alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
-			.sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
-		}.sheet(isPresented: self.$data.showDataPolicy, content: {
-			NavigationView() {
-				DataSecurity()
-			}.navigationViewStyle(StackNavigationViewStyle())
-		})
+            .alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
+            .alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})
+//            .sheet(isPresented: self.$data.showLogin, content: {LoginScreen(login: self.login)})
+            .sheet(isPresented: self.$data.showSheet, content: {TabScreenSheet(selectedItem: self.data.presentSheet,
+                                                                                  login: self.login,
+                                                                                  data: self.data
+                                                                                )})
+        }
+//        .sheet(isPresented: self.$data.showDataPolicy, content: {
+//            NavigationView() {
+//                DataSecurity()
+//            }.navigationViewStyle(StackNavigationViewStyle())
+//        })
         .onAppear(perform: {
             self.login.getUser()
         })

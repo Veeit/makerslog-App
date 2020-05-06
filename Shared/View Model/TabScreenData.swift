@@ -17,10 +17,14 @@ class TabScreenData: ObservableObject {
 	@Published var errorText = "unknown error"
 
 	@Published var showOnboarding = false
-	@Published var showSettings = false
-	@Published var showDataPolicy = false
+//	@Published var showSettings = false
+//	@Published var showDataPolicy = false
 
-	@Published var showLogin = false
+//	@Published var showLogin = false
+    
+    @Published var showSheet = false
+    @Published var presentSheet: TabScreenSheets = .showSettings
+    @Published var webViewUrl = ""
 
 	let defaults = UserDefaults.standard
 

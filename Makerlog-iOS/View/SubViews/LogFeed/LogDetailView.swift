@@ -173,7 +173,9 @@ struct LogDetailView: View {
 				TextField("Add a comment", text: $text)
 				Button(action: {
 					if self.login.isLoggedIn == false {
-						self.tabScreenData.showLogin = true
+//						self.tabScreenData.showLogin = true
+                        self.tabScreenData.presentSheet = .showLogin
+                        self.tabScreenData.showSheet = true
 					} else {
 						self.comments.addComment(logID: self.logID, content: self.text)
 					}

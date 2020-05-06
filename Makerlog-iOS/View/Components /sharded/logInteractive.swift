@@ -30,7 +30,9 @@ struct LogInteractive: View {
 			Text("👏 \(self.log.data.praise)")
 				.onTapGesture {
 					if self.login.isLoggedIn == false {
-						self.tabScreenData.showLogin = true
+//						self.tabScreenData.showLogin = true
+                        self.tabScreenData.presentSheet = .showLogin
+                        self.tabScreenData.showSheet = true
 					} else {
 						self.makerlogAPI.addPraise(log: self.log.data)
 					}

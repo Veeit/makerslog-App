@@ -66,6 +66,7 @@ struct ContactScreen: View {
                 }
                 
             }.navigationBarTitle("Contact \(user.username)")
+             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
     func openLink(link: String) {

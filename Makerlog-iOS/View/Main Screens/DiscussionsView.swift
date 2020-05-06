@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImage
 import SDWebImageSwiftUI
 
 struct DiscussionsView: View {

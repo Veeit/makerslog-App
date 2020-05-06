@@ -17,7 +17,7 @@ struct Page: Identifiable {
 }
 
 struct Onboarding: View {
-	@EnvironmentObject var tabData: TabScreenData
+	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
     @EnvironmentObject var sceneDelegate: SceneDelegate
     
@@ -124,8 +124,8 @@ struct Onboarding: View {
                             self.showData.toggle()
                         } else {
                             self.login.login()
-                            self.tabData.setOnbaording()
-                            self.tabData.showOnboarding = false
+                            self.tabScreenData.setOnbaording()
+                            self.tabScreenData.showOnboarding = false
                         }
                     }) {
                         Text("Login with makerlog")
@@ -137,8 +137,8 @@ struct Onboarding: View {
                     }
 
                     Button(action: {
-                        self.tabData.setOnbaording()
-                        self.tabData.showOnboarding = false
+                        self.tabScreenData.setOnbaording()
+                        self.tabScreenData.showOnboarding = false
                          self.sceneDelegate.showMain()
                     }) {
                         Text("Skip login")
@@ -147,8 +147,8 @@ struct Onboarding: View {
                     Text(oauthswift.client.credential.oauthToken)
                     Text(oauthswift.client.credential.oauthRefreshToken)
                     Button(action: {
-                        self.tabData.setOnbaording()
-                        self.tabData.showOnboarding = false
+                        self.tabScreenData.setOnbaording()
+                        self.tabScreenData.showOnboarding = false
                         self.sceneDelegate.showMain()
                    }) {
                        Text("Okay")
@@ -174,13 +174,16 @@ struct Onboarding: View {
 		let save = ActionSheet.Button.default(Text("Accept")) {
 			self.login.acceptDatapolicy()
 			self.login.login()
-			self.tabData.setOnbaording()
-			self.tabData.showOnboarding = false
+			self.tabScreenData.setOnbaording()
+			self.tabScreenData.showOnboarding = false
 		}
 
         // If the cancel label is omitted, the default "Cancel" text will be shown
 		let cancel = ActionSheet.Button.cancel(Text("Open policy")) {
-			self.tabData.showDataPolicy.toggle()
+//			self.tabData.showDataPolicy.toggle()
+//            self.tabScreenData.showSheet.toggle()
+            self.tabScreenData.presentSheet = .showDataPolicy
+            self.tabScreenData.showSheet = true
 		}
 
         return Alert(title: Text("Datasecurity is important"),

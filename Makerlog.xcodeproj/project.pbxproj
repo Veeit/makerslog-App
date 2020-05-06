@@ -69,6 +69,7 @@
 		56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */; };
 		56C94A8823D6F9AA007840DB /* MakerlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */; };
 		56C94A8C23D6FBF5007840DB /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C94A8B23D6FBF5007840DB /* LogDetailView.swift */; };
+		56CBDA512462C6D5006D69A7 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CBDA502462C6D5006D69A7 /* SafariView.swift */; };
 		56D2C71523DF4BDB0017A7B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D2C71423DF4BDB0017A7B4 /* User.swift */; };
 		56D4E45A23E9C26100679DD4 /* EventImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45923E9C26100679DD4 /* EventImg.swift */; };
 		56D4E45C23E9C9C500679DD4 /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E45B23E9C9C500679DD4 /* AddLogView.swift */; };
@@ -184,6 +185,7 @@
 		56C1A29223EAE9A500A70718 /* LogViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewMacOS.swift; sourceTree = "<group>"; };
 		56C94A8723D6F9A9007840DB /* MakerlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerlogAPI.swift; sourceTree = "<group>"; };
 		56C94A8B23D6FBF5007840DB /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
+		56CBDA502462C6D5006D69A7 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		56D2C71423DF4BDB0017A7B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56D4E45923E9C26100679DD4 /* EventImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImg.swift; sourceTree = "<group>"; };
 		56D4E45B23E9C9C500679DD4 /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				56034889240691FA0089FECD /* LogFeed */,
 				560348852406916F0089FECD /* AddView */,
 				560348812406902E0089FECD /* Settings */,
+				56CBDA502462C6D5006D69A7 /* SafariView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				5603487F24068AF40089FECD /* Products.swift in Sources */,
 				56EEB54624043CB100522B8C /* Onboarding.swift in Sources */,
 				567CD4AA24029171009B944F /* ApiModel.swift in Sources */,
+				56CBDA512462C6D5006D69A7 /* SafariView.swift in Sources */,
 				56034887240691890089FECD /* AddDiscussionView.swift in Sources */,
 				5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */,
 				56D4E45E23E9CCA900679DD4 /* AddLogData.swift in Sources */,
@@ -1155,7 +1159,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-neu";
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.14.42;
+				CURRENT_PROJECT_VERSION = 1.1.16.42;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -1180,7 +1184,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-neu";
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.14.42;
+				CURRENT_PROJECT_VERSION = 1.1.16.42;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;

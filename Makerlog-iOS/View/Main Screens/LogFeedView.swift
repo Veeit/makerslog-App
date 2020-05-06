@@ -33,7 +33,9 @@ struct LogFeedView: View {
 			.navigationBarTitle("LogBot", displayMode: .large)
 			.navigationBarItems(leading:
 						Button(action: {
-							self.tabScreenData.showSettings = true
+//							self.tabScreenData.showSettings = true
+                            self.tabScreenData.presentSheet = .showSettings
+                            self.tabScreenData.showSheet = true
 						}) {
 							Image(systemName: "gear").imageScale(.large)
 						},
@@ -105,7 +107,9 @@ struct LogFeedView: View {
 
         // If the cancel label is omitted, the default "Cancel" text will be shown
 		let cancel = ActionSheet.Button.cancel(Text("Open policy")) {
-			self.tabScreenData.showDataPolicy.toggle()
+//			self.tabScreenData.showDataPolicy.toggle()
+            self.tabScreenData.presentSheet = .showDataPolicy
+            self.tabScreenData.showSheet = true
 		}
 
         return Alert(title: Text("Datasecurity is important"),
