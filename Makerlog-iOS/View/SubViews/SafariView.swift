@@ -1,7 +1,7 @@
 //
 //  SafariView.swift
 //  iOS
-//
+//                                                                
 //  Created by Veit Progl on 06.05.20.
 //  Copyright © 2020 Veit Progl. All rights reserved.
 //

@@ -278,7 +278,7 @@ final class LoginData: UserData {
 				}
             }
         }
-    }
+    } 
 
 	func logOut() {
 		if isLoggedIn {
