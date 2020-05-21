@@ -84,6 +84,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
         } else {
             root = UIHostingController(rootView: contentView)
         }
+        
         oauthswift.authorizeURLHandler = SafariURLHandler(viewController: root, oauthSwift: oauthswift)
         
 //        root = UIHostingController(rootView: testLogin)

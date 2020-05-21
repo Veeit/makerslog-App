@@ -282,13 +282,11 @@ final class LoginData: UserData {
 
 	func logOut() {
 		if isLoggedIn {
-			oauthswift = OAuth2Swift(
-				consumerKey: "b8uO2fITOTsllzkIFsJ5S22RvsynSEn096ZnZteq",
-				consumerSecret: "vop395nOpMQaKzh7BdkSBOZ8mgHClyUe1bUfDANPGLVMKoY97A3S6N9CWP2U4BPWXc5NBXHSOML2X68MDt6lChdQq3Rx4YeLqc0yQOta0DMwkLncURkGabpXQp9BjQlg",
-				authorizeUrl: "https://api.getmakerlog.com/oauth/authorize/",
-				accessTokenUrl: "https://api.getmakerlog.com/oauth/token/",
-				responseType: "code"
-			)
+            oauthswift.client.credential.oauthToken = ""
+            oauthswift.client.credential.oauthTokenSecret = ""
+            oauthswift.client.credential.oauthRefreshToken = ""
+            oauthswift.client.credential.oauthTokenExpiresAt = Date()
+
 			self.isLoggedIn = false
 
 			self.userData = [User]()
