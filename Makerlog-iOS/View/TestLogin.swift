@@ -48,7 +48,7 @@ class Logins: ObservableObject {
             }
         }) { result in
             switch result {
-            case .success(let response):
+            case .success(_):
                 print("worked")
                 print("user token \(oauthswift.client.credential.oauthToken)")
                 

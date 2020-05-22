@@ -49,7 +49,9 @@ class DiscussionData: ApiModel, ObservableObject {
 						}
 					}, receiveValue: { result in
 						 DispatchQueue.main.async {
-							self.discussionResponse = result
+                            if self.discussionResponse.count <= result.count {
+                                self.discussionResponse = result
+                            }
 						}
 					})
 	}
