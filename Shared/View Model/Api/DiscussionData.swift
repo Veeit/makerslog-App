@@ -62,7 +62,7 @@ class DiscussionData: ApiModel, ObservableObject {
 		case statusCode
 	}
 
-	func postReply() {
+    func postReply() {
 		let token = oauthswift.client.credential.oauthToken
 		let parameters = ["token": token, "body": reply]
 		let requestURL = "https://api.getmakerlog.com/discussions/\(self.discussion.slug)/replies/"
@@ -101,7 +101,7 @@ class DiscussionData: ApiModel, ObservableObject {
 	}
 
 	func getReplyReplys(reply: DiscussionResponseElement) -> [DiscussionResponseElement] {
-		var replyReplys = [DiscussionResponseElement]()
+        var replyReplys = [DiscussionResponseElement]()
 		for post in discussionResponse  where post.parent_reply == reply.id {
    				replyReplys.append(post)
 		}

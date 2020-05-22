@@ -12,24 +12,6 @@ import SwiftUIX
 import MDText
 import SDWebImageSwiftUI
 
-struct AttributedText: UIViewRepresentable {
-    var attributedText: NSAttributedString
-
-    init(_ attributedText: NSAttributedString) {
-        self.attributedText = attributedText
-    }
-
-    func makeUIView(context: Context) -> UITextView {
-        return UITextView()
-    }
-
-    func updateUIView(_ label: UITextView, context: Context) {
-        label.attributedText = attributedText
-    }
-}
-
-//usage:
-
 struct DiscussionsDetailView: View {
 	@ObservedObject var data: DiscussionData
 	@EnvironmentObject var tabScreenData: TabScreenData
