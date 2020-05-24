@@ -10,7 +10,7 @@ import Foundation
 struct Discussions: Codable {
     let count: Int
     let next: String?
-//    let previous: String?
+    let previous: String?
     let results: [ResultDiscussion]
 }
 
@@ -23,6 +23,7 @@ struct ResultDiscussion: Codable, Identifiable {
     let title, body: String
     let pinned: Bool
     let createdAt, updatedAt: String?
+    let og_image: String?
     let reply_count: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -34,5 +35,6 @@ struct ResultDiscussion: Codable, Identifiable {
         case createdAt
         case updatedAt
         case reply_count
+        case og_image
     }
 }

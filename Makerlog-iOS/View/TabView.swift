@@ -55,14 +55,10 @@ struct TabScreen: View {
 
 	var body: some View {
         VStack() {
-            //            Text(String(self.login.showDatapolicyAlert))
             TabView {
                 VStack {
                     LogFeedView()
                 }
-//                .sheet(isPresented: self.$data.showSettings, content: {
-//                    SettingsView(data: self.data, loginData: self.login)
-//                })
                 .tabItem({ TabLabel(imageName: "house.fill", label: "Home") })
 
                 VStack {
@@ -88,11 +84,6 @@ struct TabScreen: View {
                                                                                   data: self.data
                                                                                 )})
         }
-//        .sheet(isPresented: self.$data.showDataPolicy, content: {
-//            NavigationView() {
-//                DataSecurity()
-//            }.navigationViewStyle(StackNavigationViewStyle())
-//        })
         .onAppear(perform: {
             self.login.getUser()
         })

@@ -40,19 +40,21 @@ struct LogDetailView: View {
 
 					LogInteractive(log: self.log).offset(x: -10)
 
-					Section(header: Text("Products:")) {
-						ForEach(self.log.data.projectSet) { project in
-							VStack(alignment: .leading) {
-								ProductView(data: ProductViewData(projectID: String(project.id)))
-							}
-							.padding([.top, .bottom], 10)
-							.frame(minHeight: 60)
-						}
-					}
+                    if self.log.data.projectSet != nil {
+                        Section(header: Text("Products:")) {
+                            ForEach(self.log.data.projectSet ?? [Projects]()) { project in
+                                VStack(alignment: .leading) {
+                                    ProductView(data: ProductViewData(projectID: String(project.id)))
+                                }
+                                .padding([.top, .bottom], 10)
+                                .frame(minHeight: 60)
+                            }
+                        }
+                    }
 
 					if self.log.data.attachment != nil {
 						Section() {
-							WebImage(url: URL(string: self.log.data.attachment!)!,
+							WebImage(url: URL(string: self.log.data.attachment ?? "")!,
 								 options: [.decodeFirstFrameOnly])
 							.placeholder(Image("imagePlaceholder"))
 							.resizable()

@@ -28,7 +28,7 @@ struct User: Codable {
     let streak: Int
     let timezone: String
     let weekTda: Float
-    let twitterHandle, instagramHandle, productHuntHandle, githubHandle: String?
+    let twitterHandle, instagramHandle, productHuntHandle, githubHandle, nomadlistHandle: String?
     let telegramHandle, bmcHandle: String?
     let header: String?
     let isStaff, donor: Bool
@@ -37,6 +37,8 @@ struct User: Codable {
     let accent: String
     let makerScore: Int
     let darkMode, weekendsOff, hardcoreMode: Bool
+    let email_notifications: Bool
+    let og_image: String?
 
     enum CodingKeys: String, CodingKey {
         case id, username
@@ -53,6 +55,7 @@ struct User: Codable {
         case productHuntHandle = "product_hunt_handle"
         case githubHandle = "github_handle"
         case telegramHandle = "telegram_handle"
+        case nomadlistHandle = "nomadlist_handle"
         case bmcHandle = "bmc_handle"
         case header
         case isStaff = "is_staff"
@@ -65,6 +68,8 @@ struct User: Codable {
         case darkMode = "dark_mode"
         case weekendsOff = "weekends_off"
         case hardcoreMode = "hardcore_mode"
+        case email_notifications
+        case og_image
     }
 
 	mutating func getUserName() -> String {

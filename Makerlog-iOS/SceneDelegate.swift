@@ -71,13 +71,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
                             .environmentObject(userData)
                             .environmentObject(self)
         
-        let testLogin = TestLogin()
-                            .environment(\.managedObjectContext, context)
-                            .environmentObject(tabScreenData)
-                            .environmentObject(loginData)
-                            .environmentObject(userData)
-                            .environmentObject(self)
-        
         var root: UIViewController
         if !UserDefaults.standard.bool(forKey: "Onboarding") {
             root = UIHostingController(rootView: onboarding)
