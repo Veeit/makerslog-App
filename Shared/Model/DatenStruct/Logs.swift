@@ -28,7 +28,7 @@ struct Log: Codable, Identifiable, Equatable {
 	var praise: Int
     let attachment: String?
     let commentCount: Int
-    let og_image: String
+    let og_image: String?
 
     enum CodingKeys: String, CodingKey {
         case id, event, done
