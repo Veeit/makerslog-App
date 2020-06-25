@@ -27,12 +27,12 @@ struct UserView: View {
 					VStack() {
 						GeometryReader { geometry in
 							ZStack {
-								LineView(data: ChartData(points: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4]), title: "")
-									.padding([.top, .bottom])
-									.frame(width: geometry.size.width, height: geometry.size.height)
-									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
-									.clipped()
-									.disabled(true)
+//								LineView(data: ChartData(points: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4]), title: "")
+//									.padding([.top, .bottom])
+//									.frame(width: geometry.size.width, height: geometry.size.height)
+//									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
+//									.clipped()
+//									.disabled(true)
 							}
 						}
 						.frame(height: 400)
@@ -223,8 +223,8 @@ struct UserView: View {
 				Image(systemName: "arrow.2.circlepath")
 			}
 		)
-            .sheet(isPresented: self.$showContact, content: {
-                ContactScreen(user: self.user.userData[0])
-            })
+        .sheet(isPresented: self.$showContact, content: {
+            ContactScreen(user: self.user.userData[0])
+        })
 	}
 }
