@@ -30,7 +30,6 @@
 		562065A3240E99DF0016B21D /* closeKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562065A2240E99DF0016B21D /* closeKeyboard.swift */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
-		56306075241500FD007173A0 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56306074241500FD007173A0 /* MDText */; };
 		565A70002423E837006F4A4E /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 565A6FFF2423E837006F4A4E /* OAuthSwift */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
@@ -55,6 +54,7 @@
 		5683E075240AFA2600A15518 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E074240AFA2500A15518 /* UserStats.swift */; };
 		5683E078240AFB3600A15518 /* UserStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683E077240AFB3600A15518 /* UserStatsView.swift */; };
 		569EF18A2441C3F600598569 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 569EF1892441C3F600598569 /* KeychainAccess */; };
+		56A2CD0024A4F224003CD908 /* MDText in Frameworks */ = {isa = PBXBuildFile; productRef = 56A2CCFF24A4F224003CD908 /* MDText */; };
 		56ADC48524144A940082930A /* logsSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADC48424144A940082930A /* logsSocket.swift */; };
 		56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = 56BE7B3A23EF4631006EE3AF /* KeyboardObserving */; };
 		56BE7B4623F0AA3B006EE3AF /* Praise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE7B4523F0AA3B006EE3AF /* Praise.swift */; };
@@ -127,7 +127,6 @@
 		562065A2240E99DF0016B21D /* closeKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeKeyboard.swift; sourceTree = "<group>"; };
 		5622AFB523FBFC8B00CC1B76 /* progressImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressImg.swift; sourceTree = "<group>"; };
 		5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
-		56569B70240D52B6009F81E3 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
 		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		566DF0D323DF01E50085C318 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		567CD4A924029171009B944F /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		5683E074240AFA2500A15518 /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 		5683E077240AFB3600A15518 /* UserStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsView.swift; sourceTree = "<group>"; };
+		56A2CCFE24A4F21C003CD908 /* MDText-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MDText-master"; sourceTree = "<group>"; };
 		56ADC48424144A940082930A /* logsSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logsSocket.swift; sourceTree = "<group>"; };
 		56BE7B4523F0AA3B006EE3AF /* Praise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Praise.swift; sourceTree = "<group>"; };
 		56C1A29023EAE99500A70718 /* LogFeedViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedViewMacOS.swift; sourceTree = "<group>"; };
@@ -173,7 +173,6 @@
 		56D4E48523EAB73900679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D4E48E23EAB73A00679DD4 /* makerlog_macOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makerlog_macOSUITests.swift; sourceTree = "<group>"; };
 		56D4E49023EAB73A00679DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56D7B4F82423872900664710 /* MDText-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MDText-master"; sourceTree = "<group>"; };
 		56EEB54524043CB100522B8C /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		56EEB54724045F5A00522B8C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56EEB5492405257D00522B8C /* Imprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imprint.swift; sourceTree = "<group>"; };
@@ -187,11 +186,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56306075241500FD007173A0 /* MDText in Frameworks */,
 				56C8FE47240FDAF800E28FC5 /* SDWebImageSwiftUI in Frameworks */,
 				56C8FE42240FDACF00E28FC5 /* SDWebImage in Frameworks */,
 				56BE7B3B23EF4631006EE3AF /* KeyboardObserving in Frameworks */,
 				569EF18A2441C3F600598569 /* KeychainAccess in Frameworks */,
+				56A2CD0024A4F224003CD908 /* MDText in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				56100C8924A4D92C00351EF6 /* SwiftUICharts in Frameworks */,
@@ -399,11 +398,10 @@
 		5648852823E036A4001E6467 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56D7B4F82423872900664710 /* MDText-master */,
+				56A2CCFE24A4F21C003CD908 /* MDText-master */,
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
-				56569B70240D52B6009F81E3 /* ChartView-master */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,10 +576,10 @@
 				56C8FE41240FDACF00E28FC5 /* SDWebImage */,
 				56C8FE43240FDACF00E28FC5 /* SDWebImageMapKit */,
 				56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */,
-				56306074241500FD007173A0 /* MDText */,
 				565A6FFF2423E837006F4A4E /* OAuthSwift */,
 				569EF1892441C3F600598569 /* KeychainAccess */,
 				56100C8824A4D92C00351EF6 /* SwiftUICharts */,
+				56A2CCFF24A4F224003CD908 /* MDText */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -1208,10 +1206,6 @@
 			package = 56100C8724A4D92C00351EF6 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
-		56306074241500FD007173A0 /* MDText */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MDText;
-		};
 		565A6FFF2423E837006F4A4E /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */;
@@ -1221,6 +1215,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 569EF1882441C3F600598569 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		56A2CCFF24A4F224003CD908 /* MDText */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MDText;
 		};
 		56BE7B3A23EF4631006EE3AF /* KeyboardObserving */ = {
 			isa = XCSwiftPackageProductDependency;
