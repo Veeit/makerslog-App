@@ -33,6 +33,7 @@ struct UserView: View {
 //									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
 //									.clipped()
 //									.disabled(true)
+                                EmptyView()
 							}
 						}
 						.frame(height: 400)
