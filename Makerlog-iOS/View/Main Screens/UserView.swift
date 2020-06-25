@@ -27,13 +27,13 @@ struct UserView: View {
 					VStack() {
 						GeometryReader { geometry in
 							ZStack {
-//								LineView(data: ChartData(points: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4]), title: "")
-//									.padding([.top, .bottom])
-//									.frame(width: geometry.size.width, height: geometry.size.height)
-//									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
-//									.clipped()
-//									.disabled(true)
-                                EmptyView()
+								LineView(data: ChartData(points: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4]), title: "")
+									.padding([.top, .bottom])
+									.frame(width: geometry.size.width, height: geometry.size.height)
+									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
+									.clipped()
+									.disabled(true)
+//                                EmptyView()
 							}
 						}
 						.frame(height: 400)

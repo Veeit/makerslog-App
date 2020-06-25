@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "SwiftUICharts",
-        "repositoryURL": "https://github.com/AppPear/ChartView",
-        "state": {
-          "branch": null,
-          "revision": "27e7e0dd1d58076e2d10e74995468c08ba2751a0",
-          "version": "1.5.1"
-        }
-      },
-      {
         "package": "Down",
         "repositoryURL": "https://github.com/iwasrobbed/Down",
         "state": {

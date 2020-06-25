@@ -24,12 +24,12 @@
 		560E9FD423D5F23500A12CF5 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* Logs.swift */; };
 		560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */; };
 		560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9223EAF1F500E0B172 /* Notification.swift */; };
-		56100C8924A4D92C00351EF6 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 56100C8824A4D92C00351EF6 /* SwiftUICharts */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
 		562065A3240E99DF0016B21D /* closeKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562065A2240E99DF0016B21D /* closeKeyboard.swift */; };
 		5622AFB623FBFC8B00CC1B76 /* progressImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB523FBFC8B00CC1B76 /* progressImg.swift */; };
 		5622AFB823FC1A7000CC1B76 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */; };
+		565859FE24A536F1007352A0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 565859FD24A536F1007352A0 /* SwiftUICharts */; };
 		565A70002423E837006F4A4E /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 565A6FFF2423E837006F4A4E /* OAuthSwift */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
@@ -127,6 +127,7 @@
 		562065A2240E99DF0016B21D /* closeKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeKeyboard.swift; sourceTree = "<group>"; };
 		5622AFB523FBFC8B00CC1B76 /* progressImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressImg.swift; sourceTree = "<group>"; };
 		5622AFB723FC1A7000CC1B76 /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
+		565859FC24A536D7007352A0 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
 		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		566DF0D323DF01E50085C318 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -193,7 +194,7 @@
 				56A2CD0024A4F224003CD908 /* MDText in Frameworks */,
 				56C44F8D240E5BAD0057220D /* Down in Frameworks */,
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
-				56100C8924A4D92C00351EF6 /* SwiftUICharts in Frameworks */,
+				565859FE24A536F1007352A0 /* SwiftUICharts in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				565A70002423E837006F4A4E /* OAuthSwift in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
@@ -400,6 +401,7 @@
 			children = (
 				56A2CCFE24A4F21C003CD908 /* MDText-master */,
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
+				565859FC24A536D7007352A0 /* ChartView-master */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
 			);
@@ -578,8 +580,8 @@
 				56C8FE46240FDAF800E28FC5 /* SDWebImageSwiftUI */,
 				565A6FFF2423E837006F4A4E /* OAuthSwift */,
 				569EF1892441C3F600598569 /* KeychainAccess */,
-				56100C8824A4D92C00351EF6 /* SwiftUICharts */,
 				56A2CCFF24A4F224003CD908 /* MDText */,
+				565859FD24A536F1007352A0 /* SwiftUICharts */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -662,7 +664,6 @@
 				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				569EF1882441C3F600598569 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				56100C8724A4D92C00351EF6 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -960,7 +961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-neu";
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.17.42;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -985,7 +986,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-neu";
 				CODE_SIGN_ENTITLEMENTS = makerlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.17.42;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Makerlog-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = 7RPD69GC7T;
 				ENABLE_PREVIEWS = YES;
@@ -1126,14 +1127,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		56100C8724A4D92C00351EF6 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.1;
-			};
-		};
 		565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -1201,9 +1194,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		56100C8824A4D92C00351EF6 /* SwiftUICharts */ = {
+		565859FD24A536F1007352A0 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 56100C8724A4D92C00351EF6 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
 		565A6FFF2423E837006F4A4E /* OAuthSwift */ = {
