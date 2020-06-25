@@ -22,19 +22,19 @@ struct AddView: View {
 	var body: some View {
 		NavigationView() {
 			VStack() {
-				Picker(selection: $selectedType, label: Text("Types")) {
-					ForEach(0 ..< types.count) {
-						Text(self.types[$0]).tag($0)
-					}
-				}.pickerStyle(SegmentedPickerStyle())
+//				Picker(selection: $selectedType, label: Text("Types")) {
+//					ForEach(0 ..< types.count) {
+//						Text(self.types[$0]).tag($0)
+//					}
+//				}.pickerStyle(SegmentedPickerStyle())
 
-				if selectedType == 0 {
+//				if selectedType == 0 {
 					AddLogView()
-				} else if selectedType == 1 {
-					AddDiscussionView()
-				} else {
-					Spacer()
-				}
+//				} else if selectedType == 1 {
+//					AddDiscussionView()
+//				} else {
+//					Spacer()
+//				}
 			}
 			.padding([.leading, .trailing], 20)
 			.padding([.bottom], 10)
