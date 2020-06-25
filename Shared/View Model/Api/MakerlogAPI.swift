@@ -43,7 +43,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	override init() {
 		super.init()
-		self.getDissucions()
+//		self.getDissucions()
 //		if defaults.bool(forKey: "isLogedIn") {
 //			self.getNotifications()
 //		}
@@ -183,46 +183,46 @@ class MakerlogAPI: ApiModel, ObservableObject {
 		}
 	}
 
-	func getDissucions() {
-		let requestURL = "https://api.getmakerlog.com/discussions/?limit=50"
-		let request = URLRequest(url: URL(string: requestURL)!)
-
-		print("start Discussion")
-
-		self.cancellableDiscussion = URLSession.shared.dataTaskPublisher(for: request)
-			.tryMap { output in
-				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
-					throw HTTPError2.statusCode
-				}
-				return output.data
-			}
-			.decode(type: Discussions.self, decoder: JSONDecoder())
-			.eraseToAnyPublisher()
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case .failure(let error):
-					if error.localizedDescription == "The request timed out." {
-						print("time out")
-					} else {
-//						fatalError(error.localizedDescription)
-						DispatchQueue.main.async {
-							self.errorText = error.localizedDescription
-							self.showError = true
-							if self.alertWithNetworkError >= 1 {
-								self.alertWithNetworkError += 1
-							}
-						}
-					}
-				}
-			}, receiveValue: { result in
-				 DispatchQueue.main.async {
-					 self.discussions = result.results
-                    self.cancellableDiscussion?.cancel()
-				 }
-			})
-	}
+//	func getDissucions() {
+//		let requestURL = "https://api.getmakerlog.com/discussions/?limit=50"
+//		let request = URLRequest(url: URL(string: requestURL)!)
+//
+//		print("start Discussion")
+//
+//		self.cancellableDiscussion = URLSession.shared.dataTaskPublisher(for: request)
+//			.tryMap { output in
+//				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+//					throw HTTPError2.statusCode
+//				}
+//				return output.data
+//			}
+//			.decode(type: Discussions.self, decoder: JSONDecoder())
+//			.eraseToAnyPublisher()
+//			.sink(receiveCompletion: { completion in
+//				switch completion {
+//				case .finished:
+//					break
+//				case .failure(let error):
+//					if error.localizedDescription == "The request timed out." {
+//						print("time out")
+//					} else {
+////						fatalError(error.localizedDescription)
+//						DispatchQueue.main.async {
+//							self.errorText = error.localizedDescription
+//							self.showError = true
+//							if self.alertWithNetworkError >= 1 {
+//								self.alertWithNetworkError += 1
+//							}
+//						}
+//					}
+//				}
+//			}, receiveValue: { result in
+//				 DispatchQueue.main.async {
+//					 self.discussions = result.results
+//                    self.cancellableDiscussion?.cancel()
+//				 }
+//			})
+//	}
 
 	func deleteLog(log: Log) {
 		let token = oauthswift.client.credential.oauthToken
