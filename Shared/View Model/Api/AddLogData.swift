@@ -19,6 +19,7 @@ class AddLogData: ApiModel, ObservableObject {
 	func createNewLog() {
 
         let token = oauthswift.client.credential.oauthToken
+        print(token)
 		let parameters = ["token": token,
 						  "content": text,
 						  "done": "\(isDone)",

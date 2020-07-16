@@ -196,7 +196,7 @@ struct UserView: View {
 			}
 			.listStyle(DefaultListStyle())
 		}
-		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
+//		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
 		.onAppear(perform: {
 			self.user.stop = false
 			self.user.userData = self.userData

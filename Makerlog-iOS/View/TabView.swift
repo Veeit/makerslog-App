@@ -75,6 +75,11 @@ struct TabScreen: View {
                         NotificationsView()
                 }
                 .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+                
+                VStack {
+                    UserTabView()
+                }
+                .tabItem({ TabLabel(imageName: "person.fill", label: "User") })
             }
             .alert(isPresented: self.$data.showError, content: {errorAlert(errorMessage: self.data.errorText)})
             .alert(isPresented: self.$makerlog.showError, content: {errorAlert(errorMessage: self.makerlog.errorText)})

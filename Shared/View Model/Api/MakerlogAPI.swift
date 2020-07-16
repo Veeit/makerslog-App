@@ -226,7 +226,9 @@ class MakerlogAPI: ApiModel, ObservableObject {
 
 	func deleteLog(log: Log) {
 		let token = oauthswift.client.credential.oauthToken
-		let parameters = ["token": token]
+        print(token)
+//		let parameters = ["token": token]
+        let parameters = ["Authorization": "Bearer \(token)"]
 		let requestURL = "https://api.getmakerlog.com/tasks/\(log.id)/"
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .DELETE, parameters: parameters, onTokenRenewal: {

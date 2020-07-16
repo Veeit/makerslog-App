@@ -37,6 +37,7 @@ struct LogDetailView: View {
 							UserHeader(log: self.log)
 						}
 					}
+//                    Text(String("\(self.log.data.id)"))
 
 					LogInteractive(log: self.log).offset(x: -10)
 

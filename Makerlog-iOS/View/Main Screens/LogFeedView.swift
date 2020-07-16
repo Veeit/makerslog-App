@@ -26,6 +26,17 @@ struct LogFeedView: View {
 		NavigationView() {
 			List() {
 //                Text(String("\(device.isLandscape)"))
+//                Button(action: {
+//                    if self.login.acceptedDatapolicy == false {
+//                        self.showData.toggle()
+//                    } else {
+//                        self.login.login()
+//                        self.login.getUser()
+//                    }
+//                }) {
+//                    Text("Login").foregroundColor(Color.blue)
+//                }
+                
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}
@@ -48,34 +59,24 @@ struct LogFeedView: View {
 							}.padding([.trailing], 8)
 
 							if self.login.isLoggedIn == true {
-								NavigationLink(destination: UserView(userData: self.login.userData),
-											   isActive: self.$tabScreenData.userSheet) {
-									Text("User")
-								}.overlay(
-									WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
-										 options: [.decodeFirstFrameOnly],
-										 context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
-									.placeholder(Image("imagePlaceholder"))
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(width: 40, height: 40)
-									.clipped()
-									.cornerRadius(20)
-									.onTapGesture {
-										self.tabScreenData.userSheet = true
-									}
-								)
-							} else {
-								Button(action: {
-									if self.login.acceptedDatapolicy == false {
-										self.showData.toggle()
-									} else {
-										self.login.login()
-										self.login.getUser()
-									}
-								}) {
-									Text("Login").foregroundColor(Color.blue)
-								}
+//								NavigationLink(destination: UserView(userData: self.login.userData),
+//											   isActive: self.$tabScreenData.userSheet) {
+//									Text("User")
+//								}.overlay(
+//
+//								)
+                                WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
+                                     options: [.decodeFirstFrameOnly],
+                                     context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
+                                .placeholder(Image("imagePlaceholder"))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                                .clipped()
+                                .cornerRadius(20)
+//                                .onTapGesture {
+//                                    self.tabScreenData.userSheet = true
+//                                }
 							}
 						}
 					)
