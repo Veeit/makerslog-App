@@ -67,7 +67,7 @@ struct LogFeedItem: View {
 									WebImage(url: URL(string: log.data.attachment!),
 											 options: [.decodeFirstFrameOnly],
 											 context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
-										.placeholder(Image("400x300"))
+										.placeholder(Image("imagePlaceholder"))
 										.resizable()
 										.aspectRatio(contentMode: .fit)
 										.frame(width: 300, height: 300)
