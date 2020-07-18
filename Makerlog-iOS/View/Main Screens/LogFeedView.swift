@@ -21,7 +21,7 @@ struct LogFeedView: View {
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
 	@State var showData = false
-    
+
 	var body: some View {
 		NavigationView() {
 			List() {
@@ -43,13 +43,19 @@ struct LogFeedView: View {
 			}
 			.navigationBarTitle("LogBot", displayMode: .large)
 			.navigationBarItems(leading:
-						Button(action: {
-//							self.tabScreenData.showSettings = true
-                            self.tabScreenData.presentSheet = .showSettings
-                            self.tabScreenData.showSheet = true
-						}) {
-							Image(systemName: "gear").imageScale(.large)
-						},
+                HStack() {
+                    if self.login.isLoggedIn == true {
+                        WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
+                             options: [.decodeFirstFrameOnly],
+                             context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
+                        .placeholder(Image("imagePlaceholder"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .clipped()
+                        .cornerRadius(20)
+                    }
+                },
 					trailing:
 						HStack() {
 							Button(action: {
@@ -58,26 +64,7 @@ struct LogFeedView: View {
 								Image(systemName: "arrow.2.circlepath")
 							}.padding([.trailing], 8)
 
-							if self.login.isLoggedIn == true {
-//								NavigationLink(destination: UserView(userData: self.login.userData),
-//											   isActive: self.$tabScreenData.userSheet) {
-//									Text("User")
-//								}.overlay(
-//
-//								)
-                                WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
-                                     options: [.decodeFirstFrameOnly],
-                                     context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
-                                .placeholder(Image("imagePlaceholder"))
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .clipped()
-                                .cornerRadius(20)
-//                                .onTapGesture {
-//                                    self.tabScreenData.userSheet = true
-//                                }
-							}
+							
 						}
 					)
 			.onAppear(perform: {

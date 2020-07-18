@@ -14,11 +14,13 @@ import SwiftUICharts
 
 struct UserView: View {
 	@EnvironmentObject var user: UserData
+    @EnvironmentObject var tabScreenData: TabScreenData
+
 	var userData: [User]
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
     @State var showContact = false
-    
+
 	var body: some View {
 		// swiftlint:disable empty_parentheses_with_trailing_closure opening_brace
 		VStack() {
@@ -212,7 +214,12 @@ struct UserView: View {
 			self.user.userRecentLogs.removeAll()
 			self.user.userStats.removeAll()
 		})
-		.navigationBarItems(trailing:
+        .navigationBarItems(leading: Button(action: {
+            self.tabScreenData.presentSheet = .showSettings
+            self.tabScreenData.showSheet = true
+        }) {
+            Image(systemName: "gear").imageScale(.large)
+        }, trailing:
 			Button(action: {
 				self.user.stop = false
 				self.user.userData = self.userData

@@ -49,7 +49,7 @@ struct LogFeedItem: View {
 									.font(.subheadline).bold()
 								Spacer()
 
-								Text("\(log.data.user.makerScore) 🏆")
+                                Text("\(log.data.user.streak) 🔥").font(.footnote)
 							}
 
 							HStack(alignment: .top) {

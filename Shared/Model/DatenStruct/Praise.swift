@@ -17,3 +17,16 @@ struct Praise: Codable {
         case total
     }
 }
+
+
+struct PraiseNew: Codable {
+    let praised: Bool
+    let total: Int
+    let user: User
+    
+    enum CodingKeys: String, CodingKey {
+        case praised
+        case total
+        case user
+    }
+}

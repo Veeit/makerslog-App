@@ -13,6 +13,7 @@ struct UserTabView: View {
     @EnvironmentObject var login: LoginData
     @EnvironmentObject var tabScreenData: TabScreenData
     @EnvironmentObject var user: UserData
+    var userData: [User]?
 
     @State var showData = false
     
@@ -20,7 +21,7 @@ struct UserTabView: View {
         NavigationView() {
             VStack() {
                 if self.login.isLoggedIn == true {
-                    UserView(userData: self.login.userData)
+                    UserView(userData: userData ?? self.login.userData)
                 } else {
                     Text("You need to login to see your profile")
 
@@ -38,7 +39,7 @@ struct UserTabView: View {
             }
             .navigationBarTitle("User Profile", displayMode: .inline)
             .alert(isPresented: $showData, content: {datasecurityAlert()})
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     func datasecurityAlert() -> Alert {

@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "SwiftUIRefresh",
+        "repositoryURL": "https://github.com/SylvanasX/SwiftUIRefresh",
+        "state": {
+          "branch": null,
+          "revision": "c3c139f7a2671eed79d06b0cbe0859429602dfd1",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
