@@ -24,6 +24,7 @@ struct Log: Codable, Identifiable, Equatable {
 	var content, createdAt, updatedAt: String
     let dueAt, doneAt: String?
 	var user: User
+    var description: String?
 	var projectSet: [Projects]?
 	var praise: Int
     let attachment: String?
@@ -43,5 +44,6 @@ struct Log: Codable, Identifiable, Equatable {
         case praise, attachment
         case commentCount = "comment_count"
         case og_image
+        case description
     }
 }

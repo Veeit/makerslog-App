@@ -45,23 +45,38 @@ struct LogFeedItem: View {
 									.clipped()
 									.cornerRadius(20)
 
-								Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
-									.font(.subheadline).bold()
-								Spacer()
-
-                                Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                VStack(alignment: .leading) {
+                                    Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
+                                        .font(.subheadline).bold()
+                                    HStack() {
+                                        Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
+                                        Spacer()
+                                        Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                    }
+                                }
+								
 							}
 
 							HStack(alignment: .top) {
-								ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
-								EventImg(event: log.data.event ?? "")
+                                if (log.data.event != nil) {
+                                    EventImg(event: log.data.event ?? "")
+                                } else {
+                                    ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+                                }
 
 								Text(log.data.content)
 									.lineLimit(nil)
 									.fixedSize(horizontal: false, vertical: true)
 									.padding([.bottom], 15)
 							}
-
+                            
+                            if log.data.description != nil {
+                                HStack() {
+                                    Divider().frame(width: 2).background(Color.green)
+                                    Text(log.data.description ?? "no description found")
+                                }.padding([.leading], 15)
+                            }
+                            
 							if log.data.attachment != nil {
 								VStack(alignment: .center) {
 									WebImage(url: URL(string: log.data.attachment!),
