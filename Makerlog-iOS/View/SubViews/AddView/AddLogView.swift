@@ -26,7 +26,7 @@ struct AddLogView: View {
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
-
+            Text("\(selectedType)")
 			Text("Log State:").font(Font.headline)
 			Picker(selection: $selectedType, label: Text("Log State")) {
 				ForEach(0 ..< types.count) {
@@ -61,17 +61,16 @@ struct AddLogView: View {
     }
 
 	func save() {
-		switch self.selectedType {
-		case 3:
-			self.data.isDone = false
-			self.data.isProgress = true
-		case 2:
-			self.data.isDone = false
-			self.data.isProgress = false
-		default:
-			self.data.isDone = true
-			self.data.isProgress = false
-		}
+        if self.selectedType == 0 {
+            self.data.isDone = true
+            self.data.isProgress = false
+        } else if self.selectedType == 1 {
+            self.data.isDone = false
+            self.data.isProgress = false
+        } else if self.selectedType == 2 {
+            self.data.isDone = false
+            self.data.isProgress = true
+        }
 
 		self.data.createNewLog()
 		self.data.text = ""

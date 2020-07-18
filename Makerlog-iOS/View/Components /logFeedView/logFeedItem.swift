@@ -34,40 +34,44 @@ struct LogFeedItem: View {
 
 						// swiftlint:disable empty_parentheses_with_trailing_closure
 						VStack(alignment: .leading) {
-							HStack() {
-								WebImage(url: URL(string: log.data.user.avatar)!,
-										 options: [.decodeFirstFrameOnly],
-										 context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
-									.placeholder(Image("imagePlaceholder"))
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(width: 40, height: 40)
-									.clipped()
-									.cornerRadius(20)
+                            HStack(alignment: .top) {
+                                VStack(alignment: .trailing) {
+                                    WebImage(url: URL(string: log.data.user.avatar)!,
+                                             options: [.decodeFirstFrameOnly],
+                                             context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
+                                        .placeholder(Image("imagePlaceholder"))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                        .clipped()
+                                        .cornerRadius(20)
 
-                                VStack(alignment: .leading) {
-                                    Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
-                                        .font(.subheadline).bold()
-                                    HStack() {
-                                        Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
-                                        Spacer()
-                                        Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                    if (log.data.event != nil) {
+                                        EventImg(event: log.data.event ?? "")
+                                    } else {
+                                        ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
                                     }
                                 }
-								
-							}
-
-							HStack(alignment: .top) {
-                                if (log.data.event != nil) {
-                                    EventImg(event: log.data.event ?? "")
-                                } else {
-                                    ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+                                
+                                VStack(alignment: .leading) {
+                                    VStack(alignment: .leading) {
+                                        Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
+                                            .font(.subheadline).bold()
+                                        HStack() {
+                                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
+                                            Spacer()
+                                            Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                        }
+                                    }
+                                    .fixedSize()
+                                    .frame(height: 50)
+                                    
+                                    Text(log.data.content)
+                                        .lineLimit(nil)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .padding([.bottom], 15)
                                 }
-
-								Text(log.data.content)
-									.lineLimit(nil)
-									.fixedSize(horizontal: false, vertical: true)
-									.padding([.bottom], 15)
+								
 							}
                             
                             if log.data.description != nil {
@@ -92,7 +96,7 @@ struct LogFeedItem: View {
 								}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
 							}
 
-							LogInteractive(log: log)
+//							LogInteractive(log: log)
 						}
 		}.onTapGesture {
 			self.showDetailView.toggle()

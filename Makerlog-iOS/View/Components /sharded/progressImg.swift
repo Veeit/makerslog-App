@@ -16,10 +16,11 @@ struct ProgressImg: View {
 		HStack() {
 			if done {
 				Image(systemName: "checkmark.circle").padding([.top], 5)
-			}
-			if inProgress {
-				Image(systemName: "circle").padding([.top], 5)
-			}
+			} else if inProgress {
+				Image(systemName: "largecircle.fill.circle").padding([.top], 5)
+            } else {
+                Image(systemName: "circle").padding([.top], 5)
+            }
 		}
     }
 }
