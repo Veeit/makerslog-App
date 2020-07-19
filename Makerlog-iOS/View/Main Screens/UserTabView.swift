@@ -14,14 +14,72 @@ struct UserTabView: View {
     @EnvironmentObject var tabScreenData: TabScreenData
     @EnvironmentObject var user: UserData
     var userData: [User]?
-
-    @State var showData = false
+    var fromLog: Bool
+    
     
     var body: some View {
-        NavigationView() {
+        VStack() {
+            if !fromLog {
+                NavigationView() {
+                   ContentView(userData: userData, fromLog: fromLog)
+                    .navigationBarItems(leading: VStack() {
+                        if !fromLog {
+                            Button(action: {
+                               self.tabScreenData.presentSheet = .showSettings
+                               self.tabScreenData.showSheet = true
+                            }) {
+                                Image(systemName: "gear").imageScale(.large)
+                            }
+                        }
+                    }, trailing:
+                        Button(action: {
+                            self.user.stop = false
+                            if self.userData != nil {
+                                self.user.userData = self.userData!
+                            }
+                            self.user.getUserProducts()
+                            self.user.getUserName()
+                            self.user.getRecentLogs()
+                            self.user.getUserStats()
+                        }) {
+                            Image(systemName: "arrow.2.circlepath")
+                        }
+                    )
+                   
+               }.navigationViewStyle(StackNavigationViewStyle())
+            } else {
+                ContentView(userData: userData, fromLog: fromLog)
+                .navigationBarItems(trailing:
+                    Button(action: {
+                        self.user.stop = false
+                        if self.userData != nil {
+                            self.user.userData = self.userData!
+                        }
+                        self.user.getUserProducts()
+                        self.user.getUserName()
+                        self.user.getRecentLogs()
+                        self.user.getUserStats()
+                    }) {
+                        Image(systemName: "arrow.2.circlepath")
+                    }
+                )
+            }
+        }
+    }
+    
+    struct ContentView: View {
+        @EnvironmentObject var login: LoginData
+        @EnvironmentObject var tabScreenData: TabScreenData
+        @EnvironmentObject var user: UserData
+        @State var showData = false
+
+        var userData: [User]?
+        var fromLog: Bool
+        
+        var body: some View {
             VStack() {
                 if self.login.isLoggedIn == true {
-                    UserView(userData: userData ?? self.login.userData)
+                    UserView(userData: userData ?? self.login.userData, fromLog: fromLog)
                 } else {
                     Text("You need to login to see your profile")
 
@@ -39,10 +97,9 @@ struct UserTabView: View {
             }
             .navigationBarTitle("User Profile", displayMode: .inline)
             .alert(isPresented: $showData, content: {datasecurityAlert()})
-        }.navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    func datasecurityAlert() -> Alert {
+        }
+        
+        func datasecurityAlert() -> Alert {
             let save = ActionSheet.Button.default(Text("Accept")) {
                 self.login.acceptDatapolicy()
                 self.login.login()
@@ -59,9 +116,8 @@ struct UserTabView: View {
 
             return Alert(title: Text("Datasecurity is important"),
                          message: Text("""
-        You need to read the datasecurity policy first.
-        """),
-                         primaryButton: save,
-                         secondaryButton: cancel)
+            You need to read the datasecurity policy first.
+            """), primaryButton: save, secondaryButton: cancel)
         }
+    }
 }

@@ -29,20 +29,7 @@ struct LogFeedView: View {
 				}
 			}
 			.navigationBarTitle("LogBot", displayMode: .large)
-			.navigationBarItems(leading:
-                HStack() {
-                    if self.login.isLoggedIn == true {
-                        WebImage(url: URL(string: self.login.userData.first?.avatar ?? self.defaultAvartar),
-                             options: [.decodeFirstFrameOnly],
-                             context: [.imageThumbnailPixelSize : CGSize(width: 80, height: 80)])
-                        .placeholder(Image("imagePlaceholder"))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
-                        .clipped()
-                        .cornerRadius(20)
-                    }
-                },
+			.navigationBarItems(
 					trailing:
 						HStack() {
 							Button(action: {

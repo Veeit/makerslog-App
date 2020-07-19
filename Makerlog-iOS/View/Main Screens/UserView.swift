@@ -17,6 +17,7 @@ struct UserView: View {
     @EnvironmentObject var tabScreenData: TabScreenData
 
 	var userData: [User]
+    var fromLog = false
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
     @State var showContact = false
@@ -27,20 +28,7 @@ struct UserView: View {
 			List() {
 				Section() {
 					VStack() {
-						GeometryReader { geometry in
-							ZStack {
-								LineView(data: ChartData(points: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4]), title: "")
-									.padding([.top, .bottom])
-									.frame(width: geometry.size.width, height: geometry.size.height)
-									.offset(y: geometry.frame(in: .global).minY <= 0 ? geometry.frame(in: .global).minY/9: -geometry.frame(in: .global).minY)
-									.clipped()
-									.disabled(true)
-//                                EmptyView()
-							}
-						}
-						.frame(height: 400)
-
-						VStack(alignment: .center) {
+						HStack(alignment: .center) {
 							WebImage(url: URL(string: self.user.userData.first?.avatar ?? self.defaultAvartar),
 								 options: [.decodeFirstFrameOnly],
 								 context: [.imageThumbnailPixelSize: CGSize(width: 240, height: 240)])
@@ -51,21 +39,42 @@ struct UserView: View {
 							.clipped()
 							.cornerRadius(20)
 
-							if self.user.userData.first?.firstName != "" && self.user.userData.first?.lastName != "" {
-								VStack(alignment: .leading) {
-									Text("@\(self.user.userData.first?.username ?? "")")
-										.font(.subheadline)
-									Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
-										.font(.headline).bold()
-								}
-							} else {
-								Text("@\(self.user.userData.first?.username ?? "")")
-									.font(.headline)
-							}
-							Text(self.user.userData.first?.userDescription ?? "no discription")
-								.font(.subheadline)
+                            VStack() {
+                                if self.user.userData.first?.firstName != "" && self.user.userData.first?.lastName != "" {
+                                    VStack(alignment: .leading) {
+                                        Text("@\(self.user.userData.first?.username ?? "")")
+                                            .font(.subheadline)
+                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                        Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
+                                            .font(.headline).bold()
+                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                    }
+                                } else {
+                                    Text("@\(self.user.userData.first?.username ?? "")")
+                                        .font(.headline)
+                                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                }
+                                Text(self.user.userData.first?.userDescription ?? "no discription")
+                                    .font(.subheadline)
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                Divider()
+  
+                                Text("Contact")
+                                    .foregroundColor(Color.blue)
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                    .onTapGesture {
+                                        self.showContact.toggle()
+                                    }
+                                Text("Statistics")
+                                   .foregroundColor(Color.blue)
+                                   .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                   .onTapGesture {
+                                       self.showContact.toggle()
+                                   }
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding([.top], 20)
 						}.frame(minWidth: 0, maxWidth: .infinity)
-						.padding([.top], -230)
 					}
 
 					VStack() {
@@ -138,13 +147,6 @@ struct UserView: View {
 							}
 						}
 					}
-                    
-                    Button(action: {
-                        self.showContact.toggle()
-                    }) {
-                        Text("Contact")
-                            .foregroundColor(Color.blue)
-                    }
 
 					Section(header: Text("Products").bold()) {
 						ForEach(self.user.userProducts) { product in
@@ -207,30 +209,7 @@ struct UserView: View {
 			self.user.getRecentLogs()
 			self.user.getUserStats()
 		})
-		.onDisappear(perform: {
-			self.user.stop = true
-			self.user.userData.removeAll()
-			self.user.userProducts.removeAll()
-			self.user.userRecentLogs.removeAll()
-			self.user.userStats.removeAll()
-		})
-        .navigationBarItems(leading: Button(action: {
-            self.tabScreenData.presentSheet = .showSettings
-            self.tabScreenData.showSheet = true
-        }) {
-            Image(systemName: "gear").imageScale(.large)
-        }, trailing:
-			Button(action: {
-				self.user.stop = false
-				self.user.userData = self.userData
-				self.user.getUserProducts()
-				self.user.getUserName()
-				self.user.getRecentLogs()
-				self.user.getUserStats()
-			}) {
-				Image(systemName: "arrow.2.circlepath")
-			}
-		)
+        
         .sheet(isPresented: self.$showContact, content: {
             ContactScreen(user: self.user.userData[0])
         })

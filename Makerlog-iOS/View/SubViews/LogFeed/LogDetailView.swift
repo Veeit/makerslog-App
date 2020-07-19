@@ -33,7 +33,7 @@ struct LogDetailView: View {
 					if self.fromUser {
 						UserHeader(log: self.log)
 					} else {
-						NavigationLink(destination: UserTabView(userData: [self.log.data.user])) {
+                        NavigationLink(destination: UserTabView(userData: [self.log.data.user], fromLog: true)) {
 							UserHeader(log: self.log)
 						}
 					}

@@ -77,7 +77,7 @@ struct TabScreen: View {
                 .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
                 
                 VStack {
-                    UserTabView()
+                    UserTabView(fromLog: false)
                 }
                 .tabItem({ TabLabel(imageName: "person.fill", label: "User") })
             }
