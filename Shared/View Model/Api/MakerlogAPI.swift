@@ -55,6 +55,8 @@ class MakerlogAPI: ApiModel, ObservableObject {
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
 
 		var newLogs = [Log]()
+//        var cancellablePraise: AnyCancellable?
+
 		self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
 			.tryMap { output in
 				guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -64,6 +66,12 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			}
 			.decode(type: Logs.self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
+//            .flatMap({ (logs) -> URLSession.DataTaskPublisher in
+//                let url = URL(string:"https://weatherapi.example.com/stations/\(log.id)/observations/latest")!
+//                var urlRequest = URLRequest(url: url)
+//                urlRequest.setValue(oauthswift.client.credential.oauthToken, forHTTPHeaderField: "Authorization")
+//                return URLSession.shared.dataTaskPublisher(for: urlRequest)
+//            })
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
@@ -92,7 +100,81 @@ class MakerlogAPI: ApiModel, ObservableObject {
                     self.cancellable?.cancel()
 				}
 			})
+//        var praisePublisher = PassthroughSubject<[Log], URLError>()
+//
+//        let praiseData = praisePublisher.flatMap {log -> URLSession.DataTaskPublisher in
+//            let url = URL(string:"https://weatherapi.example.com/stations/\(log.id)/observations/latest")!
+//            var urlRequest = URLRequest(url: url)
+//            urlRequest.setValue(oauthswift.client.credential.oauthToken, forHTTPHeaderField: "Authorization")
+//            return URLSession.shared.dataTaskPublisher(for: urlRequest)
+//        }.sink(receiveCompletion: { completion in
+//                switch completion {
+//                case .finished:
+//                    break
+//                case .failure(let error):
+//                    if error.localizedDescription == "The request timed out." {
+//                        print("time out")
+//                    } else {
+//                        DispatchQueue.main.async {
+//                            self.errorText = error.localizedDescription
+//                            self.showError = true
+//                            if self.alertWithNetworkError >= 1 {
+//                                self.alertWithNetworkError += 1
+//                            }
+//                            print(error)
+//                        }
+//                    }
+//                }
+//            }, receiveValue: { result in
+//                 DispatchQueue.main.async {
+//                    print(result)
+//                }
+//            })
+//        praisePublisher.send(self.logs)
 	}
+    
+    func getPraise(logId: String) -> [LogsPraise] {
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+        let requestURL = "https://api.getmakerlog.com/tasks/\(logId)/praise/"
+        var praiseData = [LogsPraise]()
+        
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
+            (credential) in
+            setData()
+        }) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(LogsPraise.self, from: response.data)
+
+                     DispatchQueue.main.async {
+                        praiseData = []
+                        praiseData.append(data)
+                     }
+                } catch {
+                    DispatchQueue.main.async {
+                        print(response.data)
+                        print(error)
+                        self.errorText = error.localizedDescription
+                        self.showError = true
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+                DispatchQueue.main.async {
+                    self.errorText = error.localizedDescription
+                    self.showError = true
+                }
+            }
+        }
+        
+        return praiseData
+    }
 
 	func getNotifications() {
 		let token = oauthswift.client.credential.oauthToken

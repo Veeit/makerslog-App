@@ -32,69 +32,69 @@ struct LogFeedItem: View {
 		return NavigationLink(destination: LogDetailView(log: log, fromUser: false),
 							  isActive: self.$showDetailView) {
 
-						VStack(alignment: .leading) {
-                            HStack(alignment: .top) {
-                                VStack(alignment: .trailing) {
-                                    WebImage(url: URL(string: log.data.user.avatar)!,
-                                             options: [.decodeFirstFrameOnly],
-                                             context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
-                                        .placeholder(Image("imagePlaceholder"))
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                        .clipped()
-                                        .cornerRadius(20)
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    VStack(alignment: .trailing) {
+                        WebImage(url: URL(string: log.data.user.avatar)!,
+                                 options: [.decodeFirstFrameOnly],
+                                 context: [.imageThumbnailPixelSize: CGSize(width: 80, height: 80)])
+                            .placeholder(Image("imagePlaceholder"))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .clipped()
+                            .cornerRadius(20)
 
-                                    if (log.data.event != nil) {
-                                        EventImg(event: log.data.event ?? "")
-                                    } else {
-                                        ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
-                                    }
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    VStack(alignment: .leading) {
-                                        Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
-                                            .font(.subheadline).bold()
-                                            .fixedSize()
-                                        HStack() {
-                                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote).padding([.trailing], 3)
-                                            Text("\(log.data.user.streak) 🔥").font(.footnote)
-                                        }
-                                    }
-                                    .fixedSize()
-                                    .frame(height: 50)
-                                    
-                                    Text(log.data.content)
-                                        .lineLimit(nil)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .padding([.bottom], 15)
-                                }
-								
-							}
-                            
-                            if log.data.description != nil {
-                                HStack() {
-                                    Divider().frame(width: 2).background(Color.green)
-                                    Text(log.data.description ?? "no description found")
-                                }.padding([.leading], 15)
-                            }
-                            
-							if log.data.attachment != nil {
-								VStack(alignment: .center) {
-									WebImage(url: URL(string: log.data.attachment!),
-											 options: [.decodeFirstFrameOnly],
-											 context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
-										.placeholder(Image("imagePlaceholder"))
-										.resizable()
-										.aspectRatio(contentMode: .fit)
-										.frame(width: 300, height: 300)
-										.clipped()
-										.cornerRadius(7)
-									
-								}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
-							}
-						}
+                        if (log.data.event != nil) {
+                            EventImg(event: log.data.event ?? "")
+                        } else {
+                            ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+                        }
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
+                                .font(.subheadline).bold()
+                                .fixedSize()
+                            HStack(spacing: 3) {
+                                Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
+                                Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                Spacer()
+                                Text(log.data.getDate()).font(.footnote)
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                        }
+                        .frame(height: 50)
+                        
+                        Text(log.data.content)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding([.bottom], 15)
+                    }
+                }
+                
+                if log.data.description != nil {
+                    HStack() {
+                        Divider().frame(width: 2).background(Color.green)
+                        Text(log.data.description ?? "no description found")
+                    }.padding([.leading], 15)
+                }
+                
+                if log.data.attachment != nil {
+                    VStack(alignment: .center) {
+                        WebImage(url: URL(string: log.data.attachment!),
+                                 options: [.decodeFirstFrameOnly],
+                                 context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
+                            .placeholder(Image("imagePlaceholder"))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 300)
+                            .clipped()
+                            .cornerRadius(7)
+                        
+                    }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
+                }
+            }
 		}
         .onTapGesture(count: 2)  {
             if self.login.isLoggedIn == false {
@@ -107,11 +107,10 @@ struct LogFeedItem: View {
         .onTapGesture {
 			self.showDetailView.toggle()
 		}
-        
 		.contextMenu(cmenu)
 		.alert(isPresented: self.$makerlogAPI.deleteItem, content: anAlert)
 	}
-
+    
 	func anAlert() -> Alert {
         let send = ActionSheet.Button.default(Text("Send")) { self.makerlogAPI.deleteLog(log: self.log.data) }
 

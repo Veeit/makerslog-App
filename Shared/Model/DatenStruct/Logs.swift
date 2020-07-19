@@ -46,4 +46,38 @@ struct Log: Codable, Identifiable, Equatable {
         case og_image
         case description
     }
+    
+    func getDate() -> String {
+        var isoDate = doneAt ?? createdAt
+        isoDate = "\(isoDate.split(separator: ".")[0])Z"
+        
+        let dateFormatter = ISO8601DateFormatter()
+        let date = dateFormatter.date(from: isoDate) ?? Date()
+
+        let components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date, to: Date())
+        
+        if components.day != nil && components.day ?? 0 >= 1 {
+            return "\(components.day ?? 1)d"
+        } else if components.hour != nil && components.hour ?? 0 >= 1 {
+            return "\(components.hour ?? 1)h"
+        } else if components.minute != nil && components.minute ?? 0 >= 1 {
+            return "\(components.minute ?? 1)m"
+        } else if components.second != nil && components.second ?? 0 >= 1 {
+            return "\(components.second ?? 1)s"
+        } else {
+            return "0s"
+        }
+    }
+}
+
+struct LogsPraise: Codable {
+    var total: Int
+    var praised: Bool
+    var praised_by: [User]
+    
+    enum CodingKeys: String, CodingKey {
+        case total
+        case praised
+        case praised_by
+    }
 }
