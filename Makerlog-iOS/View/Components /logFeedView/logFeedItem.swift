@@ -32,7 +32,6 @@ struct LogFeedItem: View {
 		return NavigationLink(destination: LogDetailView(log: log, fromUser: false),
 							  isActive: self.$showDetailView) {
 
-						// swiftlint:disable empty_parentheses_with_trailing_closure
 						VStack(alignment: .leading) {
                             HStack(alignment: .top) {
                                 VStack(alignment: .trailing) {
@@ -57,9 +56,9 @@ struct LogFeedItem: View {
                                     VStack(alignment: .leading) {
                                         Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
                                             .font(.subheadline).bold()
+                                            .fixedSize()
                                         HStack() {
-                                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
-                                            Spacer()
+                                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote).padding([.trailing], 3)
                                             Text("\(log.data.user.streak) 🔥").font(.footnote)
                                         }
                                     }
@@ -95,12 +94,20 @@ struct LogFeedItem: View {
 									
 								}.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
 							}
-
-//							LogInteractive(log: log)
 						}
-		}.onTapGesture {
+		}
+        .onTapGesture(count: 2)  {
+            if self.login.isLoggedIn == false {
+                self.tabScreenData.presentSheet = .showLogin
+                self.tabScreenData.showSheet = true
+            } else {
+                self.makerlogAPI.addPraise(log: self.log.data)
+            }
+        }
+        .onTapGesture {
 			self.showDetailView.toggle()
 		}
+        
 		.contextMenu(cmenu)
 		.alert(isPresented: self.$makerlogAPI.deleteItem, content: anAlert)
 	}

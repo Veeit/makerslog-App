@@ -24,7 +24,6 @@
 		560E9FD423D5F23500A12CF5 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560E9FD323D5F23500A12CF5 /* Logs.swift */; };
 		560EFC9123EAF0DA00E0B172 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9023EAF0DA00E0B172 /* NotificationsView.swift */; };
 		560EFC9323EAF1F500E0B172 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EFC9223EAF1F500E0B172 /* Notification.swift */; };
-		56129A3324C33076002CF0E7 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 56129A3224C33076002CF0E7 /* SwiftUIRefresh */; };
 		561A48CF23E185FE0077A1D2 /* pulltorefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */; };
 		561A48DC23E31A990077A1D2 /* BulletinBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561A48DA23E31A990077A1D2 /* BulletinBoard.swift */; };
 		562065A3240E99DF0016B21D /* closeKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562065A2240E99DF0016B21D /* closeKeyboard.swift */; };
@@ -197,7 +196,6 @@
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
 				565859FE24A536F1007352A0 /* SwiftUICharts in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
-				56129A3324C33076002CF0E7 /* SwiftUIRefresh in Frameworks */,
 				565A70002423E837006F4A4E /* OAuthSwift in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
 			);
@@ -584,7 +582,6 @@
 				569EF1892441C3F600598569 /* KeychainAccess */,
 				56A2CCFF24A4F224003CD908 /* MDText */,
 				565859FD24A536F1007352A0 /* SwiftUICharts */,
-				56129A3224C33076002CF0E7 /* SwiftUIRefresh */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -666,7 +663,6 @@
 				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				569EF1882441C3F600598569 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				56129A3124C33076002CF0E7 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1133,14 +1129,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		56129A3124C33076002CF0E7 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SylvanasX/SwiftUIRefresh";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -1200,11 +1188,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		56129A3224C33076002CF0E7 /* SwiftUIRefresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 56129A3124C33076002CF0E7 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
-			productName = SwiftUIRefresh;
-		};
 		565859FD24A536F1007352A0 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUICharts;

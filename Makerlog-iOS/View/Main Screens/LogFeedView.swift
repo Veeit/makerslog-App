@@ -12,7 +12,6 @@ import SDWebImageSwiftUI
 //import SwiftUIPullToRefresh
 
 struct LogFeedView: View {
-	// swiftlint:disable all
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var data: MakerlogAPI
 	@EnvironmentObject var login: LoginData
@@ -21,22 +20,10 @@ struct LogFeedView: View {
 	let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
 
 	@State var showData = false
-
+    
 	var body: some View {
 		NavigationView() {
 			List() {
-//                Text(String("\(device.isLandscape)"))
-//                Button(action: {
-//                    if self.login.acceptedDatapolicy == false {
-//                        self.showData.toggle()
-//                    } else {
-//                        self.login.login()
-//                        self.login.getUser()
-//                    }
-//                }) {
-//                    Text("Login").foregroundColor(Color.blue)
-//                }
-                
 				ForEach(self.data.logs) { log in
 					LogFeedItem(log: LogViewData(data: log))
 				}
@@ -72,9 +59,7 @@ struct LogFeedView: View {
 				print(urls[urls.count-1] as URL)
 			})
 			.alert(isPresented: $showData, content: {datasecurityAlert()})
-//
 		}.navigationViewStyle(StackNavigationViewStyle())
-//        .ipadNavigationView(oriantation: device.isLandscape)
 	}
 
 	struct EventView: View {

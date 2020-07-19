@@ -78,7 +78,7 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
         "state": {
           "branch": "master",
-          "revision": "ab80a9e3d1d4b7d90bfbd068c22aaa12fe1b8459",
+          "revision": "40023d566878027bc5780121e3435396785ffb96",
           "version": null
         }
       },
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImageSwiftUI",
         "state": {
           "branch": null,
-          "revision": "1ed96d9b08fa18694621e0b1de182fbf032121bc",
-          "version": "1.4.0"
+          "revision": "4c7f169e39bc35d6b80d42b8eb8301bee9cd0907",
+          "version": "1.5.0"
         }
       },
       {
@@ -101,20 +101,11 @@
         }
       },
       {
-        "package": "SwiftUIRefresh",
-        "repositoryURL": "https://github.com/SylvanasX/SwiftUIRefresh",
-        "state": {
-          "branch": null,
-          "revision": "c3c139f7a2671eed79d06b0cbe0859429602dfd1",
-          "version": "0.0.1"
-        }
-      },
-      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
           "branch": "master",
-          "revision": "d7d77f0a3aef28d91679e2e42306643d0c0074a9",
+          "revision": "01bece7ea00fb9e5ae5a648625aa1d16ed7503d3",
           "version": null
         }
       }
