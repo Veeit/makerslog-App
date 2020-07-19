@@ -54,9 +54,20 @@ struct LogFeedItem: View {
                     
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
-                            Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
+                            HStack() {
+                                Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
                                 .font(.subheadline).bold()
                                 .fixedSize()
+                                Spacer()
+                                Text("👏 \(self.log.data.praise)").onTapGesture {
+                                    if self.login.isLoggedIn == false {
+                                       self.tabScreenData.presentSheet = .showLogin
+                                       self.tabScreenData.showSheet = true
+                                   } else {
+                                       self.makerlogAPI.addPraise(log: self.log.data)
+                                   }
+                                }
+                            }
                             HStack(spacing: 3) {
                                 Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
                                 Text("\(log.data.user.streak) 🔥").font(.footnote)
@@ -96,14 +107,6 @@ struct LogFeedItem: View {
                 }
             }
 		}
-        .onTapGesture(count: 2)  {
-            if self.login.isLoggedIn == false {
-                self.tabScreenData.presentSheet = .showLogin
-                self.tabScreenData.showSheet = true
-            } else {
-                self.makerlogAPI.addPraise(log: self.log.data)
-            }
-        }
         .onTapGesture {
 			self.showDetailView.toggle()
 		}
