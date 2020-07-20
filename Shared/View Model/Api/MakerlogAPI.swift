@@ -24,16 +24,6 @@ class MakerlogAPI: ApiModel, ObservableObject {
             }
         }
     }
-	@Published var notification: Notification?
-	@Published var notificationisDone = false {
-		   didSet {
-			   DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-				   if self.notificationisDone {
-					   self.notificationisDone = false
-				   }
-			   }
-		   }
-	   }
 
 	@Published var discussions: [ResultDiscussion]?
 
@@ -175,46 +165,6 @@ class MakerlogAPI: ApiModel, ObservableObject {
         
         return praiseData
     }
-
-	func getNotifications() {
-		let token = oauthswift.client.credential.oauthToken
-		let parameters = ["token": token]
-		let requestURL = "https://api.getmakerlog.com/notifications/"
-
-		oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
-			(credential) in
-            setData()
-        }) { result in
-			switch result {
-			case .success(let response):
-				do {
-					let decoder = JSONDecoder()
-					let data = try decoder.decode(Notification.self, from: response.data)
-
-					 DispatchQueue.main.async {
-						self.notification = data
-						self.notificationisDone = true
-					 }
-				} catch {
-					DispatchQueue.main.async {
-						print(response.data)
-						print(error)
-						self.errorText = error.localizedDescription
-						self.showError = true
-					}
-				}
-			case .failure(let error):
-				print(error)
-				if case .tokenExpired = error {
-				  print("old token")
-			   }
-				DispatchQueue.main.async {
-					self.errorText = error.localizedDescription
-					self.showError = true
-				}
-			}
-		}
-	}
 
 	func addPraise(log: Log) {
 		let token = oauthswift.client.credential.oauthToken

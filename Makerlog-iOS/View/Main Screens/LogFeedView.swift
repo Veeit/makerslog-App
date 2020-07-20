@@ -37,8 +37,6 @@ struct LogFeedView: View {
 							}) {
 								Image(systemName: "arrow.2.circlepath")
 							}.padding([.trailing], 8)
-
-							
 						}
 					)
 			.onAppear(perform: {

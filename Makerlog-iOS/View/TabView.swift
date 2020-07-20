@@ -66,15 +66,18 @@ struct TabScreen: View {
 //                }
 //                .tabItem({ TabLabel(imageName: "bubble.left.and.bubble.right.fill", label: "Discussions") })
 
+//                VStack {
+//                        AddView()
+//                }
+//                .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
+//
+//                VStack {
+//                        NotificationsView()
+//                }
+//                .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
                 VStack {
-                        AddView()
-                }
-                .tabItem({ TabLabel(imageName: "plus.square.fill", label: "Add") })
-
-                VStack {
-                        NotificationsView()
-                }
-                .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
+                    TodayView()
+                }.tabItem({ TabLabel(imageName: "bell.fill", label: "Today") })
                 
                 VStack {
                     UserTabView(fromLog: false)

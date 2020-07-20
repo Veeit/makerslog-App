@@ -67,7 +67,7 @@ struct LogFeedItem: View {
                             VStack(alignment: .leading, spacing: 1) {
                                 HStack(alignment: .center) {
                                     Text("\(self.log.data.praise)")
-                                    Image(systemName: "hand.thumbsup")
+                                    Image(systemName: "star")
                                 }
                                 .drawingGroup()
                                 .onTapGesture {

@@ -30,7 +30,7 @@ struct LogInteractive: View {
             HStack() {
                 Text("\(self.log.data.praise)")
                     .padding(4)
-                Image(systemName: "hand.thumbsup")
+                Image(systemName: "star")
             }
 				.onTapGesture {
 					if self.login.isLoggedIn == false {

@@ -18,16 +18,107 @@ class UserData: ApiModel, ObservableObject {
 	@Published var userProducts = UserProducts()
 	@Published var userRecentLogs = UserRecentLogs()
 	@Published var userStats = [UserStats]()
-
+    @Published var notification: Notification?
+    @Published var archivments: Archivments?
+    @Published var notificationisDone = false {
+           didSet {
+               DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                   if self.notificationisDone {
+                       self.notificationisDone = false
+                   }
+               }
+           }
+       }
+    
 	var stop = false
 	private var cancellable: AnyCancellable?
 	private var cancellableStats: AnyCancellable?
 	private var cancellableProducts: AnyCancellable?
+    private var cancellableArchivments: AnyCancellable?
 
 	enum HTTPError2: LocalizedError {
 		case statusCode
 	}
 
+    func getNotifications() {
+        let token = oauthswift.client.credential.oauthToken
+        let parameters = ["token": token]
+        let requestURL = "https://api.getmakerlog.com/notifications/"
+
+        oauthswift.startAuthorizedRequest(requestURL, method: .GET, parameters: parameters, onTokenRenewal: {
+            (credential) in
+            setData()
+        }) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(Notification.self, from: response.data)
+
+                     DispatchQueue.main.async {
+                        self.notification = data
+                        self.notificationisDone = true
+                     }
+                } catch {
+                    DispatchQueue.main.async {
+                        print(response.data)
+                        print(error)
+                        self.errorText = error.localizedDescription
+                        self.showError = true
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+                DispatchQueue.main.async {
+                    self.errorText = error.localizedDescription
+                    self.showError = true
+                }
+            }
+        }
+    }
+    
+    func getArchivments() {
+        let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/achievements/"
+        print(requestURL)
+
+        self.cancellableArchivments = URLSession.shared.dataTaskPublisher(for: URL(string: requestURL)!)
+        .tryMap { output in
+            guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
+                throw HTTPError2.statusCode
+            }
+            return output.data
+        }
+        .decode(type: Archivments.self, decoder: JSONDecoder())
+        .eraseToAnyPublisher()
+        .sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                break
+            case .failure(let error):
+                if error.localizedDescription == "The request timed out." {
+                    print("time out")
+                } else {
+                    DispatchQueue.main.async {
+                        self.errorText = error.localizedDescription
+                        self.showError = true
+                        print(error)
+                    }
+                }
+            }
+        }, receiveValue: { result in
+             DispatchQueue.main.async {
+                if !self.stop {
+                    self.archivments = result
+                    print(result)
+                }
+            }
+        })
+        
+    }
+    
 	func getUserProducts() {
 		let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/products/"
 		print(requestURL)
