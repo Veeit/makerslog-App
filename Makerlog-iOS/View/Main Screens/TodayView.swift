@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUICharts
 
 struct TodayView: View {
     @State private var openAddSheet = false
@@ -108,10 +109,16 @@ struct TodayView: View {
                         }
                     }
                 }
-                
-                Text("Statistics")
+                                
+                Section(header: "Statistics") {
+                     LineView(data: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4], title: "Productivity", legend: "Your weekly productivity")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 320, maxHeight: .infinity)
+                        .padding([.bottom], 100)
+//                    .fixedSize()
+                }
                 
             }
+        .listStyle(GroupedListStyle())
             .sheet(isPresented: self.$openAddSheet, content: {
                 AddView()
             })
@@ -137,6 +144,7 @@ struct TodayView: View {
         }.onAppear(perform: {
             self.loadAllData()
         })
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     struct TargetView: View {

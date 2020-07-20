@@ -32,7 +32,7 @@
 		5625896C24C0B028005FF75A /* UserTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625896B24C0B028005FF75A /* UserTabView.swift */; };
 		5635D1C824C5AAE800CEC736 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635D1C724C5AAE800CEC736 /* TodayView.swift */; };
 		5635D1CA24C6162500CEC736 /* Archivments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635D1C924C6162400CEC736 /* Archivments.swift */; };
-		565859FE24A536F1007352A0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 565859FD24A536F1007352A0 /* SwiftUICharts */; };
+		5635D1CD24C62A8F00CEC736 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 5635D1CC24C62A8F00CEC736 /* SwiftUICharts */; };
 		565A70002423E837006F4A4E /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 565A6FFF2423E837006F4A4E /* OAuthSwift */; };
 		56682BCF23E5C88000EF2C5B /* logFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BCE23E5C88000EF2C5B /* logFeedItem.swift */; };
 		56682BD223E610D700EF2C5B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56682BD123E610D700EF2C5B /* UserView.swift */; };
@@ -132,7 +132,6 @@
 		5625896B24C0B028005FF75A /* UserTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabView.swift; sourceTree = "<group>"; };
 		5635D1C724C5AAE800CEC736 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		5635D1C924C6162400CEC736 /* Archivments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archivments.swift; sourceTree = "<group>"; };
-		565859FC24A536D7007352A0 /* ChartView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ChartView-master"; path = "../ChartView-master"; sourceTree = "<group>"; };
 		56682BCE23E5C88000EF2C5B /* logFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logFeedItem.swift; sourceTree = "<group>"; };
 		56682BD123E610D700EF2C5B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		566DF0D323DF01E50085C318 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -198,10 +197,10 @@
 				569EF18A2441C3F600598569 /* KeychainAccess in Frameworks */,
 				56A2CD0024A4F224003CD908 /* MDText in Frameworks */,
 				56C8FE44240FDACF00E28FC5 /* SDWebImageMapKit in Frameworks */,
-				565859FE24A536F1007352A0 /* SwiftUICharts in Frameworks */,
 				56EEB54424043C9600522B8C /* Pages in Frameworks */,
 				565A70002423E837006F4A4E /* OAuthSwift in Frameworks */,
 				56E3674723FAE0F600C69F8F /* SwiftUIX in Frameworks */,
+				5635D1CD24C62A8F00CEC736 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +407,6 @@
 			children = (
 				56A2CCFE24A4F21C003CD908 /* MDText-master */,
 				56D4E46223EA072500679DD4 /* addBorder.swift */,
-				565859FC24A536D7007352A0 /* ChartView-master */,
 				561A48DA23E31A990077A1D2 /* BulletinBoard.swift */,
 				561A48CE23E185FE0077A1D2 /* pulltorefresh.swift */,
 			);
@@ -587,7 +585,7 @@
 				565A6FFF2423E837006F4A4E /* OAuthSwift */,
 				569EF1892441C3F600598569 /* KeychainAccess */,
 				56A2CCFF24A4F224003CD908 /* MDText */,
-				565859FD24A536F1007352A0 /* SwiftUICharts */,
+				5635D1CC24C62A8F00CEC736 /* SwiftUICharts */,
 			);
 			productName = Makerlog;
 			productReference = 560E9F9D23D5DB5100A12CF5 /* logbot.app */;
@@ -669,6 +667,7 @@
 				56C8FE45240FDAF800E28FC5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				569EF1882441C3F600598569 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				5635D1CB24C62A8F00CEC736 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 560E9F9E23D5DB5100A12CF5 /* Products */;
 			projectDirPath = "";
@@ -1137,6 +1136,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5635D1CB24C62A8F00CEC736 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.3;
+			};
+		};
 		565A6FFE2423E837006F4A4E /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -1196,8 +1203,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		565859FD24A536F1007352A0 /* SwiftUICharts */ = {
+		5635D1CC24C62A8F00CEC736 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 5635D1CB24C62A8F00CEC736 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
 		565A6FFF2423E837006F4A4E /* OAuthSwift */ = {
