@@ -80,7 +80,7 @@ struct LogFeedItem: View {
                                 }
                                 Text(log.data.getDate()).font(.footnote)
                             }
-                        }
+                        }.frame(height: 48)
 
                         
                         Text(log.data.content)
