@@ -42,12 +42,13 @@ struct UserView: View {
                               VStack() {
                                   if self.user.userData.first?.firstName != "" && self.user.userData.first?.lastName != "" {
                                       VStack(alignment: .leading) {
-                                          Text("@\(self.user.userData.first?.username ?? "")")
-                                              .font(.subheadline)
-                                              .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                          
                                           Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
                                               .font(.headline).bold()
                                               .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                            Text("@\(self.user.userData.first?.username ?? "")")
+                                                .font(.subheadline)
+                                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                       }
                                   } else {
                                       Text("@\(self.user.userData.first?.username ?? "")")

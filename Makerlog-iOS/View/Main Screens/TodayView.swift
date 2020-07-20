@@ -37,40 +37,51 @@ struct TodayView: View {
 //                            Text(user.userName)
                         }
                     }
-                    HStack() {
-                        VStack(alignment: .leading) {
-                            HStack() {
-                                Image(systemName: "bed.double")
-                                Text("\(self.user.userStats.first?.rest_day_balance ?? 0)")
-                            }.drawingGroup()
-                            
-                            HStack() {
-                                Image(systemName: "person.3")
-                                Text("\(self.user.userStats.first?.follower_count ?? 0)")
-                            }.drawingGroup()
-                            
-                            HStack() {
-                                Image(systemName: "speedometer")
-                                Text("\(self.user.userStats.first?.maker_score ?? 0)")
-                            }.drawingGroup()
-                            
-                            HStack() {
-                                Image(systemName: "flame")
-                                Text("\(self.user.userStats.first?.streak ?? 0)")
-                            }.drawingGroup()
-                            
-//                            HStack() {
-//                                Image(systemName: "checkmark.circle")
-//                                Text("\(self.user.userStats.first?.done_today ?? 0)")
-//                            }.drawingGroup()
-//
-//                            HStack() {
-//                                Image(systemName: "circle")
-//                                Text("\(self.user.userStats.first?.remaining_tasks ?? 0)")
-//                            }.drawingGroup()
+                    VStack() {
+                        if self.user.userData.first?.firstName != "" && self.user.userData.first?.lastName != "" {
+                            VStack(alignment: .leading) {
+                                
+                                Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
+                                    .font(.headline).bold()
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                  Text("@\(self.user.userData.first?.username ?? "")")
+                                      .font(.subheadline)
+                                      .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            }
+                        } else {
+                            Text("@\(self.user.userData.first?.username ?? "")")
+                                .font(.headline)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         }
-                        Spacer()
+                        
+                         HStack() {
+                            HStack() {
+                                VStack(alignment: .center) {
+                                    Image(systemName: "bed.double")
+                                    Image(systemName: "person.3")
+                                }
+                                
+                                VStack(alignment: .center) {
+                                    Text("\(self.user.userStats.first?.rest_day_balance ?? 0)")
+                                    Text("\(self.user.userStats.first?.follower_count ?? 0)")
+                                }
+                            }
+                            Spacer()
+                            HStack() {
+                                VStack(alignment: .center) {
+                                    Image(systemName: "speedometer")
+                                    Image(systemName: "flame")
+                                }
+                                
+                                VStack(alignment: .center) {
+                                    Text("\(self.user.userStats.first?.maker_score ?? 0)")
+                                    Text("\(self.user.userStats.first?.streak ?? 0)")
+                                }
+                            }
+                            Spacer()
+                        }
                     }
+                   
                 }
                 
                 Section(header: "Todo") {
