@@ -95,7 +95,7 @@ struct UserTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("User Profile", displayMode: .inline)
+            .navigationBarTitle("User Profile")
             .alert(isPresented: $showData, content: {datasecurityAlert()})
         }
         
