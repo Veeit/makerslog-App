@@ -53,13 +53,24 @@ struct LogFeedItem: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        VStack(alignment: .leading) {
-                            HStack() {
+                        HStack() {
+                            VStack(alignment: .leading) {
                                 Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "\(self.log.data.user.firstName ) \(self.log.data.user.lastName)" : self.log.data.user.username)
-                                .font(.subheadline).bold()
-                                .fixedSize()
-                                Spacer()
-                                Text("👏 \(self.log.data.praise)").onTapGesture {
+                                    .font(.subheadline).bold()
+                                    .fixedSize()
+                                HStack(spacing: 3) {
+                                    Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
+                                    Text("\(log.data.user.streak) 🔥").font(.footnote)
+                                }
+                            }
+                            Spacer()
+                            VStack(alignment: .leading, spacing: 1) {
+                                HStack(alignment: .center) {
+                                    Text("\(self.log.data.praise)")
+                                    Image(systemName: "hand.thumbsup")
+                                }
+                                .drawingGroup()
+                                .onTapGesture {
                                     if self.login.isLoggedIn == false {
                                        self.tabScreenData.presentSheet = .showLogin
                                        self.tabScreenData.showSheet = true
@@ -67,15 +78,10 @@ struct LogFeedItem: View {
                                        self.makerlogAPI.addPraise(log: self.log.data)
                                    }
                                 }
-                            }
-                            HStack(spacing: 3) {
-                                Text(self.log.data.user.firstName != "" && self.log.data.user.lastName != "" ? "@\(self.log.data.user.username)" : "").font(.footnote)
-                                Text("\(log.data.user.streak) 🔥").font(.footnote)
-                                Spacer()
                                 Text(log.data.getDate()).font(.footnote)
-                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            }
                         }
-                        .frame(height: 50)
+
                         
                         Text(log.data.content)
                             .lineLimit(nil)

@@ -27,7 +27,11 @@ struct LogInteractive: View {
         HStack() {
 			Spacer()
 
-			Text("👏 \(self.log.data.praise)")
+            HStack() {
+                Text("\(self.log.data.praise)")
+                    .padding(4)
+                Image(systemName: "hand.thumbsup")
+            }
 				.onTapGesture {
 					if self.login.isLoggedIn == false {
 //						self.tabScreenData.showLogin = true
@@ -37,9 +41,7 @@ struct LogInteractive: View {
 						self.makerlogAPI.addPraise(log: self.log.data)
 					}
 				}
-				.padding(4)
-				.font(.footnote)
-				.cornerRadius(6)
+				
 			Spacer()
 
 			HStack() {
