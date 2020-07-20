@@ -11,11 +11,12 @@ import SDWebImageSwiftUI
 
 struct LogFeedItem: View {
 	var log: LogViewData
+    var fromUser = false
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var makerlogAPI: MakerlogAPI
 	@EnvironmentObject var login: LoginData
 	@State var showDetailView = false
-
+    
 	var body: some View {
 		let cmenu = ContextMenu {
 			Button("Open") {  self.showDetailView.toggle() }
@@ -29,7 +30,7 @@ struct LogFeedItem: View {
 			}
 		}
 
-		return NavigationLink(destination: LogDetailView(log: log, fromUser: false),
+		return NavigationLink(destination: LogDetailView(log: log, fromUser: fromUser),
 							  isActive: self.$showDetailView) {
 
             VStack(alignment: .leading) {

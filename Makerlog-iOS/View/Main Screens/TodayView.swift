@@ -61,7 +61,7 @@ struct TodayView: View {
                                     Image(systemName: "person.3")
                                 }
                                 
-                                VStack(alignment: .center) {
+                                VStack(alignment: .leading) {
                                     Text("\(self.user.userStats.first?.rest_day_balance ?? 0)")
                                     Text("\(self.user.userStats.first?.follower_count ?? 0)")
                                 }
@@ -73,7 +73,7 @@ struct TodayView: View {
                                     Image(systemName: "flame")
                                 }
                                 
-                                VStack(alignment: .center) {
+                                VStack(alignment: .leading) {
                                     Text("\(self.user.userStats.first?.maker_score ?? 0)")
                                     Text("\(self.user.userStats.first?.streak ?? 0)")
                                 }
@@ -116,7 +116,10 @@ struct TodayView: View {
                 if self.user.archivments != nil {
                     Section(header: "Archivments") {
                         ForEach(self.user.archivments!) { archivment in
-                            Text("\(archivment.data.name)")
+                            HStack() {
+                                Image(systemName: "flag.fill")
+                                Text("\(archivment.data.name)")
+                            }
                         }
                     }
                 }

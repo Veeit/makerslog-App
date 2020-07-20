@@ -66,12 +66,6 @@ struct UserView: View {
                                       .onTapGesture {
                                           self.showContact.toggle()
                                       }
-                                  Text("Statistics")
-                                     .foregroundColor(Color.blue)
-                                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                     .onTapGesture {
-                                         self.showContact.toggle()
-                                     }
                               }
                               .frame(minWidth: 0, maxWidth: .infinity)
                               .padding([.top], 20)
@@ -180,21 +174,7 @@ struct UserView: View {
 
                 Section(header: Text("Last logs")) {
                     ForEach(self.user.userRecentLogs) { log in
-                        NavigationLink(destination: LogDetailView(log: LogViewData(data: log), fromUser: true)) {
-                            VStack() {
-                                HStack(alignment: .top) {
-                                    Spacer()
-                                    ProgressImg(done: log.done, inProgress: log.inProgress)
-                                    EventImg(event: log.event ?? "")
-                                    Text("👏 \(log.praise)").bold()
-                                }
-                                Text("\(log.content)")
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(nil)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
+                        LogFeedItem(log: LogViewData(data: log), fromUser: true)
                     }
                 }
 				
