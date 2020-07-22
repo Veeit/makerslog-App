@@ -78,7 +78,7 @@ class UserData: ApiModel, ObservableObject {
                 }
             }
         }
-    }
+    }                                                                                                               
     
     func getArchivments() {
         let requestURL = "https://api.getmakerlog.com/users/" + (self.userData.first?.username ?? "") + "/achievements/"
@@ -110,13 +110,10 @@ class UserData: ApiModel, ObservableObject {
             }
         }, receiveValue: { result in
              DispatchQueue.main.async {
-                if !self.stop {
                     self.archivments = result
                     print(result)
-                }
             }
         })
-        
     }
     
 	func getUserProducts() {

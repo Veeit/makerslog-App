@@ -49,6 +49,7 @@ struct TabScreen: View {
 	@EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
 	@EnvironmentObject var makerlog: MakerlogAPI
+    @ObservedObject var user = UserData()
 
     @State private var showDataPolicy: Bool = false
 	// swiftlint:disable empty_parentheses_with_trailing_closure
@@ -76,7 +77,7 @@ struct TabScreen: View {
 //                }
 //                .tabItem({ TabLabel(imageName: "bell.fill", label: "Notification") })
                 VStack {
-                    TodayView()
+                    TodayView(user: user)
                 }.tabItem({ TabLabel(imageName: "bell.fill", label: "Today") })
                 
                 VStack {

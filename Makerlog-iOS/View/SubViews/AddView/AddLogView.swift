@@ -37,9 +37,14 @@ struct AddLogView: View {
 			GeometryReader() { geometry in
 				TextView(self.types[self.selectedType].title, text: self.$data.text)
 					.padding(5)
-					.keyboardObserving()
-				Spacer()
-			}
+            }.frame(height: 100)
+            Divider()
+            GeometryReader() { geometry in
+                TextView("Add a description", text: self.$data.description)
+                    .padding(5)
+                    .keyboardObserving()
+            }
+            
 
 		}.navigationBarTitle("Log your task")
 			.navigationBarItems(leading:

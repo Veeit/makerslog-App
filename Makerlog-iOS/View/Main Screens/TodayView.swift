@@ -15,8 +15,7 @@ struct TodayView: View {
 //    @EnvironmentObject var user: UserData
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
     @State private var logTextField =  ""
-    @ObservedObject var user = UserData()
-    
+    @ObservedObject var user: UserData
     
     var body: some View {
         NavigationView() {
@@ -183,14 +182,14 @@ struct TodayView: View {
     func loadAllData() {
         self.user.getUser()
         self.user.getUserName()
+        self.user.getArchivments()
         self.user.getUserStats()
         self.user.getNotifications()
-        self.user.getArchivments()
     }
 }
 
-struct TodayView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodayView()
-    }
-}
+//struct TodayView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TodayView(user: <#T##UserData#>)
+//    }
+//}

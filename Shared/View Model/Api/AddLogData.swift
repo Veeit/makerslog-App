@@ -13,6 +13,7 @@ import SwiftUI
 
 class AddLogData: ApiModel, ObservableObject {
 	@Published var text = ""
+    @Published var description = ""
 	@Published var isDone = false
 	@Published var isProgress = false
 
@@ -24,7 +25,8 @@ class AddLogData: ApiModel, ObservableObject {
 						  "content": text,
 						  "done": "\(isDone)",
 						  "inProgress": "\(isProgress)",
-						  "due_at": ""]
+						  "due_at": "",
+                          "description": "\(description)"]
         let requestURL = "https://api.getmakerlog.com/tasks/"
 
 		oauthswift.startAuthorizedRequest(requestURL, method: .POST, parameters: parameters, onTokenRenewal: {
@@ -40,6 +42,7 @@ class AddLogData: ApiModel, ObservableObject {
 					self.isDone = false
 					self.isProgress = false
 					self.text = ""
+                    self.description = ""
 					print(data)
 					let generator = UINotificationFeedbackGenerator()
 					generator.notificationOccurred(.success)
