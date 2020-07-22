@@ -87,7 +87,7 @@ struct LogFeedItem: View {
                         Text(log.data.content)
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
-                            .padding([.bottom], 15)
+                            .padding([.bottom], log.data.description != nil ? 0 : 15)
                     }
                 }
                 
@@ -95,7 +95,8 @@ struct LogFeedItem: View {
                     HStack() {
                         Divider().frame(width: 2).background(Color.green)
                         Text(log.data.description ?? "no description found")
-                    }.padding([.leading], 15)
+                    }.padding([.leading], 38)
+                    .padding([.bottom], 15)
                 }
                 
                 if log.data.attachment != nil {
