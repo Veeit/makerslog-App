@@ -30,6 +30,7 @@ struct Log: Codable, Identifiable, Equatable {
     let attachment: String?
     let commentCount: Int
     let og_image: String?
+    var praised: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id, event, done
@@ -45,6 +46,7 @@ struct Log: Codable, Identifiable, Equatable {
         case commentCount = "comment_count"
         case og_image
         case description
+        case praised
     }
     
     func getDate() -> String {

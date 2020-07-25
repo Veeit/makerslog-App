@@ -68,7 +68,8 @@ struct LogFeedItem: View {
                             VStack(alignment: .leading, spacing: 1) {
                                 HStack(alignment: .center) {
                                     Text("\(self.log.data.praise)")
-                                    Image(systemName: "star")
+                                    Image(systemName: self.log.data.praised == true ? "star.fill" :"star")
+//                                    Text("\(String(self.log.data.praised ?? false))")
                                 }
                                 .drawingGroup()
                                 .onTapGesture {
@@ -100,18 +101,22 @@ struct LogFeedItem: View {
                 }
                 
                 if log.data.attachment != nil {
-                    VStack(alignment: .center) {
-                        WebImage(url: URL(string: log.data.attachment!),
-                                 options: [.decodeFirstFrameOnly],
-                                 context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
-                            .placeholder(Image("imagePlaceholder"))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 300, height: 300)
-                            .clipped()
-                            .cornerRadius(7)
-                        
-                    }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
+                    VStack(alignment: .trailing) {
+                        VStack(alignment: .center) {
+                            WebImage(url: URL(string: log.data.attachment!),
+                                     options: [.decodeFirstFrameOnly],
+                                     context: [.imageThumbnailPixelSize : CGSize(width: 600, height: 600)])
+                                .placeholder(Image("imagePlaceholder"))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 280, height: 280)
+                                .clipped()
+                                .cornerRadius(7)
+                            
+                        }.frame(minWidth: 0, maxWidth: 280, maxHeight: 280)
+                            .background(Color.secondary.opacity(0.8))
+                        .cornerRadius(15)
+                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 }
             }
 		}

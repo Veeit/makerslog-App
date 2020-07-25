@@ -45,7 +45,6 @@ class MakerlogAPI: ApiModel, ObservableObject {
         let url = URL(string: "https://api.getmakerlog.com/tasks/?limit=200")!
 
 		var newLogs = [Log]()
-//        var cancellablePraise: AnyCancellable?
 
 		self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
 			.tryMap { output in
@@ -56,12 +55,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
 			}
 			.decode(type: Logs.self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
-//            .flatMap({ (logs) -> URLSession.DataTaskPublisher in
-//                let url = URL(string:"https://weatherapi.example.com/stations/\(log.id)/observations/latest")!
-//                var urlRequest = URLRequest(url: url)
-//                urlRequest.setValue(oauthswift.client.credential.oauthToken, forHTTPHeaderField: "Authorization")
-//                return URLSession.shared.dataTaskPublisher(for: urlRequest)
-//            })
+            .receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
@@ -71,59 +65,38 @@ class MakerlogAPI: ApiModel, ObservableObject {
 						print("time out")
 					} else {
 //						fatalError(error.localizedDescription)
-						DispatchQueue.main.async {
 							self.errorText = error.localizedDescription
 							self.showError = true
 							if self.alertWithNetworkError >= 1 {
 								self.alertWithNetworkError += 1
 							}
 							print(error)
-						}
 					}
 				}
 			}, receiveValue: { result in
-				 DispatchQueue.main.async {
 					newLogs = result.results
 					self.logs = newLogs
 					self.isDone = true
 					self.alertWithNetworkError = 0
                     self.cancellable?.cancel()
-				}
 			})
-//        var praisePublisher = PassthroughSubject<[Log], URLError>()
-//
-//        let praiseData = praisePublisher.flatMap {log -> URLSession.DataTaskPublisher in
-//            let url = URL(string:"https://weatherapi.example.com/stations/\(log.id)/observations/latest")!
-//            var urlRequest = URLRequest(url: url)
-//            urlRequest.setValue(oauthswift.client.credential.oauthToken, forHTTPHeaderField: "Authorization")
-//            return URLSession.shared.dataTaskPublisher(for: urlRequest)
-//        }.sink(receiveCompletion: { completion in
-//                switch completion {
-//                case .finished:
-//                    break
-//                case .failure(let error):
-//                    if error.localizedDescription == "The request timed out." {
-//                        print("time out")
-//                    } else {
-//                        DispatchQueue.main.async {
-//                            self.errorText = error.localizedDescription
-//                            self.showError = true
-//                            if self.alertWithNetworkError >= 1 {
-//                                self.alertWithNetworkError += 1
-//                            }
-//                            print(error)
-//                        }
-//                    }
+        
+//        var praisedLog = [Log]()
+//        DispatchQueue.global(qos: .background).async {
+//            self.logs.forEach({ log in
+//                var newlog = log
+//                if log.praise > 0 {
+//                    newlog.praised = self.getPraise(logId: "\(log.id)")
 //                }
-//            }, receiveValue: { result in
-//                 DispatchQueue.main.async {
-//                    print(result)
-//                }
+//                praisedLog.append(newlog)
 //            })
-//        praisePublisher.send(self.logs)
+//            DispatchQueue.main.async {
+//                self.logs = newLogs
+//            }
+//        }
 	}
     
-    func getPraise(logId: String) -> [LogsPraise] {
+    func getPraise(logId: String) -> Bool {
         let token = oauthswift.client.credential.oauthToken
         let parameters = ["token": token]
         let requestURL = "https://api.getmakerlog.com/tasks/\(logId)/praise/"
@@ -163,7 +136,7 @@ class MakerlogAPI: ApiModel, ObservableObject {
             }
         }
         
-        return praiseData
+        return praiseData.first?.praised ?? false
     }
 
 	func addPraise(log: Log) {
