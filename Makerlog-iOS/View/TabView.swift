@@ -49,7 +49,7 @@ struct TabScreen: View {
 	@EnvironmentObject var data: TabScreenData
 	@EnvironmentObject var login: LoginData
 	@EnvironmentObject var makerlog: MakerlogAPI
-    @ObservedObject var user = UserData()
+    @ObservedObject var user = TodayData()
 
     @State private var showDataPolicy: Bool = false
 	// swiftlint:disable empty_parentheses_with_trailing_closure

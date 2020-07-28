@@ -15,7 +15,7 @@ struct TodayView: View {
 //    @EnvironmentObject var user: UserData
     let defaultAvartar = "https://gravatar.com/avatar/d3df4c9fe1226f2913c9579725c1e4aa?s=150&d=mm&r=pg"
     @State private var logTextField =  ""
-    @ObservedObject var user: UserData
+    @ObservedObject var user: TodayData
     
     var body: some View {
         NavigationView() {
@@ -23,7 +23,7 @@ struct TodayView: View {
                 HStack() {
                     HStack() {
                         VStack() {
-                            WebImage(url: URL(string: self.user.userData.first?.avatar ?? self.defaultAvartar),
+                            WebImage(url: URL(string: self.user.user.first?.avatar ?? self.defaultAvartar),
                                  options: [.decodeFirstFrameOnly],
                                  context: [.imageThumbnailPixelSize: CGSize(width: 240, height: 240)])
                             .placeholder(Image("imagePlaceholder"))
@@ -37,18 +37,18 @@ struct TodayView: View {
                         }
                     }
                     VStack() {
-                        if self.user.userData.first?.firstName != "" && self.user.userData.first?.lastName != "" {
+                        if self.user.user.first?.firstName != "" && self.user.user.first?.lastName != "" {
                             VStack(alignment: .leading) {
                                 
-                                Text("\(self.user.userData.first?.firstName ?? "") \(self.user.userData.first?.lastName ?? "")")
+                                Text("\(self.user.user.first?.firstName ?? "") \(self.user.user.first?.lastName ?? "")")
                                     .font(.headline).bold()
                                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                  Text("@\(self.user.userData.first?.username ?? "")")
+                                  Text("@\(self.user.user.first?.username ?? "")")
                                       .font(.subheadline)
                                       .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             }
                         } else {
-                            Text("@\(self.user.userData.first?.username ?? "")")
+                            Text("@\(self.user.user.first?.username ?? "")")
                                 .font(.headline)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         }
@@ -61,8 +61,8 @@ struct TodayView: View {
                                 }
                                 
                                 VStack(alignment: .leading) {
-                                    Text("\(self.user.userStats.first?.rest_day_balance ?? 0)")
-                                    Text("\(self.user.userStats.first?.follower_count ?? 0)")
+                                    Text("\(self.user.stats.first?.rest_day_balance ?? 0)")
+                                    Text("\(self.user.stats.first?.follower_count ?? 0)")
                                 }
                             }
                             Spacer()
@@ -73,8 +73,8 @@ struct TodayView: View {
                                 }
                                 
                                 VStack(alignment: .leading) {
-                                    Text("\(self.user.userStats.first?.maker_score ?? 0)")
-                                    Text("\(self.user.userStats.first?.streak ?? 0)")
+                                    Text("\(self.user.stats.first?.maker_score ?? 0)")
+                                    Text("\(self.user.stats.first?.streak ?? 0)")
                                 }
                             }
                             Spacer()
@@ -124,7 +124,7 @@ struct TodayView: View {
                 }
                                 
                 Section(header: "Statistics") {
-                     LineView(data: self.user.userStats.first?.activity_trend ?? [4, 4, 4, 4, 4], title: "Productivity", legend: "Your weekly productivity")
+                     LineView(data: self.user.stats.first?.activity_trend ?? [4, 4, 4, 4, 4], title: "Productivity", legend: "Your weekly productivity")
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 320, maxHeight: .infinity)
                         .padding([.bottom], 100)
 //                    .fixedSize()
@@ -180,11 +180,7 @@ struct TodayView: View {
     }
     
     func loadAllData() {
-        self.user.getUser()
-        self.user.getUserName()
-        self.user.getArchivments()
-        self.user.getUserStats()
-        self.user.getNotifications()
+        self.user.load()
     }
 }
 

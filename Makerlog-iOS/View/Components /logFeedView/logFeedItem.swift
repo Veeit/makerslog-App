@@ -88,11 +88,11 @@ struct LogFeedItem: View {
                         Text(log.data.content)
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
-                            .padding([.bottom], log.data.description != nil ? 0 : 15)
+                            .padding([.bottom], log.data.description != nil && log.data.description != "" ? 0 : 15)
                     }
                 }
                 
-                if log.data.description != nil {
+                if log.data.description != nil && log.data.description != "" {
                     HStack() {
                         Divider().frame(width: 2).background(Color.green)
                         Text(log.data.description ?? "no description found")
@@ -114,7 +114,7 @@ struct LogFeedItem: View {
                                 .cornerRadius(7)
                             
                         }.frame(minWidth: 0, maxWidth: 280, maxHeight: 280)
-                            .background(Color.secondary.opacity(0.8))
+                            .background(Color.secondary.opacity(0.7))
                         .cornerRadius(15)
                     }.frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 }
