@@ -84,8 +84,9 @@ struct TodayView: View {
                 }
                 
                 Section(header: "Todo") {
-                    Text("Todo / Done Today")
-                    
+                    ForEach(self.user.todo) { log in
+                        LogFeedItem(log: LogViewData(data: log), fromUser: true)
+                    }
                 }
                 
                 if self.user.notification != nil {

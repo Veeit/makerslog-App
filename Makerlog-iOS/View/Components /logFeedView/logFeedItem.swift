@@ -46,10 +46,12 @@ struct LogFeedItem: View {
                             .clipped()
                             .cornerRadius(20)
 
-                        if (log.data.event != nil) {
-                            EventImg(event: log.data.event ?? "")
-                        } else {
-                            ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+                        VStack() {
+                            if (log.data.event != nil) {
+                                EventImg(event: log.data.event ?? "")
+                            } else {
+                                ProgressImg(done: log.data.done, inProgress: log.data.inProgress)
+                            }
                         }
                     }
                     

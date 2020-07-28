@@ -19,6 +19,7 @@ class TodayData: ApiModel, ObservableObject {
     @Published var archivments: Archivments?
     @Published var stats = [UserStats]()
     @Published var notification: Notification?
+    @Published var todo = [Log]()
 
     enum NetworkError: Error {
         case url
@@ -29,9 +30,10 @@ class TodayData: ApiModel, ObservableObject {
     func load(){
         DispatchQueue.global(qos: .utility).async {
             let result = self.getUser()
+                .flatMap { _ in self.getTodayLogs() }
+                .flatMap { _ in self.getNotifications() }
                 .flatMap { _ in self.getArchivments() }
                 .flatMap { _ in self.getUserStats() }
-                .flatMap { _ in self.getNotifications() }
             
             DispatchQueue.main.async {
                 switch result {
@@ -212,6 +214,39 @@ class TodayData: ApiModel, ObservableObject {
         if semaphore.wait(timeout: .now() + 15) == .timedOut {
             result = .failure(.timeout)
             semaphore.signal()
+        }
+        
+        return result
+    }
+    
+    func getTodayLogs() -> Result<[Log], NetworkError> {
+        let path = "https://api.getmakerlog.com/tasks/?user=\(self.user.first?.id ?? 0)&done=false"
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: Result<[Log], NetworkError>!
+
+        guard let url = URL(string: path) else {
+            return .failure(.url)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, _) in
+            if let data = data {
+                let decoded = try! JSONDecoder().decode(Logs.self, from: data)
+                result = .success(decoded.results)
+                DispatchQueue.main.async {
+                    self.todo =  decoded.results
+                }
+                
+            } else {
+                result = .failure(.server)
+            }
+            semaphore.signal()
+        }.resume()
+        
+        if semaphore.wait(timeout: .now() + 15) == .timedOut {
+            result = .failure(.timeout)
         }
         
         return result
