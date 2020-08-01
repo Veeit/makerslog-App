@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/AppPear/ChartView",
         "state": {
           "branch": null,
-          "revision": "c6610f567975469aaa2a8d6eb225c7162e6d0736",
-          "version": "1.5.3"
+          "revision": "4699847a9ac0c694666cea3acef133498952566e",
+          "version": "1.5.4"
         }
       },
       {
@@ -114,7 +114,7 @@
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
           "branch": "master",
-          "revision": "01bece7ea00fb9e5ae5a648625aa1d16ed7503d3",
+          "revision": "189b33f0406bf57bcc13ebd59fba3d93671d3837",
           "version": null
         }
       }
