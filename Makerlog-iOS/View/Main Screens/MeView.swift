@@ -12,7 +12,7 @@ import SwiftUI
 struct UserTabView: View {
     @EnvironmentObject var login: LoginData
     @EnvironmentObject var tabScreenData: TabScreenData
-    @EnvironmentObject var user: UserData
+    @State var user = UserData()
     var userData: [User]?
     var fromLog: Bool
     

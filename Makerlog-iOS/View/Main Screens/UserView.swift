@@ -13,7 +13,7 @@ import SwiftUIX
 import SwiftUICharts
 
 struct UserView: View {
-	@EnvironmentObject var user: UserData
+	@ObservedObject var user = UserData()
     @EnvironmentObject var tabScreenData: TabScreenData
 
 	var userData: [User]
@@ -57,87 +57,80 @@ struct UserView: View {
                                   }
                                   Text(self.user.userData.first?.userDescription ?? "no discription")
                                       .font(.subheadline)
-                                      .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                  Divider()
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, alignment: .leading)
+                                    .layoutPriority(2)
 
-                                  Text("Contact")
-                                      .foregroundColor(Color.blue)
-                                      .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                      .onTapGesture {
-                                          self.showContact.toggle()
-                                      }
+                                HStack() {
+                                    Image(systemName: "envelope.fill")
+                                    Text("Contact")
+                                }
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(Color.blue)
+                                .onTapGesture {
+                                    self.showContact.toggle()
+                                }
+                                
                               }
                               .frame(minWidth: 0, maxWidth: .infinity)
-                              .padding([.top], 20)
+                              .padding([.top, .bottom], 10)
                           }.frame(minWidth: 0, maxWidth: .infinity)
                       }
 
                       VStack() {
                           Group() {
                               ScrollView(.horizontal, showsIndicators: false) {
-                                  HStack() {
+                                HStack(spacing: 10) {
+                                    HStack() {
+                                         Spacer()
+                                         VStack() {
+                                            Spacer()
+                                             Text("Streak").font(.subheadline)
+                                             Text("\(self.user.userStats.first?.streak ?? 0)").bold()
+                                            Spacer()
+                                         }
+                                         Spacer()
+                                    }.frame(width: 100)
+                                        .background(Color.systemGray4)
+                                        .cornerRadius(10)
+                                    
                                       HStack() {
                                           Spacer()
                                           VStack() {
+                                            Spacer()
                                               Text("Rest days").font(.subheadline)
                                               Text("\(self.user.userStats.first?.rest_day_balance ?? 0)").bold()
+                                            Spacer()
                                           }
                                           Spacer()
-                                          Divider()
                                       }.frame(width: 100)
+                                    .background(Color.systemGray4)
+                                    .cornerRadius(10)
+                                    
                                       HStack() {
                                           Spacer()
                                           VStack() {
+                                             Spacer()
                                               Text("Follower").font(.subheadline)
                                               Text("\(self.user.userStats.first?.follower_count ?? 0)").bold()
+                                             Spacer()
                                           }
                                           Spacer()
-                                          Divider()
                                       }.frame(width: 100)
+                                    .background(Color.systemGray4)
+                                    .cornerRadius(10)
+                                    
                                       HStack() {
                                           Spacer()
                                           VStack() {
+                                             Spacer()
                                               Text("Maker score").font(.subheadline)
                                               Text("\(self.user.userStats.first?.maker_score ?? 0)").bold()
-                                          }
-                                          Spacer()
-                                          Divider()
-                                      }.frame(width: 100)
-                                      HStack() {
-                                          Spacer()
-                                          VStack() {
-                                              Text("Streak").font(.subheadline)
-                                              Text("\(self.user.userStats.first?.streak ?? 0)").bold()
-                                          }
-                                          Spacer()
-                                          Divider()
-                                      }.frame(width: 100)
-                                      HStack() {
-                                          Spacer()
-                                          VStack() {
-                                              Text("Done today").font(.subheadline)
-                                              Text("\(self.user.userStats.first?.done_today ?? 0)").bold()
-                                          }
-                                          Spacer()
-                                          Divider()
-                                      }.frame(width: 100)
-                                      HStack() {
-                                          Spacer()
-                                          VStack() {
-                                              Text("Remaining today").font(.subheadline)
-                                              Text("\(self.user.userStats.first?.remaining_tasks ?? 0)").bold()
-                                          }
-                                          Spacer()
-                                          Divider()
-                                      }.frame(width: 100)
-                                      HStack() {
-                                          Spacer()
-                                          VStack() {
-                                              Text("Done total").font(.subheadline)
-                                              Text("\(self.user.userStats.first?.done_today ?? 0)").bold()
+                                             Spacer()
                                           }
                                           Spacer()
                                       }.frame(width: 100)
+                                    .background(Color.systemGray4)
+                                    .cornerRadius(10)
                                   }
                               }
                           }
@@ -181,7 +174,6 @@ struct UserView: View {
 			}
 			.listStyle(GroupedListStyle())
 		}
-//		.navigationBarTitle("\(self.user.userName)", displayMode: .inline)
 		.onAppear(perform: {
 			self.user.stop = false
 			self.user.userData = self.userData

@@ -15,7 +15,11 @@ struct Discussions: Codable {
 }
 
 // MARK: - Result
-struct ResultDiscussion: Codable, Identifiable {
+struct ResultDiscussion: Codable, Identifiable, Equatable {
+    static func == (lhs: ResultDiscussion, rhs: ResultDiscussion) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     let id: Int?
     let slug: String
     let type: String?

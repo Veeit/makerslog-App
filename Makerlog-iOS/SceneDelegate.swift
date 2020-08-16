@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
 	let makerlogApiData = MakerlogAPI()
 	let loginData = LoginData()
 	let commentViewData = CommentViewData()
-	let userData = UserData()
+//	let userData = UserData()
     let device = Device()
 
     let center = UNUserNotificationCenter.current()
@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
                         .environmentObject(makerlogApiData)
                         .environmentObject(loginData)
                         .environmentObject(commentViewData)
-                        .environmentObject(userData)
+//                        .environmentObject(userData)
                     )
     }
     
@@ -61,14 +61,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, ObservableObject {
 							.environmentObject(makerlogApiData) // sorgen
 							.environmentObject(loginData)
 							.environmentObject(commentViewData) // sorgen
-							.environmentObject(userData)
+//							.environmentObject(userData)
                             .environmentObject(device)
 
         let onboarding = Onboarding()
                             .environment(\.managedObjectContext, context)
                             .environmentObject(tabScreenData)
                             .environmentObject(loginData)
-                            .environmentObject(userData)
+//                            .environmentObject(userData)
                             .environmentObject(self)
         
         var root: UIViewController
