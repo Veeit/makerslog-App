@@ -50,30 +50,31 @@ struct LogInteractive: View {
 				Image(systemName: "bubble.right")
 				Text("\(self.log.data.commentCount)")
 			}
-			Spacer()
-			HStack() {
-				Image(systemName: "link")
-				Text("Copy link")
-					.onTapGesture {
-						let link = "https://getmakerlog.com/tasks/\(self.log.data.id)"
-						UIPasteboard.general.string = link
-					}
-					.padding(4)
-					.cornerRadius(6)
-					.font(.footnote)
-			}
+//			Spacer()
+//			HStack() {
+//				Image(systemName: "link")
+//				Text("Copy link")
+//					.onTapGesture {
+//						let link = "https://getmakerlog.com/tasks/\(self.log.data.id)"
+//						UIPasteboard.general.string = link
+//					}
+//					.padding(4)
+//					.cornerRadius(6)
+//					.font(.footnote)
+//			}
 			Spacer()
 			if self.log.data.user.username == login.userData.first?.username ?? "" {
-//				HStack() {
-//					Image(systemName: "trash")
-//					Text("Delete")
-//						.onTapGesture {
-//							self.makerlogAPI.deleteItem.toggle()
-//						}
-//						.padding(4)
-//						.cornerRadius(6)
-//						.font(.footnote)
-//				}
+				HStack() {
+					Image(systemName: "trash")
+					Text("Delete")
+						.onTapGesture {
+							self.makerlogAPI.deleteItem.toggle()
+						}
+						.padding(4)
+						.cornerRadius(6)
+						.font(.footnote)
+				}
+                Spacer()
                 HStack() {
                     Image(systemName: "pencil.and.outline")
                     Text("Edit")
