@@ -89,7 +89,7 @@ struct TodayView: View {
                     }
                 }
                 
-                if self.user.notification != nil {
+                if self.user.notification != nil && !(self.user.notification?.isEmpty ?? false) {
                     Section(header: "Notification") {
                         ForEach(self.user.notification!) { notification in
                            HStack() {

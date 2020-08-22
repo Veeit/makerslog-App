@@ -16,8 +16,10 @@ struct AddTyps {
 
 //swiftlint:disable multiple_closures_with_trailing_closure
 struct AddLogView: View {
-	@ObservedObject var data = AddLogData()
+    @ObservedObject var data: AddLogData
 	@State private var selectedType = 0
+    @State var log: Log?
+    @State var isEdit = false
 
 	var types = [AddTyps(name: "done", title: "What have you done today ?"),
 				 AddTyps(name: "to do", title: "What will you do ?"),
@@ -26,7 +28,7 @@ struct AddLogView: View {
 	// swiftlint:disable empty_parentheses_with_trailing_closure
     var body: some View {
 		VStack(alignment: .leading) {
-            Text("\(selectedType)")
+//            Text("\(selectedType)")
 			Text("Log State:").font(Font.headline)
 			Picker(selection: $selectedType, label: Text("Log State")) {
 				ForEach(0 ..< types.count) {
@@ -56,11 +58,19 @@ struct AddLogView: View {
 					}
 				}, trailing:
 				HStack() {
-					Button(action: {
-						self.save()
-					}) {
-						Text("Send")
-					}
+                    if isEdit {
+                        Button(action: {
+                            self.update()
+                        }) {
+                            Text("Edit")
+                        }
+                    } else {
+                        Button(action: {
+                            self.save()
+                        }) {
+                            Text("Send")
+                        }
+                    }
 				}
 			)
     }
@@ -90,10 +100,31 @@ struct AddLogView: View {
 		self.data.isDone = false
 		self.data.isProgress = false
 	}
+    
+    func update() {
+        self.data.taskID = self.log?.id ?? 0
+        
+        if self.selectedType == 0 {
+            self.data.isDone = true
+            self.data.isProgress = false
+        } else if self.selectedType == 1 {
+            self.data.isDone = false
+            self.data.isProgress = false
+        } else if self.selectedType == 2 {
+            self.data.isDone = false
+            self.data.isProgress = true
+        }
+
+        self.data.updateLog()
+//        self.data.text = ""
+//        self.data.isDone = false
+//        self.data.isProgress = false
+        UIApplication.shared.windows.first?.endEditing(true)
+    }
 }
 
 struct AddLogView_Previews: PreviewProvider {
     static var previews: some View {
-        AddLogView()
+        AddLogView(data: AddLogData())
     }
 }

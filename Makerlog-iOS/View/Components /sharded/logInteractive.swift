@@ -13,6 +13,8 @@ struct LogInteractive: View {
 	@EnvironmentObject var login: LoginData
 	@EnvironmentObject var tabScreenData: TabScreenData
 
+    @State var openEdit = false
+
 	var log: LogViewData
 
 //	@Binding var showDetailView: Bool
@@ -62,18 +64,33 @@ struct LogInteractive: View {
 			}
 			Spacer()
 			if self.log.data.user.username == login.userData.first?.username ?? "" {
-				HStack() {
-					Image(systemName: "trash")
-					Text("Delete")
-						.onTapGesture {
-							self.makerlogAPI.deleteItem.toggle()
-						}
-						.padding(4)
-						.cornerRadius(6)
-						.font(.footnote)
-				}
+//				HStack() {
+//					Image(systemName: "trash")
+//					Text("Delete")
+//						.onTapGesture {
+//							self.makerlogAPI.deleteItem.toggle()
+//						}
+//						.padding(4)
+//						.cornerRadius(6)
+//						.font(.footnote)
+//				}
+                HStack() {
+                    Image(systemName: "pencil.and.outline")
+                    Text("Edit")
+                        .onTapGesture {
+                            self.openEdit.toggle()
+                        }
+                        .padding(4)
+                        .cornerRadius(6)
+                        .font(.footnote)
+                }
 				Spacer()
 			}
 		}
+        .sheet(isPresented: self.$openEdit, onDismiss: {
+            self.log.updateLog()
+        },content: {
+            AddView(log: self.log.data)
+        })
     }
 }

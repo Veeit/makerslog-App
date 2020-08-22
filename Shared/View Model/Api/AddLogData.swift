@@ -16,6 +16,7 @@ class AddLogData: ApiModel, ObservableObject {
     @Published var description = ""
 	@Published var isDone = false
 	@Published var isProgress = false
+    @Published var taskID = 0
 
 	func createNewLog() {
 
@@ -61,6 +62,47 @@ class AddLogData: ApiModel, ObservableObject {
             }
         }
 	}
+    
+    func updateLog() {
+        let token = oauthswift.client.credential.oauthToken
+        print(token)
+        let parameters = ["token": token,
+                          "content": text,
+                          "done": "\(isDone)",
+                          "inProgress": "\(isProgress)",
+                          "description": "\(description)"]
+//        {content: "Test 2 #makerios", description: null, done: false, in_progress: false}
+
+        let requestURL = "https://api.getmakerlog.com/tasks/\(taskID)/"
+        print(requestURL)
+        
+        oauthswift.startAuthorizedRequest(requestURL, method: .PATCH, parameters: parameters, onTokenRenewal: {
+            (credential) in
+                setData()
+        }) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(Log.self, from: response.data)
+
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+                if case .tokenExpired = error {
+                  print("old token")
+               }
+                DispatchQueue.main.async {
+                    self.errorText = error.localizedDescription
+                    self.showError = true
+                }
+            }
+        }
+    }
 }
 
 class UpdateLogData: ObservableObject {

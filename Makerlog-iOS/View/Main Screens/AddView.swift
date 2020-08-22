@@ -15,9 +15,13 @@ struct AddView: View {
 
 	@EnvironmentObject var tabScreenData: TabScreenData
 	@EnvironmentObject var login: LoginData
+    @State var log: Log?
+
+    @ObservedObject var data = AddLogData()
 
 	var types = ["log", "discussion"]
 	@State private var selectedType = 0
+    @State private var isEdit = false
 
 	var body: some View {
 		NavigationView() {
@@ -29,7 +33,7 @@ struct AddView: View {
 //				}.pickerStyle(SegmentedPickerStyle())
 
 //				if selectedType == 0 {
-					AddLogView()
+                AddLogView(data: data, log: log, isEdit: isEdit)
 //				} else if selectedType == 1 {
 //					AddDiscussionView()
 //				} else {
@@ -39,5 +43,14 @@ struct AddView: View {
 			.padding([.leading, .trailing], 20)
 			.padding([.bottom], 10)
 		}.navigationViewStyle(StackNavigationViewStyle())
+            .onAppear(perform: {
+                if self.log != nil {
+                    self.isEdit = true
+                    self.data.text = self.log?.content ?? ""
+//                    self.data.isDone = self.log?.done ?? false
+//                    self.data.isProgress = self.log?.inProgress ?? false
+                    self.data.description = self.log?.description ?? ""
+                }
+            })
 	}
 }

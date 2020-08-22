@@ -96,6 +96,7 @@ struct LogDetailView: View {
 		.navigationBarItems(trailing:
 			Button(action: {
 				_ = self.comments.getComments(logID: String(self.log.data.id))
+                self.log.updateLog()
 			}) {
 				Image(systemName: "arrow.2.circlepath")
 			}
